@@ -1,0 +1,123 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  name: String!
+  gender: Gender! @default(value: MALE)
+}
+
+type Candidate {
+  id: ID! @id
+  name: String!
+  photo: String
+  party: String!
+  state: String!
+  current_office: String!
+  age: Int!
+  gender: Gender! @default(value: MALE)
+  latest_poll: Float
+  latest_odds: Float
+  bio_qualifications: [Qualification!]!
+  bio_policy_position: [Position!]!
+  bio_other: String
+}
+
+type Qualification {
+  id: ID! @id
+  name: String!
+  summary: String
+  detail: String
+  years: Int!
+  rank: Int!
+  candidate: Candidate! @relation(link: INLINE)
+}
+
+type Topic {
+  id: ID! @id
+  name: String!
+  category: CategoryType! @default(value: HEALTH)
+}
+
+type Position {
+  id: ID! @id
+  name: String!
+  summary: String
+  topic: Topic @relation(link: INLINE)
+  detail: String
+}
+
+type CandidatePosition {
+  id: ID! @id
+  position: Position! @relation(link: INLINE)
+  candidate: Candidate! @relation(link: INLINE)
+  time: DateTime! @updatedAt
+  link: String
+  rank: Int!
+  latest: Boolean! @default(value: false)
+}
+
+type UserVote {
+  id: ID! @id
+  candidate: Candidate! @relation(link: INLINE)
+  user: User! @relation(link: INLINE)
+  vote_type: VoteType! @default(value: TOP)
+  time: DateTime! @updatedAt
+  latest: Boolean! @default(value: false)
+}
+
+type UserQualificationLike {
+  id: ID! @id
+  candidate: Candidate! @relation(link: INLINE)
+  user: User! @relation(link: INLINE)
+  qualification: Qualification! @relation(link: INLINE)
+  like: LikeType! @default(value: LIKE)
+  time: DateTime! @updatedAt
+  latest: Boolean! @default(value: false)
+}
+
+type UserPositionLike {
+  id: ID! @id
+  candidate: Candidate! @relation(link: INLINE)
+  user: User! @relation(link: INLINE)
+  candidate_position: CandidatePosition! @relation(link: INLINE)
+  like: LikeType! @default(value: LIKE)
+  time: DateTime! @updatedAt
+  latest: Boolean! @default(value: false)
+}
+
+type Poll {
+  id: ID! @id
+  source: User! @relation(link: INLINE)
+  date: DateTime! @updatedAt
+  candidate: Candidate! @relation(link: INLINE)
+  poll_type: PollType! @default(value: PRIMARY)
+  error_margin: String
+  link_to_poll: String
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum CategoryType {
+  HEALTH
+}
+
+enum VoteType {
+  TOP
+  FAVORITE
+  COMPROMISE
+  VETO
+  UNKNOWNS
+}
+
+enum LikeType {
+  LIKE
+  DISLIKE
+  UNSPECIFIED
+}
+
+enum PollType {
+  PRIMARY
+  HEADTOHEAD
+}
