@@ -1,0 +1,71 @@
+mutation {
+  user1: createUser(data: { email: "test.user1@gmail.com", name: "John Doe" }) {
+    id
+  }
+  user2: createUser(data: { email: "test.user2@gmail.com", name: "Bob Doe" }) {
+    id
+  }
+  candidate: createCandidate(data: {
+    name: "Donald Trump",
+  	photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    party: "democratic",
+    state: "de",
+    current_office: "n/a",
+    age: 45,
+    gender: MALE,
+    latest_poll: 65,
+    latest_odds: 35,
+    bio_policy_position: {
+      create: {
+        name: "lead of AMD",
+        summary: "lead 15 years",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            name: "Healthcare insurance",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  }
+  qualification: createQualification(data: {
+    name: "Software manager",
+  	summary: "10 years of Leading AMD Project",
+    rank: 1,
+    years: 10,
+    detail: "good work in the team",
+    candidate: {
+      create: {
+        name: "Anna Rose",
+        photo: "https://randomuser.me/api/portraits/women/60.jpg",
+        party: "democratic",
+        state: "es",
+        current_office: "n/a",
+        age: 32,
+        gender: FEMALE,
+        latest_poll:75,
+        latest_odds: 30,
+        bio_policy_position: {
+          create: {
+            name: "lead of TMS",
+            summary: "lead 15 years",
+            detail: "Nominate artist award",
+            topic: {
+              create: {
+                name: "Artist Commit",
+                category: HEALTH
+              }
+            }
+          }
+        }
+        bio_other: "Software learning course of Paris"
+      }
+    }    
+  }) {
+    id
+  }
+}

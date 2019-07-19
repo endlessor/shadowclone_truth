@@ -1,5 +1,0 @@
-mutation {
-  user: createUser(data: { email: "test.user1@gmail.com", name: "John Doe" }) {
-    id
-  }
-}

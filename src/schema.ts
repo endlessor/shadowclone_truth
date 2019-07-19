@@ -2,8 +2,8 @@ import * as path from 'path'
 import { makePrismaSchema } from 'nexus-prisma'
 import { prisma } from '../generated/prisma-client'
 import datamodelInfo from '../generated/nexus-prisma'
-import Query from './query'
-import Mutation from './mutation'
+import Query from './resolvers/query'
+import Mutation from './resolvers/mutation'
 
 const schema = makePrismaSchema({
   types: [Query, Mutation],
