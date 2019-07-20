@@ -1,37 +1,27 @@
 {
-  "name": "truth",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "node-sass": "^4.12.0",
-    "primeflex": "^1.0.0-rc.1",
-    "primeicons": "^1.0.0",
-    "primereact": "^3.1.7",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-transition-group": "^4.2.1"
-  },
+  "name": "test_apollo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src/"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.7.0",
+    "dotenv": "^8.0.0",
+    "graphql": "^14.4.2",
+    "nexus": "^0.12.0-beta.6",
+    "nexus-prisma": "^0.3.7",
+    "prisma-client-lib": "^1.34.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.4.5"
   }
 }

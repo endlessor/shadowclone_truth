@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Prisma-Apollo-Server For ShawdowClone Truth
 
-## Available Scripts
+This is the backend project for shadowcloen truth web application.
 
-In the project directory, you can run:
+It provides graphql apis using Apollo server based on prisma framework
 
-### `npm start`
+## Get started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> **Note**: `prisma` is listed as a _development dependency_ and _script_ in this project's [`package.json`](./package.json). This means you can invoke the Prisma CLI without having it globally installed on your machine (by prefixing it with `yarn`), e.g. `yarn prisma deploy` or `yarn prisma playground`. If you have the Prisma CLI installed globally (which you can do with `npm install -g prisma`), you can omit the `yarn` prefix.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### 1. Download the source & install dependencies
 
-### `npm test`
+Clone the repository with the following command:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+https://github.com/mraybman/shadowclone_truth.git
+```
 
-### `npm run build`
+Next, navigate into the server folder of downloaded source and install the NPM dependencies:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+cd shadowclone_truth/server
+yarn install (or npm install)
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### 2. Deploy the Prisma database service
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can now [deploy](https://www.prismagraphql.com/docs/reference/cli-command-reference/database-service/prisma-deploy-kee1iedaov) the Prisma service (note that this requires you to have [Docker](https://www.docker.com) installed on your machine - if that's not the case, follow the collapsed instructions below the code block):
 
-### `npm run eject`
+```sh
+cd prisma
+docker-compose up -d
+cd ..
+prisma deploy
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<details>
+ <summary><strong>I don't have <a href="https://www.docker.com">Docker</a> installed on my machine</strong></summary>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To deploy your service to a public cluster (rather than locally with Docker), you need to perform the following steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Remove the `cluster` property from `prisma.yml`.
+1. Run `prisma deploy`.
+1. When prompted by the CLI, select a public cluster (e.g. `prisma-eu1` or `prisma-us1`).
+1. Replace the [`endpoint`](./src/index.js#L23) in `index.ts` with the HTTP endpoint that was printed after the previous command.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+</details>
+<br>
 
-## Learn More
+### 3. Start the GraphQL server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The Prisma database service that's backing your GraphQL server is now available. This means you can now start the server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+yarn dev (or npm dev)
+```
 
-### Code Splitting
+The `dev` script starts the server (on `http://localhost:4000`) and opens a GraphQL Playground where you get acces to the API of your GraphQL server (defined in the [application schema](./src/schema.graphql)) as well as the underlying Prisma API (defined in the auto-generated [Prisma database schema](./src/generated/prisma.ts)) directly.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Inside the Playground, you can start exploring the available operations by browsing the built-in documentation.
