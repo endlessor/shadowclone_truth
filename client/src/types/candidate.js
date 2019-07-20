@@ -15,16 +15,16 @@ export const PolicyPositionShape = PropTypes.shape({
 });
 
 const CandidateShape = PropTypes.shape({
-  id: PropTypes.number,
+  id: PropTypes.string,
   name: PropTypes.string,
   photo: PropTypes.string,
   party: PropTypes.string,
   state: PropTypes.string,
-  office: PropTypes.string,
+  current_office: PropTypes.string,
   age: PropTypes.number,
   gender: PropTypes.string,
-  latest_poll: PropTypes.string,
-  latest_odds: PropTypes.string,
+  latest_poll: PropTypes.number,
+  latest_odds: PropTypes.number,
   bio_qualifications: PropTypes.arrayOf(QualificationShape),
   bio_policy_positions: PropTypes.arrayOf(PolicyPositionShape)
 });

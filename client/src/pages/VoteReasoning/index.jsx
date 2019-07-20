@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { DataView } from "primereact/dataview";
+import { withApollo } from "react-apollo";
+import { gql } from "apollo-boost";
 
 import VoteReasonItem from "../../components/VoteReasonItem";
-import CandidateShape from "../../types/candidate";
 
-function VoteReasoning({ candidate }) {
+function VoteReasoning({ match, client }) {
+  const [candidate, setCandidate] = useState({});
+  useEffect(() => {
+    const { candidate } = client.readQuery({
+      query: candidateQuery,
+      variables: {
+        id: match.params.id
+      }
+    });
+    setCandidate(candidate);
+  }, [client, match.params.id]);
+
   const itemTemplate = (voteReason, layout) => {
     if (!voteReason) {
       return null;
@@ -17,39 +30,60 @@ function VoteReasoning({ candidate }) {
   };
 
   return (
-    <div className="p-grid">
-      <div className="p-grid">
-        <div className="p-col-4">
-          <img src={candidate.photo} alt="avatar" />
+    <div className="p-grid p-justify-center">
+      <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
+        <div className="p-grid p-col-align-center">
+          <div className="p-col-4">
+            <img src={candidate.photo} alt="avatar" />
+          </div>
+          <div className="p-col-8">
+            <h4>{candidate.name}</h4>
+          </div>
         </div>
-        <div className="p-col-8">
-          <h4>{candidate.name}</h4>
-        </div>
+        <Accordion multiple>
+          <AccordionTab header="Qualifications">
+            <DataView
+              value={candidate.bio_qualifications}
+              layout="list"
+              itemTemplate={itemTemplate}
+              rows={20}
+            />
+          </AccordionTab>
+          <AccordionTab header="Policies">
+            <DataView
+              value={candidate.bio_policy_position}
+              layout="list"
+              itemTemplate={itemTemplate}
+              rows={20}
+            />
+          </AccordionTab>
+        </Accordion>
       </div>
-      <Accordion>
-        <AccordionTab header="Qualifications">
-          <DataView
-            value={candidate.bio_qualifications}
-            layout="list"
-            itemTemplate={itemTemplate}
-            rows={20}
-          />
-        </AccordionTab>
-        <AccordionTab header="Policies">
-          <DataView
-            value={candidate.bio_policy_positions}
-            layout="list"
-            itemTemplate={itemTemplate}
-            rows={20}
-          />
-        </AccordionTab>
-      </Accordion>
     </div>
   );
 }
 
+const candidateQuery = gql`
+  query candidate($id: ID) {
+    candidate(id: $id) {
+      id
+      name
+      photo
+      bio_qualifications {
+        id
+        summary
+      }
+      bio_policy_position {
+        id
+        summary
+      }
+    }
+  }
+`;
+
 VoteReasoning.propTypes = {
-  candidate: CandidateShape.isRequired
+  match: PropTypes.object.isRequired,
+  client: PropTypes.object.isRequired
 };
 
-export default VoteReasoning;
+export default withApollo(VoteReasoning);

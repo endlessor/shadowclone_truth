@@ -1,64 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Query } from "react-apollo";
 import { DataView } from "primereact/dataview";
 
 import CandidateListItem from "../../components/CandidateListItem";
+import { CandidateQuery } from "../../queries/candidate";
 
 function PreVote() {
-  const [candidates, setCandidates] = useState([]);
-
-  useEffect(() => {
-    setCandidates([
-      {
-        id: 123,
-        name: "Cory Booker",
-        image: "https://i.pravatar.cc/100",
-        party: "democrats",
-        state: "de",
-        office: "n/a",
-        age: 76,
-        gender: "male",
-        latest_poll: "76%",
-        latest_odds: "30%"
-      },
-      {
-        id: 124,
-        name: "Kamala Haris",
-        image: "https://i.pravatar.cc/100",
-        party: "democrats",
-        state: "de",
-        office: "n/a",
-        age: 76,
-        gender: "female",
-        latest_poll: "76%",
-        latest_odds: "30%"
-      },
-      {
-        id: 125,
-        name: "Bernie Sanders",
-        image: "https://i.pravatar.cc/100",
-        party: "democrats",
-        state: "de",
-        office: "n/a",
-        age: 76,
-        gender: "male",
-        latest_poll: "76%",
-        latest_odds: "30%"
-      },
-      {
-        id: 126,
-        name: "Elizabeth Warren",
-        image: "https://i.pravatar.cc/100",
-        party: "democrats",
-        state: "de",
-        office: "n/a",
-        age: 76,
-        gender: "female",
-        latest_poll: "76%",
-        latest_odds: "30%"
-      }
-    ]);
-  }, [candidates]);
-
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
       return null;
@@ -78,12 +25,20 @@ function PreVote() {
       </div>
 
       <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
-        <DataView
-          value={candidates}
-          layout="list"
-          itemTemplate={itemTemplate}
-          rows={20}
-        />
+        <Query query={CandidateQuery}>
+          {({ loading, error, data }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error : {error}</p>;
+            return (
+              <DataView
+                value={data.candidates}
+                layout="list"
+                itemTemplate={itemTemplate}
+                rows={20}
+              />
+            );
+          }}
+        </Query>
       </div>
     </div>
   );
