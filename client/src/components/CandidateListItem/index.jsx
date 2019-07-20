@@ -18,7 +18,7 @@ const CandidateListItem = ({ data }) => {
     <Card className="candidate_card">
       <div className="p-grid">
         <div className="p-col-4">
-          <img src={data.image} alt="avatar" />
+          <img src={data.photo} alt="avatar" />
         </div>
         <div className="p-col-8">
           <h4>{data.name}</h4>

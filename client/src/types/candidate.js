@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 
-const QualificationShape = PropTypes.shape({
+export const QualificationShape = PropTypes.shape({
+  id: PropTypes.string,
   name: PropTypes.string,
   summary: PropTypes.string,
   years: PropTypes.number,
   candidate: PropTypes.number
 });
 
-const PolicyPositionShape = PropTypes.shape({
+export const PolicyPositionShape = PropTypes.shape({
+  id: PropTypes.string,
   name: PropTypes.string,
   summary: PropTypes.string
 });
@@ -15,7 +17,7 @@ const PolicyPositionShape = PropTypes.shape({
 const CandidateShape = PropTypes.shape({
   id: PropTypes.number,
   name: PropTypes.string,
-  image: PropTypes.string,
+  photo: PropTypes.string,
   party: PropTypes.string,
   state: PropTypes.string,
   office: PropTypes.string,
@@ -23,8 +25,8 @@ const CandidateShape = PropTypes.shape({
   gender: PropTypes.string,
   latest_poll: PropTypes.string,
   latest_odds: PropTypes.string,
-  qualifications: PropTypes.arrayOf(QualificationShape),
-  policy_positions: PropTypes.arrayOf(PolicyPositionShape)
+  bio_qualifications: PropTypes.arrayOf(QualificationShape),
+  bio_policy_positions: PropTypes.arrayOf(PolicyPositionShape)
 });
 
 export default CandidateShape;
