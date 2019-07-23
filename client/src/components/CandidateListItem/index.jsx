@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
 import { ToggleButton } from "primereact/togglebutton";
@@ -16,15 +17,15 @@ const CandidateListItem = ({ data }) => {
 
   return (
     <Card className="candidate_card">
-      <div className="p-grid">
+      <Link className="p-grid" to={`/candidate/${data.id}`}>
         <div className="p-col-4">
-          <img src={data.image} alt="avatar" />
+          <img src={data.photo} alt="avatar" />
         </div>
         <div className="p-col-8">
           <h4>{data.name}</h4>
           <span>({data.party})</span>
         </div>
-      </div>
+      </Link>
       <div className="p-grid candidate_card__content">
         <div className="p-col-3">
           <span>{data.state}</span>
