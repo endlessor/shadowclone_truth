@@ -13,11 +13,11 @@ type Candidate {
   state: String!
   current_office: String!
   age: Int!
-  gender: Gender! @default(value: MALE)
+  gender: Gender @default(value: MALE)
   latest_poll: Float
   latest_odds: Float
-  bio_qualifications: [Qualification!]! @relation(onDelete: CASCADE)
-  bio_policy_position: [Position!]!
+  bio_qualifications: [Qualification!] @relation(onDelete: CASCADE)
+  bio_policy_position: [Position!]
   bio_other: String
 }
 
@@ -27,7 +27,7 @@ type Qualification {
   summary: String
   detail: String
   years: Int!
-  rank: Int!
+  rank: Int
   candidate: Candidate! @relation(link: INLINE)
 }
 
@@ -49,10 +49,10 @@ type CandidatePosition {
   id: ID! @id
   position: Position! @relation(link: INLINE)
   candidate: Candidate! @relation(link: INLINE)
-  time: DateTime! @updatedAt
+  time: DateTime @updatedAt
   link: String
-  rank: Int!
-  latest: Boolean! @default(value: false)
+  rank: Int
+  latest: Boolean @default(value: false)
 }
 
 type UserVote {
@@ -60,34 +60,32 @@ type UserVote {
   candidate: Candidate! @relation(link: INLINE)
   user: User! @relation(link: INLINE)
   vote_type: VoteType! @default(value: TOP)
-  time: DateTime! @updatedAt
-  latest: Boolean! @default(value: false)
+  time: DateTime @updatedAt
+  latest: Boolean @default(value: false)
 }
 
 type UserQualificationLike {
   id: ID! @id
-  candidate: Candidate! @relation(link: INLINE)
   user: User! @relation(link: INLINE)
   qualification: Qualification! @relation(link: INLINE)
   like: LikeType! @default(value: LIKE)
-  time: DateTime! @updatedAt
-  latest: Boolean! @default(value: false)
+  time: DateTime @updatedAt
+  latest: Boolean @default(value: false)
 }
 
 type UserPositionLike {
   id: ID! @id
-  candidate: Candidate! @relation(link: INLINE)
   user: User! @relation(link: INLINE)
   candidate_position: CandidatePosition! @relation(link: INLINE)
-  like: LikeType! @default(value: LIKE)
-  time: DateTime! @updatedAt
-  latest: Boolean! @default(value: false)
+  like: LikeType @default(value: LIKE)
+  time: DateTime @updatedAt
+  latest: Boolean @default(value: false)
 }
 
 type Poll {
   id: ID! @id
   source: User! @relation(link: INLINE)
-  date: DateTime! @updatedAt
+  date: DateTime @updatedAt
   candidate: Candidate! @relation(link: INLINE)
   poll_type: PollType! @default(value: PRIMARY)
   error_margin: String

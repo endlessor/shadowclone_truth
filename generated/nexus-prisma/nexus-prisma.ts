@@ -1275,13 +1275,13 @@ export interface CandidateFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"Candidate">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Gender> | prisma.Gender
+    ) => Promise<prisma.Gender | null> | prisma.Gender | null
   }
   latest_poll: {
     type: 'Float'
@@ -1407,7 +1407,7 @@ export interface QualificationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   candidate: {
@@ -2111,7 +2111,7 @@ export interface CandidatePositionFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   link: {
@@ -2127,7 +2127,7 @@ export interface CandidatePositionFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -2135,7 +2135,7 @@ export interface CandidatePositionFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2342,7 +2342,7 @@ export interface UserVoteFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -2350,7 +2350,7 @@ export interface UserVoteFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2486,7 +2486,6 @@ export interface AggregateUserVoteFieldDetails {
 type UserQualificationLikeObject =
   | UserQualificationLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
   | { name: 'user', args?: [] | false, alias?: string  } 
   | { name: 'qualification', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
@@ -2495,7 +2494,6 @@ type UserQualificationLikeObject =
 
 type UserQualificationLikeFields =
   | 'id'
-  | 'candidate'
   | 'user'
   | 'qualification'
   | 'like'
@@ -2514,19 +2512,6 @@ export interface UserQualificationLikeFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
-  }
-  candidate: {
-    type: 'Candidate'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"UserQualificationLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
   }
   user: {
     type: 'User'
@@ -2572,7 +2557,7 @@ export interface UserQualificationLikeFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -2580,7 +2565,7 @@ export interface UserQualificationLikeFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2716,7 +2701,6 @@ export interface AggregateUserQualificationLikeFieldDetails {
 type UserPositionLikeObject =
   | UserPositionLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
   | { name: 'user', args?: [] | false, alias?: string  } 
   | { name: 'candidate_position', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
@@ -2725,7 +2709,6 @@ type UserPositionLikeObject =
 
 type UserPositionLikeFields =
   | 'id'
-  | 'candidate'
   | 'user'
   | 'candidate_position'
   | 'like'
@@ -2744,19 +2727,6 @@ export interface UserPositionLikeFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
-  }
-  candidate: {
-    type: 'Candidate'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"UserPositionLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
   }
   user: {
     type: 'User'
@@ -2789,20 +2759,20 @@ export interface UserPositionLikeFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"UserPositionLike">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.LikeType> | prisma.LikeType
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
   }
   time: {
     type: 'DateTime'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -2810,7 +2780,7 @@ export interface UserPositionLikeFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2993,7 +2963,7 @@ export interface PollFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   candidate: {
@@ -4744,13 +4714,13 @@ export interface CandidatePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"CandidatePreviousValues">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Gender> | prisma.Gender
+    ) => Promise<prisma.Gender | null> | prisma.Gender | null
   }
   latest_poll: {
     type: 'Float'
@@ -4918,7 +4888,7 @@ export interface QualificationPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -5274,7 +5244,7 @@ export interface CandidatePositionPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   link: {
@@ -5290,7 +5260,7 @@ export interface CandidatePositionPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -5298,7 +5268,7 @@ export interface CandidatePositionPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -5420,7 +5390,7 @@ export interface UserVotePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -5428,7 +5398,7 @@ export interface UserVotePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -5550,7 +5520,7 @@ export interface UserQualificationLikePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -5558,7 +5528,7 @@ export interface UserQualificationLikePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -5667,20 +5637,20 @@ export interface UserPositionLikePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"UserPositionLikePreviousValues">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.LikeType> | prisma.LikeType
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
   }
   time: {
     type: 'DateTime'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   latest: {
@@ -5688,7 +5658,7 @@ export interface UserPositionLikePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -5799,7 +5769,7 @@ export interface PollPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   poll_type: {
@@ -6821,7 +6791,6 @@ export interface UserQualificationLikeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  candidate?: CandidateWhereInput | null
   user?: UserWhereInput | null
   qualification?: QualificationWhereInput | null
   like?: prisma.LikeType | null
@@ -6858,7 +6827,6 @@ export type UserQualificationLikeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'qualification', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -6901,7 +6869,6 @@ export interface UserPositionLikeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  candidate?: CandidateWhereInput | null
   user?: UserWhereInput | null
   candidate_position?: CandidatePositionWhereInput | null
   like?: prisma.LikeType | null
@@ -6938,7 +6905,6 @@ export type UserPositionLikeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -7170,7 +7136,7 @@ export interface QualificationCreateWithoutCandidateInput {
   summary?: string | null
   detail?: string | null
   years?: number
-  rank?: number
+  rank?: number | null
 }
 export type QualificationCreateWithoutCandidateInputInputObject =
   | Extract<keyof QualificationCreateWithoutCandidateInput, string>
@@ -7756,7 +7722,7 @@ export interface QualificationCreateInput {
   summary?: string | null
   detail?: string | null
   years?: number
-  rank?: number
+  rank?: number | null
   candidate?: CandidateCreateOneWithoutBio_qualificationsInput
 }
 export type QualificationCreateInputInputObject =
@@ -7934,9 +7900,9 @@ export interface CandidatePositionCreateInput {
   id?: string | null
   position?: PositionCreateOneInput
   candidate?: CandidateCreateOneInput
-  time?: string
+  time?: string | null
   link?: string | null
-  rank?: number
+  rank?: number | null
   latest?: boolean | null
 }
 export type CandidatePositionCreateInputInputObject =
@@ -8075,7 +8041,7 @@ export interface UserVoteCreateInput {
   candidate?: CandidateCreateOneInput
   user?: UserCreateOneInput
   vote_type?: prisma.VoteType | null
-  time?: string
+  time?: string | null
   latest?: boolean | null
 }
 export type UserVoteCreateInputInputObject =
@@ -8157,17 +8123,15 @@ export type UserVoteUpdateManyMutationInputInputObject =
   
 export interface UserQualificationLikeCreateInput {
   id?: string | null
-  candidate?: CandidateCreateOneInput
   user?: UserCreateOneInput
   qualification?: QualificationCreateOneInput
   like?: prisma.LikeType | null
-  time?: string
+  time?: string | null
   latest?: boolean | null
 }
 export type UserQualificationLikeCreateInputInputObject =
   | Extract<keyof UserQualificationLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'qualification', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -8184,7 +8148,6 @@ export type QualificationCreateOneInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserQualificationLikeUpdateInput {
-  candidate?: CandidateUpdateOneRequiredInput | null
   user?: UserUpdateOneRequiredInput | null
   qualification?: QualificationUpdateOneRequiredInput | null
   like?: prisma.LikeType | null
@@ -8193,7 +8156,6 @@ export interface UserQualificationLikeUpdateInput {
 }
 export type UserQualificationLikeUpdateInputInputObject =
   | Extract<keyof UserQualificationLikeUpdateInput, string>
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'qualification', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -8252,17 +8214,15 @@ export type UserQualificationLikeUpdateManyMutationInputInputObject =
   
 export interface UserPositionLikeCreateInput {
   id?: string | null
-  candidate?: CandidateCreateOneInput
   user?: UserCreateOneInput
   candidate_position?: CandidatePositionCreateOneInput
   like?: prisma.LikeType | null
-  time?: string
+  time?: string | null
   latest?: boolean | null
 }
 export type UserPositionLikeCreateInputInputObject =
   | Extract<keyof UserPositionLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -8279,7 +8239,6 @@ export type CandidatePositionCreateOneInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface UserPositionLikeUpdateInput {
-  candidate?: CandidateUpdateOneRequiredInput | null
   user?: UserUpdateOneRequiredInput | null
   candidate_position?: CandidatePositionUpdateOneRequiredInput | null
   like?: prisma.LikeType | null
@@ -8288,7 +8247,6 @@ export interface UserPositionLikeUpdateInput {
 }
 export type UserPositionLikeUpdateInputInputObject =
   | Extract<keyof UserPositionLikeUpdateInput, string>
-  | { name: 'candidate', alias?: string  } 
   | { name: 'user', alias?: string  } 
   | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
@@ -8348,7 +8306,7 @@ export type UserPositionLikeUpdateManyMutationInputInputObject =
 export interface PollCreateInput {
   id?: string | null
   source?: UserCreateOneInput
-  date?: string
+  date?: string | null
   candidate?: CandidateCreateOneInput
   poll_type?: prisma.PollType | null
   error_margin?: string | null
