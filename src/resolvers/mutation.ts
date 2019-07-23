@@ -12,7 +12,8 @@ const Mutation = prismaObjectType({
       'createUserPositionLike',
       'createUserQualificationLike',
       'createUserVote',
-      'createPoll'
+      'createPoll',
+      'updateCandidate'
     ])
   },
 })
