@@ -6,14 +6,14 @@ const Query = prismaObjectType({
   definition(t) {
     t.prismaFields([
       'candidates',
-      'user',
+      'users',
       'positions',
       'qualifications',
-      'userPositionLike',
-      'userQualificationLike',
-      'userVote',
-      'poll',
-      'topic'
+      'userPositionLikes',
+      'userQualificationLikes',
+      'userVotes',
+      'polls',
+      'topics'
     ])
     t.list.field('userByEmail', {
       type: 'User',
