@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { DataView } from "primereact/dataview";
-import { withApollo } from "react-apollo";
+import { compose, withApollo, graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import VoteReasonItem from "../../components/VoteReasonItem";
+import {
+  PositionLikeMutation,
+  QualificationLikeMutation
+} from "../../queries/candidate";
 
-function VoteReasoning({ match, client }) {
+function VoteReasoning({ match, client, positionLike, qualificationLike }) {
   const [candidate, setCandidate] = useState({});
   useEffect(() => {
     const { candidate } = client.readQuery({
@@ -19,13 +23,49 @@ function VoteReasoning({ match, client }) {
     setCandidate(candidate);
   }, [client, match.params.id]);
 
-  const itemTemplate = (voteReason, layout) => {
-    if (!voteReason) {
+  const itemTemplateQualification = (qualification, layout) => {
+    if (!qualification) {
       return null;
     }
 
     if (layout === "list") {
-      return <VoteReasonItem data={voteReason} />;
+      return (
+        <VoteReasonItem
+          data={qualification}
+          onToggle={e => {
+            qualificationLike({
+              variables: {
+                userId: "cjyg2k9vkhc3b0b19tkwr49fu",
+                qualificationId: qualification.id,
+                like: e.target.name
+              }
+            });
+          }}
+        />
+      );
+    }
+  };
+
+  const itemTemplatePosition = (position, layout) => {
+    if (!position) {
+      return null;
+    }
+
+    if (layout === "list") {
+      return (
+        <VoteReasonItem
+          data={position}
+          onToggle={e => {
+            positionLike({
+              variables: {
+                userId: "cjyg2k9vkhc3b0b19tkwr49fu",
+                positionId: position.id,
+                like: e.target.name
+              }
+            });
+          }}
+        />
+      );
     }
   };
 
@@ -45,7 +85,7 @@ function VoteReasoning({ match, client }) {
             <DataView
               value={candidate.bio_qualifications}
               layout="list"
-              itemTemplate={itemTemplate}
+              itemTemplate={itemTemplateQualification}
               rows={20}
             />
           </AccordionTab>
@@ -53,7 +93,7 @@ function VoteReasoning({ match, client }) {
             <DataView
               value={candidate.bio_policy_position}
               layout="list"
-              itemTemplate={itemTemplate}
+              itemTemplate={itemTemplatePosition}
               rows={20}
             />
           </AccordionTab>
@@ -83,7 +123,13 @@ const candidateQuery = gql`
 
 VoteReasoning.propTypes = {
   match: PropTypes.object.isRequired,
-  client: PropTypes.object.isRequired
+  client: PropTypes.object.isRequired,
+  positionLike: PropTypes.func.isRequired,
+  qualificationLike: PropTypes.func.isRequired
 };
 
-export default withApollo(VoteReasoning);
+export default compose(
+  withApollo,
+  graphql(PositionLikeMutation, { name: "positionLike" }),
+  graphql(QualificationLikeMutation, { name: "qualificationLike" })
+)(VoteReasoning);
