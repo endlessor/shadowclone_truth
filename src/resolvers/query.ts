@@ -13,7 +13,8 @@ const Query = prismaObjectType({
       'userQualificationLikes',
       'userVotes',
       'polls',
-      'topics'
+      'topics',
+      'candidatePositions'
     ])
     t.list.field('userByEmail', {
       type: 'User',
