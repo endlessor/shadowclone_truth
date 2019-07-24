@@ -25,3 +25,18 @@ export const CandidateQuery = gql`
     }
   }
 `;
+
+export const UserVoteMutation = gql`
+  mutation createUserVote($candidateId: ID, $userId: ID, $voteType: VoteType) {
+    createUserVote(
+      candidateId: $candidateId
+      userId: $userId
+      voteType: $voteType
+    ) {
+      id
+      vote_type
+      time
+      latest
+    }
+  }
+`;

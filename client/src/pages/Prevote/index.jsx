@@ -1,9 +1,9 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import { DataView } from "primereact/dataview";
 
 import CandidateListItem from "../../components/CandidateListItem";
-import { CandidateQuery } from "../../queries/candidate";
+import { CandidateQuery, UserVoteMutation } from "../../queries/candidate";
 
 function PreVote() {
   const itemTemplate = (candidate, layout) => {
@@ -12,7 +12,13 @@ function PreVote() {
     }
 
     if (layout === "list") {
-      return <CandidateListItem data={candidate} />;
+      return (
+        <Mutation mutation={UserVoteMutation}>
+          {createUserVote => (
+            <CandidateListItem data={candidate} updateVote={createUserVote} />
+          )}
+        </Mutation>
+      );
     }
   };
 
