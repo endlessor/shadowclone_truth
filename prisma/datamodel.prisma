@@ -28,7 +28,7 @@ type Qualification {
   detail: String
   years: Int!
   rank: Int
-  candidate: Candidate! @relation(link: INLINE)
+  candidateId: String
 }
 
 type Topic {
@@ -47,8 +47,8 @@ type Position {
 
 type CandidatePosition {
   id: ID! @id
-  position: Position! @relation(link: INLINE)
-  candidate: Candidate! @relation(link: INLINE)
+  positionId: String!
+  candidateId: String!
   time: DateTime @updatedAt
   link: String
   rank: Int
@@ -57,8 +57,8 @@ type CandidatePosition {
 
 type UserVote {
   id: ID! @id
-  candidate: Candidate! @relation(link: INLINE)
-  user: User! @relation(link: INLINE)
+  candidateId: String!
+  userId: String!
   vote_type: VoteType! @default(value: TOP)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)
@@ -66,8 +66,8 @@ type UserVote {
 
 type UserQualificationLike {
   id: ID! @id
-  user: User! @relation(link: INLINE)
-  qualification: Qualification! @relation(link: INLINE)
+  userId: String!
+  qualificationId: String!
   like: LikeType! @default(value: LIKE)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)
@@ -75,8 +75,8 @@ type UserQualificationLike {
 
 type UserPositionLike {
   id: ID! @id
-  user: User! @relation(link: INLINE)
-  candidate_position: CandidatePosition! @relation(link: INLINE)
+  userId: String!
+  candidate_positionId: String!
   like: LikeType @default(value: LIKE)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)
@@ -84,9 +84,9 @@ type UserPositionLike {
 
 type Poll {
   id: ID! @id
-  source: User! @relation(link: INLINE)
+  userId: String!
   date: DateTime @updatedAt
-  candidate: Candidate! @relation(link: INLINE)
+  candidateId: String!
   poll_type: PollType! @default(value: PRIMARY)
   error_margin: String
   link_to_poll: String

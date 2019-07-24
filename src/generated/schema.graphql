@@ -22,32 +22,7 @@ input CandidateCreateInput {
   age: Int!
   bio_other: String
   bio_policy_position: PositionCreateManyInput
-  bio_qualifications: QualificationCreateManyWithoutCandidateInput
-  current_office: String!
-  gender: Gender
-  id: ID
-  latest_odds: Float
-  latest_poll: Float
-  name: String!
-  party: String!
-  photo: String
-  state: String!
-}
-
-input CandidateCreateOneInput {
-  connect: CandidateWhereUniqueInput
-  create: CandidateCreateInput
-}
-
-input CandidateCreateOneWithoutBio_qualificationsInput {
-  connect: CandidateWhereUniqueInput
-  create: CandidateCreateWithoutBio_qualificationsInput
-}
-
-input CandidateCreateWithoutBio_qualificationsInput {
-  age: Int!
-  bio_other: String
-  bio_policy_position: PositionCreateManyInput
+  bio_qualifications: QualificationCreateManyInput
   current_office: String!
   gender: Gender
   id: ID
@@ -89,33 +64,52 @@ enum CandidateOrderByInput {
 }
 
 type CandidatePosition {
-  candidate: Candidate!
+  candidateId: String!
   id: ID!
   latest: Boolean
   link: String
-  position: Position!
+  positionId: String!
   rank: Int
   time: DateTime
 }
 
-input CandidatePositionCreateInput {
-  candidate: CandidateCreateOneInput!
-  id: ID
-  latest: Boolean
-  link: String
-  position: PositionCreateOneInput!
-  rank: Int
-  time: DateTime
-}
-
-input CandidatePositionCreateOneInput {
-  connect: CandidatePositionWhereUniqueInput
-  create: CandidatePositionCreateInput
+enum CandidatePositionOrderByInput {
+  candidateId_ASC
+  candidateId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  latest_ASC
+  latest_DESC
+  link_ASC
+  link_DESC
+  positionId_ASC
+  positionId_DESC
+  rank_ASC
+  rank_DESC
+  time_ASC
+  time_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 input CandidatePositionWhereInput {
   AND: [CandidatePositionWhereInput!]
-  candidate: CandidateWhereInput
+  candidateId: String
+  candidateId_contains: String
+  candidateId_ends_with: String
+  candidateId_gt: String
+  candidateId_gte: String
+  candidateId_in: [String!]
+  candidateId_lt: String
+  candidateId_lte: String
+  candidateId_not: String
+  candidateId_not_contains: String
+  candidateId_not_ends_with: String
+  candidateId_not_in: [String!]
+  candidateId_not_starts_with: String
+  candidateId_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -148,7 +142,20 @@ input CandidatePositionWhereInput {
   link_starts_with: String
   NOT: [CandidatePositionWhereInput!]
   OR: [CandidatePositionWhereInput!]
-  position: PositionWhereInput
+  positionId: String
+  positionId_contains: String
+  positionId_ends_with: String
+  positionId_gt: String
+  positionId_gte: String
+  positionId_in: [String!]
+  positionId_lt: String
+  positionId_lte: String
+  positionId_not: String
+  positionId_not_contains: String
+  positionId_not_ends_with: String
+  positionId_not_in: [String!]
+  positionId_not_starts_with: String
+  positionId_starts_with: String
   rank: Int
   rank_gt: Int
   rank_gte: Int
@@ -165,25 +172,6 @@ input CandidatePositionWhereInput {
   time_lte: DateTime
   time_not: DateTime
   time_not_in: [DateTime!]
-}
-
-input CandidatePositionWhereUniqueInput {
-  id: ID
-}
-
-input CandidateUpdateInput {
-  age: Int
-  bio_other: String
-  bio_policy_position: PositionUpdateManyInput
-  bio_qualifications: QualificationUpdateManyWithoutCandidateInput
-  current_office: String
-  gender: Gender
-  latest_odds: Float
-  latest_poll: Float
-  name: String
-  party: String
-  photo: String
-  state: String
 }
 
 input CandidateWhereInput {
@@ -347,38 +335,33 @@ enum LikeType {
 
 type Mutation {
   createCandidate(data: CandidateCreateInput!): Candidate!
-  createPoll(data: PollCreateInput!): Poll!
+  createPoll(candidateId: ID, pollType: PollType, userId: ID): Poll
   createPosition(data: PositionCreateInput!): Position!
   createQualification(data: QualificationCreateInput!): Qualification!
   createTopic(data: TopicCreateInput!): Topic!
   createUser(data: UserCreateInput!): User!
-  createUserPositionLike(data: UserPositionLikeCreateInput!): UserPositionLike!
-  createUserQualificationLike(data: UserQualificationLikeCreateInput!): UserQualificationLike!
+  createUserPositionLike(candidate_positionId: ID, like: LikeType, userId: ID): UserPositionLike
+  createUserQualificationLike(like: LikeType, qualificationId: ID, userId: ID): UserQualificationLike
   createUserVote(candidateId: ID, userId: ID, voteType: VoteType): UserVote
-  updateCandidate(data: CandidateUpdateInput!, where: CandidateWhereUniqueInput!): Candidate
+  deleteCandidate(where: CandidateWhereUniqueInput!): Candidate
+  deletePosition(where: PositionWhereUniqueInput!): Position
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteUserVote(where: UserVoteWhereUniqueInput!): UserVote
 }
 
 type Poll {
-  candidate: Candidate!
+  candidateId: String!
   date: DateTime
   error_margin: String
   id: ID!
   link_to_poll: String
   poll_type: PollType!
-  source: User!
-}
-
-input PollCreateInput {
-  candidate: CandidateCreateOneInput!
-  date: DateTime
-  error_margin: String
-  id: ID
-  link_to_poll: String
-  poll_type: PollType
-  source: UserCreateOneInput!
+  userId: String!
 }
 
 enum PollOrderByInput {
+  candidateId_ASC
+  candidateId_DESC
   createdAt_ASC
   createdAt_DESC
   date_ASC
@@ -393,6 +376,8 @@ enum PollOrderByInput {
   poll_type_DESC
   updatedAt_ASC
   updatedAt_DESC
+  userId_ASC
+  userId_DESC
 }
 
 enum PollType {
@@ -402,7 +387,20 @@ enum PollType {
 
 input PollWhereInput {
   AND: [PollWhereInput!]
-  candidate: CandidateWhereInput
+  candidateId: String
+  candidateId_contains: String
+  candidateId_ends_with: String
+  candidateId_gt: String
+  candidateId_gte: String
+  candidateId_in: [String!]
+  candidateId_lt: String
+  candidateId_lte: String
+  candidateId_not: String
+  candidateId_not_contains: String
+  candidateId_not_ends_with: String
+  candidateId_not_in: [String!]
+  candidateId_not_starts_with: String
+  candidateId_starts_with: String
   date: DateTime
   date_gt: DateTime
   date_gte: DateTime
@@ -459,7 +457,20 @@ input PollWhereInput {
   poll_type_in: [PollType!]
   poll_type_not: PollType
   poll_type_not_in: [PollType!]
-  source: UserWhereInput
+  userId: String
+  userId_contains: String
+  userId_ends_with: String
+  userId_gt: String
+  userId_gte: String
+  userId_in: [String!]
+  userId_lt: String
+  userId_lte: String
+  userId_not: String
+  userId_not_contains: String
+  userId_not_ends_with: String
+  userId_not_in: [String!]
+  userId_not_starts_with: String
+  userId_starts_with: String
 }
 
 type Position {
@@ -483,11 +494,6 @@ input PositionCreateManyInput {
   create: [PositionCreateInput!]
 }
 
-input PositionCreateOneInput {
-  connect: PositionWhereUniqueInput
-  create: PositionCreateInput
-}
-
 enum PositionOrderByInput {
   createdAt_ASC
   createdAt_DESC
@@ -501,109 +507,6 @@ enum PositionOrderByInput {
   summary_DESC
   updatedAt_ASC
   updatedAt_DESC
-}
-
-input PositionScalarWhereInput {
-  AND: [PositionScalarWhereInput!]
-  detail: String
-  detail_contains: String
-  detail_ends_with: String
-  detail_gt: String
-  detail_gte: String
-  detail_in: [String!]
-  detail_lt: String
-  detail_lte: String
-  detail_not: String
-  detail_not_contains: String
-  detail_not_ends_with: String
-  detail_not_in: [String!]
-  detail_not_starts_with: String
-  detail_starts_with: String
-  id: ID
-  id_contains: ID
-  id_ends_with: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_contains: ID
-  id_not_ends_with: ID
-  id_not_in: [ID!]
-  id_not_starts_with: ID
-  id_starts_with: ID
-  name: String
-  name_contains: String
-  name_ends_with: String
-  name_gt: String
-  name_gte: String
-  name_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_not: String
-  name_not_contains: String
-  name_not_ends_with: String
-  name_not_in: [String!]
-  name_not_starts_with: String
-  name_starts_with: String
-  NOT: [PositionScalarWhereInput!]
-  OR: [PositionScalarWhereInput!]
-  summary: String
-  summary_contains: String
-  summary_ends_with: String
-  summary_gt: String
-  summary_gte: String
-  summary_in: [String!]
-  summary_lt: String
-  summary_lte: String
-  summary_not: String
-  summary_not_contains: String
-  summary_not_ends_with: String
-  summary_not_in: [String!]
-  summary_not_starts_with: String
-  summary_starts_with: String
-}
-
-input PositionUpdateDataInput {
-  detail: String
-  name: String
-  summary: String
-  topic: TopicUpdateOneInput
-}
-
-input PositionUpdateManyDataInput {
-  detail: String
-  name: String
-  summary: String
-}
-
-input PositionUpdateManyInput {
-  connect: [PositionWhereUniqueInput!]
-  create: [PositionCreateInput!]
-  delete: [PositionWhereUniqueInput!]
-  deleteMany: [PositionScalarWhereInput!]
-  disconnect: [PositionWhereUniqueInput!]
-  set: [PositionWhereUniqueInput!]
-  update: [PositionUpdateWithWhereUniqueNestedInput!]
-  updateMany: [PositionUpdateManyWithWhereNestedInput!]
-  upsert: [PositionUpsertWithWhereUniqueNestedInput!]
-}
-
-input PositionUpdateManyWithWhereNestedInput {
-  data: PositionUpdateManyDataInput!
-  where: PositionScalarWhereInput!
-}
-
-input PositionUpdateWithWhereUniqueNestedInput {
-  data: PositionUpdateDataInput!
-  where: PositionWhereUniqueInput!
-}
-
-input PositionUpsertWithWhereUniqueNestedInput {
-  create: PositionCreateInput!
-  update: PositionUpdateDataInput!
-  where: PositionWhereUniqueInput!
 }
 
 input PositionWhereInput {
@@ -674,7 +577,7 @@ input PositionWhereUniqueInput {
 }
 
 type Qualification {
-  candidate: Candidate!
+  candidateId: String
   detail: String
   id: ID!
   name: String!
@@ -684,7 +587,7 @@ type Qualification {
 }
 
 input QualificationCreateInput {
-  candidate: CandidateCreateOneWithoutBio_qualificationsInput!
+  candidateId: String
   detail: String
   id: ID
   name: String!
@@ -693,26 +596,14 @@ input QualificationCreateInput {
   years: Int!
 }
 
-input QualificationCreateManyWithoutCandidateInput {
+input QualificationCreateManyInput {
   connect: [QualificationWhereUniqueInput!]
-  create: [QualificationCreateWithoutCandidateInput!]
-}
-
-input QualificationCreateOneInput {
-  connect: QualificationWhereUniqueInput
-  create: QualificationCreateInput
-}
-
-input QualificationCreateWithoutCandidateInput {
-  detail: String
-  id: ID
-  name: String!
-  rank: Int
-  summary: String
-  years: Int!
+  create: [QualificationCreateInput!]
 }
 
 enum QualificationOrderByInput {
+  candidateId_ASC
+  candidateId_DESC
   createdAt_ASC
   createdAt_DESC
   detail_ASC
@@ -731,131 +622,22 @@ enum QualificationOrderByInput {
   years_DESC
 }
 
-input QualificationScalarWhereInput {
-  AND: [QualificationScalarWhereInput!]
-  detail: String
-  detail_contains: String
-  detail_ends_with: String
-  detail_gt: String
-  detail_gte: String
-  detail_in: [String!]
-  detail_lt: String
-  detail_lte: String
-  detail_not: String
-  detail_not_contains: String
-  detail_not_ends_with: String
-  detail_not_in: [String!]
-  detail_not_starts_with: String
-  detail_starts_with: String
-  id: ID
-  id_contains: ID
-  id_ends_with: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_contains: ID
-  id_not_ends_with: ID
-  id_not_in: [ID!]
-  id_not_starts_with: ID
-  id_starts_with: ID
-  name: String
-  name_contains: String
-  name_ends_with: String
-  name_gt: String
-  name_gte: String
-  name_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_not: String
-  name_not_contains: String
-  name_not_ends_with: String
-  name_not_in: [String!]
-  name_not_starts_with: String
-  name_starts_with: String
-  NOT: [QualificationScalarWhereInput!]
-  OR: [QualificationScalarWhereInput!]
-  rank: Int
-  rank_gt: Int
-  rank_gte: Int
-  rank_in: [Int!]
-  rank_lt: Int
-  rank_lte: Int
-  rank_not: Int
-  rank_not_in: [Int!]
-  summary: String
-  summary_contains: String
-  summary_ends_with: String
-  summary_gt: String
-  summary_gte: String
-  summary_in: [String!]
-  summary_lt: String
-  summary_lte: String
-  summary_not: String
-  summary_not_contains: String
-  summary_not_ends_with: String
-  summary_not_in: [String!]
-  summary_not_starts_with: String
-  summary_starts_with: String
-  years: Int
-  years_gt: Int
-  years_gte: Int
-  years_in: [Int!]
-  years_lt: Int
-  years_lte: Int
-  years_not: Int
-  years_not_in: [Int!]
-}
-
-input QualificationUpdateManyDataInput {
-  detail: String
-  name: String
-  rank: Int
-  summary: String
-  years: Int
-}
-
-input QualificationUpdateManyWithoutCandidateInput {
-  connect: [QualificationWhereUniqueInput!]
-  create: [QualificationCreateWithoutCandidateInput!]
-  delete: [QualificationWhereUniqueInput!]
-  deleteMany: [QualificationScalarWhereInput!]
-  disconnect: [QualificationWhereUniqueInput!]
-  set: [QualificationWhereUniqueInput!]
-  update: [QualificationUpdateWithWhereUniqueWithoutCandidateInput!]
-  updateMany: [QualificationUpdateManyWithWhereNestedInput!]
-  upsert: [QualificationUpsertWithWhereUniqueWithoutCandidateInput!]
-}
-
-input QualificationUpdateManyWithWhereNestedInput {
-  data: QualificationUpdateManyDataInput!
-  where: QualificationScalarWhereInput!
-}
-
-input QualificationUpdateWithoutCandidateDataInput {
-  detail: String
-  name: String
-  rank: Int
-  summary: String
-  years: Int
-}
-
-input QualificationUpdateWithWhereUniqueWithoutCandidateInput {
-  data: QualificationUpdateWithoutCandidateDataInput!
-  where: QualificationWhereUniqueInput!
-}
-
-input QualificationUpsertWithWhereUniqueWithoutCandidateInput {
-  create: QualificationCreateWithoutCandidateInput!
-  update: QualificationUpdateWithoutCandidateDataInput!
-  where: QualificationWhereUniqueInput!
-}
-
 input QualificationWhereInput {
   AND: [QualificationWhereInput!]
-  candidate: CandidateWhereInput
+  candidateId: String
+  candidateId_contains: String
+  candidateId_ends_with: String
+  candidateId_gt: String
+  candidateId_gte: String
+  candidateId_in: [String!]
+  candidateId_lt: String
+  candidateId_lte: String
+  candidateId_not: String
+  candidateId_not_contains: String
+  candidateId_not_ends_with: String
+  candidateId_not_in: [String!]
+  candidateId_not_starts_with: String
+  candidateId_starts_with: String
   detail: String
   detail_contains: String
   detail_ends_with: String
@@ -937,6 +719,7 @@ input QualificationWhereUniqueInput {
 }
 
 type Query {
+  candidatePositions(after: String, before: String, first: Int, last: Int, orderBy: CandidatePositionOrderByInput, skip: Int, where: CandidatePositionWhereInput): [CandidatePosition!]!
   candidates(after: String, before: String, first: Int, last: Int, orderBy: CandidateOrderByInput, skip: Int, where: CandidateWhereInput): [Candidate!]!
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!
@@ -977,25 +760,6 @@ enum TopicOrderByInput {
   name_DESC
   updatedAt_ASC
   updatedAt_DESC
-}
-
-input TopicUpdateDataInput {
-  category: CategoryType
-  name: String
-}
-
-input TopicUpdateOneInput {
-  connect: TopicWhereUniqueInput
-  create: TopicCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: TopicUpdateDataInput
-  upsert: TopicUpsertNestedInput
-}
-
-input TopicUpsertNestedInput {
-  create: TopicCreateInput!
-  update: TopicUpdateDataInput!
 }
 
 input TopicWhereInput {
@@ -1054,11 +818,6 @@ input UserCreateInput {
   name: String!
 }
 
-input UserCreateOneInput {
-  connect: UserWhereUniqueInput
-  create: UserCreateInput
-}
-
 enum UserOrderByInput {
   createdAt_ASC
   createdAt_DESC
@@ -1075,24 +834,17 @@ enum UserOrderByInput {
 }
 
 type UserPositionLike {
-  candidate_position: CandidatePosition!
+  candidate_positionId: String!
   id: ID!
   latest: Boolean
   like: LikeType
   time: DateTime
-  user: User!
-}
-
-input UserPositionLikeCreateInput {
-  candidate_position: CandidatePositionCreateOneInput!
-  id: ID
-  latest: Boolean
-  like: LikeType
-  time: DateTime
-  user: UserCreateOneInput!
+  userId: String!
 }
 
 enum UserPositionLikeOrderByInput {
+  candidate_positionId_ASC
+  candidate_positionId_DESC
   createdAt_ASC
   createdAt_DESC
   id_ASC
@@ -1105,11 +857,26 @@ enum UserPositionLikeOrderByInput {
   time_DESC
   updatedAt_ASC
   updatedAt_DESC
+  userId_ASC
+  userId_DESC
 }
 
 input UserPositionLikeWhereInput {
   AND: [UserPositionLikeWhereInput!]
-  candidate_position: CandidatePositionWhereInput
+  candidate_positionId: String
+  candidate_positionId_contains: String
+  candidate_positionId_ends_with: String
+  candidate_positionId_gt: String
+  candidate_positionId_gte: String
+  candidate_positionId_in: [String!]
+  candidate_positionId_lt: String
+  candidate_positionId_lte: String
+  candidate_positionId_not: String
+  candidate_positionId_not_contains: String
+  candidate_positionId_not_ends_with: String
+  candidate_positionId_not_in: [String!]
+  candidate_positionId_not_starts_with: String
+  candidate_positionId_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -1140,25 +907,29 @@ input UserPositionLikeWhereInput {
   time_lte: DateTime
   time_not: DateTime
   time_not_in: [DateTime!]
-  user: UserWhereInput
+  userId: String
+  userId_contains: String
+  userId_ends_with: String
+  userId_gt: String
+  userId_gte: String
+  userId_in: [String!]
+  userId_lt: String
+  userId_lte: String
+  userId_not: String
+  userId_not_contains: String
+  userId_not_ends_with: String
+  userId_not_in: [String!]
+  userId_not_starts_with: String
+  userId_starts_with: String
 }
 
 type UserQualificationLike {
   id: ID!
   latest: Boolean
   like: LikeType!
-  qualification: Qualification!
+  qualificationId: String!
   time: DateTime
-  user: User!
-}
-
-input UserQualificationLikeCreateInput {
-  id: ID
-  latest: Boolean
-  like: LikeType
-  qualification: QualificationCreateOneInput!
-  time: DateTime
-  user: UserCreateOneInput!
+  userId: String!
 }
 
 enum UserQualificationLikeOrderByInput {
@@ -1170,10 +941,14 @@ enum UserQualificationLikeOrderByInput {
   latest_DESC
   like_ASC
   like_DESC
+  qualificationId_ASC
+  qualificationId_DESC
   time_ASC
   time_DESC
   updatedAt_ASC
   updatedAt_DESC
+  userId_ASC
+  userId_DESC
 }
 
 input UserQualificationLikeWhereInput {
@@ -1200,7 +975,20 @@ input UserQualificationLikeWhereInput {
   like_not_in: [LikeType!]
   NOT: [UserQualificationLikeWhereInput!]
   OR: [UserQualificationLikeWhereInput!]
-  qualification: QualificationWhereInput
+  qualificationId: String
+  qualificationId_contains: String
+  qualificationId_ends_with: String
+  qualificationId_gt: String
+  qualificationId_gte: String
+  qualificationId_in: [String!]
+  qualificationId_lt: String
+  qualificationId_lte: String
+  qualificationId_not: String
+  qualificationId_not_contains: String
+  qualificationId_not_ends_with: String
+  qualificationId_not_in: [String!]
+  qualificationId_not_starts_with: String
+  qualificationId_starts_with: String
   time: DateTime
   time_gt: DateTime
   time_gte: DateTime
@@ -1209,19 +997,34 @@ input UserQualificationLikeWhereInput {
   time_lte: DateTime
   time_not: DateTime
   time_not_in: [DateTime!]
-  user: UserWhereInput
+  userId: String
+  userId_contains: String
+  userId_ends_with: String
+  userId_gt: String
+  userId_gte: String
+  userId_in: [String!]
+  userId_lt: String
+  userId_lte: String
+  userId_not: String
+  userId_not_contains: String
+  userId_not_ends_with: String
+  userId_not_in: [String!]
+  userId_not_starts_with: String
+  userId_starts_with: String
 }
 
 type UserVote {
-  candidate: Candidate!
+  candidateId: String!
   id: ID!
   latest: Boolean
   time: DateTime
-  user: User!
+  userId: String!
   vote_type: VoteType!
 }
 
 enum UserVoteOrderByInput {
+  candidateId_ASC
+  candidateId_DESC
   createdAt_ASC
   createdAt_DESC
   id_ASC
@@ -1232,13 +1035,28 @@ enum UserVoteOrderByInput {
   time_DESC
   updatedAt_ASC
   updatedAt_DESC
+  userId_ASC
+  userId_DESC
   vote_type_ASC
   vote_type_DESC
 }
 
 input UserVoteWhereInput {
   AND: [UserVoteWhereInput!]
-  candidate: CandidateWhereInput
+  candidateId: String
+  candidateId_contains: String
+  candidateId_ends_with: String
+  candidateId_gt: String
+  candidateId_gte: String
+  candidateId_in: [String!]
+  candidateId_lt: String
+  candidateId_lte: String
+  candidateId_not: String
+  candidateId_not_contains: String
+  candidateId_not_ends_with: String
+  candidateId_not_in: [String!]
+  candidateId_not_starts_with: String
+  candidateId_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -1265,11 +1083,28 @@ input UserVoteWhereInput {
   time_lte: DateTime
   time_not: DateTime
   time_not_in: [DateTime!]
-  user: UserWhereInput
+  userId: String
+  userId_contains: String
+  userId_ends_with: String
+  userId_gt: String
+  userId_gte: String
+  userId_in: [String!]
+  userId_lt: String
+  userId_lte: String
+  userId_not: String
+  userId_not_contains: String
+  userId_not_ends_with: String
+  userId_not_in: [String!]
+  userId_not_starts_with: String
+  userId_starts_with: String
   vote_type: VoteType
   vote_type_in: [VoteType!]
   vote_type_not: VoteType
   vote_type_not_in: [VoteType!]
+}
+
+input UserVoteWhereUniqueInput {
+  id: ID
 }
 
 input UserWhereInput {
