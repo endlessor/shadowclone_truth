@@ -1,11 +1,20 @@
 mutation {
-  user1: createUser(data: { email: "test.user1@gmail.com", name: "John Doe" }) {
+  user1: createUser(data: { 
+    id: "cjyh4jzsqlnms0b190415j36a",
+    email: "test1.user1@gmail.com",
+    name: "John Doe" }) {
     id
   }
-  user2: createUser(data: { email: "test.user2@gmail.com", name: "Bob Doe" }) {
+
+  user2: createUser(data: {
+    id: "cjyh4jzsqlnms0b190415j36b",
+    email: "test2.user2@gmail.com",
+    name: "Bob Doe" }) {
     id
   }
-  candidate: createCandidate(data: {
+
+  candidate1: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36c",
     name: "Donald Trump",
   	photo: "https://randomuser.me/api/portraits/men/32.jpg",
     party: "democratic",
@@ -15,13 +24,26 @@ mutation {
     gender: MALE,
     latest_poll: 65,
     latest_odds: 35,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j36f",
+        name: "Software manager",
+        summary: "10 years of Leading AMD Project",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36c"
+      }
+    }
     bio_policy_position: {
       create: {
+        id: "cjyh4jzsqlnms0b190415j36d",
         name: "lead of AMD",
         summary: "lead 15 years",
         detail: "Nominate economics award with team",
         topic: {
           create: {
+            id: "cjyh4jzsqlnms0b190415j3e",
             name: "Healthcare insurance",
             category: HEALTH
           }
@@ -32,40 +54,130 @@ mutation {
   }) {
     id
   }
-  qualification: createQualification(data: {
-    name: "Software manager",
-  	summary: "10 years of Leading AMD Project",
-    rank: 1,
-    years: 10,
-    detail: "good work in the team",
-    candidate: {
+
+  candidate2: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36g",
+    name: "Anna Rose",
+    photo: "https://randomuser.me/api/portraits/women/60.jpg",
+    party: "democratic",
+    state: "es",
+    current_office: "n/a",
+    age: 32,
+    gender: FEMALE,
+    latest_poll:75,
+    latest_odds: 30,
+    bio_qualifications: {
       create: {
-        name: "Anna Rose",
-        photo: "https://randomuser.me/api/portraits/women/60.jpg",
-        party: "democratic",
-        state: "es",
-        current_office: "n/a",
-        age: 32,
-        gender: FEMALE,
-        latest_poll:75,
-        latest_odds: 30,
-        bio_policy_position: {
+        id: "cjyh4jzsqlnms0b190415j36h",
+        name: "Software Designer",
+        summary: "10 years of Leading Design Project",
+        rank: 1,
+        years: 5,
+        detail: "good manager in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36g"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j36i",
+        name: "lead of TMS",
+        summary: "lead 15 years",
+        detail: "Nominate artist award",
+        topic: {
           create: {
-            name: "lead of TMS",
-            summary: "lead 15 years",
-            detail: "Nominate artist award",
-            topic: {
-              create: {
-                name: "Artist Commit",
-                category: HEALTH
-              }
-            }
+            id: "cjyh4jzsqlnms0b190415j3j",
+            name: "Artist Commit",
+            category: HEALTH
           }
         }
-        bio_other: "Software learning course of Paris"
       }
-    }    
+    }
+    bio_other: "Amateur Guitarist"
   }) {
+    id
+  }
+
+  candidatePosition1: createCandidatePosition(data: {
+    id: "cjyh4jzsqlnms0b190415j3k"
+    link: "https://example.com",
+    positionId: "cjyh4jzsqlnms0b190415j36d",
+    candidateId: "cjyh4jzsqlnms0b190415j36c",
+    rank: 2,
+  }){
+    id
+  }
+
+  candidatePosition2: createCandidatePosition(data: {
+    id: "cjyh4jzsqlnms0b190415j3l"
+    link: "https://example.com",
+    positionId: "cjyh4jzsqlnms0b190415j36i",
+    candidateId: "cjyh4jzsqlnms0b190415j36g",
+    rank: 2,
+  }){
+    id
+  }
+
+  userVote1: createUserVote(data: {
+    userId: "cjyh4jzsqlnms0b190415j36a",
+    candidateId: "cjyh4jzsqlnms0b190415j36c",
+    vote_type: TOP    
+  }){
+    id
+  }
+
+  userVote2: createUserVote(data: {
+    userId: "cjyh4jzsqlnms0b190415j36b",
+    candidateId: "cjyh4jzsqlnms0b190415j36g",
+    vote_type: FAVORITE    
+  }){
+    id
+  }
+
+  qualificationLike1: createUserQualificationLike(data: {
+    like: LIKE,
+    userId: "cjyh4jzsqlnms0b190415j36a",
+    qualificationId: "cjyh4jzsqlnms0b190415j36f"
+  }){
+    id
+  }
+
+  qualificationLike2: createUserQualificationLike(data: {
+    like: DISLIKE,
+    userId: "cjyh4jzsqlnms0b190415j36b",
+    qualificationId: "cjyh4jzsqlnms0b190415j36h"
+  }){
+    id
+  }
+
+  positionLike1: createUserPositionLike(data: {
+    candidate_positionId: "cjyh4jzsqlnms0b190415j3k",
+    userId: "cjyh4jzsqlnms0b190415j36a",
+    like: LIKE
+  }){
+    id
+  }
+
+  positionLike2: createUserPositionLike(data: {
+    candidate_positionId: "cjyh4jzsqlnms0b190415j3l",
+    userId: "cjyh4jzsqlnms0b190415j36b",
+    like: DISLIKE
+  }){
+    id
+  }
+
+  poll1: createPoll(data: {
+    userId: "cjyh4jzsqlnms0b190415j36a",
+    candidateId: "cjyh4jzsqlnms0b190415j36c",
+    poll_type: PRIMARY,
+  }){
+    id
+  }
+
+  poll2: createPoll(data: {
+    userId: "cjyh4jzsqlnms0b190415j36b",
+    candidateId: "cjyh4jzsqlnms0b190415j36g",
+    poll_type: PRIMARY,
+  }){
     id
   }
 }

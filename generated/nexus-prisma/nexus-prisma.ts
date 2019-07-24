@@ -154,9 +154,9 @@ export interface NexusPrismaTypes {
       UserWhereInput: UserWhereInputInputObject
       CandidateWhereUniqueInput: CandidateWhereUniqueInputInputObject
       QualificationWhereInput: QualificationWhereInputInputObject
-      CandidateWhereInput: CandidateWhereInputInputObject
       PositionWhereInput: PositionWhereInputInputObject
       TopicWhereInput: TopicWhereInputInputObject
+      CandidateWhereInput: CandidateWhereInputInputObject
       QualificationWhereUniqueInput: QualificationWhereUniqueInputInputObject
       TopicWhereUniqueInput: TopicWhereUniqueInputInputObject
       PositionWhereUniqueInput: PositionWhereUniqueInputInputObject
@@ -174,17 +174,17 @@ export interface NexusPrismaTypes {
       UserUpdateInput: UserUpdateInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
       CandidateCreateInput: CandidateCreateInputInputObject
-      QualificationCreateManyWithoutCandidateInput: QualificationCreateManyWithoutCandidateInputInputObject
-      QualificationCreateWithoutCandidateInput: QualificationCreateWithoutCandidateInputInputObject
+      QualificationCreateManyInput: QualificationCreateManyInputInputObject
+      QualificationCreateInput: QualificationCreateInputInputObject
       PositionCreateManyInput: PositionCreateManyInputInputObject
       PositionCreateInput: PositionCreateInputInputObject
       TopicCreateOneInput: TopicCreateOneInputInputObject
       TopicCreateInput: TopicCreateInputInputObject
       CandidateUpdateInput: CandidateUpdateInputInputObject
-      QualificationUpdateManyWithoutCandidateInput: QualificationUpdateManyWithoutCandidateInputInputObject
-      QualificationUpdateWithWhereUniqueWithoutCandidateInput: QualificationUpdateWithWhereUniqueWithoutCandidateInputInputObject
-      QualificationUpdateWithoutCandidateDataInput: QualificationUpdateWithoutCandidateDataInputInputObject
-      QualificationUpsertWithWhereUniqueWithoutCandidateInput: QualificationUpsertWithWhereUniqueWithoutCandidateInputInputObject
+      QualificationUpdateManyInput: QualificationUpdateManyInputInputObject
+      QualificationUpdateWithWhereUniqueNestedInput: QualificationUpdateWithWhereUniqueNestedInputInputObject
+      QualificationUpdateDataInput: QualificationUpdateDataInputInputObject
+      QualificationUpsertWithWhereUniqueNestedInput: QualificationUpsertWithWhereUniqueNestedInputInputObject
       QualificationScalarWhereInput: QualificationScalarWhereInputInputObject
       QualificationUpdateManyWithWhereNestedInput: QualificationUpdateManyWithWhereNestedInputInputObject
       QualificationUpdateManyDataInput: QualificationUpdateManyDataInputInputObject
@@ -199,48 +199,23 @@ export interface NexusPrismaTypes {
       PositionUpdateManyWithWhereNestedInput: PositionUpdateManyWithWhereNestedInputInputObject
       PositionUpdateManyDataInput: PositionUpdateManyDataInputInputObject
       CandidateUpdateManyMutationInput: CandidateUpdateManyMutationInputInputObject
-      QualificationCreateInput: QualificationCreateInputInputObject
-      CandidateCreateOneWithoutBio_qualificationsInput: CandidateCreateOneWithoutBio_qualificationsInputInputObject
-      CandidateCreateWithoutBio_qualificationsInput: CandidateCreateWithoutBio_qualificationsInputInputObject
       QualificationUpdateInput: QualificationUpdateInputInputObject
-      CandidateUpdateOneRequiredWithoutBio_qualificationsInput: CandidateUpdateOneRequiredWithoutBio_qualificationsInputInputObject
-      CandidateUpdateWithoutBio_qualificationsDataInput: CandidateUpdateWithoutBio_qualificationsDataInputInputObject
-      CandidateUpsertWithoutBio_qualificationsInput: CandidateUpsertWithoutBio_qualificationsInputInputObject
       QualificationUpdateManyMutationInput: QualificationUpdateManyMutationInputInputObject
       TopicUpdateInput: TopicUpdateInputInputObject
       TopicUpdateManyMutationInput: TopicUpdateManyMutationInputInputObject
       PositionUpdateInput: PositionUpdateInputInputObject
       PositionUpdateManyMutationInput: PositionUpdateManyMutationInputInputObject
       CandidatePositionCreateInput: CandidatePositionCreateInputInputObject
-      PositionCreateOneInput: PositionCreateOneInputInputObject
-      CandidateCreateOneInput: CandidateCreateOneInputInputObject
       CandidatePositionUpdateInput: CandidatePositionUpdateInputInputObject
-      PositionUpdateOneRequiredInput: PositionUpdateOneRequiredInputInputObject
-      PositionUpsertNestedInput: PositionUpsertNestedInputInputObject
-      CandidateUpdateOneRequiredInput: CandidateUpdateOneRequiredInputInputObject
-      CandidateUpdateDataInput: CandidateUpdateDataInputInputObject
-      CandidateUpsertNestedInput: CandidateUpsertNestedInputInputObject
       CandidatePositionUpdateManyMutationInput: CandidatePositionUpdateManyMutationInputInputObject
       UserVoteCreateInput: UserVoteCreateInputInputObject
-      UserCreateOneInput: UserCreateOneInputInputObject
       UserVoteUpdateInput: UserVoteUpdateInputInputObject
-      UserUpdateOneRequiredInput: UserUpdateOneRequiredInputInputObject
-      UserUpdateDataInput: UserUpdateDataInputInputObject
-      UserUpsertNestedInput: UserUpsertNestedInputInputObject
       UserVoteUpdateManyMutationInput: UserVoteUpdateManyMutationInputInputObject
       UserQualificationLikeCreateInput: UserQualificationLikeCreateInputInputObject
-      QualificationCreateOneInput: QualificationCreateOneInputInputObject
       UserQualificationLikeUpdateInput: UserQualificationLikeUpdateInputInputObject
-      QualificationUpdateOneRequiredInput: QualificationUpdateOneRequiredInputInputObject
-      QualificationUpdateDataInput: QualificationUpdateDataInputInputObject
-      QualificationUpsertNestedInput: QualificationUpsertNestedInputInputObject
       UserQualificationLikeUpdateManyMutationInput: UserQualificationLikeUpdateManyMutationInputInputObject
       UserPositionLikeCreateInput: UserPositionLikeCreateInputInputObject
-      CandidatePositionCreateOneInput: CandidatePositionCreateOneInputInputObject
       UserPositionLikeUpdateInput: UserPositionLikeUpdateInputInputObject
-      CandidatePositionUpdateOneRequiredInput: CandidatePositionUpdateOneRequiredInputInputObject
-      CandidatePositionUpdateDataInput: CandidatePositionUpdateDataInputInputObject
-      CandidatePositionUpsertNestedInput: CandidatePositionUpsertNestedInputInputObject
       UserPositionLikeUpdateManyMutationInput: UserPositionLikeUpdateManyMutationInputInputObject
       PollCreateInput: PollCreateInputInputObject
       PollUpdateInput: PollUpdateInputInputObject
@@ -260,8 +235,8 @@ export interface NexusPrismaTypes {
   enumTypes: {
     Gender: GenderValues,
     UserOrderByInput: UserOrderByInputValues,
-    CategoryType: CategoryTypeValues,
     QualificationOrderByInput: QualificationOrderByInputValues,
+    CategoryType: CategoryTypeValues,
     PositionOrderByInput: PositionOrderByInputValues,
     CandidateOrderByInput: CandidateOrderByInputValues,
     TopicOrderByInput: TopicOrderByInputValues,
@@ -1346,7 +1321,7 @@ type QualificationObject =
   | { name: 'detail', args?: [] | false, alias?: string  } 
   | { name: 'years', args?: [] | false, alias?: string  } 
   | { name: 'rank', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
 
 type QualificationFields =
   | 'id'
@@ -1355,7 +1330,7 @@ type QualificationFields =
   | 'detail'
   | 'years'
   | 'rank'
-  | 'candidate'
+  | 'candidateId'
 
 
 
@@ -1410,18 +1385,13 @@ export interface QualificationFieldDetails {
     nullable: true
     resolve: undefined
   }
-  candidate: {
-    type: 'Candidate'
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Qualification">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -2051,8 +2021,8 @@ export interface AggregatePositionFieldDetails {
 type CandidatePositionObject =
   | CandidatePositionFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'position', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
+  | { name: 'positionId', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'link', args?: [] | false, alias?: string  } 
   | { name: 'rank', args?: [] | false, alias?: string  } 
@@ -2060,8 +2030,8 @@ type CandidatePositionObject =
 
 type CandidatePositionFields =
   | 'id'
-  | 'position'
-  | 'candidate'
+  | 'positionId'
+  | 'candidateId'
   | 'time'
   | 'link'
   | 'rank'
@@ -2080,31 +2050,21 @@ export interface CandidatePositionFieldDetails {
     nullable: false
     resolve: undefined
   }
-  position: {
-    type: 'Position'
+  positionId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"CandidatePosition">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Position> | prisma.Position
+    resolve: undefined
   }
-  candidate: {
-    type: 'Candidate'
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"CandidatePosition">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
+    resolve: undefined
   }
   time: {
     type: 'DateTime'
@@ -2271,16 +2231,16 @@ export interface AggregateCandidatePositionFieldDetails {
 type UserVoteObject =
   | UserVoteFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
   | { name: 'vote_type', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserVoteFields =
   | 'id'
-  | 'candidate'
-  | 'user'
+  | 'candidateId'
+  | 'userId'
   | 'vote_type'
   | 'time'
   | 'latest'
@@ -2298,31 +2258,21 @@ export interface UserVoteFieldDetails {
     nullable: false
     resolve: undefined
   }
-  candidate: {
-    type: 'Candidate'
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserVote">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
+    resolve: undefined
   }
-  user: {
-    type: 'User'
+  userId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserVote">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    resolve: undefined
   }
   vote_type: {
     type: 'VoteType'
@@ -2486,16 +2436,16 @@ export interface AggregateUserVoteFieldDetails {
 type UserQualificationLikeObject =
   | UserQualificationLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
-  | { name: 'qualification', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
+  | { name: 'qualificationId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserQualificationLikeFields =
   | 'id'
-  | 'user'
-  | 'qualification'
+  | 'userId'
+  | 'qualificationId'
   | 'like'
   | 'time'
   | 'latest'
@@ -2513,31 +2463,21 @@ export interface UserQualificationLikeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  user: {
-    type: 'User'
+  userId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserQualificationLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    resolve: undefined
   }
-  qualification: {
-    type: 'Qualification'
+  qualificationId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserQualificationLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Qualification> | prisma.Qualification
+    resolve: undefined
   }
   like: {
     type: 'LikeType'
@@ -2701,16 +2641,16 @@ export interface AggregateUserQualificationLikeFieldDetails {
 type UserPositionLikeObject =
   | UserPositionLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
-  | { name: 'candidate_position', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
+  | { name: 'candidate_positionId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserPositionLikeFields =
   | 'id'
-  | 'user'
-  | 'candidate_position'
+  | 'userId'
+  | 'candidate_positionId'
   | 'like'
   | 'time'
   | 'latest'
@@ -2728,31 +2668,21 @@ export interface UserPositionLikeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  user: {
-    type: 'User'
+  userId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserPositionLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    resolve: undefined
   }
-  candidate_position: {
-    type: 'CandidatePosition'
+  candidate_positionId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserPositionLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.CandidatePosition> | prisma.CandidatePosition
+    resolve: undefined
   }
   like: {
     type: 'LikeType'
@@ -2916,18 +2846,18 @@ export interface AggregateUserPositionLikeFieldDetails {
 type PollObject =
   | PollFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'source', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
   | { name: 'date', args?: [] | false, alias?: string  } 
-  | { name: 'candidate', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
   | { name: 'poll_type', args?: [] | false, alias?: string  } 
   | { name: 'error_margin', args?: [] | false, alias?: string  } 
   | { name: 'link_to_poll', args?: [] | false, alias?: string  } 
 
 type PollFields =
   | 'id'
-  | 'source'
+  | 'userId'
   | 'date'
-  | 'candidate'
+  | 'candidateId'
   | 'poll_type'
   | 'error_margin'
   | 'link_to_poll'
@@ -2945,18 +2875,13 @@ export interface PollFieldDetails {
     nullable: false
     resolve: undefined
   }
-  source: {
-    type: 'User'
+  userId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"Poll">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    resolve: undefined
   }
   date: {
     type: 'DateTime'
@@ -2966,18 +2891,13 @@ export interface PollFieldDetails {
     nullable: true
     resolve: undefined
   }
-  candidate: {
-    type: 'Candidate'
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"Poll">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Candidate> | prisma.Candidate
+    resolve: undefined
   }
   poll_type: {
     type: 'PollType'
@@ -4829,6 +4749,7 @@ type QualificationPreviousValuesObject =
   | { name: 'detail', args?: [] | false, alias?: string  } 
   | { name: 'years', args?: [] | false, alias?: string  } 
   | { name: 'rank', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
 
 type QualificationPreviousValuesFields =
   | 'id'
@@ -4837,6 +4758,7 @@ type QualificationPreviousValuesFields =
   | 'detail'
   | 'years'
   | 'rank'
+  | 'candidateId'
 
 
 
@@ -4885,6 +4807,14 @@ export interface QualificationPreviousValuesFieldDetails {
   }
   rank: {
     type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5214,6 +5144,8 @@ export interface CandidatePositionSubscriptionPayloadFieldDetails {
 type CandidatePositionPreviousValuesObject =
   | CandidatePositionPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'positionId', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'link', args?: [] | false, alias?: string  } 
   | { name: 'rank', args?: [] | false, alias?: string  } 
@@ -5221,6 +5153,8 @@ type CandidatePositionPreviousValuesObject =
 
 type CandidatePositionPreviousValuesFields =
   | 'id'
+  | 'positionId'
+  | 'candidateId'
   | 'time'
   | 'link'
   | 'rank'
@@ -5233,6 +5167,22 @@ type CandidatePositionPreviousValuesFields =
 export interface CandidatePositionPreviousValuesFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  positionId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5349,12 +5299,16 @@ export interface UserVoteSubscriptionPayloadFieldDetails {
 type UserVotePreviousValuesObject =
   | UserVotePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
   | { name: 'vote_type', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserVotePreviousValuesFields =
   | 'id'
+  | 'candidateId'
+  | 'userId'
   | 'vote_type'
   | 'time'
   | 'latest'
@@ -5366,6 +5320,22 @@ type UserVotePreviousValuesFields =
 export interface UserVotePreviousValuesFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  userId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5479,12 +5449,16 @@ export interface UserQualificationLikeSubscriptionPayloadFieldDetails {
 type UserQualificationLikePreviousValuesObject =
   | UserQualificationLikePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
+  | { name: 'qualificationId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserQualificationLikePreviousValuesFields =
   | 'id'
+  | 'userId'
+  | 'qualificationId'
   | 'like'
   | 'time'
   | 'latest'
@@ -5496,6 +5470,22 @@ type UserQualificationLikePreviousValuesFields =
 export interface UserQualificationLikePreviousValuesFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  userId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  qualificationId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5609,12 +5599,16 @@ export interface UserPositionLikeSubscriptionPayloadFieldDetails {
 type UserPositionLikePreviousValuesObject =
   | UserPositionLikePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
+  | { name: 'candidate_positionId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
 
 type UserPositionLikePreviousValuesFields =
   | 'id'
+  | 'userId'
+  | 'candidate_positionId'
   | 'like'
   | 'time'
   | 'latest'
@@ -5626,6 +5620,22 @@ type UserPositionLikePreviousValuesFields =
 export interface UserPositionLikePreviousValuesFieldDetails {
   id: {
     type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  userId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  candidate_positionId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5739,14 +5749,18 @@ export interface PollSubscriptionPayloadFieldDetails {
 type PollPreviousValuesObject =
   | PollPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'userId', args?: [] | false, alias?: string  } 
   | { name: 'date', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
   | { name: 'poll_type', args?: [] | false, alias?: string  } 
   | { name: 'error_margin', args?: [] | false, alias?: string  } 
   | { name: 'link_to_poll', args?: [] | false, alias?: string  } 
 
 type PollPreviousValuesFields =
   | 'id'
+  | 'userId'
   | 'date'
+  | 'candidateId'
   | 'poll_type'
   | 'error_margin'
   | 'link_to_poll'
@@ -5764,12 +5778,28 @@ export interface PollPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  userId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
   date: {
     type: 'DateTime'
     args: {}
     description: string
     list: undefined
     nullable: true
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
     resolve: undefined
   }
   poll_type: {
@@ -5997,7 +6027,20 @@ export interface QualificationWhereInput {
   rank_lte?: number | null
   rank_gt?: number | null
   rank_gte?: number | null
-  candidate?: CandidateWhereInput | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
   AND?: QualificationWhereInput[]
   OR?: QualificationWhereInput[]
   NOT?: QualificationWhereInput[]
@@ -6076,7 +6119,220 @@ export type QualificationWhereInputInputObject =
   | { name: 'rank_lte', alias?: string  } 
   | { name: 'rank_gt', alias?: string  } 
   | { name: 'rank_gte', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PositionWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  summary?: string | null
+  summary_not?: string | null
+  summary_in?: string[]
+  summary_not_in?: string[]
+  summary_lt?: string | null
+  summary_lte?: string | null
+  summary_gt?: string | null
+  summary_gte?: string | null
+  summary_contains?: string | null
+  summary_not_contains?: string | null
+  summary_starts_with?: string | null
+  summary_not_starts_with?: string | null
+  summary_ends_with?: string | null
+  summary_not_ends_with?: string | null
+  topic?: TopicWhereInput | null
+  detail?: string | null
+  detail_not?: string | null
+  detail_in?: string[]
+  detail_not_in?: string[]
+  detail_lt?: string | null
+  detail_lte?: string | null
+  detail_gt?: string | null
+  detail_gte?: string | null
+  detail_contains?: string | null
+  detail_not_contains?: string | null
+  detail_starts_with?: string | null
+  detail_not_starts_with?: string | null
+  detail_ends_with?: string | null
+  detail_not_ends_with?: string | null
+  AND?: PositionWhereInput[]
+  OR?: PositionWhereInput[]
+  NOT?: PositionWhereInput[]
+}
+export type PositionWhereInputInputObject =
+  | Extract<keyof PositionWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'summary', alias?: string  } 
+  | { name: 'summary_not', alias?: string  } 
+  | { name: 'summary_in', alias?: string  } 
+  | { name: 'summary_not_in', alias?: string  } 
+  | { name: 'summary_lt', alias?: string  } 
+  | { name: 'summary_lte', alias?: string  } 
+  | { name: 'summary_gt', alias?: string  } 
+  | { name: 'summary_gte', alias?: string  } 
+  | { name: 'summary_contains', alias?: string  } 
+  | { name: 'summary_not_contains', alias?: string  } 
+  | { name: 'summary_starts_with', alias?: string  } 
+  | { name: 'summary_not_starts_with', alias?: string  } 
+  | { name: 'summary_ends_with', alias?: string  } 
+  | { name: 'summary_not_ends_with', alias?: string  } 
+  | { name: 'topic', alias?: string  } 
+  | { name: 'detail', alias?: string  } 
+  | { name: 'detail_not', alias?: string  } 
+  | { name: 'detail_in', alias?: string  } 
+  | { name: 'detail_not_in', alias?: string  } 
+  | { name: 'detail_lt', alias?: string  } 
+  | { name: 'detail_lte', alias?: string  } 
+  | { name: 'detail_gt', alias?: string  } 
+  | { name: 'detail_gte', alias?: string  } 
+  | { name: 'detail_contains', alias?: string  } 
+  | { name: 'detail_not_contains', alias?: string  } 
+  | { name: 'detail_starts_with', alias?: string  } 
+  | { name: 'detail_not_starts_with', alias?: string  } 
+  | { name: 'detail_ends_with', alias?: string  } 
+  | { name: 'detail_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface TopicWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  category?: prisma.CategoryType | null
+  category_not?: prisma.CategoryType | null
+  category_in?: prisma.CategoryType[]
+  category_not_in?: prisma.CategoryType[]
+  AND?: TopicWhereInput[]
+  OR?: TopicWhereInput[]
+  NOT?: TopicWhereInput[]
+}
+export type TopicWhereInputInputObject =
+  | Extract<keyof TopicWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'category', alias?: string  } 
+  | { name: 'category_not', alias?: string  } 
+  | { name: 'category_in', alias?: string  } 
+  | { name: 'category_not_in', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -6356,206 +6612,6 @@ export type CandidateWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface PositionWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  summary?: string | null
-  summary_not?: string | null
-  summary_in?: string[]
-  summary_not_in?: string[]
-  summary_lt?: string | null
-  summary_lte?: string | null
-  summary_gt?: string | null
-  summary_gte?: string | null
-  summary_contains?: string | null
-  summary_not_contains?: string | null
-  summary_starts_with?: string | null
-  summary_not_starts_with?: string | null
-  summary_ends_with?: string | null
-  summary_not_ends_with?: string | null
-  topic?: TopicWhereInput | null
-  detail?: string | null
-  detail_not?: string | null
-  detail_in?: string[]
-  detail_not_in?: string[]
-  detail_lt?: string | null
-  detail_lte?: string | null
-  detail_gt?: string | null
-  detail_gte?: string | null
-  detail_contains?: string | null
-  detail_not_contains?: string | null
-  detail_starts_with?: string | null
-  detail_not_starts_with?: string | null
-  detail_ends_with?: string | null
-  detail_not_ends_with?: string | null
-  AND?: PositionWhereInput[]
-  OR?: PositionWhereInput[]
-  NOT?: PositionWhereInput[]
-}
-export type PositionWhereInputInputObject =
-  | Extract<keyof PositionWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'summary_not', alias?: string  } 
-  | { name: 'summary_in', alias?: string  } 
-  | { name: 'summary_not_in', alias?: string  } 
-  | { name: 'summary_lt', alias?: string  } 
-  | { name: 'summary_lte', alias?: string  } 
-  | { name: 'summary_gt', alias?: string  } 
-  | { name: 'summary_gte', alias?: string  } 
-  | { name: 'summary_contains', alias?: string  } 
-  | { name: 'summary_not_contains', alias?: string  } 
-  | { name: 'summary_starts_with', alias?: string  } 
-  | { name: 'summary_not_starts_with', alias?: string  } 
-  | { name: 'summary_ends_with', alias?: string  } 
-  | { name: 'summary_not_ends_with', alias?: string  } 
-  | { name: 'topic', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'detail_not', alias?: string  } 
-  | { name: 'detail_in', alias?: string  } 
-  | { name: 'detail_not_in', alias?: string  } 
-  | { name: 'detail_lt', alias?: string  } 
-  | { name: 'detail_lte', alias?: string  } 
-  | { name: 'detail_gt', alias?: string  } 
-  | { name: 'detail_gte', alias?: string  } 
-  | { name: 'detail_contains', alias?: string  } 
-  | { name: 'detail_not_contains', alias?: string  } 
-  | { name: 'detail_starts_with', alias?: string  } 
-  | { name: 'detail_not_starts_with', alias?: string  } 
-  | { name: 'detail_ends_with', alias?: string  } 
-  | { name: 'detail_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface TopicWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  category?: prisma.CategoryType | null
-  category_not?: prisma.CategoryType | null
-  category_in?: prisma.CategoryType[]
-  category_not_in?: prisma.CategoryType[]
-  AND?: TopicWhereInput[]
-  OR?: TopicWhereInput[]
-  NOT?: TopicWhereInput[]
-}
-export type TopicWhereInputInputObject =
-  | Extract<keyof TopicWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'category', alias?: string  } 
-  | { name: 'category_not', alias?: string  } 
-  | { name: 'category_in', alias?: string  } 
-  | { name: 'category_not_in', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface QualificationWhereUniqueInput {
   id?: string | null
 }
@@ -6599,8 +6655,34 @@ export interface CandidatePositionWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  position?: PositionWhereInput | null
-  candidate?: CandidateWhereInput | null
+  positionId?: string | null
+  positionId_not?: string | null
+  positionId_in?: string[]
+  positionId_not_in?: string[]
+  positionId_lt?: string | null
+  positionId_lte?: string | null
+  positionId_gt?: string | null
+  positionId_gte?: string | null
+  positionId_contains?: string | null
+  positionId_not_contains?: string | null
+  positionId_starts_with?: string | null
+  positionId_not_starts_with?: string | null
+  positionId_ends_with?: string | null
+  positionId_not_ends_with?: string | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
   time?: string | null
   time_not?: string | null
   time_in?: string[]
@@ -6653,8 +6735,34 @@ export type CandidatePositionWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'position', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'positionId_not', alias?: string  } 
+  | { name: 'positionId_in', alias?: string  } 
+  | { name: 'positionId_not_in', alias?: string  } 
+  | { name: 'positionId_lt', alias?: string  } 
+  | { name: 'positionId_lte', alias?: string  } 
+  | { name: 'positionId_gt', alias?: string  } 
+  | { name: 'positionId_gte', alias?: string  } 
+  | { name: 'positionId_contains', alias?: string  } 
+  | { name: 'positionId_not_contains', alias?: string  } 
+  | { name: 'positionId_starts_with', alias?: string  } 
+  | { name: 'positionId_not_starts_with', alias?: string  } 
+  | { name: 'positionId_ends_with', alias?: string  } 
+  | { name: 'positionId_not_ends_with', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'time_not', alias?: string  } 
   | { name: 'time_in', alias?: string  } 
@@ -6713,8 +6821,34 @@ export interface UserVoteWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  candidate?: CandidateWhereInput | null
-  user?: UserWhereInput | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
+  userId?: string | null
+  userId_not?: string | null
+  userId_in?: string[]
+  userId_not_in?: string[]
+  userId_lt?: string | null
+  userId_lte?: string | null
+  userId_gt?: string | null
+  userId_gte?: string | null
+  userId_contains?: string | null
+  userId_not_contains?: string | null
+  userId_starts_with?: string | null
+  userId_not_starts_with?: string | null
+  userId_ends_with?: string | null
+  userId_not_ends_with?: string | null
   vote_type?: prisma.VoteType | null
   vote_type_not?: prisma.VoteType | null
   vote_type_in?: prisma.VoteType[]
@@ -6749,8 +6883,34 @@ export type UserVoteWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'userId_not', alias?: string  } 
+  | { name: 'userId_in', alias?: string  } 
+  | { name: 'userId_not_in', alias?: string  } 
+  | { name: 'userId_lt', alias?: string  } 
+  | { name: 'userId_lte', alias?: string  } 
+  | { name: 'userId_gt', alias?: string  } 
+  | { name: 'userId_gte', alias?: string  } 
+  | { name: 'userId_contains', alias?: string  } 
+  | { name: 'userId_not_contains', alias?: string  } 
+  | { name: 'userId_starts_with', alias?: string  } 
+  | { name: 'userId_not_starts_with', alias?: string  } 
+  | { name: 'userId_ends_with', alias?: string  } 
+  | { name: 'userId_not_ends_with', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
   | { name: 'vote_type_not', alias?: string  } 
   | { name: 'vote_type_in', alias?: string  } 
@@ -6791,8 +6951,34 @@ export interface UserQualificationLikeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  user?: UserWhereInput | null
-  qualification?: QualificationWhereInput | null
+  userId?: string | null
+  userId_not?: string | null
+  userId_in?: string[]
+  userId_not_in?: string[]
+  userId_lt?: string | null
+  userId_lte?: string | null
+  userId_gt?: string | null
+  userId_gte?: string | null
+  userId_contains?: string | null
+  userId_not_contains?: string | null
+  userId_starts_with?: string | null
+  userId_not_starts_with?: string | null
+  userId_ends_with?: string | null
+  userId_not_ends_with?: string | null
+  qualificationId?: string | null
+  qualificationId_not?: string | null
+  qualificationId_in?: string[]
+  qualificationId_not_in?: string[]
+  qualificationId_lt?: string | null
+  qualificationId_lte?: string | null
+  qualificationId_gt?: string | null
+  qualificationId_gte?: string | null
+  qualificationId_contains?: string | null
+  qualificationId_not_contains?: string | null
+  qualificationId_starts_with?: string | null
+  qualificationId_not_starts_with?: string | null
+  qualificationId_ends_with?: string | null
+  qualificationId_not_ends_with?: string | null
   like?: prisma.LikeType | null
   like_not?: prisma.LikeType | null
   like_in?: prisma.LikeType[]
@@ -6827,8 +7013,34 @@ export type UserQualificationLikeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'qualification', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'userId_not', alias?: string  } 
+  | { name: 'userId_in', alias?: string  } 
+  | { name: 'userId_not_in', alias?: string  } 
+  | { name: 'userId_lt', alias?: string  } 
+  | { name: 'userId_lte', alias?: string  } 
+  | { name: 'userId_gt', alias?: string  } 
+  | { name: 'userId_gte', alias?: string  } 
+  | { name: 'userId_contains', alias?: string  } 
+  | { name: 'userId_not_contains', alias?: string  } 
+  | { name: 'userId_starts_with', alias?: string  } 
+  | { name: 'userId_not_starts_with', alias?: string  } 
+  | { name: 'userId_ends_with', alias?: string  } 
+  | { name: 'userId_not_ends_with', alias?: string  } 
+  | { name: 'qualificationId', alias?: string  } 
+  | { name: 'qualificationId_not', alias?: string  } 
+  | { name: 'qualificationId_in', alias?: string  } 
+  | { name: 'qualificationId_not_in', alias?: string  } 
+  | { name: 'qualificationId_lt', alias?: string  } 
+  | { name: 'qualificationId_lte', alias?: string  } 
+  | { name: 'qualificationId_gt', alias?: string  } 
+  | { name: 'qualificationId_gte', alias?: string  } 
+  | { name: 'qualificationId_contains', alias?: string  } 
+  | { name: 'qualificationId_not_contains', alias?: string  } 
+  | { name: 'qualificationId_starts_with', alias?: string  } 
+  | { name: 'qualificationId_not_starts_with', alias?: string  } 
+  | { name: 'qualificationId_ends_with', alias?: string  } 
+  | { name: 'qualificationId_not_ends_with', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'like_not', alias?: string  } 
   | { name: 'like_in', alias?: string  } 
@@ -6869,8 +7081,34 @@ export interface UserPositionLikeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  user?: UserWhereInput | null
-  candidate_position?: CandidatePositionWhereInput | null
+  userId?: string | null
+  userId_not?: string | null
+  userId_in?: string[]
+  userId_not_in?: string[]
+  userId_lt?: string | null
+  userId_lte?: string | null
+  userId_gt?: string | null
+  userId_gte?: string | null
+  userId_contains?: string | null
+  userId_not_contains?: string | null
+  userId_starts_with?: string | null
+  userId_not_starts_with?: string | null
+  userId_ends_with?: string | null
+  userId_not_ends_with?: string | null
+  candidate_positionId?: string | null
+  candidate_positionId_not?: string | null
+  candidate_positionId_in?: string[]
+  candidate_positionId_not_in?: string[]
+  candidate_positionId_lt?: string | null
+  candidate_positionId_lte?: string | null
+  candidate_positionId_gt?: string | null
+  candidate_positionId_gte?: string | null
+  candidate_positionId_contains?: string | null
+  candidate_positionId_not_contains?: string | null
+  candidate_positionId_starts_with?: string | null
+  candidate_positionId_not_starts_with?: string | null
+  candidate_positionId_ends_with?: string | null
+  candidate_positionId_not_ends_with?: string | null
   like?: prisma.LikeType | null
   like_not?: prisma.LikeType | null
   like_in?: prisma.LikeType[]
@@ -6905,8 +7143,34 @@ export type UserPositionLikeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'userId_not', alias?: string  } 
+  | { name: 'userId_in', alias?: string  } 
+  | { name: 'userId_not_in', alias?: string  } 
+  | { name: 'userId_lt', alias?: string  } 
+  | { name: 'userId_lte', alias?: string  } 
+  | { name: 'userId_gt', alias?: string  } 
+  | { name: 'userId_gte', alias?: string  } 
+  | { name: 'userId_contains', alias?: string  } 
+  | { name: 'userId_not_contains', alias?: string  } 
+  | { name: 'userId_starts_with', alias?: string  } 
+  | { name: 'userId_not_starts_with', alias?: string  } 
+  | { name: 'userId_ends_with', alias?: string  } 
+  | { name: 'userId_not_ends_with', alias?: string  } 
+  | { name: 'candidate_positionId', alias?: string  } 
+  | { name: 'candidate_positionId_not', alias?: string  } 
+  | { name: 'candidate_positionId_in', alias?: string  } 
+  | { name: 'candidate_positionId_not_in', alias?: string  } 
+  | { name: 'candidate_positionId_lt', alias?: string  } 
+  | { name: 'candidate_positionId_lte', alias?: string  } 
+  | { name: 'candidate_positionId_gt', alias?: string  } 
+  | { name: 'candidate_positionId_gte', alias?: string  } 
+  | { name: 'candidate_positionId_contains', alias?: string  } 
+  | { name: 'candidate_positionId_not_contains', alias?: string  } 
+  | { name: 'candidate_positionId_starts_with', alias?: string  } 
+  | { name: 'candidate_positionId_not_starts_with', alias?: string  } 
+  | { name: 'candidate_positionId_ends_with', alias?: string  } 
+  | { name: 'candidate_positionId_not_ends_with', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'like_not', alias?: string  } 
   | { name: 'like_in', alias?: string  } 
@@ -6947,7 +7211,20 @@ export interface PollWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  source?: UserWhereInput | null
+  userId?: string | null
+  userId_not?: string | null
+  userId_in?: string[]
+  userId_not_in?: string[]
+  userId_lt?: string | null
+  userId_lte?: string | null
+  userId_gt?: string | null
+  userId_gte?: string | null
+  userId_contains?: string | null
+  userId_not_contains?: string | null
+  userId_starts_with?: string | null
+  userId_not_starts_with?: string | null
+  userId_ends_with?: string | null
+  userId_not_ends_with?: string | null
   date?: string | null
   date_not?: string | null
   date_in?: string[]
@@ -6956,7 +7233,20 @@ export interface PollWhereInput {
   date_lte?: string | null
   date_gt?: string | null
   date_gte?: string | null
-  candidate?: CandidateWhereInput | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
   poll_type?: prisma.PollType | null
   poll_type_not?: prisma.PollType | null
   poll_type_in?: prisma.PollType[]
@@ -7009,7 +7299,20 @@ export type PollWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'source', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'userId_not', alias?: string  } 
+  | { name: 'userId_in', alias?: string  } 
+  | { name: 'userId_not_in', alias?: string  } 
+  | { name: 'userId_lt', alias?: string  } 
+  | { name: 'userId_lte', alias?: string  } 
+  | { name: 'userId_gt', alias?: string  } 
+  | { name: 'userId_gte', alias?: string  } 
+  | { name: 'userId_contains', alias?: string  } 
+  | { name: 'userId_not_contains', alias?: string  } 
+  | { name: 'userId_starts_with', alias?: string  } 
+  | { name: 'userId_not_starts_with', alias?: string  } 
+  | { name: 'userId_ends_with', alias?: string  } 
+  | { name: 'userId_not_ends_with', alias?: string  } 
   | { name: 'date', alias?: string  } 
   | { name: 'date_not', alias?: string  } 
   | { name: 'date_in', alias?: string  } 
@@ -7018,7 +7321,20 @@ export type PollWhereInputInputObject =
   | { name: 'date_lte', alias?: string  } 
   | { name: 'date_gt', alias?: string  } 
   | { name: 'date_gte', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
   | { name: 'poll_type', alias?: string  } 
   | { name: 'poll_type_not', alias?: string  } 
   | { name: 'poll_type_in', alias?: string  } 
@@ -7101,7 +7417,7 @@ export interface CandidateCreateInput {
   gender?: prisma.Gender | null
   latest_poll?: number | null
   latest_odds?: number | null
-  bio_qualifications?: QualificationCreateManyWithoutCandidateInput | null
+  bio_qualifications?: QualificationCreateManyInput | null
   bio_policy_position?: PositionCreateManyInput | null
   bio_other?: string | null
 }
@@ -7121,31 +7437,33 @@ export type CandidateCreateInputInputObject =
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
   
-export interface QualificationCreateManyWithoutCandidateInput {
-  create?: QualificationCreateWithoutCandidateInput[]
+export interface QualificationCreateManyInput {
+  create?: QualificationCreateInput[]
   connect?: QualificationWhereUniqueInput[]
 }
-export type QualificationCreateManyWithoutCandidateInputInputObject =
-  | Extract<keyof QualificationCreateManyWithoutCandidateInput, string>
+export type QualificationCreateManyInputInputObject =
+  | Extract<keyof QualificationCreateManyInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface QualificationCreateWithoutCandidateInput {
+export interface QualificationCreateInput {
   id?: string | null
   name?: string
   summary?: string | null
   detail?: string | null
   years?: number
   rank?: number | null
+  candidateId?: string | null
 }
-export type QualificationCreateWithoutCandidateInputInputObject =
-  | Extract<keyof QualificationCreateWithoutCandidateInput, string>
+export type QualificationCreateInputInputObject =
+  | Extract<keyof QualificationCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   
 export interface PositionCreateManyInput {
   create?: PositionCreateInput[]
@@ -7201,7 +7519,7 @@ export interface CandidateUpdateInput {
   gender?: prisma.Gender | null
   latest_poll?: number | null
   latest_odds?: number | null
-  bio_qualifications?: QualificationUpdateManyWithoutCandidateInput | null
+  bio_qualifications?: QualificationUpdateManyInput | null
   bio_policy_position?: PositionUpdateManyInput | null
   bio_other?: string | null
 }
@@ -7220,60 +7538,62 @@ export type CandidateUpdateInputInputObject =
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
   
-export interface QualificationUpdateManyWithoutCandidateInput {
-  create?: QualificationCreateWithoutCandidateInput[]
+export interface QualificationUpdateManyInput {
+  create?: QualificationCreateInput[]
+  update?: QualificationUpdateWithWhereUniqueNestedInput[]
+  upsert?: QualificationUpsertWithWhereUniqueNestedInput[]
   delete?: QualificationWhereUniqueInput[]
   connect?: QualificationWhereUniqueInput[]
   set?: QualificationWhereUniqueInput[]
   disconnect?: QualificationWhereUniqueInput[]
-  update?: QualificationUpdateWithWhereUniqueWithoutCandidateInput[]
-  upsert?: QualificationUpsertWithWhereUniqueWithoutCandidateInput[]
   deleteMany?: QualificationScalarWhereInput[]
   updateMany?: QualificationUpdateManyWithWhereNestedInput[]
 }
-export type QualificationUpdateManyWithoutCandidateInputInputObject =
-  | Extract<keyof QualificationUpdateManyWithoutCandidateInput, string>
+export type QualificationUpdateManyInputInputObject =
+  | Extract<keyof QualificationUpdateManyInput, string>
   | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   | { name: 'set', alias?: string  } 
   | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface QualificationUpdateWithWhereUniqueWithoutCandidateInput {
+export interface QualificationUpdateWithWhereUniqueNestedInput {
   where?: QualificationWhereUniqueInput
-  data?: QualificationUpdateWithoutCandidateDataInput
+  data?: QualificationUpdateDataInput
 }
-export type QualificationUpdateWithWhereUniqueWithoutCandidateInputInputObject =
-  | Extract<keyof QualificationUpdateWithWhereUniqueWithoutCandidateInput, string>
+export type QualificationUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof QualificationUpdateWithWhereUniqueNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface QualificationUpdateWithoutCandidateDataInput {
+export interface QualificationUpdateDataInput {
   name?: string | null
   summary?: string | null
   detail?: string | null
   years?: number | null
   rank?: number | null
+  candidateId?: string | null
 }
-export type QualificationUpdateWithoutCandidateDataInputInputObject =
-  | Extract<keyof QualificationUpdateWithoutCandidateDataInput, string>
+export type QualificationUpdateDataInputInputObject =
+  | Extract<keyof QualificationUpdateDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   
-export interface QualificationUpsertWithWhereUniqueWithoutCandidateInput {
+export interface QualificationUpsertWithWhereUniqueNestedInput {
   where?: QualificationWhereUniqueInput
-  update?: QualificationUpdateWithoutCandidateDataInput
-  create?: QualificationCreateWithoutCandidateInput
+  update?: QualificationUpdateDataInput
+  create?: QualificationCreateInput
 }
-export type QualificationUpsertWithWhereUniqueWithoutCandidateInputInputObject =
-  | Extract<keyof QualificationUpsertWithWhereUniqueWithoutCandidateInput, string>
+export type QualificationUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof QualificationUpsertWithWhereUniqueNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -7351,6 +7671,20 @@ export interface QualificationScalarWhereInput {
   rank_lte?: number | null
   rank_gt?: number | null
   rank_gte?: number | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
   AND?: QualificationScalarWhereInput[]
   OR?: QualificationScalarWhereInput[]
   NOT?: QualificationScalarWhereInput[]
@@ -7429,6 +7763,20 @@ export type QualificationScalarWhereInputInputObject =
   | { name: 'rank_lte', alias?: string  } 
   | { name: 'rank_gt', alias?: string  } 
   | { name: 'rank_gte', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -7448,6 +7796,7 @@ export interface QualificationUpdateManyDataInput {
   detail?: string | null
   years?: number | null
   rank?: number | null
+  candidateId?: string | null
 }
 export type QualificationUpdateManyDataInputInputObject =
   | Extract<keyof QualificationUpdateManyDataInput, string>
@@ -7456,6 +7805,7 @@ export type QualificationUpdateManyDataInputInputObject =
   | { name: 'detail', alias?: string  } 
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   
 export interface PositionUpdateManyInput {
   create?: PositionCreateInput[]
@@ -7716,70 +8066,13 @@ export type CandidateUpdateManyMutationInputInputObject =
   | { name: 'latest_odds', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
   
-export interface QualificationCreateInput {
-  id?: string | null
-  name?: string
-  summary?: string | null
-  detail?: string | null
-  years?: number
-  rank?: number | null
-  candidate?: CandidateCreateOneWithoutBio_qualificationsInput
-}
-export type QualificationCreateInputInputObject =
-  | Extract<keyof QualificationCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  
-export interface CandidateCreateOneWithoutBio_qualificationsInput {
-  create?: CandidateCreateWithoutBio_qualificationsInput | null
-  connect?: CandidateWhereUniqueInput | null
-}
-export type CandidateCreateOneWithoutBio_qualificationsInputInputObject =
-  | Extract<keyof CandidateCreateOneWithoutBio_qualificationsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidateCreateWithoutBio_qualificationsInput {
-  id?: string | null
-  name?: string
-  photo?: string | null
-  party?: string
-  state?: string
-  current_office?: string
-  age?: number
-  gender?: prisma.Gender | null
-  latest_poll?: number | null
-  latest_odds?: number | null
-  bio_policy_position?: PositionCreateManyInput | null
-  bio_other?: string | null
-}
-export type CandidateCreateWithoutBio_qualificationsInputInputObject =
-  | Extract<keyof CandidateCreateWithoutBio_qualificationsInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'photo', alias?: string  } 
-  | { name: 'party', alias?: string  } 
-  | { name: 'state', alias?: string  } 
-  | { name: 'current_office', alias?: string  } 
-  | { name: 'age', alias?: string  } 
-  | { name: 'gender', alias?: string  } 
-  | { name: 'latest_poll', alias?: string  } 
-  | { name: 'latest_odds', alias?: string  } 
-  | { name: 'bio_policy_position', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
-  
 export interface QualificationUpdateInput {
   name?: string | null
   summary?: string | null
   detail?: string | null
   years?: number | null
   rank?: number | null
-  candidate?: CandidateUpdateOneRequiredWithoutBio_qualificationsInput | null
+  candidateId?: string | null
 }
 export type QualificationUpdateInputInputObject =
   | Extract<keyof QualificationUpdateInput, string>
@@ -7788,56 +8081,7 @@ export type QualificationUpdateInputInputObject =
   | { name: 'detail', alias?: string  } 
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  
-export interface CandidateUpdateOneRequiredWithoutBio_qualificationsInput {
-  create?: CandidateCreateWithoutBio_qualificationsInput | null
-  update?: CandidateUpdateWithoutBio_qualificationsDataInput | null
-  upsert?: CandidateUpsertWithoutBio_qualificationsInput | null
-  connect?: CandidateWhereUniqueInput | null
-}
-export type CandidateUpdateOneRequiredWithoutBio_qualificationsInputInputObject =
-  | Extract<keyof CandidateUpdateOneRequiredWithoutBio_qualificationsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidateUpdateWithoutBio_qualificationsDataInput {
-  name?: string | null
-  photo?: string | null
-  party?: string | null
-  state?: string | null
-  current_office?: string | null
-  age?: number | null
-  gender?: prisma.Gender | null
-  latest_poll?: number | null
-  latest_odds?: number | null
-  bio_policy_position?: PositionUpdateManyInput | null
-  bio_other?: string | null
-}
-export type CandidateUpdateWithoutBio_qualificationsDataInputInputObject =
-  | Extract<keyof CandidateUpdateWithoutBio_qualificationsDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'photo', alias?: string  } 
-  | { name: 'party', alias?: string  } 
-  | { name: 'state', alias?: string  } 
-  | { name: 'current_office', alias?: string  } 
-  | { name: 'age', alias?: string  } 
-  | { name: 'gender', alias?: string  } 
-  | { name: 'latest_poll', alias?: string  } 
-  | { name: 'latest_odds', alias?: string  } 
-  | { name: 'bio_policy_position', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
-  
-export interface CandidateUpsertWithoutBio_qualificationsInput {
-  update?: CandidateUpdateWithoutBio_qualificationsDataInput
-  create?: CandidateCreateWithoutBio_qualificationsInput
-}
-export type CandidateUpsertWithoutBio_qualificationsInputInputObject =
-  | Extract<keyof CandidateUpsertWithoutBio_qualificationsInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   
 export interface QualificationUpdateManyMutationInput {
   name?: string | null
@@ -7845,6 +8089,7 @@ export interface QualificationUpdateManyMutationInput {
   detail?: string | null
   years?: number | null
   rank?: number | null
+  candidateId?: string | null
 }
 export type QualificationUpdateManyMutationInputInputObject =
   | Extract<keyof QualificationUpdateManyMutationInput, string>
@@ -7853,6 +8098,7 @@ export type QualificationUpdateManyMutationInputInputObject =
   | { name: 'detail', alias?: string  } 
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   
 export interface TopicUpdateInput {
   name?: string | null
@@ -7898,8 +8144,8 @@ export type PositionUpdateManyMutationInputInputObject =
   
 export interface CandidatePositionCreateInput {
   id?: string | null
-  position?: PositionCreateOneInput
-  candidate?: CandidateCreateOneInput
+  positionId?: string
+  candidateId?: string
   time?: string | null
   link?: string | null
   rank?: number | null
@@ -7908,34 +8154,16 @@ export interface CandidatePositionCreateInput {
 export type CandidatePositionCreateInputInputObject =
   | Extract<keyof CandidatePositionCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'position', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'link', alias?: string  } 
   | { name: 'rank', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface PositionCreateOneInput {
-  create?: PositionCreateInput | null
-  connect?: PositionWhereUniqueInput | null
-}
-export type PositionCreateOneInputInputObject =
-  | Extract<keyof PositionCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidateCreateOneInput {
-  create?: CandidateCreateInput | null
-  connect?: CandidateWhereUniqueInput | null
-}
-export type CandidateCreateOneInputInputObject =
-  | Extract<keyof CandidateCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
 export interface CandidatePositionUpdateInput {
-  position?: PositionUpdateOneRequiredInput | null
-  candidate?: CandidateUpdateOneRequiredInput | null
+  positionId?: string | null
+  candidateId?: string | null
   time?: string | null
   link?: string | null
   rank?: number | null
@@ -7943,87 +8171,16 @@ export interface CandidatePositionUpdateInput {
 }
 export type CandidatePositionUpdateInputInputObject =
   | Extract<keyof CandidatePositionUpdateInput, string>
-  | { name: 'position', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'link', alias?: string  } 
   | { name: 'rank', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface PositionUpdateOneRequiredInput {
-  create?: PositionCreateInput | null
-  update?: PositionUpdateDataInput | null
-  upsert?: PositionUpsertNestedInput | null
-  connect?: PositionWhereUniqueInput | null
-}
-export type PositionUpdateOneRequiredInputInputObject =
-  | Extract<keyof PositionUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface PositionUpsertNestedInput {
-  update?: PositionUpdateDataInput
-  create?: PositionCreateInput
-}
-export type PositionUpsertNestedInputInputObject =
-  | Extract<keyof PositionUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface CandidateUpdateOneRequiredInput {
-  create?: CandidateCreateInput | null
-  update?: CandidateUpdateDataInput | null
-  upsert?: CandidateUpsertNestedInput | null
-  connect?: CandidateWhereUniqueInput | null
-}
-export type CandidateUpdateOneRequiredInputInputObject =
-  | Extract<keyof CandidateUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidateUpdateDataInput {
-  name?: string | null
-  photo?: string | null
-  party?: string | null
-  state?: string | null
-  current_office?: string | null
-  age?: number | null
-  gender?: prisma.Gender | null
-  latest_poll?: number | null
-  latest_odds?: number | null
-  bio_qualifications?: QualificationUpdateManyWithoutCandidateInput | null
-  bio_policy_position?: PositionUpdateManyInput | null
-  bio_other?: string | null
-}
-export type CandidateUpdateDataInputInputObject =
-  | Extract<keyof CandidateUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'photo', alias?: string  } 
-  | { name: 'party', alias?: string  } 
-  | { name: 'state', alias?: string  } 
-  | { name: 'current_office', alias?: string  } 
-  | { name: 'age', alias?: string  } 
-  | { name: 'gender', alias?: string  } 
-  | { name: 'latest_poll', alias?: string  } 
-  | { name: 'latest_odds', alias?: string  } 
-  | { name: 'bio_qualifications', alias?: string  } 
-  | { name: 'bio_policy_position', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
-  
-export interface CandidateUpsertNestedInput {
-  update?: CandidateUpdateDataInput
-  create?: CandidateCreateInput
-}
-export type CandidateUpsertNestedInputInputObject =
-  | Extract<keyof CandidateUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
 export interface CandidatePositionUpdateManyMutationInput {
+  positionId?: string | null
+  candidateId?: string | null
   time?: string | null
   link?: string | null
   rank?: number | null
@@ -8031,6 +8188,8 @@ export interface CandidatePositionUpdateManyMutationInput {
 }
 export type CandidatePositionUpdateManyMutationInputInputObject =
   | Extract<keyof CandidatePositionUpdateManyMutationInput, string>
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'link', alias?: string  } 
   | { name: 'rank', alias?: string  } 
@@ -8038,8 +8197,8 @@ export type CandidatePositionUpdateManyMutationInputInputObject =
   
 export interface UserVoteCreateInput {
   id?: string | null
-  candidate?: CandidateCreateOneInput
-  user?: UserCreateOneInput
+  candidateId?: string
+  userId?: string
   vote_type?: prisma.VoteType | null
   time?: string | null
   latest?: boolean | null
@@ -8047,84 +8206,46 @@ export interface UserVoteCreateInput {
 export type UserVoteCreateInputInputObject =
   | Extract<keyof UserVoteCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface UserCreateOneInput {
-  create?: UserCreateInput | null
-  connect?: UserWhereUniqueInput | null
-}
-export type UserCreateOneInputInputObject =
-  | Extract<keyof UserCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
 export interface UserVoteUpdateInput {
-  candidate?: CandidateUpdateOneRequiredInput | null
-  user?: UserUpdateOneRequiredInput | null
+  candidateId?: string | null
+  userId?: string | null
   vote_type?: prisma.VoteType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserVoteUpdateInputInputObject =
   | Extract<keyof UserVoteUpdateInput, string>
-  | { name: 'candidate', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface UserUpdateOneRequiredInput {
-  create?: UserCreateInput | null
-  update?: UserUpdateDataInput | null
-  upsert?: UserUpsertNestedInput | null
-  connect?: UserWhereUniqueInput | null
-}
-export type UserUpdateOneRequiredInputInputObject =
-  | Extract<keyof UserUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface UserUpdateDataInput {
-  email?: string | null
-  name?: string | null
-  gender?: prisma.Gender | null
-}
-export type UserUpdateDataInputInputObject =
-  | Extract<keyof UserUpdateDataInput, string>
-  | { name: 'email', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'gender', alias?: string  } 
-  
-export interface UserUpsertNestedInput {
-  update?: UserUpdateDataInput
-  create?: UserCreateInput
-}
-export type UserUpsertNestedInputInputObject =
-  | Extract<keyof UserUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
 export interface UserVoteUpdateManyMutationInput {
+  candidateId?: string | null
+  userId?: string | null
   vote_type?: prisma.VoteType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserVoteUpdateManyMutationInputInputObject =
   | Extract<keyof UserVoteUpdateManyMutationInput, string>
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
 export interface UserQualificationLikeCreateInput {
   id?: string | null
-  user?: UserCreateOneInput
-  qualification?: QualificationCreateOneInput
+  userId?: string
+  qualificationId?: string
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8132,90 +8253,46 @@ export interface UserQualificationLikeCreateInput {
 export type UserQualificationLikeCreateInputInputObject =
   | Extract<keyof UserQualificationLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'qualification', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'qualificationId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface QualificationCreateOneInput {
-  create?: QualificationCreateInput | null
-  connect?: QualificationWhereUniqueInput | null
-}
-export type QualificationCreateOneInputInputObject =
-  | Extract<keyof QualificationCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
 export interface UserQualificationLikeUpdateInput {
-  user?: UserUpdateOneRequiredInput | null
-  qualification?: QualificationUpdateOneRequiredInput | null
+  userId?: string | null
+  qualificationId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserQualificationLikeUpdateInputInputObject =
   | Extract<keyof UserQualificationLikeUpdateInput, string>
-  | { name: 'user', alias?: string  } 
-  | { name: 'qualification', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'qualificationId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface QualificationUpdateOneRequiredInput {
-  create?: QualificationCreateInput | null
-  update?: QualificationUpdateDataInput | null
-  upsert?: QualificationUpsertNestedInput | null
-  connect?: QualificationWhereUniqueInput | null
-}
-export type QualificationUpdateOneRequiredInputInputObject =
-  | Extract<keyof QualificationUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface QualificationUpdateDataInput {
-  name?: string | null
-  summary?: string | null
-  detail?: string | null
-  years?: number | null
-  rank?: number | null
-  candidate?: CandidateUpdateOneRequiredWithoutBio_qualificationsInput | null
-}
-export type QualificationUpdateDataInputInputObject =
-  | Extract<keyof QualificationUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  
-export interface QualificationUpsertNestedInput {
-  update?: QualificationUpdateDataInput
-  create?: QualificationCreateInput
-}
-export type QualificationUpsertNestedInputInputObject =
-  | Extract<keyof QualificationUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
 export interface UserQualificationLikeUpdateManyMutationInput {
+  userId?: string | null
+  qualificationId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserQualificationLikeUpdateManyMutationInputInputObject =
   | Extract<keyof UserQualificationLikeUpdateManyMutationInput, string>
+  | { name: 'userId', alias?: string  } 
+  | { name: 'qualificationId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
 export interface UserPositionLikeCreateInput {
   id?: string | null
-  user?: UserCreateOneInput
-  candidate_position?: CandidatePositionCreateOneInput
+  userId?: string
+  candidate_positionId?: string
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8223,91 +8300,47 @@ export interface UserPositionLikeCreateInput {
 export type UserPositionLikeCreateInputInputObject =
   | Extract<keyof UserPositionLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'candidate_positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface CandidatePositionCreateOneInput {
-  create?: CandidatePositionCreateInput | null
-  connect?: CandidatePositionWhereUniqueInput | null
-}
-export type CandidatePositionCreateOneInputInputObject =
-  | Extract<keyof CandidatePositionCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
 export interface UserPositionLikeUpdateInput {
-  user?: UserUpdateOneRequiredInput | null
-  candidate_position?: CandidatePositionUpdateOneRequiredInput | null
+  userId?: string | null
+  candidate_positionId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserPositionLikeUpdateInputInputObject =
   | Extract<keyof UserPositionLikeUpdateInput, string>
-  | { name: 'user', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
+  | { name: 'candidate_positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface CandidatePositionUpdateOneRequiredInput {
-  create?: CandidatePositionCreateInput | null
-  update?: CandidatePositionUpdateDataInput | null
-  upsert?: CandidatePositionUpsertNestedInput | null
-  connect?: CandidatePositionWhereUniqueInput | null
-}
-export type CandidatePositionUpdateOneRequiredInputInputObject =
-  | Extract<keyof CandidatePositionUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidatePositionUpdateDataInput {
-  position?: PositionUpdateOneRequiredInput | null
-  candidate?: CandidateUpdateOneRequiredInput | null
-  time?: string | null
-  link?: string | null
-  rank?: number | null
-  latest?: boolean | null
-}
-export type CandidatePositionUpdateDataInputInputObject =
-  | Extract<keyof CandidatePositionUpdateDataInput, string>
-  | { name: 'position', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
-  | { name: 'time', alias?: string  } 
-  | { name: 'link', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'latest', alias?: string  } 
-  
-export interface CandidatePositionUpsertNestedInput {
-  update?: CandidatePositionUpdateDataInput
-  create?: CandidatePositionCreateInput
-}
-export type CandidatePositionUpsertNestedInputInputObject =
-  | Extract<keyof CandidatePositionUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
 export interface UserPositionLikeUpdateManyMutationInput {
+  userId?: string | null
+  candidate_positionId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
 }
 export type UserPositionLikeUpdateManyMutationInputInputObject =
   | Extract<keyof UserPositionLikeUpdateManyMutationInput, string>
+  | { name: 'userId', alias?: string  } 
+  | { name: 'candidate_positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
 export interface PollCreateInput {
   id?: string | null
-  source?: UserCreateOneInput
+  userId?: string
   date?: string | null
-  candidate?: CandidateCreateOneInput
+  candidateId?: string
   poll_type?: prisma.PollType | null
   error_margin?: string | null
   link_to_poll?: string | null
@@ -8315,39 +8348,43 @@ export interface PollCreateInput {
 export type PollCreateInputInputObject =
   | Extract<keyof PollCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'source', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
   | { name: 'date', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'poll_type', alias?: string  } 
   | { name: 'error_margin', alias?: string  } 
   | { name: 'link_to_poll', alias?: string  } 
   
 export interface PollUpdateInput {
-  source?: UserUpdateOneRequiredInput | null
+  userId?: string | null
   date?: string | null
-  candidate?: CandidateUpdateOneRequiredInput | null
+  candidateId?: string | null
   poll_type?: prisma.PollType | null
   error_margin?: string | null
   link_to_poll?: string | null
 }
 export type PollUpdateInputInputObject =
   | Extract<keyof PollUpdateInput, string>
-  | { name: 'source', alias?: string  } 
+  | { name: 'userId', alias?: string  } 
   | { name: 'date', alias?: string  } 
-  | { name: 'candidate', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'poll_type', alias?: string  } 
   | { name: 'error_margin', alias?: string  } 
   | { name: 'link_to_poll', alias?: string  } 
   
 export interface PollUpdateManyMutationInput {
+  userId?: string | null
   date?: string | null
+  candidateId?: string | null
   poll_type?: prisma.PollType | null
   error_margin?: string | null
   link_to_poll?: string | null
 }
 export type PollUpdateManyMutationInputInputObject =
   | Extract<keyof PollUpdateManyMutationInput, string>
+  | { name: 'userId', alias?: string  } 
   | { name: 'date', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
   | { name: 'poll_type', alias?: string  } 
   | { name: 'error_margin', alias?: string  } 
   | { name: 'link_to_poll', alias?: string  } 
@@ -8581,9 +8618,6 @@ export type UserOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type CategoryTypeValues =
-  | 'HEALTH'
-  
 export type QualificationOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8597,10 +8631,15 @@ export type QualificationOrderByInputValues =
   | 'years_DESC'
   | 'rank_ASC'
   | 'rank_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  
+export type CategoryTypeValues =
+  | 'HEALTH'
   
 export type PositionOrderByInputValues =
   | 'id_ASC'
@@ -8659,6 +8698,10 @@ export type TopicOrderByInputValues =
 export type CandidatePositionOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'positionId_ASC'
+  | 'positionId_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
   | 'time_ASC'
   | 'time_DESC'
   | 'link_ASC'
@@ -8682,6 +8725,10 @@ export type VoteTypeValues =
 export type UserVoteOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
+  | 'userId_ASC'
+  | 'userId_DESC'
   | 'vote_type_ASC'
   | 'vote_type_DESC'
   | 'time_ASC'
@@ -8701,6 +8748,10 @@ export type LikeTypeValues =
 export type UserQualificationLikeOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'userId_ASC'
+  | 'userId_DESC'
+  | 'qualificationId_ASC'
+  | 'qualificationId_DESC'
   | 'like_ASC'
   | 'like_DESC'
   | 'time_ASC'
@@ -8715,6 +8766,10 @@ export type UserQualificationLikeOrderByInputValues =
 export type UserPositionLikeOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'userId_ASC'
+  | 'userId_DESC'
+  | 'candidate_positionId_ASC'
+  | 'candidate_positionId_DESC'
   | 'like_ASC'
   | 'like_DESC'
   | 'time_ASC'
@@ -8733,8 +8788,12 @@ export type PollTypeValues =
 export type PollOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'userId_ASC'
+  | 'userId_DESC'
   | 'date_ASC'
   | 'date_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
   | 'poll_type_ASC'
   | 'poll_type_DESC'
   | 'error_margin_ASC'

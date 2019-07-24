@@ -10,10 +10,10 @@ const Mutation = prismaObjectType({
       'createPosition',
       'createQualification',
       'createTopic',
-      'createUserPositionLike',
-      'createUserQualificationLike',
-      'createPoll',
-      'updateCandidate'
+      'deleteCandidate',
+      'deleteUser',
+      'deletePosition',
+      'deleteUserVote',
     ])
 
     t.field('createUserVote', {
@@ -23,11 +23,104 @@ const Mutation = prismaObjectType({
         userId: idArg(),
         voteType: 'VoteType'
       },
-      resolve: (parent, {userId, candidateId, voteType}, ctx) => {
-        return ctx.prisma.createUserVote({
-          user: { connect: {id: userId}},
-          candidate: { connect: {id: candidateId}},
-          vote_type: voteType})
+      resolve: async (parent, {userId, candidateId, voteType}, ctx) => {
+        let userVote = await ctx.prisma.userVotes({
+          where: { userId, candidateId }
+        })
+        if (userVote.length === 0) {
+          return ctx.prisma.createUserVote({
+            userId,
+            candidateId,
+            vote_type: voteType})
+        }
+        if (userVote[0].vote_type === voteType) {
+          return ctx.prisma.deleteUserVote({ id:userVote[0].id })
+        }
+        return ctx.prisma.updateUserVote({
+          where: { id: userVote[0].id },
+          data: { vote_type: voteType }
+        })
+      }
+    })
+
+    t.field('createUserPositionLike', {
+      type: 'UserPositionLike',
+      args: {
+        candidate_positionId: idArg(),
+        userId: idArg(),
+        like: 'LikeType'
+      },
+      resolve: async (parent, {userId, candidate_positionId, like}, ctx) => {
+        let userPositionLike = await ctx.prisma.userPositionLikes({
+          where: { userId, candidate_positionId }
+        })
+        if (userPositionLike.length === 0) {
+          return ctx.prisma.createUserPositionLike({
+            userId,
+            candidate_positionId,
+            like})
+        }
+        if (userPositionLike[0].like === like) {
+          return ctx.prisma.deleteUserPositionLike({ id:userPositionLike[0].id })
+        }
+        return ctx.prisma.updateUserPositionLike({
+          where: { id: userPositionLike[0].id },
+          data: { like }
+        })
+      }
+    })
+
+    t.field('createUserQualificationLike', {
+      type: 'UserQualificationLike',
+      args: {
+        qualificationId: idArg(),
+        userId: idArg(),
+        like: 'LikeType'
+      },
+      resolve: async (parent, {userId, qualificationId, like}, ctx) => {
+        let userQualificationLike = await ctx.prisma.userQualificationLikes({
+          where: { userId, qualificationId }
+        })
+        if (userQualificationLike.length === 0) {
+          return ctx.prisma.createUserQualificationLike({
+            userId,
+            qualificationId,
+            like})
+        }
+        if (userQualificationLike[0].like === like) {
+          return ctx.prisma.deleteUserQualificationLike({ id:userQualificationLike[0].id })
+        }
+        return ctx.prisma.updateUserQualificationLike({
+          where: { id: userQualificationLike[0].id },
+          data: { like }
+        })
+      }
+    })
+
+    t.field('createPoll', {
+      type: 'Poll',
+      args: {
+        candidateId: idArg(),
+        userId: idArg(),
+        pollType: 'PollType'
+      },
+      resolve: async (parent, {userId, candidateId, pollType}, ctx) => {
+        let poll = await ctx.prisma.polls({
+          where: { userId, candidateId }
+        })
+        if (poll.length === 0) {
+          return ctx.prisma.createPoll({
+            userId,
+            candidateId,
+            poll_type: pollType})
+        }
+        if (poll[0].poll_type === pollType) {
+          return ctx.prisma.deletePoll({ id:poll[0].id })
+        }
+        return ctx.prisma.updatePoll({
+          where: { id: poll[0].id },
+          data: { poll_type: pollType }
+        })
       }
     })
   },
