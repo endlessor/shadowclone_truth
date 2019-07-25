@@ -2,7 +2,8 @@ type User {
   id: ID! @id
   email: String! @unique
   name: String!
-  gender: Gender! @default(value: MALE)
+  password: String
+  gender: Gender @default(value: MALE)
 }
 
 type Candidate {

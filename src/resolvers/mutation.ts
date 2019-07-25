@@ -1,29 +1,84 @@
 import { prismaObjectType } from 'nexus-prisma'
 import { stringArg, idArg, intArg } from 'nexus/dist';
+import { hash, compare } from 'bcrypt'
+import { APP_SECRET, getUserId } from '../utils'
+import { sign } from 'jsonwebtoken'
 
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {
     t.prismaFields([
-      'createUser',
       'createCandidate',
       'createPosition',
       'createQualification',
       'createTopic',
+      'createCandidatePosition',
       'deleteCandidate',
-      'deleteUser',
       'deletePosition',
-      'deleteUserVote',
+      'deleteCandidatePosition',
+      'deleteTopic',
+      'deleteQualification',
+      'updateCandidate',
+      'updateCandidatePosition',
+      'updateTopic',
+      'updatePosition',
+      'updateQualification',
     ])
+
+    t.field('signup', {
+      type: 'AuthPayload',
+      args: {
+        name: stringArg({ nullable: true }),
+        email: stringArg({required: true}),
+        password: stringArg({required: true}),
+      },
+      resolve: async (parent, { name, email, password }, ctx) => {
+        if (password.length < 8) {
+          throw new Error(`Password should be at least 8 in length`)
+        }
+        const hashedPassword = await hash(password, 10)
+        const user = await ctx.prisma.createUser({
+          name,
+          email,
+          password: hashedPassword,
+        })
+        return {
+          token: sign({ userId: user.id }, APP_SECRET),
+          user,
+        }
+      },
+    })
+
+    t.field('login', {
+      type: 'AuthPayload',
+      args: {
+        email: stringArg(),
+        password: stringArg(),
+      },
+      resolve: async (parent, { email, password }, context) => {
+        const user = await context.prisma.user({ email })
+        if (!user) {
+          throw new Error(`No user found for email: ${email}`)
+        }
+        const passwordValid = await compare(password, user.password)
+        if (!passwordValid) {
+          throw new Error('Invalid password')
+        }
+        return {
+          token: sign({ userId: user.id }, APP_SECRET),
+          user,
+        }
+      },
+    })
 
     t.field('createUserVote', {
       type: 'UserVote',
       args: {
         candidateId: idArg(),
-        userId: idArg(),
         voteType: 'VoteType'
       },
-      resolve: async (parent, {userId, candidateId, voteType}, ctx) => {
+      resolve: async (parent, {candidateId, voteType}, ctx) => {
+        const userId = getUserId(ctx)
         let userVote = await ctx.prisma.userVotes({
           where: { userId, candidateId }
         })
@@ -47,10 +102,10 @@ const Mutation = prismaObjectType({
       type: 'UserPositionLike',
       args: {
         candidate_positionId: idArg(),
-        userId: idArg(),
         like: 'LikeType'
       },
-      resolve: async (parent, {userId, candidate_positionId, like}, ctx) => {
+      resolve: async (parent, {candidate_positionId, like}, ctx) => {
+        const userId = getUserId(ctx)
         let userPositionLike = await ctx.prisma.userPositionLikes({
           where: { userId, candidate_positionId }
         })
@@ -74,10 +129,10 @@ const Mutation = prismaObjectType({
       type: 'UserQualificationLike',
       args: {
         qualificationId: idArg(),
-        userId: idArg(),
         like: 'LikeType'
       },
-      resolve: async (parent, {userId, qualificationId, like}, ctx) => {
+      resolve: async (parent, {qualificationId, like}, ctx) => {
+        const userId = getUserId(ctx)
         let userQualificationLike = await ctx.prisma.userQualificationLikes({
           where: { userId, qualificationId }
         })
@@ -101,10 +156,10 @@ const Mutation = prismaObjectType({
       type: 'Poll',
       args: {
         candidateId: idArg(),
-        userId: idArg(),
         pollType: 'PollType'
       },
-      resolve: async (parent, {userId, candidateId, pollType}, ctx) => {
+      resolve: async (parent, {candidateId, pollType}, ctx) => {
+        const userId = getUserId(ctx)
         let poll = await ctx.prisma.polls({
           where: { userId, candidateId }
         })

@@ -1545,7 +1545,8 @@ type User {
   id: ID!
   email: String!
   name: String!
-  gender: Gender!
+  password: String
+  gender: Gender
 }
 
 type UserConnection {
@@ -1558,6 +1559,7 @@ input UserCreateInput {
   id: ID
   email: String!
   name: String!
+  password: String
   gender: Gender
 }
 
@@ -1573,6 +1575,8 @@ enum UserOrderByInput {
   email_DESC
   name_ASC
   name_DESC
+  password_ASC
+  password_DESC
   gender_ASC
   gender_DESC
 }
@@ -1731,7 +1735,8 @@ type UserPreviousValues {
   id: ID!
   email: String!
   name: String!
-  gender: Gender!
+  password: String
+  gender: Gender
 }
 
 type UserQualificationLike {
@@ -1905,12 +1910,14 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   email: String
   name: String
+  password: String
   gender: Gender
 }
 
 input UserUpdateManyMutationInput {
   email: String
   name: String
+  password: String
   gender: Gender
 }
 
@@ -2107,6 +2114,20 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
   gender: Gender
   gender_not: Gender
   gender_in: [Gender!]

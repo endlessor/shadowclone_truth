@@ -1,5 +1,5 @@
-import { stringArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
+import { getUserId } from '../utils'
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -15,12 +15,14 @@ const Query = prismaObjectType({
       'polls',
       'topics',
       'candidatePositions'
-    ])
-    t.list.field('userByEmail', {
+    ]),
+
+    t.field('me', {
       type: 'User',
-      args: { email: stringArg() },
-      resolve: (_, { email }, ctx) => 
-      ctx.prisma.users({ where: { email: email } })
+      resolve: (parent, args, ctx) => {
+        const userId = getUserId(ctx)
+        return ctx.prisma.user({ id: userId })
+      },
     })
   }
 })
