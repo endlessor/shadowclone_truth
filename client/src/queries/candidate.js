@@ -25,3 +25,56 @@ export const CandidateQuery = gql`
     }
   }
 `;
+
+export const UserVoteMutation = gql`
+  mutation createUserVote($candidateId: ID, $userId: ID, $voteType: VoteType) {
+    createUserVote(
+      candidateId: $candidateId
+      userId: $userId
+      voteType: $voteType
+    ) {
+      id
+      vote_type
+      time
+      latest
+    }
+  }
+`;
+
+export const PositionLikeMutation = gql`
+  mutation createUserPositionLike(
+    $positionId: ID
+    $userId: ID
+    $like: LikeType
+  ) {
+    createUserPositionLike(
+      candidate_positionId: $positionId
+      userId: $userId
+      like: $like
+    ) {
+      id
+      like
+      time
+      latest
+    }
+  }
+`;
+
+export const QualificationLikeMutation = gql`
+  mutation createUserQualificationLike(
+    $qualificationId: ID
+    $userId: ID
+    $like: LikeType
+  ) {
+    createUserQualificationLike(
+      qualificationId: $qualificationId
+      userId: $userId
+      like: $like
+    ) {
+      id
+      like
+      time
+      latest
+    }
+  }
+`;

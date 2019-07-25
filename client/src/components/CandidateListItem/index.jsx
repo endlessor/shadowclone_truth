@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
@@ -8,11 +9,23 @@ import CandidateShape from "../../types/candidate";
 
 import "./CandidateListItem.style.scss";
 
-const CandidateListItem = ({ data }) => {
+const CandidateListItem = ({ data, updateVote }) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const onCollapse = () => {
     setCollapsed(!collapsed);
+  };
+
+  const handleUpdateVote = e => {
+    if (e.value) {
+      updateVote({
+        variables: {
+          userId: "cjyg2k9vkhc3b0b19tkwr49fu",
+          candidateId: data.id,
+          voteType: e.target.name
+        }
+      });
+    }
   };
 
   return (
@@ -54,6 +67,8 @@ const CandidateListItem = ({ data }) => {
               offIcon={"pi pi-star"}
               onLabel="Top"
               offLabel="Top"
+              name="TOP"
+              onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -62,6 +77,8 @@ const CandidateListItem = ({ data }) => {
               offIcon={"pi pi-star"}
               onLabel="Favorites"
               offLabel="Favorites"
+              name="FAVORITE"
+              onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -70,6 +87,8 @@ const CandidateListItem = ({ data }) => {
               offIcon={"pi pi-star"}
               onLabel="Compromises"
               offLabel="Compromises"
+              name="COMPROMISE"
+              onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -78,6 +97,8 @@ const CandidateListItem = ({ data }) => {
               offIcon={"pi pi-star"}
               onLabel="vetos"
               offLabel="vetos"
+              name="VETO"
+              onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -86,6 +107,8 @@ const CandidateListItem = ({ data }) => {
               offIcon={"pi pi-star"}
               onLabel="Unknowns"
               offLabel="Unknowns"
+              name="UNKNOWNS"
+              onChange={handleUpdateVote}
             />
           </div>
         </div>
@@ -95,7 +118,8 @@ const CandidateListItem = ({ data }) => {
 };
 
 CandidateListItem.propTypes = {
-  data: CandidateShape.isRequired
+  data: CandidateShape.isRequired,
+  updateVote: PropTypes.func.isRequired
 };
 
 export default CandidateListItem;
