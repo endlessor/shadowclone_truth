@@ -903,12 +903,14 @@ type UserObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'gender', args?: [] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
   | 'email'
   | 'name'
+  | 'password'
   | 'gender'
 
 
@@ -940,18 +942,26 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
+  password: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   gender: {
     type: 'Gender'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"User">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Gender> | prisma.Gender
+    ) => Promise<prisma.Gender | null> | prisma.Gender | null
   }
 }
   
@@ -4416,12 +4426,14 @@ type UserPreviousValuesObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'gender', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
   | 'email'
   | 'name'
+  | 'password'
   | 'gender'
 
 
@@ -4453,18 +4465,26 @@ export interface UserPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  password: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   gender: {
     type: 'Gender'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
       root: core.RootValue<"UserPreviousValues">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Gender> | prisma.Gender
+    ) => Promise<prisma.Gender | null> | prisma.Gender | null
   }
 }
   
@@ -5887,6 +5907,20 @@ export interface UserWhereInput {
   name_not_starts_with?: string | null
   name_ends_with?: string | null
   name_not_ends_with?: string | null
+  password?: string | null
+  password_not?: string | null
+  password_in?: string[]
+  password_not_in?: string[]
+  password_lt?: string | null
+  password_lte?: string | null
+  password_gt?: string | null
+  password_gte?: string | null
+  password_contains?: string | null
+  password_not_contains?: string | null
+  password_starts_with?: string | null
+  password_not_starts_with?: string | null
+  password_ends_with?: string | null
+  password_not_ends_with?: string | null
   gender?: prisma.Gender | null
   gender_not?: prisma.Gender | null
   gender_in?: prisma.Gender[]
@@ -5939,6 +5973,20 @@ export type UserWhereInputInputObject =
   | { name: 'name_not_starts_with', alias?: string  } 
   | { name: 'name_ends_with', alias?: string  } 
   | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'password_not', alias?: string  } 
+  | { name: 'password_in', alias?: string  } 
+  | { name: 'password_not_in', alias?: string  } 
+  | { name: 'password_lt', alias?: string  } 
+  | { name: 'password_lte', alias?: string  } 
+  | { name: 'password_gt', alias?: string  } 
+  | { name: 'password_gte', alias?: string  } 
+  | { name: 'password_contains', alias?: string  } 
+  | { name: 'password_not_contains', alias?: string  } 
+  | { name: 'password_starts_with', alias?: string  } 
+  | { name: 'password_not_starts_with', alias?: string  } 
+  | { name: 'password_ends_with', alias?: string  } 
+  | { name: 'password_not_ends_with', alias?: string  } 
   | { name: 'gender', alias?: string  } 
   | { name: 'gender_not', alias?: string  } 
   | { name: 'gender_in', alias?: string  } 
@@ -7375,6 +7423,7 @@ export interface UserCreateInput {
   id?: string | null
   email?: string
   name?: string
+  password?: string | null
   gender?: prisma.Gender | null
 }
 export type UserCreateInputInputObject =
@@ -7382,28 +7431,33 @@ export type UserCreateInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
   
 export interface UserUpdateInput {
   email?: string | null
   name?: string | null
+  password?: string | null
   gender?: prisma.Gender | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
   | { name: 'email', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   email?: string | null
   name?: string | null
+  password?: string | null
   gender?: prisma.Gender | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
   | { name: 'email', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
   
 export interface CandidateCreateInput {
@@ -8611,6 +8665,8 @@ export type UserOrderByInputValues =
   | 'email_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'password_ASC'
+  | 'password_DESC'
   | 'gender_ASC'
   | 'gender_DESC'
   | 'createdAt_ASC'

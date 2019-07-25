@@ -1,28 +1,34 @@
-import { ApolloServer } from 'apollo-server-express'
+import { GraphQLServer } from 'graphql-yoga'
 import { prisma } from '../generated/prisma-client'
 import schema from './schema'
 import express = require('express')
 import path = require('path')
-import bodyParser = require('body-parser')
+import { permissions } from './permissions'
 
 require('dotenv').config()
 
-const app = express()
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use('/', express.static(path.join(path.dirname(__dirname), '/client/build')));
-
-const server = new ApolloServer({
+const server = new GraphQLServer({
   schema,
-  context: { prisma },
+  middlewares: [permissions],
+  context: request => {
+    return {
+      ...request,
+      prisma,
+    }
+  },
 })
 
-server.applyMiddleware({ app });
+server.express.use('/', express.static(path.join(path.dirname(__dirname), '/client/build')));
 
 const port = process.env.SERVER_PORT || 4000
 
-app.listen({ port: port }, () =>
+const opts = {
+  endpoint: '/',
+  port: port,
+  tracing: true,
+  playground: '/graphql',
+}
+
+server.start(opts, () =>
   console.log(`🚀 Server ready at http://localhost:${port}`)
 );

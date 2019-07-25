@@ -1,15 +1,19 @@
 mutation {
   user1: createUser(data: { 
     id: "cjyh4jzsqlnms0b190415j36a",
-    email: "test1.user1@gmail.com",
-    name: "John Doe" }) {
+    email: "testuser1@gmail.com",
+    name: "John Doe",
+    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6" 
+    }) {
     id
   }
 
   user2: createUser(data: {
     id: "cjyh4jzsqlnms0b190415j36b",
-    email: "test2.user2@gmail.com",
-    name: "Bob Doe" }) {
+    email: "testuser2@gmail.com",
+    name: "Bob Doe",
+    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6" 
+    }) {
     id
   }
 
