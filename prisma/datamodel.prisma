@@ -60,7 +60,7 @@ type UserVote {
   id: ID! @id
   candidateId: String!
   userId: String!
-  vote_type: VoteType! @default(value: TOP)
+  vote_type: VoteType! @default(value: UNKNOWNS)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)
 }

@@ -101,6 +101,132 @@ mutation {
     id
   }
 
+  candidate3: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36o",
+    name: "Dash Board",
+  	photo: "https://randomuser.me/api/portraits/men/60.jpg",
+    party: "democratic",
+    state: "fe",
+    current_office: "n/a",
+    age: 35,
+    gender: MALE,
+    latest_poll: 55,
+    latest_odds: 38,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3ao",
+        name: "VP of US Bank",
+        summary: "professional digital marketer who creates and promotes digital content at Solaris Digital.",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36o"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3bo",
+        name: "lead of US Bank",
+        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            id: "cjyh4jzsqlnms0b190415j3co",
+            name: "Healthcare insurance",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  }
+
+  candidate4: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36p",
+    name: "Harry Thomas",
+  	photo: "https://randomuser.me/api/portraits/men/79.jpg",
+    party: "democratic",
+    state: "fe",
+    current_office: "n/a",
+    age: 55,
+    gender: MALE,
+    latest_poll: 84,
+    latest_odds: 58,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3ap",
+        name: "Leader of Yale",
+        summary: "professional digital marketer who creates and promotes digital content at Solaris Digital.",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36p"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3bp",
+        name: "leader of Yale team",
+        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            id: "cjyh4jzsqlnms0b190415j3cp",
+            name: "Healthcare insurance",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  } 
+
+  candidate5: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36q",
+    name: "Diana Loger",
+  	photo: "https://randomuser.me/api/portraits/women/54.jpg",
+    party: "democratic",
+    state: "fe",
+    current_office: "n/a",
+    age: 55,
+    gender: MALE,
+    latest_poll: 84,
+    latest_odds: 58,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3aq",
+        name: "Master of Havard",
+        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36q"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3bq",
+        name: "leader of havard",
+        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            id: "cjyh4jzsqlnms0b190415j3cq",
+            name: "Healthcare insurance",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  }
+
   candidatePosition1: createCandidatePosition(data: {
     id: "cjyh4jzsqlnms0b190415j3k"
     link: "https://example.com",
