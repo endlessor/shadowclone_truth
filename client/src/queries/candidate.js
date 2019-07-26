@@ -12,6 +12,7 @@ export const CandidateQuery = gql`
       current_office
       latest_poll
       latest_odds
+      prevote_score
       bio_qualifications {
         id
         name
@@ -39,7 +40,7 @@ export const UserVoteMutation = gql`
 `;
 
 export const PositionLikeMutation = gql`
-  mutation createUserPositionLike($positionId: ID, $like: LikeType) {
+  mutation createUserPositionLike($positionId: ID!, $like: LikeType) {
     createUserPositionLike(candidate_positionId: $positionId, like: $like) {
       id
       like
@@ -50,7 +51,7 @@ export const PositionLikeMutation = gql`
 `;
 
 export const QualificationLikeMutation = gql`
-  mutation createUserQualificationLike($qualificationId: ID, $like: LikeType) {
+  mutation createUserQualificationLike($qualificationId: ID!, $like: LikeType) {
     createUserQualificationLike(
       qualificationId: $qualificationId
       like: $like
