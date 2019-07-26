@@ -26,6 +26,7 @@ export interface NexusGenInputs {
     name: string; // String!
     party: string; // String!
     photo?: string | null; // String
+    prevote_score?: number | null; // Float
     state: string; // String!
   }
   CandidatePositionCreateInput: { // input type
@@ -139,6 +140,7 @@ export interface NexusGenInputs {
     name?: string | null; // String
     party?: string | null; // String
     photo?: string | null; // String
+    prevote_score?: number | null; // Float
     state?: string | null; // String
   }
   CandidateWhereUniqueInput: { // input type
@@ -1007,6 +1009,7 @@ export interface NexusGenRootTypes {
     name: string; // String!
     party: string; // String!
     photo?: string | null; // String
+    prevote_score?: number | null; // Float
     state: string; // String!
   }
   CandidatePosition: { // root type
@@ -1166,6 +1169,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     party: string; // String!
     photo: string | null; // String
+    prevote_score: number | null; // Float
     state: string; // String!
   }
   CandidatePosition: { // field return type
@@ -1304,7 +1308,7 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['CandidatePositionCreateInput']; // CandidatePositionCreateInput!
     }
     createPoll: { // args
-      candidateId?: string | null; // ID
+      candidateId: string; // ID!
       pollType?: NexusGenEnums['PollType'] | null; // PollType
     }
     createPosition: { // args
@@ -1317,15 +1321,15 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['TopicCreateInput']; // TopicCreateInput!
     }
     createUserPositionLike: { // args
-      candidate_positionId?: string | null; // ID
+      candidate_positionId: string; // ID!
       like?: NexusGenEnums['LikeType'] | null; // LikeType
     }
     createUserQualificationLike: { // args
       like?: NexusGenEnums['LikeType'] | null; // LikeType
-      qualificationId?: string | null; // ID
+      qualificationId: string; // ID!
     }
     createUserVote: { // args
-      candidateId?: string | null; // ID
+      candidateId: string; // ID!
       voteType?: NexusGenEnums['VoteType'] | null; // VoteType
     }
     deleteCandidate: { // args

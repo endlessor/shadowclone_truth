@@ -507,6 +507,8 @@ export type CandidateOrderByInput =
   | "latest_poll_DESC"
   | "latest_odds_ASC"
   | "latest_odds_DESC"
+  | "prevote_score_ASC"
+  | "prevote_score_DESC"
   | "bio_other_ASC"
   | "bio_other_DESC";
 
@@ -651,6 +653,7 @@ export interface CandidateCreateInput {
   gender?: Maybe<Gender>;
   latest_poll?: Maybe<Float>;
   latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
   bio_qualifications?: Maybe<QualificationCreateManyInput>;
   bio_policy_position?: Maybe<PositionCreateManyInput>;
   bio_other?: Maybe<String>;
@@ -1001,6 +1004,14 @@ export interface CandidateWhereInput {
   latest_odds_lte?: Maybe<Float>;
   latest_odds_gt?: Maybe<Float>;
   latest_odds_gte?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  prevote_score_not?: Maybe<Float>;
+  prevote_score_in?: Maybe<Float[] | Float>;
+  prevote_score_not_in?: Maybe<Float[] | Float>;
+  prevote_score_lt?: Maybe<Float>;
+  prevote_score_lte?: Maybe<Float>;
+  prevote_score_gt?: Maybe<Float>;
+  prevote_score_gte?: Maybe<Float>;
   bio_qualifications_every?: Maybe<QualificationWhereInput>;
   bio_qualifications_some?: Maybe<QualificationWhereInput>;
   bio_qualifications_none?: Maybe<QualificationWhereInput>;
@@ -1213,6 +1224,7 @@ export interface CandidateUpdateManyMutationInput {
   gender?: Maybe<Gender>;
   latest_poll?: Maybe<Float>;
   latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
   bio_other?: Maybe<String>;
 }
 
@@ -1881,6 +1893,7 @@ export interface CandidateUpdateInput {
   gender?: Maybe<Gender>;
   latest_poll?: Maybe<Float>;
   latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
   bio_qualifications?: Maybe<QualificationUpdateManyInput>;
   bio_policy_position?: Maybe<PositionUpdateManyInput>;
   bio_other?: Maybe<String>;
@@ -2373,6 +2386,7 @@ export interface Candidate {
   gender?: Gender;
   latest_poll?: Float;
   latest_odds?: Float;
+  prevote_score?: Float;
   bio_other?: String;
 }
 
@@ -2387,6 +2401,7 @@ export interface CandidatePromise extends Promise<Candidate>, Fragmentable {
   gender: () => Promise<Gender>;
   latest_poll: () => Promise<Float>;
   latest_odds: () => Promise<Float>;
+  prevote_score: () => Promise<Float>;
   bio_qualifications: <T = FragmentableArray<Qualification>>(args?: {
     where?: QualificationWhereInput;
     orderBy?: QualificationOrderByInput;
@@ -2421,6 +2436,7 @@ export interface CandidateSubscription
   gender: () => Promise<AsyncIterator<Gender>>;
   latest_poll: () => Promise<AsyncIterator<Float>>;
   latest_odds: () => Promise<AsyncIterator<Float>>;
+  prevote_score: () => Promise<AsyncIterator<Float>>;
   bio_qualifications: <
     T = Promise<AsyncIterator<QualificationSubscription>>
   >(args?: {
@@ -2459,6 +2475,7 @@ export interface CandidateNullablePromise
   gender: () => Promise<Gender>;
   latest_poll: () => Promise<Float>;
   latest_odds: () => Promise<Float>;
+  prevote_score: () => Promise<Float>;
   bio_qualifications: <T = FragmentableArray<Qualification>>(args?: {
     where?: QualificationWhereInput;
     orderBy?: QualificationOrderByInput;
@@ -2645,6 +2662,7 @@ export interface CandidatePreviousValues {
   gender?: Gender;
   latest_poll?: Float;
   latest_odds?: Float;
+  prevote_score?: Float;
   bio_other?: String;
 }
 
@@ -2661,6 +2679,7 @@ export interface CandidatePreviousValuesPromise
   gender: () => Promise<Gender>;
   latest_poll: () => Promise<Float>;
   latest_odds: () => Promise<Float>;
+  prevote_score: () => Promise<Float>;
   bio_other: () => Promise<String>;
 }
 
@@ -2677,6 +2696,7 @@ export interface CandidatePreviousValuesSubscription
   gender: () => Promise<AsyncIterator<Gender>>;
   latest_poll: () => Promise<AsyncIterator<Float>>;
   latest_odds: () => Promise<AsyncIterator<Float>>;
+  prevote_score: () => Promise<AsyncIterator<Float>>;
   bio_other: () => Promise<AsyncIterator<String>>;
 }
 

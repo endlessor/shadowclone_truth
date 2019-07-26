@@ -17,6 +17,7 @@ type Candidate {
   gender: Gender @default(value: MALE)
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_qualifications: [Qualification!] @relation(onDelete: CASCADE)
   bio_policy_position: [Position!]
   bio_other: String

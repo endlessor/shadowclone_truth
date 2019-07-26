@@ -3511,6 +3511,18 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "prevote_score",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "bio_qualifications",
             "description": null,
             "args": [
@@ -7640,6 +7652,102 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "prevote_score",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bio_qualifications_every",
             "description": null,
             "type": {
@@ -8038,6 +8146,18 @@ export default {
           },
           {
             "name": "latest_odds_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "prevote_score_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "prevote_score_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -17336,6 +17456,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "prevote_score",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bio_qualifications",
             "description": null,
             "type": {
@@ -17782,6 +17912,16 @@ export default {
           },
           {
             "name": "latest_odds",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "prevote_score",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -20631,6 +20771,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "prevote_score",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bio_other",
             "description": null,
             "type": {
@@ -22918,6 +23068,18 @@ export default {
           },
           {
             "name": "latest_odds",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "prevote_score",
             "description": null,
             "args": [],
             "type": {
