@@ -70,35 +70,33 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
   };
 
   return (
-    <div className="p-grid p-justify-center">
-      <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
-        <div className="p-grid p-col-align-center">
-          <div className="p-col-4">
-            <Avatar url={candidate.photo} alt="avatar" />
-          </div>
-          <div className="p-col-8">
-            <h4>{candidate.name}</h4>
-          </div>
+    <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
+      <div className="p-grid p-col-align-center">
+        <div className="p-col-4">
+          <Avatar url={candidate.photo} alt="avatar" />
         </div>
-        <Accordion multiple>
-          <AccordionTab header="Qualifications">
-            <DataView
-              value={candidate.bio_qualifications}
-              layout="list"
-              itemTemplate={itemTemplateQualification}
-              rows={20}
-            />
-          </AccordionTab>
-          <AccordionTab header="Policies">
-            <DataView
-              value={candidate.bio_policy_position}
-              layout="list"
-              itemTemplate={itemTemplatePosition}
-              rows={20}
-            />
-          </AccordionTab>
-        </Accordion>
+        <div className="p-col-8">
+          <h4>{candidate.name}</h4>
+        </div>
       </div>
+      <Accordion multiple>
+        <AccordionTab header="Qualifications">
+          <DataView
+            value={candidate.bio_qualifications}
+            layout="list"
+            itemTemplate={itemTemplateQualification}
+            rows={20}
+          />
+        </AccordionTab>
+        <AccordionTab header="Policies">
+          <DataView
+            value={candidate.bio_policy_position}
+            layout="list"
+            itemTemplate={itemTemplatePosition}
+            rows={20}
+          />
+        </AccordionTab>
+      </Accordion>
     </div>
   );
 }

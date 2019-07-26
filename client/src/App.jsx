@@ -11,7 +11,7 @@ import "primeflex/primeflex.css";
 import "./App.scss";
 
 import MainRoute from "./routes";
-import { cacheResolvers } from "./config/graphql";
+import { cacheResolvers, AUTH_TOKEN } from "./config";
 
 function App() {
   const [client, setClient] = useState(null);
@@ -21,18 +21,23 @@ function App() {
     });
 
     persistCache({ cache, storage: localStorage }).then(() => {
+      const token = localStorage.getItem(AUTH_TOKEN);
       const client = new ApolloClient({
         uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
-        cache
+        cache,
+        headers: {
+          authorization: token ? `Bearer ${token}` : ""
+        }
       });
 
       setClient(client);
     });
   }, []);
+
   if (!client) return <ProgressSpinner />;
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div className="p-grid p-justify-center">
         <MainRoute />
       </div>
     </ApolloProvider>

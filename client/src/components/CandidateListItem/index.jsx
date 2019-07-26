@@ -18,17 +18,6 @@ const CandidateListItem = ({ data, updateVote }) => {
     setCollapsed(!collapsed);
   };
 
-  const handleUpdateVote = e => {
-    if (e.value) {
-      updateVote({
-        variables: {
-          candidateId: data.id,
-          voteType: e.target.name
-        }
-      });
-    }
-  };
-
   return (
     <Card className="candidate_card">
       <div className="p-grid">
@@ -72,7 +61,7 @@ const CandidateListItem = ({ data, updateVote }) => {
               onLabel="Top"
               offLabel="Top"
               name="TOP"
-              onChange={handleUpdateVote}
+              onChange={updateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -82,7 +71,7 @@ const CandidateListItem = ({ data, updateVote }) => {
               onLabel="Favorite"
               offLabel="Favorite"
               name="FAVORITE"
-              onChange={handleUpdateVote}
+              onChange={updateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -92,7 +81,7 @@ const CandidateListItem = ({ data, updateVote }) => {
               onLabel="Compromise"
               offLabel="Compromise"
               name="COMPROMISE"
-              onChange={handleUpdateVote}
+              onChange={updateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -102,7 +91,7 @@ const CandidateListItem = ({ data, updateVote }) => {
               onLabel="Veto"
               offLabel="Veto"
               name="VETO"
-              onChange={handleUpdateVote}
+              onChange={updateVote}
             />
           </div>
           <div className="p-col p-fluid">
@@ -112,7 +101,7 @@ const CandidateListItem = ({ data, updateVote }) => {
               onLabel="TBD"
               offLabel="TBD"
               name="UNKNOWNS"
-              onChange={handleUpdateVote}
+              onChange={updateVote}
             />
           </div>
         </div>
