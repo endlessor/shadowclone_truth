@@ -8,6 +8,8 @@ import { ToggleButton } from "primereact/togglebutton";
 import CandidateShape from "../../types/candidate";
 
 import "./CandidateListItem.style.scss";
+import TextItem from "../TextItem";
+import Avatar from "../Avatar";
 
 const CandidateListItem = ({ data, updateVote }) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -20,7 +22,6 @@ const CandidateListItem = ({ data, updateVote }) => {
     if (e.value) {
       updateVote({
         variables: {
-          userId: "cjyg2k9vkhc3b0b19tkwr49fu",
           candidateId: data.id,
           voteType: e.target.name
         }
@@ -30,27 +31,30 @@ const CandidateListItem = ({ data, updateVote }) => {
 
   return (
     <Card className="candidate_card">
-      <Link className="p-grid" to={`/candidate/${data.id}`}>
-        <div className="p-col-4">
-          <img src={data.photo} alt="avatar" />
-        </div>
-        <div className="p-col-8">
-          <h4>{data.name}</h4>
-          <span>({data.party})</span>
-        </div>
-      </Link>
-      <div className="p-grid candidate_card__content">
-        <div className="p-col-3">
-          <span>{data.state}</span>
-        </div>
-        <div className="p-col-3">
-          <span>{data.latest_poll}</span>
-        </div>
-        <div className="p-col-3">
-          <span>{data.latest_odds}</span>
-        </div>
-        <div className="p-col-3">
-          <i className="pi pi-chevron-down" onClick={onCollapse} />
+      <div className="p-grid">
+        <Link className="p-col-fixed" to={`/candidate/${data.id}`}>
+          <Avatar url={data.photo} alt="avatar" />
+        </Link>
+        <div className="p-col">
+          <div className="p-grid">
+            <div className="p-col-12">
+              <h4>
+                {data.name} ({data.party})
+              </h4>
+            </div>
+            <div className="p-col-3 p-col-align-center">
+              <TextItem label={"AGE"} value={data.age} />
+            </div>
+            <div className="p-col-3">
+              <TextItem label="POLLS" value={`${data.latest_poll}%`} />
+            </div>
+            <div className="p-col-3">
+              <TextItem label="VS" value={`${data.latest_odds}%`} />
+            </div>
+            <div className="p-col-3">
+              <i className="pi pi-chevron-down" onClick={onCollapse} />
+            </div>
+          </div>
         </div>
       </div>
       <Panel
@@ -73,10 +77,10 @@ const CandidateListItem = ({ data, updateVote }) => {
           </div>
           <div className="p-col p-fluid">
             <ToggleButton
-              onIcon={"pi pi-star-o"}
-              offIcon={"pi pi-star"}
-              onLabel="Favorites"
-              offLabel="Favorites"
+              onIcon={"pi pi-thumbs-up"}
+              offIcon={"pi pi-thumbs-up"}
+              onLabel="Favorite"
+              offLabel="Favorite"
               name="FAVORITE"
               onChange={handleUpdateVote}
             />
@@ -85,28 +89,28 @@ const CandidateListItem = ({ data, updateVote }) => {
             <ToggleButton
               onIcon={"pi pi-star-o"}
               offIcon={"pi pi-star"}
-              onLabel="Compromises"
-              offLabel="Compromises"
+              onLabel="Compromise"
+              offLabel="Compromise"
               name="COMPROMISE"
               onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
             <ToggleButton
-              onIcon={"pi pi-star-o"}
-              offIcon={"pi pi-star"}
-              onLabel="vetos"
-              offLabel="vetos"
+              onIcon={"pi pi-ban"}
+              offIcon={"pi pi-ban"}
+              onLabel="Veto"
+              offLabel="Veto"
               name="VETO"
               onChange={handleUpdateVote}
             />
           </div>
           <div className="p-col p-fluid">
             <ToggleButton
-              onIcon={"pi pi-star-o"}
-              offIcon={"pi pi-star"}
-              onLabel="Unknowns"
-              offLabel="Unknowns"
+              onIcon={"pi pi-question-circle"}
+              offIcon={"pi pi-question-circle"}
+              onLabel="TBD"
+              offLabel="TBD"
               name="UNKNOWNS"
               onChange={handleUpdateVote}
             />

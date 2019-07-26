@@ -6,6 +6,7 @@ import { compose, withApollo, graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import VoteReasonItem from "../../components/VoteReasonItem";
+import Avatar from "../../components/Avatar";
 import {
   PositionLikeMutation,
   QualificationLikeMutation
@@ -35,7 +36,6 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
           onToggle={e => {
             qualificationLike({
               variables: {
-                userId: "cjyg2k9vkhc3b0b19tkwr49fu",
                 qualificationId: qualification.id,
                 like: e.target.name
               }
@@ -74,7 +74,7 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
       <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
         <div className="p-grid p-col-align-center">
           <div className="p-col-4">
-            <img src={candidate.photo} alt="avatar" />
+            <Avatar url={candidate.photo} alt="avatar" />
           </div>
           <div className="p-col-8">
             <h4>{candidate.name}</h4>

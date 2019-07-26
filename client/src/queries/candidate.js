@@ -8,9 +8,11 @@ export const CandidateQuery = gql`
       photo
       party
       state
+      age
       current_office
       latest_poll
       latest_odds
+      prevote_score
       bio_qualifications {
         id
         name
@@ -27,12 +29,8 @@ export const CandidateQuery = gql`
 `;
 
 export const UserVoteMutation = gql`
-  mutation createUserVote($candidateId: ID, $userId: ID, $voteType: VoteType) {
-    createUserVote(
-      candidateId: $candidateId
-      userId: $userId
-      voteType: $voteType
-    ) {
+  mutation createUserVote($candidateId: ID, $voteType: VoteType) {
+    createUserVote(candidateId: $candidateId, voteType: $voteType) {
       id
       vote_type
       time
@@ -42,16 +40,8 @@ export const UserVoteMutation = gql`
 `;
 
 export const PositionLikeMutation = gql`
-  mutation createUserPositionLike(
-    $positionId: ID
-    $userId: ID
-    $like: LikeType
-  ) {
-    createUserPositionLike(
-      candidate_positionId: $positionId
-      userId: $userId
-      like: $like
-    ) {
+  mutation createUserPositionLike($positionId: ID!, $like: LikeType) {
+    createUserPositionLike(candidate_positionId: $positionId, like: $like) {
       id
       like
       time
@@ -61,14 +51,9 @@ export const PositionLikeMutation = gql`
 `;
 
 export const QualificationLikeMutation = gql`
-  mutation createUserQualificationLike(
-    $qualificationId: ID
-    $userId: ID
-    $like: LikeType
-  ) {
+  mutation createUserQualificationLike($qualificationId: ID!, $like: LikeType) {
     createUserQualificationLike(
       qualificationId: $qualificationId
-      userId: $userId
       like: $like
     ) {
       id
