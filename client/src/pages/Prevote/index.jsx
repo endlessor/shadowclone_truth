@@ -15,7 +15,19 @@ function PreVote() {
       return (
         <Mutation mutation={UserVoteMutation}>
           {createUserVote => (
-            <CandidateListItem data={candidate} updateVote={createUserVote} />
+            <CandidateListItem
+              data={candidate}
+              updateVote={e => {
+                if (e.value) {
+                  createUserVote({
+                    variables: {
+                      candidateId: candidate.id,
+                      voteType: e.target.name
+                    }
+                  });
+                }
+              }}
+            />
           )}
         </Mutation>
       );
