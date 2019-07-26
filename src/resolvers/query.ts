@@ -11,7 +11,6 @@ const Query = prismaObjectType({
       'qualifications',
       'userPositionLikes',
       'userQualificationLikes',
-      'userVotes',
       'polls',
       'topics',
       'candidatePositions'
@@ -62,6 +61,14 @@ const Query = prismaObjectType({
       resolve: (parent, args, ctx) => {
         const userId = getUserId(ctx)
         return ctx.prisma.user({ id: userId })
+      },
+    })
+
+    t.list.field('userVotes', {
+      type: 'UserVote',
+      resolve: (parent, args, ctx) => {
+        const userId = getUserId(ctx)
+        return ctx.prisma.userVotes({ where: { userId: userId } })
       },
     })
   }
