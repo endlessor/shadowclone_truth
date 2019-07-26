@@ -23,7 +23,7 @@ server.express.use('/', express.static(path.join(path.dirname(__dirname), '/clie
 const port = process.env.SERVER_PORT || 4000
 
 const opts = {
-  endpoint: '/',
+  endpoint: '/graphql',
   port: port,
   tracing: true,
   playground: '/graphql',
