@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export const CandidateQuery = gql`
-  query getCandidates {
+  {
     candidates {
       id
       name
@@ -60,6 +60,19 @@ export const QualificationLikeMutation = gql`
       like
       time
       latest
+    }
+  }
+`;
+
+export const ResultQuery = gql`
+  {
+    candidates {
+      id
+      name
+      photo
+      latest_poll
+      latest_odds
+      prevote_score
     }
   }
 `;

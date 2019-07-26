@@ -5,8 +5,7 @@ import { DataView } from "primereact/dataview";
 import { compose, withApollo, graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import VoteReasonItem from "../../components/VoteReasonItem";
-import Avatar from "../../components/Avatar";
+import { VoteReasonItem, Avatar } from "../../components";
 import {
   PositionLikeMutation,
   QualificationLikeMutation
