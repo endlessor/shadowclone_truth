@@ -28,6 +28,7 @@ mutation {
     gender: MALE,
     latest_poll: 65,
     latest_odds: 35,
+    prevote_score: 45,
     bio_qualifications: {
       create: {
         id: "cjyh4jzsqlnms0b190415j36f",
@@ -70,6 +71,7 @@ mutation {
     gender: FEMALE,
     latest_poll:75,
     latest_odds: 30,
+    prevote_score: 35,
     bio_qualifications: {
       create: {
         id: "cjyh4jzsqlnms0b190415j36h",
@@ -112,6 +114,7 @@ mutation {
     gender: MALE,
     latest_poll: 55,
     latest_odds: 38,
+    prevote_score: 55,
     bio_qualifications: {
       create: {
         id: "cjyh4jzsqlnms0b190415j3ao",
@@ -154,6 +157,7 @@ mutation {
     gender: MALE,
     latest_poll: 84,
     latest_odds: 58,
+    prevote_score: 43,
     bio_qualifications: {
       create: {
         id: "cjyh4jzsqlnms0b190415j3ap",
@@ -196,6 +200,7 @@ mutation {
     gender: MALE,
     latest_poll: 84,
     latest_odds: 58,
+    prevote_score: 31,
     bio_qualifications: {
       create: {
         id: "cjyh4jzsqlnms0b190415j3aq",
@@ -216,7 +221,93 @@ mutation {
         topic: {
           create: {
             id: "cjyh4jzsqlnms0b190415j3cq",
-            name: "Healthcare insurance",
+            name: "Reproductive rights",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  }
+
+  candidate6: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36r",
+    name: "Joe Biden",
+  	photo: "https://randomuser.me/api/portraits/men/61.jpg",
+    party: "democratic",
+    state: "fe",
+    current_office: "n/a",
+    age: 55,
+    gender: MALE,
+    latest_poll: 54,
+    latest_odds: 58,
+    prevote_score: 61,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3ar",
+        name: "Senator of Michigan",
+        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36r"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3br",
+        name: "Senator of Michigan",
+        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            id: "cjyh4jzsqlnms0b190415j3cr",
+            name: "Reproductive rights",
+            category: HEALTH
+          }
+        }
+      }
+    }
+    bio_other: "Software learning course of Paris"
+  }) {
+    id
+  }
+  
+  candidate7: createCandidate(data: {
+    id: "cjyh4jzsqlnms0b190415j36s",
+    name: "Elizabeth Warren",
+  	photo: "https://randomuser.me/api/portraits/women/32.jpg",
+    party: "democratic",
+    state: "fe",
+    current_office: "n/a",
+    age: 55,
+    gender: MALE,
+    latest_poll: 59,
+    latest_odds: 38,
+    prevote_score: 31,
+    bio_qualifications: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3as",
+        name: "Senator of California",
+        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
+        rank: 1,
+        years: 10,
+        detail: "good work in the team",
+        candidateId: "cjyh4jzsqlnms0b190415j36s"
+      }
+    }
+    bio_policy_position: {
+      create: {
+        id: "cjyh4jzsqlnms0b190415j3bs",
+        name: "Senator of California",
+        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
+        detail: "Nominate economics award with team",
+        topic: {
+          create: {
+            id: "cjyh4jzsqlnms0b190415j3cs",
+            name: "Reproductive rights",
             category: HEALTH
           }
         }

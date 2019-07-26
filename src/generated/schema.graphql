@@ -20,6 +20,7 @@ type Candidate {
   name: String!
   party: String!
   photo: String
+  prevote_score: Float
   state: String!
 }
 
@@ -36,6 +37,7 @@ input CandidateCreateInput {
   name: String!
   party: String!
   photo: String
+  prevote_score: Float
   state: String!
 }
 
@@ -185,6 +187,7 @@ input CandidateUpdateInput {
   name: String
   party: String
   photo: String
+  prevote_score: Float
   state: String
 }
 
@@ -212,13 +215,13 @@ enum LikeType {
 type Mutation {
   createCandidate(data: CandidateCreateInput!): Candidate!
   createCandidatePosition(data: CandidatePositionCreateInput!): CandidatePosition!
-  createPoll(candidateId: ID, pollType: PollType): Poll
+  createPoll(candidateId: ID!, pollType: PollType): Poll
   createPosition(data: PositionCreateInput!): Position!
   createQualification(data: QualificationCreateInput!): Qualification!
   createTopic(data: TopicCreateInput!): Topic!
-  createUserPositionLike(candidate_positionId: ID, like: LikeType): UserPositionLike
-  createUserQualificationLike(like: LikeType, qualificationId: ID): UserQualificationLike
-  createUserVote(candidateId: ID, voteType: VoteType): UserVote
+  createUserPositionLike(candidate_positionId: ID!, like: LikeType): UserPositionLike
+  createUserQualificationLike(like: LikeType, qualificationId: ID!): UserQualificationLike
+  createUserVote(candidateId: ID!, voteType: VoteType): UserVote
   deleteCandidate(where: CandidateWhereUniqueInput!): Candidate
   deleteCandidatePosition(where: CandidatePositionWhereUniqueInput!): CandidatePosition
   deletePosition(where: PositionWhereUniqueInput!): Position

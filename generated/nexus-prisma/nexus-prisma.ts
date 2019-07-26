@@ -1160,6 +1160,7 @@ type CandidateObject =
   | { name: 'gender', args?: [] | false, alias?: string  } 
   | { name: 'latest_poll', args?: [] | false, alias?: string  } 
   | { name: 'latest_odds', args?: [] | false, alias?: string  } 
+  | { name: 'prevote_score', args?: [] | false, alias?: string  } 
   | { name: 'bio_qualifications', args?: CandidateBio_qualificationsArgs[] | false, alias?: string  } 
   | { name: 'bio_policy_position', args?: CandidateBio_policy_positionArgs[] | false, alias?: string  } 
   | { name: 'bio_other', args?: [] | false, alias?: string  } 
@@ -1175,6 +1176,7 @@ type CandidateFields =
   | 'gender'
   | 'latest_poll'
   | 'latest_odds'
+  | 'prevote_score'
   | 'bio_qualifications'
   | 'bio_policy_position'
   | 'bio_other'
@@ -1277,6 +1279,14 @@ export interface CandidateFieldDetails {
     resolve: undefined
   }
   latest_odds: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  prevote_score: {
     type: 'Float'
     args: {}
     description: string
@@ -4573,6 +4583,7 @@ type CandidatePreviousValuesObject =
   | { name: 'gender', args?: [] | false, alias?: string  } 
   | { name: 'latest_poll', args?: [] | false, alias?: string  } 
   | { name: 'latest_odds', args?: [] | false, alias?: string  } 
+  | { name: 'prevote_score', args?: [] | false, alias?: string  } 
   | { name: 'bio_other', args?: [] | false, alias?: string  } 
 
 type CandidatePreviousValuesFields =
@@ -4586,6 +4597,7 @@ type CandidatePreviousValuesFields =
   | 'gender'
   | 'latest_poll'
   | 'latest_odds'
+  | 'prevote_score'
   | 'bio_other'
 
 
@@ -4671,6 +4683,14 @@ export interface CandidatePreviousValuesFieldDetails {
     resolve: undefined
   }
   latest_odds: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  prevote_score: {
     type: 'Float'
     args: {}
     description: string
@@ -6498,6 +6518,14 @@ export interface CandidateWhereInput {
   latest_odds_lte?: number | null
   latest_odds_gt?: number | null
   latest_odds_gte?: number | null
+  prevote_score?: number | null
+  prevote_score_not?: number | null
+  prevote_score_in?: number[]
+  prevote_score_not_in?: number[]
+  prevote_score_lt?: number | null
+  prevote_score_lte?: number | null
+  prevote_score_gt?: number | null
+  prevote_score_gte?: number | null
   bio_qualifications_every?: QualificationWhereInput | null
   bio_qualifications_some?: QualificationWhereInput | null
   bio_qualifications_none?: QualificationWhereInput | null
@@ -6636,6 +6664,14 @@ export type CandidateWhereInputInputObject =
   | { name: 'latest_odds_lte', alias?: string  } 
   | { name: 'latest_odds_gt', alias?: string  } 
   | { name: 'latest_odds_gte', alias?: string  } 
+  | { name: 'prevote_score', alias?: string  } 
+  | { name: 'prevote_score_not', alias?: string  } 
+  | { name: 'prevote_score_in', alias?: string  } 
+  | { name: 'prevote_score_not_in', alias?: string  } 
+  | { name: 'prevote_score_lt', alias?: string  } 
+  | { name: 'prevote_score_lte', alias?: string  } 
+  | { name: 'prevote_score_gt', alias?: string  } 
+  | { name: 'prevote_score_gte', alias?: string  } 
   | { name: 'bio_qualifications_every', alias?: string  } 
   | { name: 'bio_qualifications_some', alias?: string  } 
   | { name: 'bio_qualifications_none', alias?: string  } 
@@ -7471,6 +7507,7 @@ export interface CandidateCreateInput {
   gender?: prisma.Gender | null
   latest_poll?: number | null
   latest_odds?: number | null
+  prevote_score?: number | null
   bio_qualifications?: QualificationCreateManyInput | null
   bio_policy_position?: PositionCreateManyInput | null
   bio_other?: string | null
@@ -7487,6 +7524,7 @@ export type CandidateCreateInputInputObject =
   | { name: 'gender', alias?: string  } 
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
+  | { name: 'prevote_score', alias?: string  } 
   | { name: 'bio_qualifications', alias?: string  } 
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
@@ -7573,6 +7611,7 @@ export interface CandidateUpdateInput {
   gender?: prisma.Gender | null
   latest_poll?: number | null
   latest_odds?: number | null
+  prevote_score?: number | null
   bio_qualifications?: QualificationUpdateManyInput | null
   bio_policy_position?: PositionUpdateManyInput | null
   bio_other?: string | null
@@ -7588,6 +7627,7 @@ export type CandidateUpdateInputInputObject =
   | { name: 'gender', alias?: string  } 
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
+  | { name: 'prevote_score', alias?: string  } 
   | { name: 'bio_qualifications', alias?: string  } 
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
@@ -8105,6 +8145,7 @@ export interface CandidateUpdateManyMutationInput {
   gender?: prisma.Gender | null
   latest_poll?: number | null
   latest_odds?: number | null
+  prevote_score?: number | null
   bio_other?: string | null
 }
 export type CandidateUpdateManyMutationInputInputObject =
@@ -8118,6 +8159,7 @@ export type CandidateUpdateManyMutationInputInputObject =
   | { name: 'gender', alias?: string  } 
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
+  | { name: 'prevote_score', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
   
 export interface QualificationUpdateInput {
@@ -8732,6 +8774,8 @@ export type CandidateOrderByInputValues =
   | 'latest_poll_DESC'
   | 'latest_odds_ASC'
   | 'latest_odds_DESC'
+  | 'prevote_score_ASC'
+  | 'prevote_score_DESC'
   | 'bio_other_ASC'
   | 'bio_other_DESC'
   | 'createdAt_ASC'

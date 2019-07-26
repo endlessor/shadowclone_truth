@@ -57,6 +57,7 @@ type Candidate {
   gender: Gender
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_qualifications(where: QualificationWhereInput, orderBy: QualificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Qualification!]
   bio_policy_position(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position!]
   bio_other: String
@@ -79,6 +80,7 @@ input CandidateCreateInput {
   gender: Gender
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_qualifications: QualificationCreateManyInput
   bio_policy_position: PositionCreateManyInput
   bio_other: String
@@ -110,6 +112,8 @@ enum CandidateOrderByInput {
   latest_poll_DESC
   latest_odds_ASC
   latest_odds_DESC
+  prevote_score_ASC
+  prevote_score_DESC
   bio_other_ASC
   bio_other_DESC
 }
@@ -300,6 +304,7 @@ type CandidatePreviousValues {
   gender: Gender
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_other: String
 }
 
@@ -331,6 +336,7 @@ input CandidateUpdateInput {
   gender: Gender
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_qualifications: QualificationUpdateManyInput
   bio_policy_position: PositionUpdateManyInput
   bio_other: String
@@ -346,6 +352,7 @@ input CandidateUpdateManyMutationInput {
   gender: Gender
   latest_poll: Float
   latest_odds: Float
+  prevote_score: Float
   bio_other: String
 }
 
@@ -462,6 +469,14 @@ input CandidateWhereInput {
   latest_odds_lte: Float
   latest_odds_gt: Float
   latest_odds_gte: Float
+  prevote_score: Float
+  prevote_score_not: Float
+  prevote_score_in: [Float!]
+  prevote_score_not_in: [Float!]
+  prevote_score_lt: Float
+  prevote_score_lte: Float
+  prevote_score_gt: Float
+  prevote_score_gte: Float
   bio_qualifications_every: QualificationWhereInput
   bio_qualifications_some: QualificationWhereInput
   bio_qualifications_none: QualificationWhereInput

@@ -74,7 +74,7 @@ const Mutation = prismaObjectType({
     t.field('createUserVote', {
       type: 'UserVote',
       args: {
-        candidateId: idArg(),
+        candidateId: idArg({required: true}),
         voteType: 'VoteType'
       },
       resolve: async (parent, {candidateId, voteType}, ctx) => {
@@ -101,7 +101,7 @@ const Mutation = prismaObjectType({
     t.field('createUserPositionLike', {
       type: 'UserPositionLike',
       args: {
-        candidate_positionId: idArg(),
+        candidate_positionId: idArg({required: true}),
         like: 'LikeType'
       },
       resolve: async (parent, {candidate_positionId, like}, ctx) => {
@@ -128,7 +128,7 @@ const Mutation = prismaObjectType({
     t.field('createUserQualificationLike', {
       type: 'UserQualificationLike',
       args: {
-        qualificationId: idArg(),
+        qualificationId: idArg({required: true}),
         like: 'LikeType'
       },
       resolve: async (parent, {qualificationId, like}, ctx) => {
@@ -155,7 +155,7 @@ const Mutation = prismaObjectType({
     t.field('createPoll', {
       type: 'Poll',
       args: {
-        candidateId: idArg(),
+        candidateId: idArg({required: true}),
         pollType: 'PollType'
       },
       resolve: async (parent, {candidateId, pollType}, ctx) => {
