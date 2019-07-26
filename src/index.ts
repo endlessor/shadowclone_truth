@@ -1,6 +1,8 @@
 import { GraphQLServer } from 'graphql-yoga'
 import { prisma } from '../generated/prisma-client'
 import schema from './schema'
+import express = require('express')
+import path = require('path')
 import { permissions } from './permissions'
 
 require('dotenv').config()
@@ -16,7 +18,14 @@ const server = new GraphQLServer({
   },
 })
 
-const port = process.env.SERVER_PORT || 4000
+server.express.use(express.static(path.join(path.dirname(__dirname), '/client/build')));
+
+server.express.get("/*", function(req, res, next) {
+  if (req.url === '/graphql') return next()
+  res.sendFile(path.join(path.dirname(__dirname), "client/build", "index.html"));
+});
+
+const port = process.env.SERVER_PORT || 8000
 
 const opts = {
   endpoint: '/graphql',
