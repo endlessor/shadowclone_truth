@@ -29,7 +29,7 @@ export const CandidateQuery = gql`
 `;
 
 export const UserVoteMutation = gql`
-  mutation createUserVote($candidateId: ID, $voteType: VoteType) {
+  mutation createUserVote($candidateId: ID!, $voteType: VoteType) {
     createUserVote(candidateId: $candidateId, voteType: $voteType) {
       id
       vote_type
