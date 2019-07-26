@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client:build": "cd client && npm run build",
-    "start": "npm run client:build && ts-node src/index.ts",
+    "client:build": "cd client && yarn install && yarn run build",
+    "server:start": "yarn install && ts-node src/index.ts",
+    "start": "npm run client:build && npm run server:start",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src/"
   },
   "keywords": [],

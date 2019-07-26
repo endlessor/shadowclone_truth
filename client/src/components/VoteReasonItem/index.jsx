@@ -11,10 +11,10 @@ const VoteReasonItem = ({ data, onToggle }) => {
   return (
     <Card className="candidate_card">
       <div className="p-grid p-align-center">
-        <div className="p-col-2">
+        <div className="p-col-2 p-fluid">
           <ToggleButton
-            onIcon={"pi pi-star-o"}
-            offIcon={"pi pi-star"}
+            onIcon={"pi pi-thumbs-up"}
+            offIcon={"pi pi-thumbs-up"}
             name="LIKE"
             onChange={onToggle}
           />
@@ -22,10 +22,10 @@ const VoteReasonItem = ({ data, onToggle }) => {
         <div className="p-col-8">
           <p>{data.summary}</p>
         </div>
-        <div className="p-col-2">
+        <div className="p-col-2 p-fluid">
           <ToggleButton
-            onIcon={"pi pi-star-o"}
-            offIcon={"pi pi-star"}
+            onIcon={"pi pi-thumbs-down"}
+            offIcon={"pi pi-thumbs-down"}
             name="DISLIKE"
             onChange={onToggle}
           />

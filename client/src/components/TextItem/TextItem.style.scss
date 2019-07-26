@@ -1,0 +1,11 @@
+.textItem {
+  &__label {
+    font-size: 0.8rem;
+    color: gray;
+    margin: 0;
+  }
+  &__value {
+    font-size: 1.4rem;
+    color: black;
+  }
+}

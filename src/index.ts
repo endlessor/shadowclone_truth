@@ -18,12 +18,17 @@ const server = new GraphQLServer({
   },
 })
 
-server.express.use('/', express.static(path.join(path.dirname(__dirname), '/client/build')));
+server.express.use(express.static(path.join(path.dirname(__dirname), '/client/build')));
 
-const port = process.env.SERVER_PORT || 4000
+server.express.get("/*", function(req, res, next) {
+  if (req.url === '/graphql') return next()
+  res.sendFile(path.join(path.dirname(__dirname), "client/build", "index.html"));
+});
+
+const port = process.env.SERVER_PORT || 8000
 
 const opts = {
-  endpoint: '/',
+  endpoint: '/graphql',
   port: port,
   tracing: true,
   playground: '/graphql',
