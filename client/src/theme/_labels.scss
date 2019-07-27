@@ -1,0 +1,33 @@
+@import "./colors";
+
+.brand-label-top {
+  color: $brand-color-top;
+}
+.brand-label-favorite {
+  color: $brand-color-favorite;
+}
+.brand-label-compromise {
+  color: $brand-color-compromise;
+}
+.brand-label-veto {
+  color: $brand-color-veto;
+}
+.brand-label-tbd {
+  color: $brand-color-tbd;
+}
+
+.brand-background-top {
+  background-color: $brand-color-top;
+}
+.brand-background-favorite {
+  background-color: $brand-color-favorite;
+}
+.brand-background-compromise {
+  background-color: $brand-color-compromise;
+}
+.brand-background-veto {
+  background-color: $brand-color-veto;
+}
+.brand-background-tbd {
+  background-color: $brand-color-tbd;
+}
