@@ -26,7 +26,7 @@ function Signup({ location }) {
     });
   };
 
-  const { from } = location.state || { from: { path: "/" } };
+  const { from } = location.state || { from: { pathname: "/" } };
   if (redirectToReferer) {
     return <Redirect to={from} />;
   }

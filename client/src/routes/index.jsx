@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PreVote from "../pages/Prevote";
@@ -27,11 +32,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 const MainRoute = () => (
   <Router>
-    <Route path="/login" exact component={Login} />
-    <Route path="/signup" exact component={Signup} />
-    <PrivateRoute path="/" exact component={PreVote} />
-    <PrivateRoute path="/candidate/:id" component={VoteReasoning} />
-    <PrivateRoute path="/result" component={Results} />
+    <Switch>
+      <PrivateRoute path="/" exact component={PreVote} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <PrivateRoute path="/candidate/:id" component={VoteReasoning} />
+      <PrivateRoute path="/result" component={Results} />
+    </Switch>
   </Router>
 );
 
