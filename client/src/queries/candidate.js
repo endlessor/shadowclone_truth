@@ -76,3 +76,16 @@ export const ResultQuery = gql`
     }
   }
 `;
+
+export const UserVoteQuery = gql`
+  {
+    userVotes {
+      id
+      candidateId
+      userId
+      vote_type
+      time
+      latest
+    }
+  }
+`;

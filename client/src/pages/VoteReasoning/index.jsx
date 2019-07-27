@@ -11,6 +11,8 @@ import {
   QualificationLikeMutation
 } from "../../queries/candidate";
 
+import "./VoteReasoning.style.scss";
+
 function VoteReasoning({ match, client, positionLike, qualificationLike }) {
   const [candidate, setCandidate] = useState({});
   useEffect(() => {
@@ -78,7 +80,7 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
           <h4>{candidate.name}</h4>
         </div>
       </div>
-      <Accordion multiple>
+      <Accordion multiple className="accordion">
         <AccordionTab header="Qualifications">
           <DataView
             value={candidate.bio_qualifications}

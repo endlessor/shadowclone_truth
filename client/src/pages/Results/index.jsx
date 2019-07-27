@@ -1,11 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import { DataView } from "primereact/dataview";
-import { ResultListItem } from "../../components";
-import { ResultQuery } from "../../queries";
+import { ProgressSpinner } from "primereact/progressspinner";
 
-function Results(props) {
+import { ResultListItem } from "../../components";
+import { ResultQuery, UserVoteQuery } from "../../queries";
+
+function Results() {
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
       return null;
@@ -30,18 +31,35 @@ function Results(props) {
         </div>
       </div>
       <Query query={ResultQuery}>
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error : {error}</p>;
-          return (
-            <DataView
-              value={data.candidates}
-              layout="list"
-              itemTemplate={itemTemplate}
-              rows={20}
-            />
-          );
-        }}
+        {({ loading: loadingCandidates, error, data: { candidates } }) => (
+          <Query query={UserVoteQuery}>
+            {({ loading: loadingVotes, error, data: { userVotes } }) => {
+              if (loadingCandidates || loadingVotes) return <ProgressSpinner />;
+              const candidatesWithVotes = candidates.map(candidate => {
+                const userVote = userVotes.find(
+                  vote => vote.candidateId === candidate.id
+                );
+                if (userVote) {
+                  return {
+                    ...candidate,
+                    vote_type: userVote.vote_type.toLowerCase()
+                  };
+                } else {
+                  return candidate;
+                }
+              });
+
+              return (
+                <DataView
+                  value={candidatesWithVotes}
+                  layout="list"
+                  itemTemplate={itemTemplate}
+                  rows={20}
+                />
+              );
+            }}
+          </Query>
+        )}
       </Query>
     </div>
   );
