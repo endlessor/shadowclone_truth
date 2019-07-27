@@ -5,12 +5,13 @@ import { DataView } from "primereact/dataview";
 import { compose, withApollo, graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import VoteReasonItem from "../../components/VoteReasonItem";
-import Avatar from "../../components/Avatar";
+import { VoteReasonItem, Avatar } from "../../components";
 import {
   PositionLikeMutation,
   QualificationLikeMutation
 } from "../../queries/candidate";
+
+import "./VoteReasoning.style.scss";
 
 function VoteReasoning({ match, client, positionLike, qualificationLike }) {
   const [candidate, setCandidate] = useState({});
@@ -79,7 +80,7 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
           <h4>{candidate.name}</h4>
         </div>
       </div>
-      <Accordion multiple>
+      <Accordion multiple className="accordion">
         <AccordionTab header="Qualifications">
           <DataView
             value={candidate.bio_qualifications}
