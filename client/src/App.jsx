@@ -21,12 +21,18 @@ function App() {
     });
 
     persistCache({ cache, storage: localStorage }).then(() => {
-      const token = localStorage.getItem(AUTH_TOKEN);
       const client = new ApolloClient({
         uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
         cache,
-        headers: {
-          authorization: token ? `Bearer ${token}` : ""
+        request: operation => {
+          const token = localStorage.getItem(AUTH_TOKEN);
+          if (token) {
+            operation.setContext({
+              headers: {
+                authorization: `Bearer ${token}`
+              }
+            });
+          }
         }
       });
 
