@@ -1,60 +1,81 @@
-# Prisma-Apollo-Server For ShawdowClone Truth
+# ShawdowClone Truth
 
-This is the backend project for shadowcloen truth web application.
+## Overview
+This project consists of 3 parts
+- `React Frontend`
+- `Node backend server`
+- `Prisma server connected to PostgreSQL`.
 
-It provides graphql apis using Apollo server based on prisma framework
+> **Note**: [Prisma](https://www.prisma.io) is a database abstraction layer that turns your databases into GraphQL APIs with CRUD operations and realtime capabilities. It is the glue between your database and GraphQL server.
+<div style="text-align: center;">
+<img src="https://imgur.com/OyIQQxF.png" width="800" height="150" float='right' /></div>
 
-## Get started
-
-> **Note**: `prisma` is listed as a _development dependency_ and _script_ in this project's [`package.json`](./package.json). This means you can invoke the Prisma CLI without having it globally installed on your machine (by prefixing it with `yarn`), e.g. `yarn prisma deploy` or `yarn prisma playground`. If you have the Prisma CLI installed globally (which you can do with `npm install -g prisma`), you can omit the `yarn` prefix.
-
+## Local Installation Guide
 ### 1. Download the source & install dependencies
 
 Clone the repository with the following command:
 
 ```sh
-https://github.com/mraybman/shadowclone_truth.git
+git clone https://github.com/mraybman/shadowclone_truth.git
 ```
 
-Next, navigate into the server folder of downloaded source and install the NPM dependencies:
+Next, navigate into the project folder of downloaded source and install the NPM dependencies:
 
 ```sh
-cd shadowclone_truth/server
+cd shadowclone_truth
 yarn install (or npm install)
 ```
 
 ### 2. Deploy the Prisma database service
+Before run backend server, we should run the prisma server first to connect backend graphql server and database.
 
-You can now [deploy](https://www.prismagraphql.com/docs/reference/cli-command-reference/database-service/prisma-deploy-kee1iedaov) the Prisma service (note that this requires you to have [Docker](https://www.docker.com) installed on your machine - if that's not the case, follow the collapsed instructions below the code block):
+To start prisma server, we have two options  
+- run prisma local server with docker
+- use prisma server based on prisma cloud service
+#### Start prisma server with docker locally
 
-```sh
-cd prisma
+You can now [deploy](https://www.prismagraphql.com/docs/reference/cli-command-reference/database-service/prisma-deploy-kee1iedaov) the Prisma service locally ( note that this requires you to have [Docker](https://www.docker.com) installed on your machine ):
+ ```sh
+npm install -g prisma
 docker-compose up -d
-cd ..
 prisma deploy
 ```
-
 <details>
- <summary><strong>I don't have <a href="https://www.docker.com">Docker</a> installed on my machine</strong></summary>
-
-To deploy your service to a public cluster (rather than locally with Docker), you need to perform the following steps:
-
-1. Remove the `cluster` property from `prisma.yml`.
-1. Run `prisma deploy`.
-1. When prompted by the CLI, select a public cluster (e.g. `prisma-eu1` or `prisma-us1`).
-1. Replace the [`endpoint`](./src/index.js#L23) in `index.ts` with the HTTP endpoint that was printed after the previous command.
-
+  When using prisma server on docker, we should provide correct docker export endpoint to prisma.<br>
+  The default env setting:<br>
+  <code>export PRISMA_ENDPOINT="http://localhost:4466"</code>
 </details>
-<br>
+
+#### Use prisma server based on prisma cloud service
+We can use prisma server existing on prisma cloud service without running locally.
+<details>
+  When using prisma cloud, we should provide correct server url.<br>
+  The default env setting:<br>
+  <code>export PRISMA_ENDPOINT="https://us1.prisma.sh/reopard226-550894/server/dev"</code><br>
+  <code>export PRISMA_SECRET="prisma-secret-226"</code>
+</details>
 
 ### 3. Start the GraphQL server
 
 The Prisma database service that's backing your GraphQL server is now available. This means you can now start the server:
 
 ```sh
-yarn dev (or npm dev)
+yarn start (or npm start)
 ```
+<details>
+  When start local backend server we should set correct environment variables.<br>
+  The default env setting:<br>
+  <code>export SERVER_PORT=8000</code><br>
+  <code>export REACT_APP_GRAPHQL_ENDPOINT="http://localhost:8000/graphql"</code>
+</details>
 
-The `dev` script starts the server (on `http://localhost:4000`) and opens a GraphQL Playground where you get acces to the API of your GraphQL server (defined in the [application schema](./src/schema.graphql)) as well as the underlying Prisma API (defined in the auto-generated [Prisma database schema](./src/generated/prisma.ts)) directly.
+The `start` script starts the server (e.g.  `http://localhost:8000`) and opens a GraphQL Playground ( e.g. `http://localhost:8000/graphql` ) where you get acces to the API of your GraphQL server (defined in the [application schema](./src/schema.graphql)) as well as the underlying Prisma API (defined in the auto-generated [Prisma database schema](./src/generated/prisma.ts)) directly.
 
 Inside the Playground, you can start exploring the available operations by browsing the built-in documentation.
+
+The `start` script also builds the frontend app and serve it on the local server
+(e.g.  `http://localhost:8000`)
+
+For development, we can run `dev` scripts to suport hot reloading dev environment without building frontend app.
+
+> **Note**: To run project successfully, we should provide correct env variables.
