@@ -972,7 +972,7 @@ export interface NexusGenRootTypes {
     time?: any | null; // DateTime
   }
   CandidateWithVote: { // root type
-    candidateId?: string | null; // ID
+    candidate?: NexusGenRootTypes['Candidate'] | null; // Candidate
     compromises?: number | null; // Int
     favorites?: number | null; // Int
     tops?: number | null; // Int
@@ -1139,7 +1139,7 @@ export interface NexusGenFieldTypes {
     time: any | null; // DateTime
   }
   CandidateWithVote: { // field return type
-    candidateId: string | null; // ID
+    candidate: NexusGenRootTypes['Candidate'] | null; // Candidate
     compromises: number | null; // Int
     favorites: number | null; // Int
     tops: number | null; // Int

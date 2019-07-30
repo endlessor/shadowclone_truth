@@ -118,7 +118,7 @@ const Query = prismaObjectType({
         }
         return candidates.map(candidate => {
           return {
-            candidateId: candidate.id,
+            candidate: candidate,
             tops: getVotesCount(candidate.id, 'TOP'),
             favorites: getVotesCount(candidate.id, 'FAVORITE'),
             compromises: getVotesCount(candidate.id, 'COMPROMISE'),
