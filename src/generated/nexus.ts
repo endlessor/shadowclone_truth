@@ -978,6 +978,17 @@ export interface NexusGenRootTypes {
     tops?: number | null; // Int
     vetos?: number | null; // Int
   }
+  CountAttribute: { // root type
+    average_compromise?: number | null; // Float
+    average_favorite?: number | null; // Float
+    average_top?: number | null; // Float
+    average_veto?: number | null; // Float
+    compromiseCount?: number | null; // Int
+    favoriteCount?: number | null; // Int
+    prevotes?: number | null; // Int
+    topCount?: number | null; // Int
+    vetoCount?: number | null; // Int
+  }
   Mutation: {};
   Poll: { // root type
     candidateId: string; // String!
@@ -1145,6 +1156,17 @@ export interface NexusGenFieldTypes {
     tops: number | null; // Int
     vetos: number | null; // Int
   }
+  CountAttribute: { // field return type
+    average_compromise: number | null; // Float
+    average_favorite: number | null; // Float
+    average_top: number | null; // Float
+    average_veto: number | null; // Float
+    compromiseCount: number | null; // Int
+    favoriteCount: number | null; // Int
+    prevotes: number | null; // Int
+    topCount: number | null; // Int
+    vetoCount: number | null; // Int
+  }
   Mutation: { // field return type
     createCandidate: NexusGenRootTypes['Candidate']; // Candidate!
     createCandidatePosition: NexusGenRootTypes['CandidatePosition']; // CandidatePosition!
@@ -1197,19 +1219,16 @@ export interface NexusGenFieldTypes {
     candidatePositions: NexusGenRootTypes['CandidatePosition'][]; // [CandidatePosition!]!
     candidates: NexusGenRootTypes['Candidate'][] | null; // [Candidate!]
     candidatesWithVotes: NexusGenRootTypes['CandidateWithVote'][] | null; // [CandidateWithVote!]
-    compromiseCount: number | null; // Int
-    favoriteCount: number | null; // Int
     me: NexusGenRootTypes['User'] | null; // User
     polls: NexusGenRootTypes['Poll'][]; // [Poll!]!
     positions: NexusGenRootTypes['Position'][]; // [Position!]!
-    prevotesCount: number | null; // Int
     qualifications: NexusGenRootTypes['Qualification'][]; // [Qualification!]!
-    topCount: number | null; // Int
     topics: NexusGenRootTypes['Topic'][]; // [Topic!]!
     userPositionLikes: NexusGenRootTypes['UserPositionLike'][]; // [UserPositionLike!]!
     userQualificationLikes: NexusGenRootTypes['UserQualificationLike'][]; // [UserQualificationLike!]!
     users: NexusGenRootTypes['User'][]; // [User!]!
     userVotes: NexusGenRootTypes['UserVote'][] | null; // [UserVote!]
+    voteAttributes: NexusGenRootTypes['CountAttribute'] | null; // CountAttribute
   }
   Topic: { // field return type
     category: NexusGenEnums['CategoryType']; // CategoryType!
@@ -1427,7 +1446,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "Mutation" | "Poll" | "Position" | "Qualification" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserQualificationLike" | "UserVote";
+export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "Qualification" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserQualificationLike" | "UserVote";
 
 export type NexusGenInputNames = "CandidateCreateInput" | "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereInput" | "CandidatePositionWhereUniqueInput" | "CandidateUpdateInput" | "CandidateWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionCreateManyInput" | "PositionScalarWhereInput" | "PositionUpdateDataInput" | "PositionUpdateInput" | "PositionUpdateManyDataInput" | "PositionUpdateManyInput" | "PositionUpdateManyWithWhereNestedInput" | "PositionUpdateWithWhereUniqueNestedInput" | "PositionUpsertWithWhereUniqueNestedInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationCreateManyInput" | "QualificationScalarWhereInput" | "QualificationUpdateDataInput" | "QualificationUpdateInput" | "QualificationUpdateManyDataInput" | "QualificationUpdateManyInput" | "QualificationUpdateManyWithWhereNestedInput" | "QualificationUpdateWithWhereUniqueNestedInput" | "QualificationUpsertWithWhereUniqueNestedInput" | "QualificationWhereInput" | "QualificationWhereUniqueInput" | "TopicCreateInput" | "TopicCreateOneInput" | "TopicUpdateDataInput" | "TopicUpdateInput" | "TopicUpdateOneInput" | "TopicUpsertNestedInput" | "TopicWhereInput" | "TopicWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
 

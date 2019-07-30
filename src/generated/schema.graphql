@@ -211,6 +211,18 @@ enum CategoryType {
   HEALTH
 }
 
+type CountAttribute {
+  average_compromise: Float
+  average_favorite: Float
+  average_top: Float
+  average_veto: Float
+  compromiseCount: Int
+  favoriteCount: Int
+  prevotes: Int
+  topCount: Int
+  vetoCount: Int
+}
+
 scalar DateTime
 
 enum Gender {
@@ -878,19 +890,16 @@ type Query {
   candidatePositions(after: String, before: String, first: Int, last: Int, orderBy: CandidatePositionOrderByInput, skip: Int, where: CandidatePositionWhereInput): [CandidatePosition!]!
   candidates: [Candidate!]
   candidatesWithVotes: [CandidateWithVote!]
-  compromiseCount: Int
-  favoriteCount: Int
   me: User
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!
-  prevotesCount: Int
   qualifications(after: String, before: String, first: Int, last: Int, orderBy: QualificationOrderByInput, skip: Int, where: QualificationWhereInput): [Qualification!]!
-  topCount: Int
   topics(after: String, before: String, first: Int, last: Int, orderBy: TopicOrderByInput, skip: Int, where: TopicWhereInput): [Topic!]!
   userPositionLikes(after: String, before: String, first: Int, last: Int, orderBy: UserPositionLikeOrderByInput, skip: Int, where: UserPositionLikeWhereInput): [UserPositionLike!]!
   userQualificationLikes(after: String, before: String, first: Int, last: Int, orderBy: UserQualificationLikeOrderByInput, skip: Int, where: UserQualificationLikeWhereInput): [UserQualificationLike!]!
   users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
   userVotes: [UserVote!]
+  voteAttributes: CountAttribute
 }
 
 type Topic {

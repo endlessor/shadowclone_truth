@@ -73,35 +73,32 @@ const Query = prismaObjectType({
       },
     })
 
-    t.field('prevotesCount', {
-      type: 'Int',
+    t.field('voteAttributes', {
+      type: 'CountAttribute',
       resolve: async (parent, args, ctx) => {
         const userVotes = await ctx.prisma.userVotes({ orderBy: 'id_ASC' })
-        return userVotes.length
-      },
-    })
-
-    t.field('topCount', {
-      type: 'Int',
-      resolve: async (parent, args, ctx) => {
-        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'TOP'} })
-        return userVotes.length
-      },
-    })
-
-    t.field('favoriteCount', {
-      type: 'Int',
-      resolve: async (parent, args, ctx) => {
-        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'FAVORITE'} })
-        return userVotes.length
-      },
-    })
-
-    t.field('compromiseCount', {
-      type: 'Int',
-      resolve: async (parent, args, ctx) => {
-        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'COMPROMISE'} })
-        return userVotes.length
+        const users = await ctx.prisma.users({ orderBy: 'id_ASC'})
+        const getVotesCount = (voteType: VoteType) => {
+          const votes = userVotes.filter(vote => vote.vote_type === voteType)
+          return votes ? votes.length : 0
+        }
+        const [ tops, favorites, compromises, vetos ] = [ 
+          getVotesCount('TOP'),
+          getVotesCount('FAVORITE'),
+          getVotesCount('COMPROMISE'),
+          getVotesCount('VETO') 
+        ]
+        return {
+          prevotes: userVotes.length,
+          topCount: tops,
+          favoriteCount: favorites,
+          compromiseCount: compromises,
+          vetoCount: vetos,
+          average_top: tops / users.length,
+          average_favorite: favorites / users.length,
+          average_compromise: compromises / users.length,
+          average_veto: vetos / users.length
+        }
       },
     })
 

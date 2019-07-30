@@ -19,3 +19,18 @@ export const CandidateWithVote = objectType({
     t.int('vetos')
   }
 })
+
+export const CountAttribute = objectType({
+  name: 'CountAttribute',
+  definition(t) {
+    t.int('prevotes')
+    t.int('topCount')
+    t.int('favoriteCount')
+    t.int('compromiseCount')
+    t.int('vetoCount')
+    t.float('average_top')
+    t.float('average_favorite')
+    t.float('average_compromise')
+    t.float('average_veto')
+  }
+})
