@@ -94,10 +94,10 @@ const Query = prismaObjectType({
           favoriteCount: favorites,
           compromiseCount: compromises,
           vetoCount: vetos,
-          average_top: tops / users.length,
-          average_favorite: favorites / users.length,
-          average_compromise: compromises / users.length,
-          average_veto: vetos / users.length
+          average_top: Math.round(tops * 100 / users.length) / 100,
+          average_favorite: Math.round(favorites * 100 / users.length) / 100,
+          average_compromise: Math.round(compromises * 100 / users.length) / 100,
+          average_veto: Math.round(vetos * 100 / users.length) / 100
         }
       },
     })
