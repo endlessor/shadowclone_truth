@@ -12,7 +12,7 @@ export const AuthPayload = objectType({
 export const CandidateWithVote = objectType({
   name: 'CandidateWithVote',
   definition(t) {
-    t.id('candidateId')
+    t.field('candidate', { type: 'Candidate'})
     t.int('tops')
     t.int('favorites')
     t.int('compromises')

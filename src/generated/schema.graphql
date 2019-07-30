@@ -200,7 +200,7 @@ input CandidateWhereUniqueInput {
 }
 
 type CandidateWithVote {
-  candidateId: ID
+  candidate: Candidate
   compromises: Int
   favorites: Int
   tops: Int
