@@ -43,8 +43,9 @@ const Mutation = prismaObjectType({
           password: hashedPassword,
         })
         return {
-          token: sign({ userId: user.id }, APP_SECRET),
+          token: sign({ userId: user.id, role: user.role }, APP_SECRET),
           user,
+          isAdmin: false
         }
       },
     })
@@ -65,8 +66,9 @@ const Mutation = prismaObjectType({
           throw new Error('Invalid password')
         }
         return {
-          token: sign({ userId: user.id }, APP_SECRET),
+          token: sign({ userId: user.id, role: user.role }, APP_SECRET),
           user,
+          isAdmin: user.role === 1
         }
       },
     })

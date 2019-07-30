@@ -4,7 +4,8 @@ import { Context } from './types'
 export const APP_SECRET = 'appsecret321'
 
 interface Token {
-  userId: string
+  userId: string,
+  role: number
 }
 
 export function getUserId(context: Context) {
@@ -13,5 +14,14 @@ export function getUserId(context: Context) {
     const token = Authorization.replace('Bearer ', '')
     const verifiedToken = verify(token, APP_SECRET) as Token
     return verifiedToken && verifiedToken.userId
+  }
+}
+
+export function checkAdminUser(context: Context) {
+  const Authorization = context.request.get('Authorization')
+  if (Authorization) {
+    const token = Authorization.replace('Bearer ', '')
+    const verifiedToken = verify(token, APP_SECRET) as Token
+    return verifiedToken && verifiedToken.role === 1
   }
 }

@@ -39,6 +39,7 @@ const Query = prismaObjectType({
               continue
             }
             if(result[0].vote_type === voteType) {
+              candidates[i].vote_type = voteType
               filteredCandidates.unshift(candidates[i])
               candidates.splice(i, 1)
             }
@@ -70,6 +71,61 @@ const Query = prismaObjectType({
         const userId = getUserId(ctx)
         return ctx.prisma.userVotes({ where: { userId: userId } })
       },
+    })
+
+    t.field('prevotesCount', {
+      type: 'Int',
+      resolve: async (parent, args, ctx) => {
+        const userVotes = await ctx.prisma.userVotes({ orderBy: 'id_ASC' })
+        return userVotes.length
+      },
+    })
+
+    t.field('topCount', {
+      type: 'Int',
+      resolve: async (parent, args, ctx) => {
+        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'TOP'} })
+        return userVotes.length
+      },
+    })
+
+    t.field('favoriteCount', {
+      type: 'Int',
+      resolve: async (parent, args, ctx) => {
+        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'FAVORITE'} })
+        return userVotes.length
+      },
+    })
+
+    t.field('compromiseCount', {
+      type: 'Int',
+      resolve: async (parent, args, ctx) => {
+        const userVotes = await ctx.prisma.userVotes({ where: { vote_type: 'COMPROMISE'} })
+        return userVotes.length
+      },
+    })
+
+    t.list.field('candidatesWithVotes', {
+      type: 'CandidateWithVote',
+      resolve: async (parent, args, ctx) => {
+        const candidates = await ctx.prisma.candidates({ orderBy: 'id_ASC'})
+        const userVotes = await ctx.prisma.userVotes({ orderBy: 'id_ASC'})
+        const getVotesCount = (id: String, voteType: VoteType) => {
+          const votes = userVotes.filter((vote) => {
+            return vote.candidateId === id && vote.vote_type === voteType
+          })
+          return votes ? votes.length : 0
+        }
+        return candidates.map(candidate => {
+          return {
+            candidateId: candidate.id,
+            tops: getVotesCount(candidate.id, 'TOP'),
+            favorites: getVotesCount(candidate.id, 'FAVORITE'),
+            compromises: getVotesCount(candidate.id, 'COMPROMISE'),
+            vetos: getVotesCount(candidate.id, 'VETO')
+          }          
+        })
+      }
     })
   }
 })

@@ -17,6 +17,16 @@ mutation {
     id
   }
 
+  user3: createUser(data: {
+    id: "cjyh4jzsqlnms0b190415j36z",
+    email: "testadmin@gmail.com",
+    name: "Admin User",
+    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6",
+    role: 1
+    }) {
+    id
+  }
+
   candidate1: createCandidate(data: {
     id: "cjyh4jzsqlnms0b190415j36c",
     name: "Donald Trump",

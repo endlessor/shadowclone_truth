@@ -4,6 +4,7 @@ type User {
   name: String!
   password: String
   gender: Gender @default(value: MALE)
+  role: Int @default(value: 0)
 }
 
 type Candidate {
@@ -21,6 +22,7 @@ type Candidate {
   bio_qualifications: [Qualification!] @relation(onDelete: CASCADE)
   bio_policy_position: [Position!]
   bio_other: String
+  vote_type: VoteType
 }
 
 type Qualification {
