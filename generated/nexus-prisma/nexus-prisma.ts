@@ -238,10 +238,10 @@ export interface NexusPrismaTypes {
     QualificationOrderByInput: QualificationOrderByInputValues,
     CategoryType: CategoryTypeValues,
     PositionOrderByInput: PositionOrderByInputValues,
+    VoteType: VoteTypeValues,
     CandidateOrderByInput: CandidateOrderByInputValues,
     TopicOrderByInput: TopicOrderByInputValues,
     CandidatePositionOrderByInput: CandidatePositionOrderByInputValues,
-    VoteType: VoteTypeValues,
     UserVoteOrderByInput: UserVoteOrderByInputValues,
     LikeType: LikeTypeValues,
     UserQualificationLikeOrderByInput: UserQualificationLikeOrderByInputValues,
@@ -905,6 +905,7 @@ type UserObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'gender', args?: [] | false, alias?: string  } 
+  | { name: 'role', args?: [] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
@@ -912,6 +913,7 @@ type UserFields =
   | 'name'
   | 'password'
   | 'gender'
+  | 'role'
 
 
 
@@ -962,6 +964,14 @@ export interface UserFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gender | null> | prisma.Gender | null
+  }
+  role: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -1164,6 +1174,7 @@ type CandidateObject =
   | { name: 'bio_qualifications', args?: CandidateBio_qualificationsArgs[] | false, alias?: string  } 
   | { name: 'bio_policy_position', args?: CandidateBio_policy_positionArgs[] | false, alias?: string  } 
   | { name: 'bio_other', args?: [] | false, alias?: string  } 
+  | { name: 'vote_type', args?: [] | false, alias?: string  } 
 
 type CandidateFields =
   | 'id'
@@ -1180,6 +1191,7 @@ type CandidateFields =
   | 'bio_qualifications'
   | 'bio_policy_position'
   | 'bio_other'
+  | 'vote_type'
 
 
 type CandidateBio_qualificationsArgs =
@@ -1327,6 +1339,19 @@ export interface CandidateFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  vote_type: {
+    type: 'VoteType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Candidate">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.VoteType | null> | prisma.VoteType | null
   }
 }
   
@@ -4438,6 +4463,7 @@ type UserPreviousValuesObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'gender', args?: [] | false, alias?: string  } 
+  | { name: 'role', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
@@ -4445,6 +4471,7 @@ type UserPreviousValuesFields =
   | 'name'
   | 'password'
   | 'gender'
+  | 'role'
 
 
 
@@ -4495,6 +4522,14 @@ export interface UserPreviousValuesFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gender | null> | prisma.Gender | null
+  }
+  role: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -4585,6 +4620,7 @@ type CandidatePreviousValuesObject =
   | { name: 'latest_odds', args?: [] | false, alias?: string  } 
   | { name: 'prevote_score', args?: [] | false, alias?: string  } 
   | { name: 'bio_other', args?: [] | false, alias?: string  } 
+  | { name: 'vote_type', args?: [] | false, alias?: string  } 
 
 type CandidatePreviousValuesFields =
   | 'id'
@@ -4599,6 +4635,7 @@ type CandidatePreviousValuesFields =
   | 'latest_odds'
   | 'prevote_score'
   | 'bio_other'
+  | 'vote_type'
 
 
 
@@ -4705,6 +4742,19 @@ export interface CandidatePreviousValuesFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  vote_type: {
+    type: 'VoteType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"CandidatePreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.VoteType | null> | prisma.VoteType | null
   }
 }
   
@@ -5945,6 +5995,14 @@ export interface UserWhereInput {
   gender_not?: prisma.Gender | null
   gender_in?: prisma.Gender[]
   gender_not_in?: prisma.Gender[]
+  role?: number | null
+  role_not?: number | null
+  role_in?: number[]
+  role_not_in?: number[]
+  role_lt?: number | null
+  role_lte?: number | null
+  role_gt?: number | null
+  role_gte?: number | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -6011,6 +6069,14 @@ export type UserWhereInputInputObject =
   | { name: 'gender_not', alias?: string  } 
   | { name: 'gender_in', alias?: string  } 
   | { name: 'gender_not_in', alias?: string  } 
+  | { name: 'role', alias?: string  } 
+  | { name: 'role_not', alias?: string  } 
+  | { name: 'role_in', alias?: string  } 
+  | { name: 'role_not_in', alias?: string  } 
+  | { name: 'role_lt', alias?: string  } 
+  | { name: 'role_lte', alias?: string  } 
+  | { name: 'role_gt', alias?: string  } 
+  | { name: 'role_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -6546,6 +6612,10 @@ export interface CandidateWhereInput {
   bio_other_not_starts_with?: string | null
   bio_other_ends_with?: string | null
   bio_other_not_ends_with?: string | null
+  vote_type?: prisma.VoteType | null
+  vote_type_not?: prisma.VoteType | null
+  vote_type_in?: prisma.VoteType[]
+  vote_type_not_in?: prisma.VoteType[]
   AND?: CandidateWhereInput[]
   OR?: CandidateWhereInput[]
   NOT?: CandidateWhereInput[]
@@ -6692,6 +6762,10 @@ export type CandidateWhereInputInputObject =
   | { name: 'bio_other_not_starts_with', alias?: string  } 
   | { name: 'bio_other_ends_with', alias?: string  } 
   | { name: 'bio_other_not_ends_with', alias?: string  } 
+  | { name: 'vote_type', alias?: string  } 
+  | { name: 'vote_type_not', alias?: string  } 
+  | { name: 'vote_type_in', alias?: string  } 
+  | { name: 'vote_type_not_in', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -7461,6 +7535,7 @@ export interface UserCreateInput {
   name?: string
   password?: string | null
   gender?: prisma.Gender | null
+  role?: number | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
@@ -7469,12 +7544,14 @@ export type UserCreateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
+  | { name: 'role', alias?: string  } 
   
 export interface UserUpdateInput {
   email?: string | null
   name?: string | null
   password?: string | null
   gender?: prisma.Gender | null
+  role?: number | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
@@ -7482,12 +7559,14 @@ export type UserUpdateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
+  | { name: 'role', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   email?: string | null
   name?: string | null
   password?: string | null
   gender?: prisma.Gender | null
+  role?: number | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
@@ -7495,6 +7574,7 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'gender', alias?: string  } 
+  | { name: 'role', alias?: string  } 
   
 export interface CandidateCreateInput {
   id?: string | null
@@ -7511,6 +7591,7 @@ export interface CandidateCreateInput {
   bio_qualifications?: QualificationCreateManyInput | null
   bio_policy_position?: PositionCreateManyInput | null
   bio_other?: string | null
+  vote_type?: prisma.VoteType | null
 }
 export type CandidateCreateInputInputObject =
   | Extract<keyof CandidateCreateInput, string>
@@ -7528,6 +7609,7 @@ export type CandidateCreateInputInputObject =
   | { name: 'bio_qualifications', alias?: string  } 
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
+  | { name: 'vote_type', alias?: string  } 
   
 export interface QualificationCreateManyInput {
   create?: QualificationCreateInput[]
@@ -7615,6 +7697,7 @@ export interface CandidateUpdateInput {
   bio_qualifications?: QualificationUpdateManyInput | null
   bio_policy_position?: PositionUpdateManyInput | null
   bio_other?: string | null
+  vote_type?: prisma.VoteType | null
 }
 export type CandidateUpdateInputInputObject =
   | Extract<keyof CandidateUpdateInput, string>
@@ -7631,6 +7714,7 @@ export type CandidateUpdateInputInputObject =
   | { name: 'bio_qualifications', alias?: string  } 
   | { name: 'bio_policy_position', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
+  | { name: 'vote_type', alias?: string  } 
   
 export interface QualificationUpdateManyInput {
   create?: QualificationCreateInput[]
@@ -8147,6 +8231,7 @@ export interface CandidateUpdateManyMutationInput {
   latest_odds?: number | null
   prevote_score?: number | null
   bio_other?: string | null
+  vote_type?: prisma.VoteType | null
 }
 export type CandidateUpdateManyMutationInputInputObject =
   | Extract<keyof CandidateUpdateManyMutationInput, string>
@@ -8161,6 +8246,7 @@ export type CandidateUpdateManyMutationInputInputObject =
   | { name: 'latest_odds', alias?: string  } 
   | { name: 'prevote_score', alias?: string  } 
   | { name: 'bio_other', alias?: string  } 
+  | { name: 'vote_type', alias?: string  } 
   
 export interface QualificationUpdateInput {
   name?: string | null
@@ -8711,6 +8797,8 @@ export type UserOrderByInputValues =
   | 'password_DESC'
   | 'gender_ASC'
   | 'gender_DESC'
+  | 'role_ASC'
+  | 'role_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -8753,6 +8841,13 @@ export type PositionOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
+export type VoteTypeValues =
+  | 'TOP'
+  | 'FAVORITE'
+  | 'COMPROMISE'
+  | 'VETO'
+  | 'UNKNOWNS'
+  
 export type CandidateOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8778,6 +8873,8 @@ export type CandidateOrderByInputValues =
   | 'prevote_score_DESC'
   | 'bio_other_ASC'
   | 'bio_other_DESC'
+  | 'vote_type_ASC'
+  | 'vote_type_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -8814,13 +8911,6 @@ export type CandidatePositionOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  
-export type VoteTypeValues =
-  | 'TOP'
-  | 'FAVORITE'
-  | 'COMPROMISE'
-  | 'VETO'
-  | 'UNKNOWNS'
   
 export type UserVoteOrderByInputValues =
   | 'id_ASC'

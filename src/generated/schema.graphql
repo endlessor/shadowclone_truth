@@ -3,6 +3,7 @@
 
 
 type AuthPayload {
+  isAdmin: Boolean
   token: String
   user: User
 }
@@ -22,6 +23,7 @@ type Candidate {
   photo: String
   prevote_score: Float
   state: String!
+  vote_type: VoteType
 }
 
 input CandidateCreateInput {
@@ -39,6 +41,7 @@ input CandidateCreateInput {
   photo: String
   prevote_score: Float
   state: String!
+  vote_type: VoteType
 }
 
 type CandidatePosition {
@@ -189,10 +192,19 @@ input CandidateUpdateInput {
   photo: String
   prevote_score: Float
   state: String
+  vote_type: VoteType
 }
 
 input CandidateWhereUniqueInput {
   id: ID
+}
+
+type CandidateWithVote {
+  candidateId: ID
+  compromises: Int
+  favorites: Int
+  tops: Int
+  vetos: Int
 }
 
 enum CategoryType {
@@ -865,10 +877,15 @@ input QualificationWhereUniqueInput {
 type Query {
   candidatePositions(after: String, before: String, first: Int, last: Int, orderBy: CandidatePositionOrderByInput, skip: Int, where: CandidatePositionWhereInput): [CandidatePosition!]!
   candidates: [Candidate!]
+  candidatesWithVotes: [CandidateWithVote!]
+  compromiseCount: Int
+  favoriteCount: Int
   me: User
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!
+  prevotesCount: Int
   qualifications(after: String, before: String, first: Int, last: Int, orderBy: QualificationOrderByInput, skip: Int, where: QualificationWhereInput): [Qualification!]!
+  topCount: Int
   topics(after: String, before: String, first: Int, last: Int, orderBy: TopicOrderByInput, skip: Int, where: TopicWhereInput): [Topic!]!
   userPositionLikes(after: String, before: String, first: Int, last: Int, orderBy: UserPositionLikeOrderByInput, skip: Int, where: UserPositionLikeWhereInput): [UserPositionLike!]!
   userQualificationLikes(after: String, before: String, first: Int, last: Int, orderBy: UserQualificationLikeOrderByInput, skip: Int, where: UserQualificationLikeWhereInput): [UserQualificationLike!]!
@@ -992,6 +1009,8 @@ enum UserOrderByInput {
   name_DESC
   password_ASC
   password_DESC
+  role_ASC
+  role_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
@@ -1249,6 +1268,14 @@ input UserWhereInput {
   password_not_in: [String!]
   password_not_starts_with: String
   password_starts_with: String
+  role: Int
+  role_gt: Int
+  role_gte: Int
+  role_in: [Int!]
+  role_lt: Int
+  role_lte: Int
+  role_not: Int
+  role_not_in: [Int!]
 }
 
 enum VoteType {

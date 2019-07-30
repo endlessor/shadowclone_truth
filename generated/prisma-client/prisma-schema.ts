@@ -61,6 +61,7 @@ type Candidate {
   bio_qualifications(where: QualificationWhereInput, orderBy: QualificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Qualification!]
   bio_policy_position(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position!]
   bio_other: String
+  vote_type: VoteType
 }
 
 type CandidateConnection {
@@ -84,6 +85,7 @@ input CandidateCreateInput {
   bio_qualifications: QualificationCreateManyInput
   bio_policy_position: PositionCreateManyInput
   bio_other: String
+  vote_type: VoteType
 }
 
 type CandidateEdge {
@@ -116,6 +118,8 @@ enum CandidateOrderByInput {
   prevote_score_DESC
   bio_other_ASC
   bio_other_DESC
+  vote_type_ASC
+  vote_type_DESC
 }
 
 type CandidatePosition {
@@ -306,6 +310,7 @@ type CandidatePreviousValues {
   latest_odds: Float
   prevote_score: Float
   bio_other: String
+  vote_type: VoteType
 }
 
 type CandidateSubscriptionPayload {
@@ -340,6 +345,7 @@ input CandidateUpdateInput {
   bio_qualifications: QualificationUpdateManyInput
   bio_policy_position: PositionUpdateManyInput
   bio_other: String
+  vote_type: VoteType
 }
 
 input CandidateUpdateManyMutationInput {
@@ -354,6 +360,7 @@ input CandidateUpdateManyMutationInput {
   latest_odds: Float
   prevote_score: Float
   bio_other: String
+  vote_type: VoteType
 }
 
 input CandidateWhereInput {
@@ -497,6 +504,10 @@ input CandidateWhereInput {
   bio_other_not_starts_with: String
   bio_other_ends_with: String
   bio_other_not_ends_with: String
+  vote_type: VoteType
+  vote_type_not: VoteType
+  vote_type_in: [VoteType!]
+  vote_type_not_in: [VoteType!]
   AND: [CandidateWhereInput!]
   OR: [CandidateWhereInput!]
   NOT: [CandidateWhereInput!]
@@ -1562,6 +1573,7 @@ type User {
   name: String!
   password: String
   gender: Gender
+  role: Int
 }
 
 type UserConnection {
@@ -1576,6 +1588,7 @@ input UserCreateInput {
   name: String!
   password: String
   gender: Gender
+  role: Int
 }
 
 type UserEdge {
@@ -1594,6 +1607,8 @@ enum UserOrderByInput {
   password_DESC
   gender_ASC
   gender_DESC
+  role_ASC
+  role_DESC
 }
 
 type UserPositionLike {
@@ -1752,6 +1767,7 @@ type UserPreviousValues {
   name: String!
   password: String
   gender: Gender
+  role: Int
 }
 
 type UserQualificationLike {
@@ -1927,6 +1943,7 @@ input UserUpdateInput {
   name: String
   password: String
   gender: Gender
+  role: Int
 }
 
 input UserUpdateManyMutationInput {
@@ -1934,6 +1951,7 @@ input UserUpdateManyMutationInput {
   name: String
   password: String
   gender: Gender
+  role: Int
 }
 
 type UserVote {
@@ -2147,6 +2165,14 @@ input UserWhereInput {
   gender_not: Gender
   gender_in: [Gender!]
   gender_not_in: [Gender!]
+  role: Int
+  role_not: Int
+  role_in: [Int!]
+  role_not_in: [Int!]
+  role_lt: Int
+  role_lte: Int
+  role_gt: Int
+  role_gte: Int
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
