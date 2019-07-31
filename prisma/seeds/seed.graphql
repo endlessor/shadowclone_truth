@@ -381,7 +381,7 @@ mutation {
   }
 
   positionLike1: createUserPositionLike(data: {
-    candidate_positionId: "cjyh4jzsqlnms0b190415j3k",
+    candidate_position: { connect: { id: "cjyh4jzsqlnms0b190415j3k" }}
     userId: "cjyh4jzsqlnms0b190415j36a",
     like: LIKE
   }){
@@ -389,7 +389,7 @@ mutation {
   }
 
   positionLike2: createUserPositionLike(data: {
-    candidate_positionId: "cjyh4jzsqlnms0b190415j3l",
+    candidate_position: { connect: { id: "cjyh4jzsqlnms0b190415j3l" }} ,
     userId: "cjyh4jzsqlnms0b190415j36b",
     like: DISLIKE
   }){

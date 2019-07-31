@@ -730,20 +730,7 @@ export interface NexusGenInputs {
   }
   UserPositionLikeWhereInput: { // input type
     AND?: NexusGenInputs['UserPositionLikeWhereInput'][] | null; // [UserPositionLikeWhereInput!]
-    candidate_positionId?: string | null; // String
-    candidate_positionId_contains?: string | null; // String
-    candidate_positionId_ends_with?: string | null; // String
-    candidate_positionId_gt?: string | null; // String
-    candidate_positionId_gte?: string | null; // String
-    candidate_positionId_in?: string[] | null; // [String!]
-    candidate_positionId_lt?: string | null; // String
-    candidate_positionId_lte?: string | null; // String
-    candidate_positionId_not?: string | null; // String
-    candidate_positionId_not_contains?: string | null; // String
-    candidate_positionId_not_ends_with?: string | null; // String
-    candidate_positionId_not_in?: string[] | null; // [String!]
-    candidate_positionId_not_starts_with?: string | null; // String
-    candidate_positionId_starts_with?: string | null; // String
+    candidate_position?: NexusGenInputs['CandidatePositionWhereInput'] | null; // CandidatePositionWhereInput
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -936,7 +923,7 @@ export interface NexusGenEnums {
   QualificationOrderByInput: "candidateId_ASC" | "candidateId_DESC" | "createdAt_ASC" | "createdAt_DESC" | "detail_ASC" | "detail_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "rank_ASC" | "rank_DESC" | "summary_ASC" | "summary_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "years_ASC" | "years_DESC"
   TopicOrderByInput: "category_ASC" | "category_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "gender_ASC" | "gender_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "password_ASC" | "password_DESC" | "role_ASC" | "role_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  UserPositionLikeOrderByInput: "candidate_positionId_ASC" | "candidate_positionId_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "latest_ASC" | "latest_DESC" | "like_ASC" | "like_DESC" | "time_ASC" | "time_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
+  UserPositionLikeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "latest_ASC" | "latest_DESC" | "like_ASC" | "like_DESC" | "time_ASC" | "time_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
   UserQualificationLikeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "latest_ASC" | "latest_DESC" | "like_ASC" | "like_DESC" | "qualificationId_ASC" | "qualificationId_DESC" | "time_ASC" | "time_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
   VoteType: "COMPROMISE" | "FAVORITE" | "TOP" | "UNKNOWNS" | "VETO"
 }
@@ -1005,6 +992,11 @@ export interface NexusGenRootTypes {
     name: string; // String!
     summary?: string | null; // String
   }
+  PositionWithLike: { // root type
+    dislikes?: number | null; // Int
+    likes?: number | null; // Int
+    position?: NexusGenRootTypes['Position'] | null; // Position
+  }
   Qualification: { // root type
     candidateId?: string | null; // String
     detail?: string | null; // String
@@ -1027,7 +1019,6 @@ export interface NexusGenRootTypes {
     name: string; // String!
   }
   UserPositionLike: { // root type
-    candidate_positionId: string; // String!
     id: string; // ID!
     latest?: boolean | null; // Boolean
     like?: NexusGenEnums['LikeType'] | null; // LikeType
@@ -1206,6 +1197,11 @@ export interface NexusGenFieldTypes {
     summary: string | null; // String
     topic: NexusGenRootTypes['Topic'] | null; // Topic
   }
+  PositionWithLike: { // field return type
+    dislikes: number | null; // Int
+    likes: number | null; // Int
+    position: NexusGenRootTypes['Position'] | null; // Position
+  }
   Qualification: { // field return type
     candidateId: string | null; // String
     detail: string | null; // String
@@ -1222,6 +1218,7 @@ export interface NexusGenFieldTypes {
     me: NexusGenRootTypes['User'] | null; // User
     polls: NexusGenRootTypes['Poll'][]; // [Poll!]!
     positions: NexusGenRootTypes['Position'][]; // [Position!]!
+    positionsWithLikes: NexusGenRootTypes['PositionWithLike'][] | null; // [PositionWithLike!]
     qualifications: NexusGenRootTypes['Qualification'][]; // [Qualification!]!
     topics: NexusGenRootTypes['Topic'][]; // [Topic!]!
     userPositionLikes: NexusGenRootTypes['UserPositionLike'][]; // [UserPositionLike!]!
@@ -1242,7 +1239,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   UserPositionLike: { // field return type
-    candidate_positionId: string; // String!
+    candidate_position: NexusGenRootTypes['CandidatePosition']; // CandidatePosition!
     id: string; // ID!
     latest: boolean | null; // Boolean
     like: NexusGenEnums['LikeType'] | null; // LikeType
@@ -1446,7 +1443,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "Qualification" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserQualificationLike" | "UserVote";
+export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserQualificationLike" | "UserVote";
 
 export type NexusGenInputNames = "CandidateCreateInput" | "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereInput" | "CandidatePositionWhereUniqueInput" | "CandidateUpdateInput" | "CandidateWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionCreateManyInput" | "PositionScalarWhereInput" | "PositionUpdateDataInput" | "PositionUpdateInput" | "PositionUpdateManyDataInput" | "PositionUpdateManyInput" | "PositionUpdateManyWithWhereNestedInput" | "PositionUpdateWithWhereUniqueNestedInput" | "PositionUpsertWithWhereUniqueNestedInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationCreateManyInput" | "QualificationScalarWhereInput" | "QualificationUpdateDataInput" | "QualificationUpdateInput" | "QualificationUpdateManyDataInput" | "QualificationUpdateManyInput" | "QualificationUpdateManyWithWhereNestedInput" | "QualificationUpdateWithWhereUniqueNestedInput" | "QualificationUpsertWithWhereUniqueNestedInput" | "QualificationWhereInput" | "QualificationWhereUniqueInput" | "TopicCreateInput" | "TopicCreateOneInput" | "TopicUpdateDataInput" | "TopicUpdateInput" | "TopicUpdateOneInput" | "TopicUpsertNestedInput" | "TopicWhereInput" | "TopicWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
 

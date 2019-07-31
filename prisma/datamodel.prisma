@@ -80,7 +80,7 @@ type UserQualificationLike {
 type UserPositionLike {
   id: ID! @id
   userId: String!
-  candidate_positionId: String!
+  candidate_position: CandidatePosition!
   like: LikeType @default(value: LIKE)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)

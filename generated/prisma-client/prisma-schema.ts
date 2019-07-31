@@ -147,6 +147,11 @@ input CandidatePositionCreateInput {
   latest: Boolean
 }
 
+input CandidatePositionCreateOneInput {
+  create: CandidatePositionCreateInput
+  connect: CandidatePositionWhereUniqueInput
+}
+
 type CandidatePositionEdge {
   node: CandidatePosition!
   cursor: String!
@@ -197,6 +202,14 @@ input CandidatePositionSubscriptionWhereInput {
   NOT: [CandidatePositionSubscriptionWhereInput!]
 }
 
+input CandidatePositionUpdateDataInput {
+  positionId: String
+  candidateId: String
+  link: String
+  rank: Int
+  latest: Boolean
+}
+
 input CandidatePositionUpdateInput {
   positionId: String
   candidateId: String
@@ -211,6 +224,18 @@ input CandidatePositionUpdateManyMutationInput {
   link: String
   rank: Int
   latest: Boolean
+}
+
+input CandidatePositionUpdateOneRequiredInput {
+  create: CandidatePositionCreateInput
+  update: CandidatePositionUpdateDataInput
+  upsert: CandidatePositionUpsertNestedInput
+  connect: CandidatePositionWhereUniqueInput
+}
+
+input CandidatePositionUpsertNestedInput {
+  update: CandidatePositionUpdateDataInput!
+  create: CandidatePositionCreateInput!
 }
 
 input CandidatePositionWhereInput {
@@ -1614,7 +1639,7 @@ enum UserOrderByInput {
 type UserPositionLike {
   id: ID!
   userId: String!
-  candidate_positionId: String!
+  candidate_position: CandidatePosition!
   like: LikeType
   time: DateTime
   latest: Boolean
@@ -1629,7 +1654,7 @@ type UserPositionLikeConnection {
 input UserPositionLikeCreateInput {
   id: ID
   userId: String!
-  candidate_positionId: String!
+  candidate_position: CandidatePositionCreateOneInput!
   like: LikeType
   latest: Boolean
 }
@@ -1644,8 +1669,6 @@ enum UserPositionLikeOrderByInput {
   id_DESC
   userId_ASC
   userId_DESC
-  candidate_positionId_ASC
-  candidate_positionId_DESC
   like_ASC
   like_DESC
   time_ASC
@@ -1657,7 +1680,6 @@ enum UserPositionLikeOrderByInput {
 type UserPositionLikePreviousValues {
   id: ID!
   userId: String!
-  candidate_positionId: String!
   like: LikeType
   time: DateTime
   latest: Boolean
@@ -1683,14 +1705,13 @@ input UserPositionLikeSubscriptionWhereInput {
 
 input UserPositionLikeUpdateInput {
   userId: String
-  candidate_positionId: String
+  candidate_position: CandidatePositionUpdateOneRequiredInput
   like: LikeType
   latest: Boolean
 }
 
 input UserPositionLikeUpdateManyMutationInput {
   userId: String
-  candidate_positionId: String
   like: LikeType
   latest: Boolean
 }
@@ -1724,20 +1745,7 @@ input UserPositionLikeWhereInput {
   userId_not_starts_with: String
   userId_ends_with: String
   userId_not_ends_with: String
-  candidate_positionId: String
-  candidate_positionId_not: String
-  candidate_positionId_in: [String!]
-  candidate_positionId_not_in: [String!]
-  candidate_positionId_lt: String
-  candidate_positionId_lte: String
-  candidate_positionId_gt: String
-  candidate_positionId_gte: String
-  candidate_positionId_contains: String
-  candidate_positionId_not_contains: String
-  candidate_positionId_starts_with: String
-  candidate_positionId_not_starts_with: String
-  candidate_positionId_ends_with: String
-  candidate_positionId_not_ends_with: String
+  candidate_position: CandidatePositionWhereInput
   like: LikeType
   like_not: LikeType
   like_in: [LikeType!]

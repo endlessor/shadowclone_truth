@@ -34,3 +34,12 @@ export const CountAttribute = objectType({
     t.float('average_veto')
   }
 })
+
+export const PositionWithLike = objectType({
+  name: 'PositionWithLike',
+  definition(t) {
+    t.field('position', { type: 'Position' })
+    t.int('likes')
+    t.int('dislikes')
+  }
+})
