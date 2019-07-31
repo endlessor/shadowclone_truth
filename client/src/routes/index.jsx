@@ -5,6 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import AdminRoutes from "./admin";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PreVote from "../pages/Prevote";
@@ -38,6 +39,7 @@ const MainRoute = () => (
       <Route path="/signup" component={Signup} />
       <PrivateRoute path="/candidate/:id" component={VoteReasoning} />
       <PrivateRoute path="/result" component={Results} />
+      <PrivateRoute path="/admin" component={AdminRoutes} />
     </Switch>
   </Router>
 );
