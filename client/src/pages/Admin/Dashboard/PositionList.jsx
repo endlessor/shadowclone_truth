@@ -165,7 +165,10 @@ function PositionList(props) {
 PositionList.propTypes = {};
 
 export default compose(
-  graphql(AdminPositionsQuery, { name: "positions" }),
+  graphql(AdminPositionsQuery, {
+    name: "positions",
+    options: { fetchPolicy: "network-only" }
+  }),
   graphql(AdminTopicsQuery, { name: "topics" }),
   graphql(AdminAddPosition, {
     name: "addPosition",
@@ -183,13 +186,13 @@ export default compose(
     name: "deletePosition",
     options: {
       update: (proxy, { data: { deletePosition } }) => {
-        const { positions } = proxy.readQuery({
+        const { positionsWithLikes } = proxy.readQuery({
           query: AdminPositionsQuery
         });
         proxy.writeQuery({
           query: AdminPositionsQuery,
           data: {
-            positions: positions.filter(
+            positionsWithLikes: positionsWithLikes.filter(
               position => position.id !== deletePosition.id
             )
           }

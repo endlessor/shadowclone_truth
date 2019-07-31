@@ -10,6 +10,7 @@ export const LoginMutation = gql`
         email
         gender
       }
+      isAdmin
     }
   }
 `;

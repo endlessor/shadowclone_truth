@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Query } from "react-apollo";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Card } from "primereact/card";
@@ -12,9 +11,9 @@ const Dashboard = props => {
   return (
     <div className="p-grid">
       <section className="p-col-12">
-        <Query query={AdminTotalUsers}>
+        <Query query={AdminTotalUsers} fetchPolicy="network-only">
           {({ loading: loadingUsers, data: { users } }) => (
-            <Query query={AdminTotalAttributes}>
+            <Query query={AdminTotalAttributes} fetchPolicy="network-only">
               {({ loading: loadingAttributes, data: { voteAttributes } }) => {
                 if (loadingUsers || loadingAttributes)
                   return <ProgressSpinner />;

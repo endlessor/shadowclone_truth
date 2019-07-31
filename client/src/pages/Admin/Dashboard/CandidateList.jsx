@@ -201,7 +201,10 @@ function CandidateList(props) {
 CandidateList.propTypes = {};
 
 export default compose(
-  graphql(AdminCandidatesQuery, { name: "candidates" }),
+  graphql(AdminCandidatesQuery, {
+    name: "candidates",
+    options: { fetchPolicy: "network-only" }
+  }),
   graphql(AdminAddCandidate, {
     name: "addCandidate",
     options: { refetchQueries: [{ query: AdminCandidatesQuery }] }
