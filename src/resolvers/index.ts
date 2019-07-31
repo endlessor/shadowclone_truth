@@ -1,6 +1,6 @@
 import Query from './query'
 import Mutation from './mutation'
-import { AuthPayload, CandidateWithVote, CountAttribute } from './types'
+import { AuthPayload, CandidateWithVote, CountAttribute, PositionWithLike } from './types'
 import { User } from './user'
 
 export const resolvers = {
@@ -9,5 +9,6 @@ export const resolvers = {
   AuthPayload,
   User,
   CandidateWithVote,
-  CountAttribute
+  CountAttribute,
+  PositionWithLike
 }

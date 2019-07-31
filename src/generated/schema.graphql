@@ -597,6 +597,12 @@ input PositionWhereUniqueInput {
   id: ID
 }
 
+type PositionWithLike {
+  dislikes: Int
+  likes: Int
+  position: Position
+}
+
 type Qualification {
   candidateId: String
   detail: String
@@ -893,6 +899,7 @@ type Query {
   me: User
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!
+  positionsWithLikes: [PositionWithLike!]
   qualifications(after: String, before: String, first: Int, last: Int, orderBy: QualificationOrderByInput, skip: Int, where: QualificationWhereInput): [Qualification!]!
   topics(after: String, before: String, first: Int, last: Int, orderBy: TopicOrderByInput, skip: Int, where: TopicWhereInput): [Topic!]!
   userPositionLikes(after: String, before: String, first: Int, last: Int, orderBy: UserPositionLikeOrderByInput, skip: Int, where: UserPositionLikeWhereInput): [UserPositionLike!]!
@@ -1025,7 +1032,7 @@ enum UserOrderByInput {
 }
 
 type UserPositionLike {
-  candidate_positionId: String!
+  candidate_position: CandidatePosition!
   id: ID!
   latest: Boolean
   like: LikeType
@@ -1034,8 +1041,6 @@ type UserPositionLike {
 }
 
 enum UserPositionLikeOrderByInput {
-  candidate_positionId_ASC
-  candidate_positionId_DESC
   createdAt_ASC
   createdAt_DESC
   id_ASC
@@ -1054,20 +1059,7 @@ enum UserPositionLikeOrderByInput {
 
 input UserPositionLikeWhereInput {
   AND: [UserPositionLikeWhereInput!]
-  candidate_positionId: String
-  candidate_positionId_contains: String
-  candidate_positionId_ends_with: String
-  candidate_positionId_gt: String
-  candidate_positionId_gte: String
-  candidate_positionId_in: [String!]
-  candidate_positionId_lt: String
-  candidate_positionId_lte: String
-  candidate_positionId_not: String
-  candidate_positionId_not_contains: String
-  candidate_positionId_not_ends_with: String
-  candidate_positionId_not_in: [String!]
-  candidate_positionId_not_starts_with: String
-  candidate_positionId_starts_with: String
+  candidate_position: CandidatePositionWhereInput
   id: ID
   id_contains: ID
   id_ends_with: ID

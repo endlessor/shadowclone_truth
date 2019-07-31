@@ -1,6 +1,21 @@
 import { prismaObjectType } from 'nexus-prisma'
 import { getUserId } from '../utils'
-import { VoteType } from '../../generated/prisma-client';
+import { VoteType, LikeType } from '../../generated/prisma-client';
+
+const posLikeFragment = `
+  fragment userPositionLike on UserPositionLike {
+    id
+    userId
+    like
+    time
+    latest
+    candidate_position {
+      id
+      candidateId
+      positionId
+    }
+  }
+`
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -121,6 +136,28 @@ const Query = prismaObjectType({
             compromises: getVotesCount(candidate.id, 'COMPROMISE'),
             vetos: getVotesCount(candidate.id, 'VETO')
           }          
+        })
+      }
+    })
+
+    t.list.field('positionsWithLikes', {
+      type: 'PositionWithLike',
+      resolve: async (parent, args, ctx) => {
+        const posLikes = await ctx.prisma.userPositionLikes().$fragment(posLikeFragment) as Array<any>
+        const positions = await ctx.prisma.positions({ orderBy: 'id_ASC' })
+        const likeCount = (id: String, likeType: LikeType) => {
+          const likes = posLikes.filter(posLike => {
+            return posLike.candidate_position.positionId === id &&
+              posLike.like === likeType
+          })
+          return likes.length
+        }
+        return positions.map(position => {
+          return {
+            position: position,
+            likes: likeCount(position.id, 'LIKE'),
+            dislikes: likeCount(position.id, 'DISLIKE')
+          }
         })
       }
     })

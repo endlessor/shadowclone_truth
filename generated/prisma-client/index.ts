@@ -621,8 +621,6 @@ export type UserPositionLikeOrderByInput =
   | "id_DESC"
   | "userId_ASC"
   | "userId_DESC"
-  | "candidate_positionId_ASC"
-  | "candidate_positionId_DESC"
   | "like_ASC"
   | "like_DESC"
   | "time_ASC"
@@ -646,31 +644,24 @@ export type UserQualificationLikeOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface CandidateCreateInput {
+export interface QualificationCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
-  photo?: Maybe<String>;
-  party: String;
-  state: String;
-  current_office: String;
-  age: Int;
-  gender?: Maybe<Gender>;
-  latest_poll?: Maybe<Float>;
-  latest_odds?: Maybe<Float>;
-  prevote_score?: Maybe<Float>;
-  bio_qualifications?: Maybe<QualificationCreateManyInput>;
-  bio_policy_position?: Maybe<PositionCreateManyInput>;
-  bio_other?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years: Int;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
 }
 
 export type CandidateWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface QualificationUpdateWithWhereUniqueNestedInput {
+export interface QualificationUpsertWithWhereUniqueNestedInput {
   where: QualificationWhereUniqueInput;
-  data: QualificationUpdateDataInput;
+  update: QualificationUpdateDataInput;
+  create: QualificationCreateInput;
 }
 
 export interface CandidateWhereInput {
@@ -823,59 +814,18 @@ export interface CandidateWhereInput {
   NOT?: Maybe<CandidateWhereInput[] | CandidateWhereInput>;
 }
 
-export interface PositionUpdateManyMutationInput {
+export interface TopicUpdateInput {
   name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
+  category?: Maybe<CategoryType>;
 }
 
-export interface QualificationUpdateManyDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export type UserPositionLikeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface QualificationUpdateDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export interface PositionUpdateInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicUpdateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface UserQualificationLikeSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserQualificationLikeWhereInput>;
-  AND?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
+export interface TopicUpdateOneInput {
+  create?: Maybe<TopicCreateInput>;
+  update?: Maybe<TopicUpdateDataInput>;
+  upsert?: Maybe<TopicUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<TopicWhereUniqueInput>;
 }
 
 export interface QualificationWhereInput {
@@ -970,1080 +920,6 @@ export interface QualificationWhereInput {
   NOT?: Maybe<QualificationWhereInput[] | QualificationWhereInput>;
 }
 
-export interface UserPositionLikeSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserPositionLikeWhereInput>;
-  AND?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
-}
-
-export interface UserPositionLikeWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  userId?: Maybe<String>;
-  userId_not?: Maybe<String>;
-  userId_in?: Maybe<String[] | String>;
-  userId_not_in?: Maybe<String[] | String>;
-  userId_lt?: Maybe<String>;
-  userId_lte?: Maybe<String>;
-  userId_gt?: Maybe<String>;
-  userId_gte?: Maybe<String>;
-  userId_contains?: Maybe<String>;
-  userId_not_contains?: Maybe<String>;
-  userId_starts_with?: Maybe<String>;
-  userId_not_starts_with?: Maybe<String>;
-  userId_ends_with?: Maybe<String>;
-  userId_not_ends_with?: Maybe<String>;
-  candidate_positionId?: Maybe<String>;
-  candidate_positionId_not?: Maybe<String>;
-  candidate_positionId_in?: Maybe<String[] | String>;
-  candidate_positionId_not_in?: Maybe<String[] | String>;
-  candidate_positionId_lt?: Maybe<String>;
-  candidate_positionId_lte?: Maybe<String>;
-  candidate_positionId_gt?: Maybe<String>;
-  candidate_positionId_gte?: Maybe<String>;
-  candidate_positionId_contains?: Maybe<String>;
-  candidate_positionId_not_contains?: Maybe<String>;
-  candidate_positionId_starts_with?: Maybe<String>;
-  candidate_positionId_not_starts_with?: Maybe<String>;
-  candidate_positionId_ends_with?: Maybe<String>;
-  candidate_positionId_not_ends_with?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  like_not?: Maybe<LikeType>;
-  like_in?: Maybe<LikeType[] | LikeType>;
-  like_not_in?: Maybe<LikeType[] | LikeType>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
-  OR?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
-  NOT?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
-}
-
-export interface CandidatePositionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  positionId?: Maybe<String>;
-  positionId_not?: Maybe<String>;
-  positionId_in?: Maybe<String[] | String>;
-  positionId_not_in?: Maybe<String[] | String>;
-  positionId_lt?: Maybe<String>;
-  positionId_lte?: Maybe<String>;
-  positionId_gt?: Maybe<String>;
-  positionId_gte?: Maybe<String>;
-  positionId_contains?: Maybe<String>;
-  positionId_not_contains?: Maybe<String>;
-  positionId_starts_with?: Maybe<String>;
-  positionId_not_starts_with?: Maybe<String>;
-  positionId_ends_with?: Maybe<String>;
-  positionId_not_ends_with?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  link?: Maybe<String>;
-  link_not?: Maybe<String>;
-  link_in?: Maybe<String[] | String>;
-  link_not_in?: Maybe<String[] | String>;
-  link_lt?: Maybe<String>;
-  link_lte?: Maybe<String>;
-  link_gt?: Maybe<String>;
-  link_gte?: Maybe<String>;
-  link_contains?: Maybe<String>;
-  link_not_contains?: Maybe<String>;
-  link_starts_with?: Maybe<String>;
-  link_not_starts_with?: Maybe<String>;
-  link_ends_with?: Maybe<String>;
-  link_not_ends_with?: Maybe<String>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
-  OR?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
-  NOT?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
-}
-
-export interface PollUpdateManyMutationInput {
-  userId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
-}
-
-export interface QualificationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<QualificationWhereInput>;
-  AND?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-}
-
-export interface PollUpdateInput {
-  userId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
-}
-
-export interface PollSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PollWhereInput>;
-  AND?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-  OR?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-  NOT?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-}
-
-export interface PollCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  candidateId: String;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
-}
-
-export interface CandidatePositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CandidatePositionWhereInput>;
-  AND?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-}
-
-export interface CandidatePositionUpdateManyMutationInput {
-  positionId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PollWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  userId?: Maybe<String>;
-  userId_not?: Maybe<String>;
-  userId_in?: Maybe<String[] | String>;
-  userId_not_in?: Maybe<String[] | String>;
-  userId_lt?: Maybe<String>;
-  userId_lte?: Maybe<String>;
-  userId_gt?: Maybe<String>;
-  userId_gte?: Maybe<String>;
-  userId_contains?: Maybe<String>;
-  userId_not_contains?: Maybe<String>;
-  userId_starts_with?: Maybe<String>;
-  userId_not_starts_with?: Maybe<String>;
-  userId_ends_with?: Maybe<String>;
-  userId_not_ends_with?: Maybe<String>;
-  date?: Maybe<DateTimeInput>;
-  date_not?: Maybe<DateTimeInput>;
-  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  date_lt?: Maybe<DateTimeInput>;
-  date_lte?: Maybe<DateTimeInput>;
-  date_gt?: Maybe<DateTimeInput>;
-  date_gte?: Maybe<DateTimeInput>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  poll_type?: Maybe<PollType>;
-  poll_type_not?: Maybe<PollType>;
-  poll_type_in?: Maybe<PollType[] | PollType>;
-  poll_type_not_in?: Maybe<PollType[] | PollType>;
-  error_margin?: Maybe<String>;
-  error_margin_not?: Maybe<String>;
-  error_margin_in?: Maybe<String[] | String>;
-  error_margin_not_in?: Maybe<String[] | String>;
-  error_margin_lt?: Maybe<String>;
-  error_margin_lte?: Maybe<String>;
-  error_margin_gt?: Maybe<String>;
-  error_margin_gte?: Maybe<String>;
-  error_margin_contains?: Maybe<String>;
-  error_margin_not_contains?: Maybe<String>;
-  error_margin_starts_with?: Maybe<String>;
-  error_margin_not_starts_with?: Maybe<String>;
-  error_margin_ends_with?: Maybe<String>;
-  error_margin_not_ends_with?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
-  link_to_poll_not?: Maybe<String>;
-  link_to_poll_in?: Maybe<String[] | String>;
-  link_to_poll_not_in?: Maybe<String[] | String>;
-  link_to_poll_lt?: Maybe<String>;
-  link_to_poll_lte?: Maybe<String>;
-  link_to_poll_gt?: Maybe<String>;
-  link_to_poll_gte?: Maybe<String>;
-  link_to_poll_contains?: Maybe<String>;
-  link_to_poll_not_contains?: Maybe<String>;
-  link_to_poll_starts_with?: Maybe<String>;
-  link_to_poll_not_starts_with?: Maybe<String>;
-  link_to_poll_ends_with?: Maybe<String>;
-  link_to_poll_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PollWhereInput[] | PollWhereInput>;
-  OR?: Maybe<PollWhereInput[] | PollWhereInput>;
-  NOT?: Maybe<PollWhereInput[] | PollWhereInput>;
-}
-
-export type UserQualificationLikeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface UserVoteUpdateManyMutationInput {
-  candidateId?: Maybe<String>;
-  userId?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidatePositionUpdateInput {
-  positionId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface UserVoteCreateInput {
-  id?: Maybe<ID_Input>;
-  candidateId: String;
-  userId: String;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface UserQualificationLikeWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  userId?: Maybe<String>;
-  userId_not?: Maybe<String>;
-  userId_in?: Maybe<String[] | String>;
-  userId_not_in?: Maybe<String[] | String>;
-  userId_lt?: Maybe<String>;
-  userId_lte?: Maybe<String>;
-  userId_gt?: Maybe<String>;
-  userId_gte?: Maybe<String>;
-  userId_contains?: Maybe<String>;
-  userId_not_contains?: Maybe<String>;
-  userId_starts_with?: Maybe<String>;
-  userId_not_starts_with?: Maybe<String>;
-  userId_ends_with?: Maybe<String>;
-  userId_not_ends_with?: Maybe<String>;
-  qualificationId?: Maybe<String>;
-  qualificationId_not?: Maybe<String>;
-  qualificationId_in?: Maybe<String[] | String>;
-  qualificationId_not_in?: Maybe<String[] | String>;
-  qualificationId_lt?: Maybe<String>;
-  qualificationId_lte?: Maybe<String>;
-  qualificationId_gt?: Maybe<String>;
-  qualificationId_gte?: Maybe<String>;
-  qualificationId_contains?: Maybe<String>;
-  qualificationId_not_contains?: Maybe<String>;
-  qualificationId_starts_with?: Maybe<String>;
-  qualificationId_not_starts_with?: Maybe<String>;
-  qualificationId_ends_with?: Maybe<String>;
-  qualificationId_not_ends_with?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  like_not?: Maybe<LikeType>;
-  like_in?: Maybe<LikeType[] | LikeType>;
-  like_not_in?: Maybe<LikeType[] | LikeType>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<
-    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
-  >;
-  OR?: Maybe<
-    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
-  >;
-  NOT?: Maybe<
-    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
-  >;
-}
-
-export interface UserQualificationLikeUpdateManyMutationInput {
-  userId?: Maybe<String>;
-  qualificationId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidatePositionCreateInput {
-  id?: Maybe<ID_Input>;
-  positionId: String;
-  candidateId: String;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface UserQualificationLikeCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  qualificationId: String;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidateUpdateManyMutationInput {
-  name?: Maybe<String>;
-  photo?: Maybe<String>;
-  party?: Maybe<String>;
-  state?: Maybe<String>;
-  current_office?: Maybe<String>;
-  age?: Maybe<Int>;
-  gender?: Maybe<Gender>;
-  latest_poll?: Maybe<Float>;
-  latest_odds?: Maybe<Float>;
-  prevote_score?: Maybe<Float>;
-  bio_other?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-}
-
-export interface UserPositionLikeUpdateManyMutationInput {
-  userId?: Maybe<String>;
-  candidate_positionId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionUpdateManyDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-}
-
-export interface UserPositionLikeCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  candidate_positionId: String;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionUpdateManyWithWhereNestedInput {
-  where: PositionScalarWhereInput;
-  data: PositionUpdateManyDataInput;
-}
-
-export interface PositionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  summary?: Maybe<String>;
-  summary_not?: Maybe<String>;
-  summary_in?: Maybe<String[] | String>;
-  summary_not_in?: Maybe<String[] | String>;
-  summary_lt?: Maybe<String>;
-  summary_lte?: Maybe<String>;
-  summary_gt?: Maybe<String>;
-  summary_gte?: Maybe<String>;
-  summary_contains?: Maybe<String>;
-  summary_not_contains?: Maybe<String>;
-  summary_starts_with?: Maybe<String>;
-  summary_not_starts_with?: Maybe<String>;
-  summary_ends_with?: Maybe<String>;
-  summary_not_ends_with?: Maybe<String>;
-  topic?: Maybe<TopicWhereInput>;
-  detail?: Maybe<String>;
-  detail_not?: Maybe<String>;
-  detail_in?: Maybe<String[] | String>;
-  detail_not_in?: Maybe<String[] | String>;
-  detail_lt?: Maybe<String>;
-  detail_lte?: Maybe<String>;
-  detail_gt?: Maybe<String>;
-  detail_gte?: Maybe<String>;
-  detail_contains?: Maybe<String>;
-  detail_not_contains?: Maybe<String>;
-  detail_starts_with?: Maybe<String>;
-  detail_not_starts_with?: Maybe<String>;
-  detail_ends_with?: Maybe<String>;
-  detail_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-}
-
-export type UserVoteWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface UserUpdateInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  role?: Maybe<Int>;
-}
-
-export interface PositionScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  summary?: Maybe<String>;
-  summary_not?: Maybe<String>;
-  summary_in?: Maybe<String[] | String>;
-  summary_not_in?: Maybe<String[] | String>;
-  summary_lt?: Maybe<String>;
-  summary_lte?: Maybe<String>;
-  summary_gt?: Maybe<String>;
-  summary_gte?: Maybe<String>;
-  summary_contains?: Maybe<String>;
-  summary_not_contains?: Maybe<String>;
-  summary_starts_with?: Maybe<String>;
-  summary_not_starts_with?: Maybe<String>;
-  summary_ends_with?: Maybe<String>;
-  summary_not_ends_with?: Maybe<String>;
-  detail?: Maybe<String>;
-  detail_not?: Maybe<String>;
-  detail_in?: Maybe<String[] | String>;
-  detail_not_in?: Maybe<String[] | String>;
-  detail_lt?: Maybe<String>;
-  detail_lte?: Maybe<String>;
-  detail_gt?: Maybe<String>;
-  detail_gte?: Maybe<String>;
-  detail_contains?: Maybe<String>;
-  detail_not_contains?: Maybe<String>;
-  detail_starts_with?: Maybe<String>;
-  detail_not_starts_with?: Maybe<String>;
-  detail_ends_with?: Maybe<String>;
-  detail_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-  OR?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-  NOT?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
-
-export interface UserVoteWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  userId?: Maybe<String>;
-  userId_not?: Maybe<String>;
-  userId_in?: Maybe<String[] | String>;
-  userId_not_in?: Maybe<String[] | String>;
-  userId_lt?: Maybe<String>;
-  userId_lte?: Maybe<String>;
-  userId_gt?: Maybe<String>;
-  userId_gte?: Maybe<String>;
-  userId_contains?: Maybe<String>;
-  userId_not_contains?: Maybe<String>;
-  userId_starts_with?: Maybe<String>;
-  userId_not_starts_with?: Maybe<String>;
-  userId_ends_with?: Maybe<String>;
-  userId_not_ends_with?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  vote_type_not?: Maybe<VoteType>;
-  vote_type_in?: Maybe<VoteType[] | VoteType>;
-  vote_type_not_in?: Maybe<VoteType[] | VoteType>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-  OR?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-  NOT?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-}
-
-export interface UserWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  gender_not?: Maybe<Gender>;
-  gender_in?: Maybe<Gender[] | Gender>;
-  gender_not_in?: Maybe<Gender[] | Gender>;
-  role?: Maybe<Int>;
-  role_not?: Maybe<Int>;
-  role_in?: Maybe<Int[] | Int>;
-  role_not_in?: Maybe<Int[] | Int>;
-  role_lt?: Maybe<Int>;
-  role_lte?: Maybe<Int>;
-  role_gt?: Maybe<Int>;
-  role_gte?: Maybe<Int>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
-}
-
-export interface PositionUpsertWithWhereUniqueNestedInput {
-  where: PositionWhereUniqueInput;
-  update: PositionUpdateDataInput;
-  create: PositionCreateInput;
-}
-
-export interface QualificationUpdateManyMutationInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export interface TopicUpsertNestedInput {
-  update: TopicUpdateDataInput;
-  create: TopicCreateInput;
-}
-
-export interface UserVoteSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserVoteWhereInput>;
-  AND?: Maybe<
-    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
-  >;
-  OR?: Maybe<UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput>;
-  NOT?: Maybe<
-    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
-  >;
-}
-
-export interface TopicUpdateDataInput {
-  name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-}
-
-export interface TopicUpdateOneInput {
-  create?: Maybe<TopicCreateInput>;
-  update?: Maybe<TopicUpdateDataInput>;
-  upsert?: Maybe<TopicUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<TopicWhereUniqueInput>;
-}
-
-export interface PositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PositionWhereInput>;
-  AND?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
-  NOT?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-}
-
-export interface CandidateSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CandidateWhereInput>;
-  AND?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-}
-
-export interface UserVoteUpdateInput {
-  candidateId?: Maybe<String>;
-  userId?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionUpdateDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicUpdateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface UserQualificationLikeUpdateInput {
-  userId?: Maybe<String>;
-  qualificationId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface QualificationCreateManyInput {
-  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
-  connect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-}
-
-export interface UserPositionLikeUpdateInput {
-  userId?: Maybe<String>;
-  candidate_positionId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface QualificationCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years: Int;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export interface UserUpdateManyMutationInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  role?: Maybe<Int>;
-}
-
-export interface PositionCreateManyInput {
-  create?: Maybe<PositionCreateInput[] | PositionCreateInput>;
-  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-}
-
-export interface TopicUpdateManyMutationInput {
-  name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
-}
-
-export interface PositionCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicCreateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface QualificationUpdateInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export interface TopicCreateOneInput {
-  create?: Maybe<TopicCreateInput>;
-  connect?: Maybe<TopicWhereUniqueInput>;
-}
-
-export interface TopicSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TopicWhereInput>;
-  AND?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-  OR?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-  NOT?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-}
-
-export interface TopicCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  category?: Maybe<CategoryType>;
-}
-
-export interface TopicWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  category?: Maybe<CategoryType>;
-  category_not?: Maybe<CategoryType>;
-  category_in?: Maybe<CategoryType[] | CategoryType>;
-  category_not_in?: Maybe<CategoryType[] | CategoryType>;
-  AND?: Maybe<TopicWhereInput[] | TopicWhereInput>;
-  OR?: Maybe<TopicWhereInput[] | TopicWhereInput>;
-  NOT?: Maybe<TopicWhereInput[] | TopicWhereInput>;
-}
-
-export interface CandidateUpdateInput {
-  name?: Maybe<String>;
-  photo?: Maybe<String>;
-  party?: Maybe<String>;
-  state?: Maybe<String>;
-  current_office?: Maybe<String>;
-  age?: Maybe<Int>;
-  gender?: Maybe<Gender>;
-  latest_poll?: Maybe<Float>;
-  latest_odds?: Maybe<Float>;
-  prevote_score?: Maybe<Float>;
-  bio_qualifications?: Maybe<QualificationUpdateManyInput>;
-  bio_policy_position?: Maybe<PositionUpdateManyInput>;
-  bio_other?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-}
-
-export type QualificationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface QualificationUpdateManyInput {
-  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
-  update?: Maybe<
-    | QualificationUpdateWithWhereUniqueNestedInput[]
-    | QualificationUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | QualificationUpsertWithWhereUniqueNestedInput[]
-    | QualificationUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  connect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  set?: Maybe<QualificationWhereUniqueInput[] | QualificationWhereUniqueInput>;
-  disconnect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    QualificationScalarWhereInput[] | QualificationScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | QualificationUpdateManyWithWhereNestedInput[]
-    | QualificationUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  name: String;
-  password?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  role?: Maybe<Int>;
-}
-
-export interface PositionUpdateWithWhereUniqueNestedInput {
-  where: PositionWhereUniqueInput;
-  data: PositionUpdateDataInput;
-}
-
-export type CandidatePositionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface QualificationUpdateManyWithWhereNestedInput {
-  where: QualificationScalarWhereInput;
-  data: QualificationUpdateManyDataInput;
-}
-
 export interface QualificationScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -2136,10 +1012,1100 @@ export interface QualificationScalarWhereInput {
   NOT?: Maybe<QualificationScalarWhereInput[] | QualificationScalarWhereInput>;
 }
 
-export interface QualificationUpsertWithWhereUniqueNestedInput {
+export interface UserPositionLikeWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  userId?: Maybe<String>;
+  userId_not?: Maybe<String>;
+  userId_in?: Maybe<String[] | String>;
+  userId_not_in?: Maybe<String[] | String>;
+  userId_lt?: Maybe<String>;
+  userId_lte?: Maybe<String>;
+  userId_gt?: Maybe<String>;
+  userId_gte?: Maybe<String>;
+  userId_contains?: Maybe<String>;
+  userId_not_contains?: Maybe<String>;
+  userId_starts_with?: Maybe<String>;
+  userId_not_starts_with?: Maybe<String>;
+  userId_ends_with?: Maybe<String>;
+  userId_not_ends_with?: Maybe<String>;
+  candidate_position?: Maybe<CandidatePositionWhereInput>;
+  like?: Maybe<LikeType>;
+  like_not?: Maybe<LikeType>;
+  like_in?: Maybe<LikeType[] | LikeType>;
+  like_not_in?: Maybe<LikeType[] | LikeType>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
+  OR?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
+  NOT?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
+}
+
+export interface UserQualificationLikeSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserQualificationLikeWhereInput>;
+  AND?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
+  >;
+}
+
+export interface QualificationUpdateManyMutationInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years?: Maybe<Int>;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
+}
+
+export interface UserPositionLikeSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserPositionLikeWhereInput>;
+  AND?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
+}
+
+export interface QualificationUpdateInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years?: Maybe<Int>;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
+}
+
+export interface CandidatePositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  positionId?: Maybe<String>;
+  positionId_not?: Maybe<String>;
+  positionId_in?: Maybe<String[] | String>;
+  positionId_not_in?: Maybe<String[] | String>;
+  positionId_lt?: Maybe<String>;
+  positionId_lte?: Maybe<String>;
+  positionId_gt?: Maybe<String>;
+  positionId_gte?: Maybe<String>;
+  positionId_contains?: Maybe<String>;
+  positionId_not_contains?: Maybe<String>;
+  positionId_starts_with?: Maybe<String>;
+  positionId_not_starts_with?: Maybe<String>;
+  positionId_ends_with?: Maybe<String>;
+  positionId_not_ends_with?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  rank?: Maybe<Int>;
+  rank_not?: Maybe<Int>;
+  rank_in?: Maybe<Int[] | Int>;
+  rank_not_in?: Maybe<Int[] | Int>;
+  rank_lt?: Maybe<Int>;
+  rank_lte?: Maybe<Int>;
+  rank_gt?: Maybe<Int>;
+  rank_gte?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+  OR?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+  NOT?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+}
+
+export interface PositionUpdateManyMutationInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+}
+
+export interface QualificationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<QualificationWhereInput>;
+  AND?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+}
+
+export interface PositionUpdateInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  topic?: Maybe<TopicUpdateOneInput>;
+  detail?: Maybe<String>;
+}
+
+export interface PollSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PollWhereInput>;
+  AND?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
+  OR?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
+  NOT?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
+}
+
+export type UserQualificationLikeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CandidatePositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CandidatePositionWhereInput>;
+  AND?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
+}
+
+export interface PollUpdateManyMutationInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+}
+
+export interface PollWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  userId?: Maybe<String>;
+  userId_not?: Maybe<String>;
+  userId_in?: Maybe<String[] | String>;
+  userId_not_in?: Maybe<String[] | String>;
+  userId_lt?: Maybe<String>;
+  userId_lte?: Maybe<String>;
+  userId_gt?: Maybe<String>;
+  userId_gte?: Maybe<String>;
+  userId_contains?: Maybe<String>;
+  userId_not_contains?: Maybe<String>;
+  userId_starts_with?: Maybe<String>;
+  userId_not_starts_with?: Maybe<String>;
+  userId_ends_with?: Maybe<String>;
+  userId_not_ends_with?: Maybe<String>;
+  date?: Maybe<DateTimeInput>;
+  date_not?: Maybe<DateTimeInput>;
+  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_lt?: Maybe<DateTimeInput>;
+  date_lte?: Maybe<DateTimeInput>;
+  date_gt?: Maybe<DateTimeInput>;
+  date_gte?: Maybe<DateTimeInput>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  poll_type?: Maybe<PollType>;
+  poll_type_not?: Maybe<PollType>;
+  poll_type_in?: Maybe<PollType[] | PollType>;
+  poll_type_not_in?: Maybe<PollType[] | PollType>;
+  error_margin?: Maybe<String>;
+  error_margin_not?: Maybe<String>;
+  error_margin_in?: Maybe<String[] | String>;
+  error_margin_not_in?: Maybe<String[] | String>;
+  error_margin_lt?: Maybe<String>;
+  error_margin_lte?: Maybe<String>;
+  error_margin_gt?: Maybe<String>;
+  error_margin_gte?: Maybe<String>;
+  error_margin_contains?: Maybe<String>;
+  error_margin_not_contains?: Maybe<String>;
+  error_margin_starts_with?: Maybe<String>;
+  error_margin_not_starts_with?: Maybe<String>;
+  error_margin_ends_with?: Maybe<String>;
+  error_margin_not_ends_with?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+  link_to_poll_not?: Maybe<String>;
+  link_to_poll_in?: Maybe<String[] | String>;
+  link_to_poll_not_in?: Maybe<String[] | String>;
+  link_to_poll_lt?: Maybe<String>;
+  link_to_poll_lte?: Maybe<String>;
+  link_to_poll_gt?: Maybe<String>;
+  link_to_poll_gte?: Maybe<String>;
+  link_to_poll_contains?: Maybe<String>;
+  link_to_poll_not_contains?: Maybe<String>;
+  link_to_poll_starts_with?: Maybe<String>;
+  link_to_poll_not_starts_with?: Maybe<String>;
+  link_to_poll_ends_with?: Maybe<String>;
+  link_to_poll_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PollWhereInput[] | PollWhereInput>;
+  OR?: Maybe<PollWhereInput[] | PollWhereInput>;
+  NOT?: Maybe<PollWhereInput[] | PollWhereInput>;
+}
+
+export interface UserQualificationLikeWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  userId?: Maybe<String>;
+  userId_not?: Maybe<String>;
+  userId_in?: Maybe<String[] | String>;
+  userId_not_in?: Maybe<String[] | String>;
+  userId_lt?: Maybe<String>;
+  userId_lte?: Maybe<String>;
+  userId_gt?: Maybe<String>;
+  userId_gte?: Maybe<String>;
+  userId_contains?: Maybe<String>;
+  userId_not_contains?: Maybe<String>;
+  userId_starts_with?: Maybe<String>;
+  userId_not_starts_with?: Maybe<String>;
+  userId_ends_with?: Maybe<String>;
+  userId_not_ends_with?: Maybe<String>;
+  qualificationId?: Maybe<String>;
+  qualificationId_not?: Maybe<String>;
+  qualificationId_in?: Maybe<String[] | String>;
+  qualificationId_not_in?: Maybe<String[] | String>;
+  qualificationId_lt?: Maybe<String>;
+  qualificationId_lte?: Maybe<String>;
+  qualificationId_gt?: Maybe<String>;
+  qualificationId_gte?: Maybe<String>;
+  qualificationId_contains?: Maybe<String>;
+  qualificationId_not_contains?: Maybe<String>;
+  qualificationId_starts_with?: Maybe<String>;
+  qualificationId_not_starts_with?: Maybe<String>;
+  qualificationId_ends_with?: Maybe<String>;
+  qualificationId_not_ends_with?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  like_not?: Maybe<LikeType>;
+  like_in?: Maybe<LikeType[] | LikeType>;
+  like_not_in?: Maybe<LikeType[] | LikeType>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<
+    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
+  >;
+  OR?: Maybe<
+    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
+  >;
+  NOT?: Maybe<
+    UserQualificationLikeWhereInput[] | UserQualificationLikeWhereInput
+  >;
+}
+
+export interface UserVoteUpdateManyMutationInput {
+  candidateId?: Maybe<String>;
+  userId?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PollUpdateInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+}
+
+export interface UserVoteCreateInput {
+  id?: Maybe<ID_Input>;
+  candidateId: String;
+  userId: String;
+  vote_type?: Maybe<VoteType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PollCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  candidateId: String;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+}
+
+export interface UserQualificationLikeUpdateManyMutationInput {
+  userId?: Maybe<String>;
+  qualificationId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidatePositionUpdateManyMutationInput {
+  positionId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface UserQualificationLikeCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  qualificationId: String;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidatePositionUpdateInput {
+  positionId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface UserPositionLikeUpdateManyMutationInput {
+  userId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export type UserVoteWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CandidatePositionUpdateDataInput {
+  positionId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidatePositionCreateInput {
+  id?: Maybe<ID_Input>;
+  positionId: String;
+  candidateId: String;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  summary?: Maybe<String>;
+  summary_not?: Maybe<String>;
+  summary_in?: Maybe<String[] | String>;
+  summary_not_in?: Maybe<String[] | String>;
+  summary_lt?: Maybe<String>;
+  summary_lte?: Maybe<String>;
+  summary_gt?: Maybe<String>;
+  summary_gte?: Maybe<String>;
+  summary_contains?: Maybe<String>;
+  summary_not_contains?: Maybe<String>;
+  summary_starts_with?: Maybe<String>;
+  summary_not_starts_with?: Maybe<String>;
+  summary_ends_with?: Maybe<String>;
+  summary_not_ends_with?: Maybe<String>;
+  topic?: Maybe<TopicWhereInput>;
+  detail?: Maybe<String>;
+  detail_not?: Maybe<String>;
+  detail_in?: Maybe<String[] | String>;
+  detail_not_in?: Maybe<String[] | String>;
+  detail_lt?: Maybe<String>;
+  detail_lte?: Maybe<String>;
+  detail_gt?: Maybe<String>;
+  detail_gte?: Maybe<String>;
+  detail_contains?: Maybe<String>;
+  detail_not_contains?: Maybe<String>;
+  detail_starts_with?: Maybe<String>;
+  detail_not_starts_with?: Maybe<String>;
+  detail_ends_with?: Maybe<String>;
+  detail_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+}
+
+export interface UserVoteWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  userId?: Maybe<String>;
+  userId_not?: Maybe<String>;
+  userId_in?: Maybe<String[] | String>;
+  userId_not_in?: Maybe<String[] | String>;
+  userId_lt?: Maybe<String>;
+  userId_lte?: Maybe<String>;
+  userId_gt?: Maybe<String>;
+  userId_gte?: Maybe<String>;
+  userId_contains?: Maybe<String>;
+  userId_not_contains?: Maybe<String>;
+  userId_starts_with?: Maybe<String>;
+  userId_not_starts_with?: Maybe<String>;
+  userId_ends_with?: Maybe<String>;
+  userId_not_ends_with?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  vote_type_not?: Maybe<VoteType>;
+  vote_type_in?: Maybe<VoteType[] | VoteType>;
+  vote_type_not_in?: Maybe<VoteType[] | VoteType>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+  OR?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+  NOT?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+}
+
+export interface UserPositionLikeUpdateInput {
+  userId?: Maybe<String>;
+  candidate_position?: Maybe<CandidatePositionUpdateOneRequiredInput>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidateUpdateManyMutationInput {
+  name?: Maybe<String>;
+  photo?: Maybe<String>;
+  party?: Maybe<String>;
+  state?: Maybe<String>;
+  current_office?: Maybe<String>;
+  age?: Maybe<Int>;
+  gender?: Maybe<Gender>;
+  latest_poll?: Maybe<Float>;
+  latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  bio_other?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
+export interface PositionUpdateManyDataInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+}
+
+export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  gender_not?: Maybe<Gender>;
+  gender_in?: Maybe<Gender[] | Gender>;
+  gender_not_in?: Maybe<Gender[] | Gender>;
+  role?: Maybe<Int>;
+  role_not?: Maybe<Int>;
+  role_in?: Maybe<Int[] | Int>;
+  role_not_in?: Maybe<Int[] | Int>;
+  role_lt?: Maybe<Int>;
+  role_lte?: Maybe<Int>;
+  role_gt?: Maybe<Int>;
+  role_gte?: Maybe<Int>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface PositionUpdateManyWithWhereNestedInput {
+  where: PositionScalarWhereInput;
+  data: PositionUpdateManyDataInput;
+}
+
+export interface UserUpdateInput {
+  email?: Maybe<String>;
+  name?: Maybe<String>;
+  password?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  role?: Maybe<Int>;
+}
+
+export interface PositionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  summary?: Maybe<String>;
+  summary_not?: Maybe<String>;
+  summary_in?: Maybe<String[] | String>;
+  summary_not_in?: Maybe<String[] | String>;
+  summary_lt?: Maybe<String>;
+  summary_lte?: Maybe<String>;
+  summary_gt?: Maybe<String>;
+  summary_gte?: Maybe<String>;
+  summary_contains?: Maybe<String>;
+  summary_not_contains?: Maybe<String>;
+  summary_starts_with?: Maybe<String>;
+  summary_not_starts_with?: Maybe<String>;
+  summary_ends_with?: Maybe<String>;
+  summary_not_ends_with?: Maybe<String>;
+  detail?: Maybe<String>;
+  detail_not?: Maybe<String>;
+  detail_in?: Maybe<String[] | String>;
+  detail_not_in?: Maybe<String[] | String>;
+  detail_lt?: Maybe<String>;
+  detail_lte?: Maybe<String>;
+  detail_gt?: Maybe<String>;
+  detail_gte?: Maybe<String>;
+  detail_contains?: Maybe<String>;
+  detail_not_contains?: Maybe<String>;
+  detail_starts_with?: Maybe<String>;
+  detail_not_starts_with?: Maybe<String>;
+  detail_ends_with?: Maybe<String>;
+  detail_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+  OR?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+  NOT?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+}
+
+export interface TopicUpdateManyMutationInput {
+  name?: Maybe<String>;
+  category?: Maybe<CategoryType>;
+}
+
+export interface UserVoteSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserVoteWhereInput>;
+  AND?: Maybe<
+    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
+  >;
+  OR?: Maybe<UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput>;
+  NOT?: Maybe<
+    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
+  >;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
+export interface CandidateCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  photo?: Maybe<String>;
+  party: String;
+  state: String;
+  current_office: String;
+  age: Int;
+  gender?: Maybe<Gender>;
+  latest_poll?: Maybe<Float>;
+  latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  bio_qualifications?: Maybe<QualificationCreateManyInput>;
+  bio_policy_position?: Maybe<PositionCreateManyInput>;
+  bio_other?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+}
+
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PositionWhereInput>;
+  AND?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+}
+
+export interface QualificationCreateManyInput {
+  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
+  connect?: Maybe<
+    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
+  >;
+}
+
+export interface CandidateSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CandidateWhereInput>;
+  AND?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+}
+
+export interface PositionUpsertWithWhereUniqueNestedInput {
+  where: PositionWhereUniqueInput;
+  update: PositionUpdateDataInput;
+  create: PositionCreateInput;
+}
+
+export interface UserVoteUpdateInput {
+  candidateId?: Maybe<String>;
+  userId?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PositionCreateManyInput {
+  create?: Maybe<PositionCreateInput[] | PositionCreateInput>;
+  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+}
+
+export interface UserQualificationLikeUpdateInput {
+  userId?: Maybe<String>;
+  qualificationId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PositionCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  summary?: Maybe<String>;
+  topic?: Maybe<TopicCreateOneInput>;
+  detail?: Maybe<String>;
+}
+
+export interface CandidatePositionUpsertNestedInput {
+  update: CandidatePositionUpdateDataInput;
+  create: CandidatePositionCreateInput;
+}
+
+export interface TopicCreateOneInput {
+  create?: Maybe<TopicCreateInput>;
+  connect?: Maybe<TopicWhereUniqueInput>;
+}
+
+export interface CandidatePositionUpdateOneRequiredInput {
+  create?: Maybe<CandidatePositionCreateInput>;
+  update?: Maybe<CandidatePositionUpdateDataInput>;
+  upsert?: Maybe<CandidatePositionUpsertNestedInput>;
+  connect?: Maybe<CandidatePositionWhereUniqueInput>;
+}
+
+export interface TopicCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  category?: Maybe<CategoryType>;
+}
+
+export interface UserPositionLikeCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  candidate_position: CandidatePositionCreateOneInput;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidateUpdateInput {
+  name?: Maybe<String>;
+  photo?: Maybe<String>;
+  party?: Maybe<String>;
+  state?: Maybe<String>;
+  current_office?: Maybe<String>;
+  age?: Maybe<Int>;
+  gender?: Maybe<Gender>;
+  latest_poll?: Maybe<Float>;
+  latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  bio_qualifications?: Maybe<QualificationUpdateManyInput>;
+  bio_policy_position?: Maybe<PositionUpdateManyInput>;
+  bio_other?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  name: String;
+  password?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  role?: Maybe<Int>;
+}
+
+export interface QualificationUpdateManyInput {
+  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
+  update?: Maybe<
+    | QualificationUpdateWithWhereUniqueNestedInput[]
+    | QualificationUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | QualificationUpsertWithWhereUniqueNestedInput[]
+    | QualificationUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<
+    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
+  >;
+  connect?: Maybe<
+    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
+  >;
+  set?: Maybe<QualificationWhereUniqueInput[] | QualificationWhereUniqueInput>;
+  disconnect?: Maybe<
+    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    QualificationScalarWhereInput[] | QualificationScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | QualificationUpdateManyWithWhereNestedInput[]
+    | QualificationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type CandidatePositionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface QualificationUpdateWithWhereUniqueNestedInput {
   where: QualificationWhereUniqueInput;
-  update: QualificationUpdateDataInput;
-  create: QualificationCreateInput;
+  data: QualificationUpdateDataInput;
+}
+
+export type PollWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface QualificationUpdateDataInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years?: Maybe<Int>;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
+}
+
+export type PositionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TopicUpsertNestedInput {
+  update: TopicUpdateDataInput;
+  create: TopicCreateInput;
+}
+
+export type TopicWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TopicUpdateDataInput {
+  name?: Maybe<String>;
+  category?: Maybe<CategoryType>;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: Maybe<String>;
+  name?: Maybe<String>;
+  password?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  role?: Maybe<Int>;
+}
+
+export interface QualificationUpdateManyWithWhereNestedInput {
+  where: QualificationScalarWhereInput;
+  data: QualificationUpdateManyDataInput;
+}
+
+export interface TopicSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TopicWhereInput>;
+  AND?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+  OR?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+  NOT?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+}
+
+export interface PositionUpdateDataInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  topic?: Maybe<TopicUpdateOneInput>;
+  detail?: Maybe<String>;
+}
+
+export interface PositionUpdateWithWhereUniqueNestedInput {
+  where: PositionWhereUniqueInput;
+  data: PositionUpdateDataInput;
 }
 
 export interface PositionUpdateManyInput {
@@ -2163,20 +2129,63 @@ export interface PositionUpdateManyInput {
   >;
 }
 
-export type PollWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface TopicUpdateInput {
+export interface QualificationUpdateManyDataInput {
   name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years?: Maybe<Int>;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
 }
 
-export type TopicWhereUniqueInput = AtLeastOne<{
+export interface TopicWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  category?: Maybe<CategoryType>;
+  category_not?: Maybe<CategoryType>;
+  category_in?: Maybe<CategoryType[] | CategoryType>;
+  category_not_in?: Maybe<CategoryType[] | CategoryType>;
+  AND?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+  OR?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+  NOT?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+}
+
+export type UserPositionLikeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export type PositionWhereUniqueInput = AtLeastOne<{
+export interface CandidatePositionCreateOneInput {
+  create?: Maybe<CandidatePositionCreateInput>;
+  connect?: Maybe<CandidatePositionWhereUniqueInput>;
+}
+
+export type QualificationWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -2276,7 +2285,6 @@ export interface PositionEdgeSubscription
 export interface UserPositionLikePreviousValues {
   id: ID_Output;
   userId: String;
-  candidate_positionId: String;
   like?: LikeType;
   time?: DateTimeOutput;
   latest?: Boolean;
@@ -2287,7 +2295,6 @@ export interface UserPositionLikePreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   userId: () => Promise<String>;
-  candidate_positionId: () => Promise<String>;
   like: () => Promise<LikeType>;
   time: () => Promise<DateTimeOutput>;
   latest: () => Promise<Boolean>;
@@ -2298,7 +2305,6 @@ export interface UserPositionLikePreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   userId: () => Promise<AsyncIterator<String>>;
-  candidate_positionId: () => Promise<AsyncIterator<String>>;
   like: () => Promise<AsyncIterator<LikeType>>;
   time: () => Promise<AsyncIterator<DateTimeOutput>>;
   latest: () => Promise<AsyncIterator<Boolean>>;
@@ -2400,6 +2406,43 @@ export interface AggregateUserVoteSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface PollConnection {
+  pageInfo: PageInfo;
+  edges: PollEdge[];
+}
+
+export interface PollConnectionPromise
+  extends Promise<PollConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PollEdge>>() => T;
+  aggregate: <T = AggregatePollPromise>() => T;
+}
+
+export interface PollConnectionSubscription
+  extends Promise<AsyncIterator<PollConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PollEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePollSubscription>() => T;
+}
+
 export interface UserVote {
   id: ID_Output;
   candidateId: String;
@@ -2440,46 +2483,6 @@ export interface UserVoteNullablePromise
   latest: () => Promise<Boolean>;
 }
 
-export interface PollConnection {
-  pageInfo: PageInfo;
-  edges: PollEdge[];
-}
-
-export interface PollConnectionPromise
-  extends Promise<PollConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PollEdge>>() => T;
-  aggregate: <T = AggregatePollPromise>() => T;
-}
-
-export interface PollConnectionSubscription
-  extends Promise<AsyncIterator<PollConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PollEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePollSubscription>() => T;
-}
-
-export interface UserQualificationLikeEdge {
-  node: UserQualificationLike;
-  cursor: String;
-}
-
-export interface UserQualificationLikeEdgePromise
-  extends Promise<UserQualificationLikeEdge>,
-    Fragmentable {
-  node: <T = UserQualificationLikePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserQualificationLikeEdgeSubscription
-  extends Promise<AsyncIterator<UserQualificationLikeEdge>>,
-    Fragmentable {
-  node: <T = UserQualificationLikeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface Position {
   id: ID_Output;
   name: String;
@@ -2515,20 +2518,23 @@ export interface PositionNullablePromise
   detail: () => Promise<String>;
 }
 
-export interface BatchPayload {
-  count: Long;
+export interface UserQualificationLikeEdge {
+  node: UserQualificationLike;
+  cursor: String;
 }
 
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
+export interface UserQualificationLikeEdgePromise
+  extends Promise<UserQualificationLikeEdge>,
     Fragmentable {
-  count: () => Promise<Long>;
+  node: <T = UserQualificationLikePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
+export interface UserQualificationLikeEdgeSubscription
+  extends Promise<AsyncIterator<UserQualificationLikeEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
+  node: <T = UserQualificationLikeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Candidate {
@@ -2849,7 +2855,6 @@ export interface PollNullablePromise
 export interface UserPositionLike {
   id: ID_Output;
   userId: String;
-  candidate_positionId: String;
   like?: LikeType;
   time?: DateTimeOutput;
   latest?: Boolean;
@@ -2860,7 +2865,7 @@ export interface UserPositionLikePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   userId: () => Promise<String>;
-  candidate_positionId: () => Promise<String>;
+  candidate_position: <T = CandidatePositionPromise>() => T;
   like: () => Promise<LikeType>;
   time: () => Promise<DateTimeOutput>;
   latest: () => Promise<Boolean>;
@@ -2871,7 +2876,7 @@ export interface UserPositionLikeSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   userId: () => Promise<AsyncIterator<String>>;
-  candidate_positionId: () => Promise<AsyncIterator<String>>;
+  candidate_position: <T = CandidatePositionSubscription>() => T;
   like: () => Promise<AsyncIterator<LikeType>>;
   time: () => Promise<AsyncIterator<DateTimeOutput>>;
   latest: () => Promise<AsyncIterator<Boolean>>;
@@ -2882,7 +2887,7 @@ export interface UserPositionLikeNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   userId: () => Promise<String>;
-  candidate_positionId: () => Promise<String>;
+  candidate_position: <T = CandidatePositionPromise>() => T;
   like: () => Promise<LikeType>;
   time: () => Promise<DateTimeOutput>;
   latest: () => Promise<Boolean>;
@@ -3251,27 +3256,20 @@ export interface PositionPreviousValuesSubscription
   detail: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserQualificationLikeConnection {
-  pageInfo: PageInfo;
-  edges: UserQualificationLikeEdge[];
+export interface AggregateUserQualificationLike {
+  count: Int;
 }
 
-export interface UserQualificationLikeConnectionPromise
-  extends Promise<UserQualificationLikeConnection>,
+export interface AggregateUserQualificationLikePromise
+  extends Promise<AggregateUserQualificationLike>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserQualificationLikeEdge>>() => T;
-  aggregate: <T = AggregateUserQualificationLikePromise>() => T;
+  count: () => Promise<Int>;
 }
 
-export interface UserQualificationLikeConnectionSubscription
-  extends Promise<AsyncIterator<UserQualificationLikeConnection>>,
+export interface AggregateUserQualificationLikeSubscription
+  extends Promise<AsyncIterator<AggregateUserQualificationLike>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<UserQualificationLikeEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregateUserQualificationLikeSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface CandidatePositionConnection {
@@ -3555,20 +3553,23 @@ export interface TopicPreviousValuesSubscription
   category: () => Promise<AsyncIterator<CategoryType>>;
 }
 
-export interface AggregateUserQualificationLike {
-  count: Int;
+export interface CandidateEdge {
+  node: Candidate;
+  cursor: String;
 }
 
-export interface AggregateUserQualificationLikePromise
-  extends Promise<AggregateUserQualificationLike>,
+export interface CandidateEdgePromise
+  extends Promise<CandidateEdge>,
     Fragmentable {
-  count: () => Promise<Int>;
+  node: <T = CandidatePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregateUserQualificationLikeSubscription
-  extends Promise<AsyncIterator<AggregateUserQualificationLike>>,
+export interface CandidateEdgeSubscription
+  extends Promise<AsyncIterator<CandidateEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = CandidateSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface AggregateCandidate {
@@ -3805,23 +3806,27 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface CandidateEdge {
-  node: Candidate;
-  cursor: String;
+export interface UserQualificationLikeConnection {
+  pageInfo: PageInfo;
+  edges: UserQualificationLikeEdge[];
 }
 
-export interface CandidateEdgePromise
-  extends Promise<CandidateEdge>,
+export interface UserQualificationLikeConnectionPromise
+  extends Promise<UserQualificationLikeConnection>,
     Fragmentable {
-  node: <T = CandidatePromise>() => T;
-  cursor: () => Promise<String>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserQualificationLikeEdge>>() => T;
+  aggregate: <T = AggregateUserQualificationLikePromise>() => T;
 }
 
-export interface CandidateEdgeSubscription
-  extends Promise<AsyncIterator<CandidateEdge>>,
+export interface UserQualificationLikeConnectionSubscription
+  extends Promise<AsyncIterator<UserQualificationLikeConnection>>,
     Fragmentable {
-  node: <T = CandidateSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<UserQualificationLikeEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateUserQualificationLikeSubscription>() => T;
 }
 
 export interface UserVoteEdge {

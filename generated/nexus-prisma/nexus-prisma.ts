@@ -215,7 +215,11 @@ export interface NexusPrismaTypes {
       UserQualificationLikeUpdateInput: UserQualificationLikeUpdateInputInputObject
       UserQualificationLikeUpdateManyMutationInput: UserQualificationLikeUpdateManyMutationInputInputObject
       UserPositionLikeCreateInput: UserPositionLikeCreateInputInputObject
+      CandidatePositionCreateOneInput: CandidatePositionCreateOneInputInputObject
       UserPositionLikeUpdateInput: UserPositionLikeUpdateInputInputObject
+      CandidatePositionUpdateOneRequiredInput: CandidatePositionUpdateOneRequiredInputInputObject
+      CandidatePositionUpdateDataInput: CandidatePositionUpdateDataInputInputObject
+      CandidatePositionUpsertNestedInput: CandidatePositionUpsertNestedInputInputObject
       UserPositionLikeUpdateManyMutationInput: UserPositionLikeUpdateManyMutationInputInputObject
       PollCreateInput: PollCreateInputInputObject
       PollUpdateInput: PollUpdateInputInputObject
@@ -2687,7 +2691,7 @@ type UserPositionLikeObject =
   | UserPositionLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'userId', args?: [] | false, alias?: string  } 
-  | { name: 'candidate_positionId', args?: [] | false, alias?: string  } 
+  | { name: 'candidate_position', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
@@ -2695,7 +2699,7 @@ type UserPositionLikeObject =
 type UserPositionLikeFields =
   | 'id'
   | 'userId'
-  | 'candidate_positionId'
+  | 'candidate_position'
   | 'like'
   | 'time'
   | 'latest'
@@ -2721,13 +2725,18 @@ export interface UserPositionLikeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  candidate_positionId: {
-    type: 'String'
+  candidate_position: {
+    type: 'CandidatePosition'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: undefined
+    resolve: (
+      root: core.RootValue<"UserPositionLike">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CandidatePosition> | prisma.CandidatePosition
   }
   like: {
     type: 'LikeType'
@@ -5690,7 +5699,6 @@ type UserPositionLikePreviousValuesObject =
   | UserPositionLikePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'userId', args?: [] | false, alias?: string  } 
-  | { name: 'candidate_positionId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
@@ -5698,7 +5706,6 @@ type UserPositionLikePreviousValuesObject =
 type UserPositionLikePreviousValuesFields =
   | 'id'
   | 'userId'
-  | 'candidate_positionId'
   | 'like'
   | 'time'
   | 'latest'
@@ -5717,14 +5724,6 @@ export interface UserPositionLikePreviousValuesFieldDetails {
     resolve: undefined
   }
   userId: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  candidate_positionId: {
     type: 'String'
     args: {}
     description: string
@@ -7253,20 +7252,7 @@ export interface UserPositionLikeWhereInput {
   userId_not_starts_with?: string | null
   userId_ends_with?: string | null
   userId_not_ends_with?: string | null
-  candidate_positionId?: string | null
-  candidate_positionId_not?: string | null
-  candidate_positionId_in?: string[]
-  candidate_positionId_not_in?: string[]
-  candidate_positionId_lt?: string | null
-  candidate_positionId_lte?: string | null
-  candidate_positionId_gt?: string | null
-  candidate_positionId_gte?: string | null
-  candidate_positionId_contains?: string | null
-  candidate_positionId_not_contains?: string | null
-  candidate_positionId_starts_with?: string | null
-  candidate_positionId_not_starts_with?: string | null
-  candidate_positionId_ends_with?: string | null
-  candidate_positionId_not_ends_with?: string | null
+  candidate_position?: CandidatePositionWhereInput | null
   like?: prisma.LikeType | null
   like_not?: prisma.LikeType | null
   like_in?: prisma.LikeType[]
@@ -7315,20 +7301,7 @@ export type UserPositionLikeWhereInputInputObject =
   | { name: 'userId_not_starts_with', alias?: string  } 
   | { name: 'userId_ends_with', alias?: string  } 
   | { name: 'userId_not_ends_with', alias?: string  } 
-  | { name: 'candidate_positionId', alias?: string  } 
-  | { name: 'candidate_positionId_not', alias?: string  } 
-  | { name: 'candidate_positionId_in', alias?: string  } 
-  | { name: 'candidate_positionId_not_in', alias?: string  } 
-  | { name: 'candidate_positionId_lt', alias?: string  } 
-  | { name: 'candidate_positionId_lte', alias?: string  } 
-  | { name: 'candidate_positionId_gt', alias?: string  } 
-  | { name: 'candidate_positionId_gte', alias?: string  } 
-  | { name: 'candidate_positionId_contains', alias?: string  } 
-  | { name: 'candidate_positionId_not_contains', alias?: string  } 
-  | { name: 'candidate_positionId_starts_with', alias?: string  } 
-  | { name: 'candidate_positionId_not_starts_with', alias?: string  } 
-  | { name: 'candidate_positionId_ends_with', alias?: string  } 
-  | { name: 'candidate_positionId_not_ends_with', alias?: string  } 
+  | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'like_not', alias?: string  } 
   | { name: 'like_in', alias?: string  } 
@@ -8474,7 +8447,7 @@ export type UserQualificationLikeUpdateManyMutationInputInputObject =
 export interface UserPositionLikeCreateInput {
   id?: string | null
   userId?: string
-  candidate_positionId?: string
+  candidate_position?: CandidatePositionCreateOneInput
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8483,14 +8456,23 @@ export type UserPositionLikeCreateInputInputObject =
   | Extract<keyof UserPositionLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'userId', alias?: string  } 
-  | { name: 'candidate_positionId', alias?: string  } 
+  | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
+export interface CandidatePositionCreateOneInput {
+  create?: CandidatePositionCreateInput | null
+  connect?: CandidatePositionWhereUniqueInput | null
+}
+export type CandidatePositionCreateOneInputInputObject =
+  | Extract<keyof CandidatePositionCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
 export interface UserPositionLikeUpdateInput {
   userId?: string | null
-  candidate_positionId?: string | null
+  candidate_position?: CandidatePositionUpdateOneRequiredInput | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8498,14 +8480,52 @@ export interface UserPositionLikeUpdateInput {
 export type UserPositionLikeUpdateInputInputObject =
   | Extract<keyof UserPositionLikeUpdateInput, string>
   | { name: 'userId', alias?: string  } 
-  | { name: 'candidate_positionId', alias?: string  } 
+  | { name: 'candidate_position', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
+export interface CandidatePositionUpdateOneRequiredInput {
+  create?: CandidatePositionCreateInput | null
+  update?: CandidatePositionUpdateDataInput | null
+  upsert?: CandidatePositionUpsertNestedInput | null
+  connect?: CandidatePositionWhereUniqueInput | null
+}
+export type CandidatePositionUpdateOneRequiredInputInputObject =
+  | Extract<keyof CandidatePositionUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface CandidatePositionUpdateDataInput {
+  positionId?: string | null
+  candidateId?: string | null
+  time?: string | null
+  link?: string | null
+  rank?: number | null
+  latest?: boolean | null
+}
+export type CandidatePositionUpdateDataInputInputObject =
+  | Extract<keyof CandidatePositionUpdateDataInput, string>
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'time', alias?: string  } 
+  | { name: 'link', alias?: string  } 
+  | { name: 'rank', alias?: string  } 
+  | { name: 'latest', alias?: string  } 
+  
+export interface CandidatePositionUpsertNestedInput {
+  update?: CandidatePositionUpdateDataInput
+  create?: CandidatePositionCreateInput
+}
+export type CandidatePositionUpsertNestedInputInputObject =
+  | Extract<keyof CandidatePositionUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
 export interface UserPositionLikeUpdateManyMutationInput {
   userId?: string | null
-  candidate_positionId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8513,7 +8533,6 @@ export interface UserPositionLikeUpdateManyMutationInput {
 export type UserPositionLikeUpdateManyMutationInputInputObject =
   | Extract<keyof UserPositionLikeUpdateManyMutationInput, string>
   | { name: 'userId', alias?: string  } 
-  | { name: 'candidate_positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
@@ -8958,8 +8977,6 @@ export type UserPositionLikeOrderByInputValues =
   | 'id_DESC'
   | 'userId_ASC'
   | 'userId_DESC'
-  | 'candidate_positionId_ASC'
-  | 'candidate_positionId_DESC'
   | 'like_ASC'
   | 'like_DESC'
   | 'time_ASC'
