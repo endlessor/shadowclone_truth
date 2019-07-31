@@ -5,7 +5,11 @@ import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
 import { CandidateListItem } from "../../components";
-import { CandidateQuery, UserVoteMutation } from "../../queries/candidate";
+import {
+  CandidateQuery,
+  UserVoteQuery,
+  UserVoteMutation
+} from "../../queries/candidate";
 
 function PreVote({ history }) {
   const itemTemplate = (candidate, layout) => {
@@ -15,7 +19,10 @@ function PreVote({ history }) {
 
     if (layout === "list") {
       return (
-        <Mutation mutation={UserVoteMutation}>
+        <Mutation
+          mutation={UserVoteMutation}
+          refetchQueries={[{ query: CandidateQuery }, { query: UserVoteQuery }]}
+        >
           {createUserVote => (
             <CandidateListItem
               data={candidate}
