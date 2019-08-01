@@ -15,23 +15,35 @@ import { AUTH_TOKEN, IS_ADMIN } from "../config";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = !!localStorage.getItem(AUTH_TOKEN);
-  const isAdmin = localStorage.getItem(IS_ADMIN);
+  const isAdmin = JSON.parse(localStorage.getItem(IS_ADMIN));
   return (
     <Route
       {...rest}
-      render={props =>
-        isAuthenticated ? (
-          props.location.pathname !== "/admin" && isAdmin ? (
-            <Redirect to="/admin" />
-          ) : (
-            <Component {...props} />
-          )
-        ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
-        )
-      }
+      render={props => {
+        if (isAuthenticated) {
+          if (!isAdmin) {
+            if (props.location.pathname === "/admin")
+              return <Redirect to="/prevote" />;
+            return Component ? (
+              <Component {...props} />
+            ) : (
+              <Redirect to="/prevote" />
+            );
+          } else {
+            return props.location.pathname !== "/admin" ? (
+              <Redirect to="/admin" />
+            ) : (
+              <Component {...props} />
+            );
+          }
+        } else {
+          return (
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          );
+        }
+      }}
     />
   );
 };
@@ -40,7 +52,7 @@ const MainRoute = () => {
   return (
     <Router>
       <Switch>
-        <PrivateRoute path="/" exact />
+        <PrivateRoute path="/" exact={null} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <PrivateRoute path="/prevote" component={PreVote} />
