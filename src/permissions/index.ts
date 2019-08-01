@@ -18,7 +18,7 @@ const rules = {
 
 export const permissions = shield({
   Query: {
-    me: rules.isAdminUser,
+    me: rules.isAuthenticatedUser,
     users: rules.isAdminUser,
     userVotes: rules.isAuthenticatedUser,
     voteAttributes: rules.isAdminUser,
@@ -35,7 +35,6 @@ export const permissions = shield({
     deleteCandidatePosition: rules.isAuthenticatedUser,
     deleteTopic: rules.isAuthenticatedUser,
     deleteQualification: rules.isAuthenticatedUser,
-    updateCandidate: rules.isAdminUser,
     updateCandidatePosition: rules.isAuthenticatedUser,
     updateTopic: rules.isAuthenticatedUser,
     updatePosition: rules.isAdminUser,

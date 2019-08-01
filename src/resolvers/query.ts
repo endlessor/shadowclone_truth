@@ -73,10 +73,14 @@ const Query = prismaObjectType({
     })
     
     t.field('me', {
-      type: 'User',
-      resolve: (parent, args, ctx) => {
+      type: 'UserProfile',
+      resolve: async (parent, args, ctx) => {
         const userId = getUserId(ctx)
-        return ctx.prisma.user({ id: userId })
+        const user = await ctx.prisma.user({ id: userId })
+        return {
+          ...user,
+          isAdmin: user.role === 1
+        }
       },
     })
 

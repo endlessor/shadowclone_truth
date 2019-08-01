@@ -46,3 +46,14 @@ export const PositionWithLike = objectType({
     t.int('dislikes')
   }
 })
+
+export const UserProfile = objectType({
+  name: 'UserProfile',
+  definition(t) {
+    t.string('id')
+    t.string('name')
+    t.string('email')
+    t.string('gender')
+    t.boolean('isAdmin')
+  },
+})

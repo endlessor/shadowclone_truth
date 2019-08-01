@@ -30,7 +30,6 @@ const Mutation = prismaObjectType({
       'deleteCandidatePosition',
       'deleteTopic',
       'deleteQualification',
-      'updateCandidate',
       'updateCandidatePosition',
       'updateTopic',
       'updatePosition',
@@ -227,6 +226,49 @@ const Mutation = prismaObjectType({
           current_office: args.current_office,
           photo: uploadURL,
           bio_other: args.bio_other
+        })
+        return candidate
+      }
+    })
+
+    t.field('updateCandidate', {
+      type: 'Candidate',
+      args: {
+        id: idArg({required: true}),
+        name: stringArg({required: true}),
+        age: intArg(),
+        party: stringArg({required: true}),
+        state: stringArg({required: true}),
+        gender: "Gender",
+        current_office: stringArg({required: true}),
+        bio_other: stringArg(),
+        file: 'Upload'
+      },
+      resolve: async (parent, args, ctx) => {
+        let uploadURL = ''
+        if (args.file) {
+          const { createReadStream , filename } = await args.file
+          const stream = createReadStream()
+          const key = uuid() + '-' + filename
+          const response = await s3.upload({
+              Key: key,
+              ACL: 'public-read',
+              Body: stream 
+            }).promise()
+          uploadURL = response.Location
+        }
+        const candidate = await ctx.prisma.updateCandidate({
+          where: { id: args.id },
+          data: {
+            name: args.name,
+            state: args.state,
+            party: args.party,
+            age: args.age,
+            gender: args.gender,
+            current_office: args.current_office,
+            photo: uploadURL,
+            bio_other: args.bio_other
+          }
         })
         return candidate
       }
