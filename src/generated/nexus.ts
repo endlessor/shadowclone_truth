@@ -13,23 +13,6 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  CandidateCreateInput: { // input type
-    age: number; // Int!
-    bio_other?: string | null; // String
-    bio_policy_position?: NexusGenInputs['PositionCreateManyInput'] | null; // PositionCreateManyInput
-    bio_qualifications?: NexusGenInputs['QualificationCreateManyInput'] | null; // QualificationCreateManyInput
-    current_office: string; // String!
-    gender?: NexusGenEnums['Gender'] | null; // Gender
-    id?: string | null; // ID
-    latest_odds?: number | null; // Float
-    latest_poll?: number | null; // Float
-    name: string; // String!
-    party: string; // String!
-    photo?: string | null; // String
-    prevote_score?: number | null; // Float
-    state: string; // String!
-    vote_type?: NexusGenEnums['VoteType'] | null; // VoteType
-  }
   CandidatePositionCreateInput: { // input type
     candidateId: string; // String!
     id?: string | null; // ID
@@ -242,10 +225,6 @@ export interface NexusGenInputs {
     summary?: string | null; // String
     topic?: NexusGenInputs['TopicCreateOneInput'] | null; // TopicCreateOneInput
   }
-  PositionCreateManyInput: { // input type
-    connect?: NexusGenInputs['PositionWhereUniqueInput'][] | null; // [PositionWhereUniqueInput!]
-    create?: NexusGenInputs['PositionCreateInput'][] | null; // [PositionCreateInput!]
-  }
   PositionScalarWhereInput: { // input type
     AND?: NexusGenInputs['PositionScalarWhereInput'][] | null; // [PositionScalarWhereInput!]
     detail?: string | null; // String
@@ -421,10 +400,6 @@ export interface NexusGenInputs {
     rank?: number | null; // Int
     summary?: string | null; // String
     years: number; // Int!
-  }
-  QualificationCreateManyInput: { // input type
-    connect?: NexusGenInputs['QualificationWhereUniqueInput'][] | null; // [QualificationWhereUniqueInput!]
-    create?: NexusGenInputs['QualificationCreateInput'][] | null; // [QualificationCreateInput!]
   }
   QualificationScalarWhereInput: { // input type
     AND?: NexusGenInputs['QualificationScalarWhereInput'][] | null; // [QualificationScalarWhereInput!]
@@ -1047,10 +1022,10 @@ export interface NexusGenRootTypes {
   Boolean: boolean;
   ID: string;
   DateTime: any;
+  Upload: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  CandidateCreateInput: NexusGenInputs['CandidateCreateInput'];
   CandidatePositionCreateInput: NexusGenInputs['CandidatePositionCreateInput'];
   CandidatePositionUpdateInput: NexusGenInputs['CandidatePositionUpdateInput'];
   CandidatePositionWhereInput: NexusGenInputs['CandidatePositionWhereInput'];
@@ -1059,7 +1034,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   CandidateWhereUniqueInput: NexusGenInputs['CandidateWhereUniqueInput'];
   PollWhereInput: NexusGenInputs['PollWhereInput'];
   PositionCreateInput: NexusGenInputs['PositionCreateInput'];
-  PositionCreateManyInput: NexusGenInputs['PositionCreateManyInput'];
   PositionScalarWhereInput: NexusGenInputs['PositionScalarWhereInput'];
   PositionUpdateDataInput: NexusGenInputs['PositionUpdateDataInput'];
   PositionUpdateInput: NexusGenInputs['PositionUpdateInput'];
@@ -1071,7 +1045,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   PositionWhereInput: NexusGenInputs['PositionWhereInput'];
   PositionWhereUniqueInput: NexusGenInputs['PositionWhereUniqueInput'];
   QualificationCreateInput: NexusGenInputs['QualificationCreateInput'];
-  QualificationCreateManyInput: NexusGenInputs['QualificationCreateManyInput'];
   QualificationScalarWhereInput: NexusGenInputs['QualificationScalarWhereInput'];
   QualificationUpdateDataInput: NexusGenInputs['QualificationUpdateDataInput'];
   QualificationUpdateInput: NexusGenInputs['QualificationUpdateInput'];
@@ -1159,7 +1132,7 @@ export interface NexusGenFieldTypes {
     vetoCount: number | null; // Int
   }
   Mutation: { // field return type
-    createCandidate: NexusGenRootTypes['Candidate']; // Candidate!
+    createCandidate: NexusGenRootTypes['Candidate'] | null; // Candidate
     createCandidatePosition: NexusGenRootTypes['CandidatePosition']; // CandidatePosition!
     createPoll: NexusGenRootTypes['Poll'] | null; // Poll
     createPosition: NexusGenRootTypes['Position']; // Position!
@@ -1287,7 +1260,14 @@ export interface NexusGenArgTypes {
   }
   Mutation: {
     createCandidate: { // args
-      data: NexusGenInputs['CandidateCreateInput']; // CandidateCreateInput!
+      age?: number | null; // Int
+      bio_other?: string | null; // String
+      current_office: string; // String!
+      file?: any | null; // Upload
+      gender?: NexusGenEnums['Gender'] | null; // Gender
+      name: string; // String!
+      party: string; // String!
+      state: string; // String!
     }
     createCandidatePosition: { // args
       data: NexusGenInputs['CandidatePositionCreateInput']; // CandidatePositionCreateInput!
@@ -1445,13 +1425,13 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserQualificationLike" | "UserVote";
 
-export type NexusGenInputNames = "CandidateCreateInput" | "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereInput" | "CandidatePositionWhereUniqueInput" | "CandidateUpdateInput" | "CandidateWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionCreateManyInput" | "PositionScalarWhereInput" | "PositionUpdateDataInput" | "PositionUpdateInput" | "PositionUpdateManyDataInput" | "PositionUpdateManyInput" | "PositionUpdateManyWithWhereNestedInput" | "PositionUpdateWithWhereUniqueNestedInput" | "PositionUpsertWithWhereUniqueNestedInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationCreateManyInput" | "QualificationScalarWhereInput" | "QualificationUpdateDataInput" | "QualificationUpdateInput" | "QualificationUpdateManyDataInput" | "QualificationUpdateManyInput" | "QualificationUpdateManyWithWhereNestedInput" | "QualificationUpdateWithWhereUniqueNestedInput" | "QualificationUpsertWithWhereUniqueNestedInput" | "QualificationWhereInput" | "QualificationWhereUniqueInput" | "TopicCreateInput" | "TopicCreateOneInput" | "TopicUpdateDataInput" | "TopicUpdateInput" | "TopicUpdateOneInput" | "TopicUpsertNestedInput" | "TopicWhereInput" | "TopicWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
+export type NexusGenInputNames = "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereInput" | "CandidatePositionWhereUniqueInput" | "CandidateUpdateInput" | "CandidateWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionScalarWhereInput" | "PositionUpdateDataInput" | "PositionUpdateInput" | "PositionUpdateManyDataInput" | "PositionUpdateManyInput" | "PositionUpdateManyWithWhereNestedInput" | "PositionUpdateWithWhereUniqueNestedInput" | "PositionUpsertWithWhereUniqueNestedInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationScalarWhereInput" | "QualificationUpdateDataInput" | "QualificationUpdateInput" | "QualificationUpdateManyDataInput" | "QualificationUpdateManyInput" | "QualificationUpdateManyWithWhereNestedInput" | "QualificationUpdateWithWhereUniqueNestedInput" | "QualificationUpsertWithWhereUniqueNestedInput" | "QualificationWhereInput" | "QualificationWhereUniqueInput" | "TopicCreateInput" | "TopicCreateOneInput" | "TopicUpdateDataInput" | "TopicUpdateInput" | "TopicUpdateOneInput" | "TopicUpsertNestedInput" | "TopicWhereInput" | "TopicWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
 
 export type NexusGenEnumNames = "CandidatePositionOrderByInput" | "CategoryType" | "Gender" | "LikeType" | "PollOrderByInput" | "PollType" | "PositionOrderByInput" | "QualificationOrderByInput" | "TopicOrderByInput" | "UserOrderByInput" | "UserPositionLikeOrderByInput" | "UserQualificationLikeOrderByInput" | "VoteType";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String" | "Upload";
 
 export type NexusGenUnionNames = never;
 

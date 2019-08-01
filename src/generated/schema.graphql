@@ -26,24 +26,6 @@ type Candidate {
   vote_type: VoteType
 }
 
-input CandidateCreateInput {
-  age: Int!
-  bio_other: String
-  bio_policy_position: PositionCreateManyInput
-  bio_qualifications: QualificationCreateManyInput
-  current_office: String!
-  gender: Gender
-  id: ID
-  latest_odds: Float
-  latest_poll: Float
-  name: String!
-  party: String!
-  photo: String
-  prevote_score: Float
-  state: String!
-  vote_type: VoteType
-}
-
 type CandidatePosition {
   candidateId: String!
   id: ID!
@@ -237,7 +219,7 @@ enum LikeType {
 }
 
 type Mutation {
-  createCandidate(data: CandidateCreateInput!): Candidate!
+  createCandidate(age: Int, bio_other: String, current_office: String!, file: Upload, gender: Gender, name: String!, party: String!, state: String!): Candidate
   createCandidatePosition(data: CandidatePositionCreateInput!): CandidatePosition!
   createPoll(candidateId: ID!, pollType: PollType): Poll
   createPosition(data: PositionCreateInput!): Position!
@@ -398,11 +380,6 @@ input PositionCreateInput {
   name: String!
   summary: String
   topic: TopicCreateOneInput
-}
-
-input PositionCreateManyInput {
-  connect: [PositionWhereUniqueInput!]
-  create: [PositionCreateInput!]
 }
 
 enum PositionOrderByInput {
@@ -621,11 +598,6 @@ input QualificationCreateInput {
   rank: Int
   summary: String
   years: Int!
-}
-
-input QualificationCreateManyInput {
-  connect: [QualificationWhereUniqueInput!]
-  create: [QualificationCreateInput!]
 }
 
 enum QualificationOrderByInput {
@@ -1004,6 +976,9 @@ input TopicWhereInput {
 input TopicWhereUniqueInput {
   id: ID
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 type User {
   email: String!
