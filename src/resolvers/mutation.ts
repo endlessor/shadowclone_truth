@@ -4,11 +4,23 @@ import { hash, compare } from 'bcrypt'
 import { APP_SECRET, getUserId } from '../utils'
 import { sign } from 'jsonwebtoken'
 
+const uuid = require('uuid/v1')
+const aws = require('aws-sdk')
+require('dotenv').config()
+
+const s3 = new aws.S3({
+  accessKeyId: process.env.S3ACCESSKEY,
+  secretAccessKey: process.env.S3SECRETKEY,
+  params: {
+    Bucket: process.env.S3BUCKET
+  },
+  endpoint: new aws.Endpoint(process.env.S3ENDPOINT) // fake s3 endpoint for local dev
+})
+
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {
     t.prismaFields([
-      'createCandidate',
       'createPosition',
       'createQualification',
       'createTopic',
@@ -109,12 +121,12 @@ const Mutation = prismaObjectType({
       resolve: async (parent, {candidate_positionId, like}, ctx) => {
         const userId = getUserId(ctx)
         let userPositionLike = await ctx.prisma.userPositionLikes({
-          where: { userId, candidate_positionId }
+          where: { AND: [{userId}, {candidate_position: {id: candidate_positionId}}] }
         })
         if (userPositionLike.length === 0) {
           return ctx.prisma.createUserPositionLike({
             userId,
-            candidate_positionId,
+            candidate_position: {connect: {id: candidate_positionId}},
             like})
         }
         if (userPositionLike[0].like === like) {
@@ -178,6 +190,45 @@ const Mutation = prismaObjectType({
           where: { id: poll[0].id },
           data: { poll_type: pollType }
         })
+      }
+    })
+
+    t.field('createCandidate', {
+      type: 'Candidate',
+      args: {
+        name: stringArg({required: true}),
+        age: intArg(),
+        party: stringArg({required: true}),
+        state: stringArg({required: true}),
+        gender: "Gender",
+        current_office: stringArg({required: true}),
+        bio_other: stringArg(),
+        file: 'Upload'
+      },
+      resolve: async (parent, args, ctx) => {
+        let uploadURL = ''
+        if (args.file) {
+          const { createReadStream , filename } = await args.file
+          const stream = createReadStream()
+          const key = uuid() + '-' + filename
+          const response = await s3.upload({
+              Key: key,
+              ACL: 'public-read',
+              Body: stream 
+            }).promise()
+          uploadURL = response.Location
+        }
+        const candidate = await ctx.prisma.createCandidate({
+          name: args.name,
+          state: args.state,
+          party: args.party,
+          age: args.age,
+          gender: args.gender,
+          current_office: args.current_office,
+          photo: uploadURL,
+          bio_other: args.bio_other
+        })
+        return candidate
       }
     })
   },

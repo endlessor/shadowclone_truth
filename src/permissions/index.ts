@@ -18,13 +18,14 @@ const rules = {
 
 export const permissions = shield({
   Query: {
-    me: rules.isAuthenticatedUser,
+    me: rules.isAdminUser,
     users: rules.isAdminUser,
+    userVotes: rules.isAuthenticatedUser,
     voteAttributes: rules.isAdminUser,
     candidatesWithVotes: rules.isAdminUser,
+    positionsWithLikes: rules.isAdminUser
   },
   Mutation: {
-    createCandidate: rules.isAdminUser,
     createPosition: rules.isAdminUser,
     createQualification: rules.isAuthenticatedUser,
     createTopic: rules.isAuthenticatedUser,

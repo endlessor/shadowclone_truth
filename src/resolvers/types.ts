@@ -1,4 +1,7 @@
 import { objectType } from 'nexus'
+import { GraphQLUpload } from 'graphql-upload'
+
+export const Upload = GraphQLUpload
 
 export const AuthPayload = objectType({
   name: 'AuthPayload',
