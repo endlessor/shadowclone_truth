@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { LoginMutation } from "../../queries/auth";
-import { AUTH_TOKEN, IS_ADMIN } from "../../config";
+import { AUTH_TOKEN } from "../../config";
 import { Card } from "primereact/card";
 
 function Login({ location }) {
@@ -14,9 +14,8 @@ function Login({ location }) {
   const [redirectToReferer, setRedirectToReferer] = useState(false);
 
   const loginSuccess = data => {
-    const { token, isAdmin } = data.login;
+    const { token } = data.login;
     localStorage.setItem(AUTH_TOKEN, token);
-    localStorage.setItem(IS_ADMIN, isAdmin);
     setRedirectToReferer(true);
   };
 

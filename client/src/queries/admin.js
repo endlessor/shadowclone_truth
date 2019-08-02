@@ -33,6 +33,7 @@ export const AdminCandidatesQuery = gql`
       candidate {
         id
         name
+        photo
         party
         state
         current_office
@@ -65,10 +66,29 @@ export const AdminPositionsQuery = gql`
 `;
 
 export const AdminAddCandidate = gql`
-  mutation createCandidate($data: CandidateCreateInput!) {
-    createCandidate(data: $data) {
+  mutation createCandidate(
+    $name: String!
+    $age: Int
+    $party: String!
+    $state: String!
+    $gender: Gender
+    $current_office: String!
+    $bio_other: String
+    $file: Upload
+  ) {
+    createCandidate(
+      name: $name
+      age: $age
+      party: $party
+      state: $state
+      gender: $gender
+      current_office: $current_office
+      bio_other: $bio_other
+      file: $file
+    ) {
       id
       name
+      photo
       party
       state
       current_office

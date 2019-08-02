@@ -6,6 +6,7 @@ import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
+import { FileUpload } from "primereact/fileupload";
 
 import {
   AdminCandidatesQuery,
@@ -21,11 +22,14 @@ function CandidateList(props) {
 
   const saveCandidate = () => {
     const { addCandidate, updateCandidate } = props;
-    const { id, __typename, ...rest } = candidate;
+    const { id, __typename, file, ...rest } = candidate;
     if (newCandidate) {
+      const photo = new Blob([file]);
       addCandidate({
         variables: {
-          data: { ...rest, age: parseInt(rest.age) }
+          ...rest,
+          age: parseInt(rest.age),
+          file: photo
         }
       }).then(() => setDisplayDialog(false));
     } else {
@@ -85,6 +89,7 @@ function CandidateList(props) {
         lazy
         rows={10}
         paginator
+        responsive
         loading={loading}
         value={candidatesWithVotes}
         header={<h2 style={{ margin: 0 }}>Candidates</h2>}
@@ -137,6 +142,22 @@ function CandidateList(props) {
                   updateProperty("name", e.target.value);
                 }}
                 value={candidate.name}
+              />
+            </div>
+
+            <div className="p-col-4" style={{ padding: ".75em" }}>
+              <label htmlFor="photo">Photo</label>
+            </div>
+            <div className="p-col-8" style={{ padding: ".5em" }}>
+              <FileUpload
+                id="photo"
+                name="file"
+                accept="image/*"
+                mode="basic"
+                onSelect={e => {
+                  updateProperty("file", e.files[0]);
+                }}
+                value={candidate.photo}
               />
             </div>
 
