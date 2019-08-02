@@ -28,3 +28,15 @@ export const SignupMutation = gql`
     }
   }
 `;
+
+export const MeQuery = gql`
+  {
+    me {
+      id
+      name
+      email
+      gender
+      isAdmin
+    }
+  }
+`;

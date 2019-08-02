@@ -5,46 +5,56 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { Query } from "react-apollo";
+import { ProgressSpinner } from "primereact/progressspinner";
+
 import AdminRoutes from "./admin";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PreVote from "../pages/Prevote";
 import VoteReasoning from "../pages/VoteReasoning";
 import Results from "../pages/Results";
-import { AUTH_TOKEN, IS_ADMIN } from "../config";
+import { AUTH_TOKEN } from "../config";
+import { MeQuery } from "../queries";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = !!localStorage.getItem(AUTH_TOKEN);
-  const isAdmin = JSON.parse(localStorage.getItem(IS_ADMIN));
   return (
-    <Route
-      {...rest}
-      render={props => {
-        if (isAuthenticated) {
-          if (!isAdmin) {
-            if (props.location.pathname === "/admin")
-              return <Redirect to="/prevote" />;
-            return Component ? (
-              <Component {...props} />
-            ) : (
-              <Redirect to="/prevote" />
-            );
-          } else {
-            return props.location.pathname !== "/admin" ? (
-              <Redirect to="/admin" />
-            ) : (
-              <Component {...props} />
-            );
-          }
-        } else {
-          return (
-            <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
-            />
-          );
-        }
+    <Query query={MeQuery}>
+      {({ loading, error, data }) => {
+        if (loading) return <ProgressSpinner />;
+        return (
+          <Route
+            {...rest}
+            render={props => {
+              if (isAuthenticated) {
+                if (!data.me.isAdmin) {
+                  if (props.location.pathname === "/admin")
+                    return <Redirect to="/prevote" />;
+                  return Component ? (
+                    <Component {...props} />
+                  ) : (
+                    <Redirect to="/prevote" />
+                  );
+                } else {
+                  return props.location.pathname !== "/admin" ? (
+                    <Redirect to="/admin" />
+                  ) : (
+                    <Component {...props} />
+                  );
+                }
+              } else {
+                return (
+                  <Redirect
+                    to={{ pathname: "/login", state: { from: props.location } }}
+                  />
+                );
+              }
+            }}
+          />
+        );
       }}
-    />
+    </Query>
   );
 };
 
