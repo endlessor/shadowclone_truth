@@ -51,10 +51,14 @@ function PreVote({ history }) {
     <div className="p-grid p-justify-center">
       <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
         <div className="p-grid p-justify-between p-align-center">
-          <h1>Prevoting</h1>
-          <Button label="Next" onClick={handleNext} />
+          <div className="p-col">
+            <h1>Prevoting</h1>
+          </div>
+          <div className="p-fluid">
+            <Button label="Next" onClick={handleNext} />
+          </div>
         </div>
-        <Query query={CandidateQuery}>
+        <Query query={CandidateQuery} fetchPolicy="network-only">
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error : {error}</p>;
