@@ -14,6 +14,7 @@ import Signup from "../pages/Signup";
 import PreVote from "../pages/Prevote";
 import VoteReasoning from "../pages/VoteReasoning";
 import Results from "../pages/Results";
+import Intro from "../pages/Intro";
 import { AUTH_TOKEN } from "../config";
 import { MeQuery } from "../queries";
 
@@ -65,6 +66,7 @@ const MainRoute = () => {
         <PrivateRoute path="/" exact={null} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/intro" component={Intro} />
         <PrivateRoute path="/prevote" component={PreVote} />
         <PrivateRoute path="/candidate/:id" component={VoteReasoning} />
         <PrivateRoute path="/result" component={Results} />
