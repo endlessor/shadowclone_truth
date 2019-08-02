@@ -68,7 +68,7 @@ function App() {
   if (!client) return <ProgressSpinner />;
   return (
     <ApolloProvider client={client}>
-      <div className="p-grid p-justify-center">
+      <div>
         <MainRoute />
       </div>
     </ApolloProvider>

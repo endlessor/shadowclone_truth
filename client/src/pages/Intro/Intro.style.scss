@@ -1,0 +1,42 @@
+@import "../../theme/colors";
+
+.intro {
+  position: relative;
+  width: 100%;
+  margin: 0;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $background-color;
+    border-bottom: 1px solid black;
+  }
+
+  &__footer {
+    position: sticky;
+    background: $background-color;
+    bottom: 0;
+
+    .p-button {
+      border-color: #ba81c5;
+      background-color: #ba81c5;
+    }
+    .p-button-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  h2 {
+    margin: 0.5rem 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    span {
+      font-weight: bold;
+    }
+  }
+}
