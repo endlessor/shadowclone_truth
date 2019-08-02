@@ -160,10 +160,6 @@ input CandidatePositionWhereUniqueInput {
   id: ID
 }
 
-input CandidateWhereUniqueInput {
-  id: ID
-}
-
 type CandidateWithVote {
   candidate: Candidate
   compromises: Int
@@ -211,7 +207,7 @@ type Mutation {
   createUserPositionLike(candidate_positionId: ID!, like: LikeType): UserPositionLike
   createUserQualificationLike(like: LikeType, qualificationId: ID!): UserQualificationLike
   createUserVote(candidateId: ID!, voteType: VoteType): UserVote
-  deleteCandidate(where: CandidateWhereUniqueInput!): Candidate
+  deleteCandidate(id: ID!): Candidate
   deleteCandidatePosition(where: CandidatePositionWhereUniqueInput!): CandidatePosition
   deletePosition(where: PositionWhereUniqueInput!): Position
   deleteQualification(where: QualificationWhereUniqueInput!): Qualification

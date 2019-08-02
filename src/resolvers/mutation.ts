@@ -25,7 +25,6 @@ const Mutation = prismaObjectType({
       'createQualification',
       'createTopic',
       'createCandidatePosition',
-      'deleteCandidate',
       'deletePosition',
       'deleteCandidatePosition',
       'deleteTopic',
@@ -271,6 +270,27 @@ const Mutation = prismaObjectType({
           }
         })
         return candidate
+      }
+    })
+
+    t.field('deleteCandidate', {
+      type: 'Candidate',
+      args: {
+        id: idArg({required: true}),
+      },
+      resolve: async (parent, args, ctx) => {
+        const candidate = await ctx.prisma.candidate({ id: args.id })
+        if (candidate.photo) {
+          const arrTemp = candidate.photo.split('/')
+          const key = arrTemp[arrTemp.length - 1]
+          s3.deleteObject({
+            Bucket: process.env.S3BUCKET,
+            Key: key
+          }, function(err, data) {
+            if (err) console.log(err)
+          })
+        }
+        return ctx.prisma.deleteCandidate({ id: args.id })
       }
     })
   },
