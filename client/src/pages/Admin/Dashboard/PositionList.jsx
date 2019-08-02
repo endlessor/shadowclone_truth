@@ -88,6 +88,7 @@ function PositionList(props) {
         lazy
         rows={10}
         paginator
+        responsive
         loading={positions.loading}
         value={positions.positionsWithLikes}
         header={<h2 style={{ margin: 0 }}>Positions</h2>}
