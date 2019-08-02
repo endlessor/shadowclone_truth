@@ -35,10 +35,10 @@ const CandidateListItem = ({ data, updateVote }) => {
               <TextItem label={"AGE"} value={data.age} />
             </div>
             <div className="p-col-3">
-              <TextItem label="POLLS" value={`${data.latest_poll}%`} />
+              <TextItem label="POLLS" value={`${data.latest_poll || 0}%`} />
             </div>
             <div className="p-col-3">
-              <TextItem label="VS" value={`${data.latest_odds}%`} />
+              <TextItem label="VS" value={`${data.latest_odds || 0}%`} />
             </div>
             <div className="p-col-3">
               <i className="pi pi-chevron-down" onClick={onCollapse} />
