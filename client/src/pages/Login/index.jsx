@@ -12,10 +12,12 @@ import { Card } from "primereact/card";
 function Login({ location }) {
   const [authInfo, setAuthInfo] = useState({ email: "", password: "" });
   const [redirectToReferer, setRedirectToReferer] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const loginSuccess = data => {
-    const { token } = data.login;
+    const { token, isAdmin } = data.login;
     localStorage.setItem(AUTH_TOKEN, token);
+    setIsAdmin(isAdmin);
     setRedirectToReferer(true);
   };
 
@@ -26,8 +28,8 @@ function Login({ location }) {
     });
   };
 
-  const { from } = { from: { pathname: "/intro" } };
   if (redirectToReferer) {
+    const { from } = { from: { pathname: isAdmin ? "/admin" : "/intro" } };
     return <Redirect to={from} />;
   }
 
