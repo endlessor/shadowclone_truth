@@ -10,8 +10,14 @@
       border-top: 1px dashed gray;
     }
   }
+  .pi {
+    vertical-align: bottom;
+  }
   &__content {
-    text-align: center;
+    h4 {
+      text-align: left;
+      margin: 0;
+    }
   }
   &__avatar {
     border-radius: 50%;
