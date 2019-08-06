@@ -7,7 +7,6 @@ import { Button } from "primereact/button";
 import { CandidateListItem } from "../../components";
 import {
   CandidateQuery,
-  UserVoteQuery,
   UserVoteMutation
 } from "../../queries/candidate";
 
@@ -19,10 +18,7 @@ function PreVote({ history }) {
 
     if (layout === "list") {
       return (
-        <Mutation
-          mutation={UserVoteMutation}
-          refetchQueries={[{ query: CandidateQuery }, { query: UserVoteQuery }]}
-        >
+        <Mutation mutation={UserVoteMutation}>
           {createUserVote => (
             <CandidateListItem
               data={candidate}
@@ -48,13 +44,12 @@ function PreVote({ history }) {
   };
 
   return (
-    <div className="p-grid p-justify-center">
-      <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
+      <div className="p-col-12 p-sm-12 p-md-6 page">
         <div className="p-grid p-justify-between p-align-center">
-          <div className="p-col">
+          <div className="p-col-8">
             <h1>Prevoting</h1>
           </div>
-          <div className="p-fluid">
+          <div className="p-col-4 p-fluid">
             <Button label="Next" onClick={handleNext} />
           </div>
         </div>
@@ -73,7 +68,6 @@ function PreVote({ history }) {
           }}
         </Query>
       </div>
-    </div>
   );
 }
 
