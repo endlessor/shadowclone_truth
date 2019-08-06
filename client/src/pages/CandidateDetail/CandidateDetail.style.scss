@@ -1,6 +1,6 @@
 @import "../../theme/colors";
 
-.vote-reason {
+.candidate-detail {
   background-color: white;
 
   h4 {
@@ -14,42 +14,33 @@
     margin: 0;
   }
 
+  ul {
+    margin: 0;
+  }
   &__header {
-    padding: 0.5em;
-
+    padding: .5em;
+    a {
+      font-size: 1.25em;
+      color: gray;
+    }
     .pi {
-      float: left;
-      font-size: 2.5em;
       vertical-align: bottom;
     }
-    &--description {
-      margin: 0;
-      font-weight: bold;
-      font-size: 1.4em;
-      color: gray;
-      text-align: center;
-    }
   }
-
   &__main {
+    margin-bottom: 25px;
     background-color: #f2f2f2;
     border-top: solid 1px $border-color;
     border-bottom: solid 1px $border-color;
     padding: 10px;
-    margin-bottom: 35px;
-    &__avatar {
-      margin-bottom: -40px;
-    }
   }
 
-  &__qualification {
-    margin: 0 10px;
-    margin-bottom: .5em;
+  &__experience,
+  &__position {
     border-bottom: dashed 1px $border-color;
     background-color: white;
   }
-  &__position {
-    margin: 0 10px;
-    background-color: white;
+  &__experience {
+    margin-bottom: 1em;
   }
 }

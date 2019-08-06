@@ -6,6 +6,8 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { ResultListItem } from "../../components";
 import { ResultQuery, UserVoteQuery } from "../../queries";
 
+import "./Result.style.scss";
+
 function Results() {
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
@@ -17,22 +19,22 @@ function Results() {
     }
   };
   return (
-    <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
+    <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center result page">
       <div className="p-grid p-align-center">
         <div className="p-col-fixed">
           <span className="pi pi-external-link" />
         </div>
         <div className="p-col">
-          <p>
+          <p className="result--description">
             Thanks for pre-voting! That was easy...
             <br />
             Here's how you rated the candidates:
           </p>
         </div>
       </div>
-      <Query query={ResultQuery}>
+      <Query query={ResultQuery} fetchPolicy="network-only">
         {({ loading: loadingCandidates, error, data: { candidates } }) => (
-          <Query query={UserVoteQuery}>
+          <Query query={UserVoteQuery} fetchPolicy="network-only">
             {({ loading: loadingVotes, error, data: { userVotes } }) => {
               if (loadingCandidates || loadingVotes) return <ProgressSpinner />;
               const candidatesWithVotes = candidates.map(candidate => {

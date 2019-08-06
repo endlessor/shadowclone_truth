@@ -20,7 +20,7 @@ const CandidateListItem = ({ data, updateVote }) => {
 
   return (
     <Card className="candidate_card">
-      <div className="p-grid">
+      <div className="p-grid candidate_card__content">
         <Link className="p-col-fixed" to={`/candidate/${data.id}`}>
           <Avatar url={data.photo} alt="avatar" />
         </Link>
@@ -31,14 +31,18 @@ const CandidateListItem = ({ data, updateVote }) => {
                 {data.name} ({data.party})
               </h4>
             </div>
-            <div className="p-col-3 p-col-align-center">
+            <div className="p-col-3">
               <TextItem label={"AGE"} value={data.age} />
             </div>
-            <div className="p-col-3">
+            <div className="p-col-4">
               <TextItem label="POLLS" value={`${data.latest_poll || 0}%`} />
             </div>
-            <div className="p-col-3">
+            <div className="p-col-4">
               <TextItem label="VS" value={`${data.latest_odds || 0}%`} />
+            </div>
+            <div className="p-col-12">
+              <Link to={`/candidate/${data.id}`}>more info</Link>
+              <span className="pi pi-chevron-right" />
             </div>
             <div className="p-col-3">
               <i className="pi pi-chevron-down" onClick={onCollapse} />

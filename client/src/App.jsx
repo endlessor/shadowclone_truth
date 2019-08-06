@@ -68,7 +68,7 @@ function App() {
   if (!client) return <ProgressSpinner />;
   return (
     <ApolloProvider client={client}>
-      <div>
+      <div className="main">
         <MainRoute />
       </div>
     </ApolloProvider>

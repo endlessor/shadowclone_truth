@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Accordion, AccordionTab } from "primereact/accordion";
-import { DataView } from "primereact/dataview";
 import { compose, withApollo, graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import { VoteReasonItem, Avatar } from "../../components";
+import { VoteReasonItem, Avatar, TextItem } from "../../components";
 import {
   PositionLikeMutation,
   QualificationLikeMutation
@@ -25,80 +23,108 @@ function VoteReasoning({ match, client, positionLike, qualificationLike }) {
     setCandidate(candidate);
   }, [client, match.params.id]);
 
-  const itemTemplateQualification = (qualification, layout) => {
+  const itemTemplateQualification = qualification => {
     if (!qualification) {
       return null;
     }
 
-    if (layout === "list") {
-      return (
-        <VoteReasonItem
-          data={qualification}
-          onToggle={e => {
-            qualificationLike({
-              variables: {
-                qualificationId: qualification.id,
-                like: e.target.name
-              }
-            });
-          }}
-        />
-      );
-    }
+    return (
+      <VoteReasonItem
+        data={qualification}
+        onToggle={e => {
+          qualificationLike({
+            variables: {
+              qualificationId: qualification.id,
+              like: e.target.name
+            }
+          });
+        }}
+      />
+    );
   };
 
-  const itemTemplatePosition = (position, layout) => {
+  const itemTemplatePosition = position => {
     if (!position) {
       return null;
     }
 
-    if (layout === "list") {
-      return (
-        <VoteReasonItem
-          data={position}
-          onToggle={e => {
-            positionLike({
-              variables: {
-                userId: "cjyg2k9vkhc3b0b19tkwr49fu",
-                positionId: position.id,
-                like: e.target.name
-              }
-            });
-          }}
-        />
-      );
-    }
+    return (
+      <VoteReasonItem
+        data={position}
+        onToggle={e => {
+          positionLike({
+            variables: {
+              userId: "cjyg2k9vkhc3b0b19tkwr49fu",
+              positionId: position.id,
+              like: e.target.name
+            }
+          });
+        }}
+      />
+    );
   };
 
   return (
-    <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center">
-      <div className="p-grid p-col-align-center">
-        <div className="p-col-4">
-          <Avatar url={candidate.photo} alt="avatar" />
+    <section className="p-col-12 p-sm-12 p-md-6 p-col-align-center page vote-reason">
+      <section className="p-grid vote-reason__header">
+        <div className="p-col">
+          <p className="vote-reason__header--description">
+            <span className="pi pi-question-circle" />
+            What do you like or dislike about this candidate?
+          </p>
         </div>
-        <div className="p-col-8">
-          <h4>{candidate.name}</h4>
+      </section>
+      <section className="p-grid p-col-align-center vote-reason__main">
+        <div className="p-col-fixed">
+          <div className="vote-reason__main__avatar">
+            <Avatar url={candidate.photo} alt="avatar" />
+          </div>
         </div>
-      </div>
-      <Accordion multiple className="accordion">
-        <AccordionTab header="Qualifications">
-          <DataView
-            value={candidate.bio_qualifications}
-            layout="list"
-            itemTemplate={itemTemplateQualification}
-            rows={20}
-          />
-        </AccordionTab>
-        <AccordionTab header="Policies">
-          <DataView
-            value={candidate.bio_policy_position}
-            layout="list"
-            itemTemplate={itemTemplatePosition}
-            rows={20}
-          />
-        </AccordionTab>
-      </Accordion>
-    </div>
+        <div className="p-col">
+          <div className="p-grid">
+            <div className="p-col-12">
+              <h4>{candidate.name}</h4>
+            </div>
+            <div className="p-col-3">
+              <TextItem label={"AGE"} value={candidate.age} />
+            </div>
+            <div className="p-col-4">
+              <TextItem
+                label="POLLS"
+                value={`${candidate.latest_poll || 0}%`}
+              />
+            </div>
+            <div className="p-col-4">
+              <TextItem label="VS" value={`${candidate.latest_odds || 0}%`} />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="p-grid p-col-align-center vote-reason__qualification">
+        <div className="p-col">
+          <h3>QUALIFICATIONS</h3>
+        </div>
+        {candidate.bio_qualifications && (
+          <div className="p-col-12">
+            {candidate.bio_qualifications.map(qualification =>
+              itemTemplateQualification(qualification)
+            )}
+          </div>
+        )}
+      </section>
+      <section className="p-grid p-col-align-center vote-reason__position">
+        <div className="p-col">
+          <h3>POLICY POSITIONS</h3>
+        </div>
+        {candidate.bio_policy_position && (
+          <div className="p-col-12">
+            {candidate.bio_policy_position.map(position =>
+              itemTemplatePosition(position)
+            )}
+          </div>
+        )}
+      </section>
+    </section>
   );
 }
 
@@ -108,6 +134,9 @@ const candidateQuery = gql`
       id
       name
       photo
+      age
+      latest_odds
+      latest_poll
       bio_qualifications {
         id
         summary
