@@ -1,7 +1,7 @@
 import React from "react";
 import { oneOfType, func } from "prop-types";
-import { Card } from "primereact/card";
-import { ToggleButton } from "primereact/togglebutton";
+import { Button } from "primereact/button";
+import classNames from "classnames";
 
 import { QualificationShape, PolicyPositionShape } from "../../types/candidate";
 
@@ -9,29 +9,19 @@ import "./VoteReasonItem.style.scss";
 
 const VoteReasonItem = ({ data, onToggle }) => {
   return (
-    <Card className="candidate_card">
-      <div className="p-grid p-align-center">
+    <div className="vote-reason-item">
+      <div className="p-grid">
         <div className="p-col-2 p-fluid">
-          <ToggleButton
-            onIcon={"pi pi-thumbs-up"}
-            offIcon={"pi pi-thumbs-up"}
-            name="LIKE"
-            onChange={onToggle}
-          />
+          <Button icon="pi pi-thumbs-down" name="DISLIKE" onChange={onToggle} />
         </div>
-        <div className="p-col-8">
-          <p>{data.summary}</p>
+        <div className="p-col-8 vote-reason-item__summary">
+          <span>{data.summary}</span>
         </div>
         <div className="p-col-2 p-fluid">
-          <ToggleButton
-            onIcon={"pi pi-thumbs-down"}
-            offIcon={"pi pi-thumbs-down"}
-            name="DISLIKE"
-            onChange={onToggle}
-          />
+          <Button icon="pi pi-thumbs-up" name="LIKE" onChange={onToggle} />
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

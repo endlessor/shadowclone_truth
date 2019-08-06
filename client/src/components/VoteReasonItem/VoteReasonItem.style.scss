@@ -1,5 +1,8 @@
-.candidate_card {
-  margin-top: 0.5rem;
+@import "../../theme/colors";
+
+.vote-reason-item {
+  margin-bottom: 0.5rem;
+  text-align: center;
 
   .p-panel {
     .p-panel-titlebar {
@@ -9,6 +12,28 @@
       border: none;
       border-top: 1px dashed gray;
     }
+  }
+  .p-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+  }
+  .p-button-icon-left {
+    color: #A2A1A1;
+    font-size: 2.4em;
+  }
+  .dislike {
+    background-color: $dislike-color;
+  }
+  .like {
+    background-color: $like-color;
+  }
+
+  &__summary {
+    padding: 10px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
   }
   &__content {
     text-align: center;
