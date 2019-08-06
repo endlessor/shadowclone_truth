@@ -13,6 +13,7 @@ export const CandidateQuery = gql`
       latest_poll
       latest_odds
       prevote_score
+      bio_other
       bio_qualifications {
         id
         name
