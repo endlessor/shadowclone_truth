@@ -19,6 +19,32 @@ export const CandidateQuery = gql`
   }
 `;
 
+export const CandidateQualificationsQuery = gql`
+  query qualifications($candidateId: ID!) {
+    candidateQualifications(candidateId: $candidateId) {
+      id
+      name
+      summary
+      detail
+      years
+      rank
+      like_type
+    }
+  }
+`;
+
+export const CandidatePositionsQuery = gql`
+  query positions($candidateId: ID!) {
+    candidatePositions(candidateId: $candidateId) {
+      id
+      name
+      summary
+      detail
+      like_type
+    }
+  }
+`;
+
 export const UserVoteMutation = gql`
   mutation createUserVote($candidateId: ID!, $voteType: VoteType) {
     createUserVote(candidateId: $candidateId, voteType: $voteType) {
