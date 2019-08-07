@@ -23,14 +23,11 @@ const Mutation = prismaObjectType({
     t.prismaFields([
       'createPosition',
       'createQualification',
-      'createTopic',
       'createCandidatePosition',
       'deletePosition',
       'deleteCandidatePosition',
-      'deleteTopic',
       'deleteQualification',
       'updateCandidatePosition',
-      'updateTopic',
       'updatePosition',
       'updateQualification',
     ])
@@ -113,19 +110,22 @@ const Mutation = prismaObjectType({
     t.field('createUserPositionLike', {
       type: 'UserPositionLike',
       args: {
-        candidate_positionId: idArg({required: true}),
+        candidateId: idArg({required: true}),
+        positionId: idArg({required: true}),
         like: 'LikeType'
       },
-      resolve: async (parent, {candidate_positionId, like}, ctx) => {
+      resolve: async (parent, {candidateId, positionId, like}, ctx) => {
         const userId = getUserId(ctx)
         let userPositionLike = await ctx.prisma.userPositionLikes({
-          where: { AND: [{userId}, {candidate_position: {id: candidate_positionId}}] }
+          where: { userId, candidateId, positionId }
         })
         if (userPositionLike.length === 0) {
           return ctx.prisma.createUserPositionLike({
             userId,
-            candidate_position: {connect: {id: candidate_positionId}},
-            like})
+            candidateId,
+            positionId,
+            like
+          })
         }
         if (userPositionLike[0].like === like) {
           return ctx.prisma.deleteUserPositionLike({ id:userPositionLike[0].id })
@@ -152,7 +152,8 @@ const Mutation = prismaObjectType({
           return ctx.prisma.createUserQualificationLike({
             userId,
             qualificationId,
-            like})
+            like
+          })
         }
         if (userQualificationLike[0].like === like) {
           return ctx.prisma.deleteUserQualificationLike({ id:userQualificationLike[0].id })
@@ -200,7 +201,7 @@ const Mutation = prismaObjectType({
         state: stringArg({required: true}),
         gender: "Gender",
         current_office: stringArg({required: true}),
-        bio_other: stringArg(),
+        bio_summary: stringArg(),
         file: 'Upload'
       },
       resolve: async (parent, args, ctx) => {
@@ -224,7 +225,7 @@ const Mutation = prismaObjectType({
           gender: args.gender,
           current_office: args.current_office,
           photo: uploadURL,
-          bio_other: args.bio_other
+          bio_summary: args.bio_summary
         })
         return candidate
       }
@@ -240,7 +241,7 @@ const Mutation = prismaObjectType({
         state: stringArg({required: true}),
         gender: "Gender",
         current_office: stringArg({required: true}),
-        bio_other: stringArg(),
+        bio_summary: stringArg(),
         file: 'Upload'
       },
       resolve: async (parent, args, ctx) => {
@@ -266,7 +267,7 @@ const Mutation = prismaObjectType({
             gender: args.gender,
             current_office: args.current_office,
             photo: uploadURL,
-            bio_other: args.bio_other
+            bio_summary: args.bio_summary
           }
         })
         return candidate

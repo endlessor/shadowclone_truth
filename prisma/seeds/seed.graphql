@@ -1,414 +1,467 @@
 mutation {
-  user1: createUser(data: { 
-    id: "cjyh4jzsqlnms0b190415j36a",
-    email: "testuser1@gmail.com",
-    name: "John Doe",
-    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6" 
-    }) {
-    id
-  }
-
-  user2: createUser(data: {
-    id: "cjyh4jzsqlnms0b190415j36b",
-    email: "testuser2@gmail.com",
-    name: "Bob Doe",
-    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6" 
-    }) {
-    id
-  }
-
-  user3: createUser(data: {
-    id: "cjyh4jzsqlnms0b190415j36z",
-    email: "testadmin@gmail.com",
-    name: "Admin User",
-    password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6",
-    role: 1
-    }) {
-    id
-  }
-
-  candidate1: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36c",
-    name: "Donald Trump",
-  	photo: "https://randomuser.me/api/portraits/men/32.jpg",
-    party: "democratic",
-    state: "de",
-    current_office: "n/a",
-    age: 45,
-    gender: MALE,
-    latest_poll: 65,
-    latest_odds: 35,
-    prevote_score: 45,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j36f",
-        name: "Software manager",
-        summary: "10 years of Leading AMD Project",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36c"
-      }
+  user1: createUser(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36a"
+      email: "testuser1@gmail.com"
+      name: "John Doe"
+      password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j36d",
-        name: "lead of AMD",
-        summary: "lead 15 years",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3e",
-            name: "Healthcare insurance",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+
+  user2: createUser(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36b"
+      email: "testuser2@gmail.com"
+      name: "Bob Doe"
+      password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
   }
 
-  candidate2: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36g",
-    name: "Anna Rose",
-    photo: "https://randomuser.me/api/portraits/women/60.jpg",
-    party: "democratic",
-    state: "es",
-    current_office: "n/a",
-    age: 32,
-    gender: FEMALE,
-    latest_poll:75,
-    latest_odds: 30,
-    prevote_score: 35,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j36h",
-        name: "Software Designer",
-        summary: "10 years of Leading Design Project",
-        rank: 1,
-        years: 5,
-        detail: "good manager in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36g"
-      }
+  user3: createUser(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36z"
+      email: "testadmin@gmail.com"
+      name: "Admin User"
+      password: "$2b$10$.qGqzkIBhrAcIWcWr.bBI.TyDf0vPyyeK0QJ5cPJHJKgEGH5.FNm6"
+      role: 1
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j36i",
-        name: "lead of TMS",
-        summary: "lead 15 years",
-        detail: "Nominate artist award",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3j",
-            name: "Artist Commit",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+
+  candidate1: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36c"
+      name: "Donald Trump"
+      photo: "https://randomuser.me/api/portraits/men/32.jpg"
+      party: "democratic"
+      state: "de"
+      current_office: "n/a"
+      age: 45
+      gender: MALE
+      latest_poll: 65
+      latest_odds: 35
+      prevote_score: 45
+      bio_summary: "Software learning course of Paris"
     }
-    bio_other: "Amateur Guitarist"
-  }) {
+  ) {
     id
   }
 
-  candidate3: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36o",
-    name: "Dash Board",
-  	photo: "https://randomuser.me/api/portraits/men/60.jpg",
-    party: "democratic",
-    state: "fe",
-    current_office: "n/a",
-    age: 35,
-    gender: MALE,
-    latest_poll: 55,
-    latest_odds: 38,
-    prevote_score: 55,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3ao",
-        name: "VP of US Bank",
-        summary: "professional digital marketer who creates and promotes digital content at Solaris Digital.",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36o"
-      }
+  candidate2: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36d"
+      name: "Anna Rose"
+      photo: "https://randomuser.me/api/portraits/women/60.jpg"
+      party: "democratic"
+      state: "es"
+      current_office: "n/a"
+      age: 32
+      gender: FEMALE
+      latest_poll: 75
+      latest_odds: 30
+      prevote_score: 35
+      bio_summary: "Amateur Guitarist"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3bo",
-        name: "lead of US Bank",
-        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3co",
-            name: "Healthcare insurance",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+
+  candidate3: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36e"
+      name: "Dash Board"
+      photo: "https://randomuser.me/api/portraits/men/60.jpg"
+      party: "democratic"
+      state: "fe"
+      current_office: "n/a"
+      age: 35
+      gender: MALE
+      latest_poll: 55
+      latest_odds: 38
+      prevote_score: 55
+      bio_summary: "Software learning course of Paris"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
   }
 
-  candidate4: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36p",
-    name: "Harry Thomas",
-  	photo: "https://randomuser.me/api/portraits/men/79.jpg",
-    party: "democratic",
-    state: "fe",
-    current_office: "n/a",
-    age: 55,
-    gender: MALE,
-    latest_poll: 84,
-    latest_odds: 58,
-    prevote_score: 43,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3ap",
-        name: "Leader of Yale",
-        summary: "professional digital marketer who creates and promotes digital content at Solaris Digital.",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36p"
-      }
+  candidate4: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36f"
+      name: "Harry Thomas"
+      photo: "https://randomuser.me/api/portraits/men/79.jpg"
+      party: "democratic"
+      state: "fe"
+      current_office: "n/a"
+      age: 55
+      gender: MALE
+      latest_poll: 84
+      latest_odds: 58
+      prevote_score: 43
+      bio_summary: "Software learning course of Paris"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3bp",
-        name: "leader of Yale team",
-        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3cp",
-            name: "Healthcare insurance",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+
+  candidate5: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36g"
+      name: "Diana Loger"
+      photo: "https://randomuser.me/api/portraits/women/54.jpg"
+      party: "democratic"
+      state: "fe"
+      current_office: "n/a"
+      age: 55
+      gender: MALE
+      latest_poll: 84
+      latest_odds: 58
+      prevote_score: 31
+      bio_summary: "Software learning course of Paris"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
-  } 
+  }
 
-  candidate5: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36q",
-    name: "Diana Loger",
-  	photo: "https://randomuser.me/api/portraits/women/54.jpg",
-    party: "democratic",
-    state: "fe",
-    current_office: "n/a",
-    age: 55,
-    gender: MALE,
-    latest_poll: 84,
-    latest_odds: 58,
-    prevote_score: 31,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3aq",
-        name: "Master of Havard",
-        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36q"
-      }
+  candidate6: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36h"
+      name: "Joe Biden"
+      photo: "https://randomuser.me/api/portraits/men/61.jpg"
+      party: "democratic"
+      state: "fe"
+      current_office: "n/a"
+      age: 55
+      gender: MALE
+      latest_poll: 54
+      latest_odds: 58
+      prevote_score: 61
+      bio_summary: "Software learning course of Paris"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3bq",
-        name: "leader of havard",
-        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3cq",
-            name: "Reproductive rights",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+
+  candidate7: createCandidate(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36i"
+      name: "Elizabeth Warren"
+      photo: "https://randomuser.me/api/portraits/women/32.jpg"
+      party: "democratic"
+      state: "fe"
+      current_office: "n/a"
+      age: 55
+      gender: MALE
+      latest_poll: 59
+      latest_odds: 38
+      prevote_score: 31
+      bio_summary: "Software learning course of Paris"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
   }
 
-  candidate6: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36r",
-    name: "Joe Biden",
-  	photo: "https://randomuser.me/api/portraits/men/61.jpg",
-    party: "democratic",
-    state: "fe",
-    current_office: "n/a",
-    age: 55,
-    gender: MALE,
-    latest_poll: 54,
-    latest_odds: 58,
-    prevote_score: 61,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3ar",
-        name: "Senator of Michigan",
-        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36r"
-      }
+  qualification1: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36j"
+      name: "Software manager"
+      summary: "10 years of Leading AMD Project"
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36c"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3br",
-        name: "Senator of Michigan",
-        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3cr",
-            name: "Reproductive rights",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+  position1: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36k"
+      name: "lead of AMD"
+      summary: "lead 15 years"
+      detail: "Nominate economics award with team"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
   }
-  
-  candidate7: createCandidate(data: {
-    id: "cjyh4jzsqlnms0b190415j36s",
-    name: "Elizabeth Warren",
-  	photo: "https://randomuser.me/api/portraits/women/32.jpg",
-    party: "democratic",
-    state: "fe",
-    current_office: "n/a",
-    age: 55,
-    gender: MALE,
-    latest_poll: 59,
-    latest_odds: 38,
-    prevote_score: 31,
-    bio_qualifications: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3as",
-        name: "Senator of California",
-        summary: "professional digital teacher who creates and promotes digital content at Solaris Digital.",
-        rank: 1,
-        years: 10,
-        detail: "good work in the team",
-        candidateId: "cjyh4jzsqlnms0b190415j36s"
-      }
+
+  qualification2: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36l"
+      name: "Software Designer"
+      summary: "10 years of Leading Design Project"
+      rank: 1
+      years: 5
+      detail: "good manager in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36d"
     }
-    bio_policy_position: {
-      create: {
-        id: "cjyh4jzsqlnms0b190415j3bs",
-        name: "Senator of California",
-        summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification.",
-        detail: "Nominate economics award with team",
-        topic: {
-          create: {
-            id: "cjyh4jzsqlnms0b190415j3cs",
-            name: "Reproductive rights",
-            category: HEALTH
-          }
-        }
-      }
+  ) {
+    id
+  }
+  position2: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j36m"
+      name: "lead of TMS"
+      summary: "lead 15 years"
+      detail: "Nominate artist award"
     }
-    bio_other: "Software learning course of Paris"
-  }) {
+  ) {
     id
   }
 
-  candidatePosition1: createCandidatePosition(data: {
-    id: "cjyh4jzsqlnms0b190415j3k"
-    link: "https://example.com",
-    positionId: "cjyh4jzsqlnms0b190415j36d",
-    candidateId: "cjyh4jzsqlnms0b190415j36c",
-    rank: 2,
-  }){
+  qualification3: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3an"
+      name: "VP of US Bank"
+      summary: "professional digital marketer who creates and promotes digital content at Solaris Digital."
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36e"
+    }
+  ) {
+    id
+  }
+  position3: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3bo"
+      name: "lead of US Bank"
+      summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification."
+      detail: "Nominate economics award with team"
+    }
+  ) {
     id
   }
 
-  candidatePosition2: createCandidatePosition(data: {
-    id: "cjyh4jzsqlnms0b190415j3l"
-    link: "https://example.com",
-    positionId: "cjyh4jzsqlnms0b190415j36i",
-    candidateId: "cjyh4jzsqlnms0b190415j36g",
-    rank: 2,
-  }){
+  qualification4: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3ap"
+      name: "Leader of Yale"
+      summary: "professional digital marketer who creates and promotes digital content at Solaris Digital."
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36f"
+    }
+  ) {
+    id
+  }
+  position4: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3bq"
+      name: "leader of Yale team"
+      summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification."
+      detail: "Nominate economics award with team"
+    }
+  ) {
     id
   }
 
-  userVote1: createUserVote(data: {
-    userId: "cjyh4jzsqlnms0b190415j36a",
-    candidateId: "cjyh4jzsqlnms0b190415j36c",
-    vote_type: TOP    
-  }){
+  qualification5: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3ar"
+      name: "Master of Havard"
+      summary: "professional digital teacher who creates and promotes digital content at Solaris Digital."
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36g"
+    }
+  ) {
+    id
+  }
+  position5: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3bs"
+      name: "leader of havard"
+      summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification."
+      detail: "Nominate economics award with team"
+    }
+  ) {
     id
   }
 
-  userVote2: createUserVote(data: {
-    userId: "cjyh4jzsqlnms0b190415j36b",
-    candidateId: "cjyh4jzsqlnms0b190415j36g",
-    vote_type: FAVORITE    
-  }){
+  qualification6: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3at"
+      name: "Senator of Michigan"
+      summary: "professional digital teacher who creates and promotes digital content at Solaris Digital."
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36h"
+    }
+  ) {
     id
   }
 
-  qualificationLike1: createUserQualificationLike(data: {
-    like: LIKE,
-    userId: "cjyh4jzsqlnms0b190415j36a",
-    qualificationId: "cjyh4jzsqlnms0b190415j36f"
-  }){
+  position6: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3bu"
+      name: "Senator of Michigan"
+      summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification."
+      detail: "Nominate economics award with team"
+    }
+  ) {
     id
   }
 
-  qualificationLike2: createUserQualificationLike(data: {
-    like: DISLIKE,
-    userId: "cjyh4jzsqlnms0b190415j36b",
-    qualificationId: "cjyh4jzsqlnms0b190415j36h"
-  }){
+  qualification7: createQualification(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3av"
+      name: "Senator of California"
+      summary: "professional digital teacher who creates and promotes digital content at Solaris Digital."
+      rank: 1
+      years: 10
+      detail: "good work in the team"
+      candidateId: "cjyh4jzsqlnms0b190415j36i"
+    }
+  ) {
+    id
+  }
+  position7: createPosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j3bx"
+      name: "Senator of California"
+      summary: "several digital marketing certifications including AMA Certified Professional Marketer, DMA certification, Google AdWords certification, and a Hootsuite certification."
+      detail: "Nominate economics award with team"
+    }
+  ) {
     id
   }
 
-  positionLike1: createUserPositionLike(data: {
-    candidate_position: { connect: { id: "cjyh4jzsqlnms0b190415j3k" }}
-    userId: "cjyh4jzsqlnms0b190415j36a",
-    like: LIKE
-  }){
+  candidatePosition1: createCandidatePosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j4k"
+      link: "https://example.com"
+      positionId: "cjyh4jzsqlnms0b190415j36k"
+      candidateId: "cjyh4jzsqlnms0b190415j36g"
+      rank: 2
+    }
+  ) {
     id
   }
 
-  positionLike2: createUserPositionLike(data: {
-    candidate_position: { connect: { id: "cjyh4jzsqlnms0b190415j3l" }} ,
-    userId: "cjyh4jzsqlnms0b190415j36b",
-    like: DISLIKE
-  }){
+  candidatePosition2: createCandidatePosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j4l"
+      link: "https://example.com"
+      positionId: "cjyh4jzsqlnms0b190415j36m"
+      candidateId: "cjyh4jzsqlnms0b190415j36h"
+      rank: 2
+    }
+  ) {
     id
   }
 
-  poll1: createPoll(data: {
-    userId: "cjyh4jzsqlnms0b190415j36a",
-    candidateId: "cjyh4jzsqlnms0b190415j36c",
-    poll_type: PRIMARY,
-  }){
+  candidatePosition3: createCandidatePosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j5k"
+      link: "https://example.com"
+      positionId: "cjyh4jzsqlnms0b190415j3bq"
+      candidateId: "cjyh4jzsqlnms0b190415j36e"
+      rank: 2
+    }
+  ) {
     id
   }
 
-  poll2: createPoll(data: {
-    userId: "cjyh4jzsqlnms0b190415j36b",
-    candidateId: "cjyh4jzsqlnms0b190415j36g",
-    poll_type: PRIMARY,
-  }){
+  candidatePosition4: createCandidatePosition(
+    data: {
+      id: "cjyh4jzsqlnms0b190415j5l"
+      link: "https://example.com"
+      positionId: "cjyh4jzsqlnms0b190415j3bs"
+      candidateId: "cjyh4jzsqlnms0b190415j36f"
+      rank: 2
+    }
+  ) {
+    id
+  }
+
+  userVote1: createUserVote(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36a"
+      candidateId: "cjyh4jzsqlnms0b190415j36c"
+      vote_type: TOP
+    }
+  ) {
+    id
+  }
+
+  userVote2: createUserVote(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36b"
+      candidateId: "cjyh4jzsqlnms0b190415j36g"
+      vote_type: FAVORITE
+    }
+  ) {
+    id
+  }
+
+  qualificationLike1: createUserQualificationLike(
+    data: {
+      like: LIKE
+      userId: "cjyh4jzsqlnms0b190415j36a"
+      qualificationId: "cjyh4jzsqlnms0b190415j36j"
+    }
+  ) {
+    id
+  }
+
+  qualificationLike2: createUserQualificationLike(
+    data: {
+      like: DISLIKE
+      userId: "cjyh4jzsqlnms0b190415j36b"
+      qualificationId: "cjyh4jzsqlnms0b190415j36l"
+    }
+  ) {
+    id
+  }
+
+  positionLike1: createUserPositionLike(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36a"
+      candidateId: "cjyh4jzsqlnms0b190415j36g"
+      positionId: "cjyh4jzsqlnms0b190415j36k"
+      like: LIKE
+    }
+  ) {
+    id
+  }
+
+  positionLike2: createUserPositionLike(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36b"
+      candidateId: "cjyh4jzsqlnms0b190415j36h"
+      positionId: "cjyh4jzsqlnms0b190415j36m"
+      like: DISLIKE
+    }
+  ) {
+    id
+  }
+
+  poll1: createPoll(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36a"
+      candidateId: "cjyh4jzsqlnms0b190415j36c"
+      poll_type: PRIMARY
+    }
+  ) {
+    id
+  }
+
+  poll2: createPoll(
+    data: {
+      userId: "cjyh4jzsqlnms0b190415j36b"
+      candidateId: "cjyh4jzsqlnms0b190415j36g"
+      poll_type: PRIMARY
+    }
+  ) {
     id
   }
 }

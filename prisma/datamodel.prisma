@@ -19,9 +19,7 @@ type Candidate {
   latest_poll: Float
   latest_odds: Float
   prevote_score: Float
-  bio_qualifications: [Qualification!] @relation(onDelete: CASCADE)
-  bio_policy_position: [Position!]
-  bio_other: String
+  bio_summary: String
   vote_type: VoteType
 }
 
@@ -33,6 +31,7 @@ type Qualification {
   years: Int!
   rank: Int
   candidateId: String
+  like_type: LikeType
 }
 
 type Topic {
@@ -45,8 +44,8 @@ type Position {
   id: ID! @id
   name: String!
   summary: String
-  topic: Topic @relation(link: INLINE)
   detail: String
+  like_type: LikeType
 }
 
 type CandidatePosition {
@@ -80,7 +79,8 @@ type UserQualificationLike {
 type UserPositionLike {
   id: ID! @id
   userId: String!
-  candidate_position: CandidatePosition!
+  candidateId: String!
+  positionId: String!
   like: LikeType @default(value: LIKE)
   time: DateTime @updatedAt
   latest: Boolean @default(value: false)

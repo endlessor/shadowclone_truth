@@ -484,6 +484,92 @@ export interface ClientConstructor<T> {
  * Types
  */
 
+export type TopicOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "category_ASC"
+  | "category_DESC";
+
+export type CandidatePositionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "positionId_ASC"
+  | "positionId_DESC"
+  | "candidateId_ASC"
+  | "candidateId_DESC"
+  | "time_ASC"
+  | "time_DESC"
+  | "link_ASC"
+  | "link_DESC"
+  | "rank_ASC"
+  | "rank_DESC"
+  | "latest_ASC"
+  | "latest_DESC";
+
+export type CategoryType = "HEALTH";
+
+export type UserQualificationLikeOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "userId_ASC"
+  | "userId_DESC"
+  | "qualificationId_ASC"
+  | "qualificationId_DESC"
+  | "like_ASC"
+  | "like_DESC"
+  | "time_ASC"
+  | "time_DESC"
+  | "latest_ASC"
+  | "latest_DESC";
+
+export type QualificationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "summary_ASC"
+  | "summary_DESC"
+  | "detail_ASC"
+  | "detail_DESC"
+  | "years_ASC"
+  | "years_DESC"
+  | "rank_ASC"
+  | "rank_DESC"
+  | "candidateId_ASC"
+  | "candidateId_DESC"
+  | "like_type_ASC"
+  | "like_type_DESC";
+
+export type UserPositionLikeOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "userId_ASC"
+  | "userId_DESC"
+  | "candidateId_ASC"
+  | "candidateId_DESC"
+  | "positionId_ASC"
+  | "positionId_DESC"
+  | "like_ASC"
+  | "like_DESC"
+  | "time_ASC"
+  | "time_DESC"
+  | "latest_ASC"
+  | "latest_DESC";
+
+export type PositionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "summary_ASC"
+  | "summary_DESC"
+  | "detail_ASC"
+  | "detail_DESC"
+  | "like_type_ASC"
+  | "like_type_DESC";
+
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -497,6 +583,28 @@ export type UserOrderByInput =
   | "gender_DESC"
   | "role_ASC"
   | "role_DESC";
+
+export type PollType = "PRIMARY" | "HEADTOHEAD";
+
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type PollOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "userId_ASC"
+  | "userId_DESC"
+  | "date_ASC"
+  | "date_DESC"
+  | "candidateId_ASC"
+  | "candidateId_DESC"
+  | "poll_type_ASC"
+  | "poll_type_DESC"
+  | "error_margin_ASC"
+  | "error_margin_DESC"
+  | "link_to_poll_ASC"
+  | "link_to_poll_DESC";
+
+export type LikeType = "LIKE" | "DISLIKE" | "UNSPECIFIED";
 
 export type CandidateOrderByInput =
   | "id_ASC"
@@ -521,18 +629,14 @@ export type CandidateOrderByInput =
   | "latest_odds_DESC"
   | "prevote_score_ASC"
   | "prevote_score_DESC"
-  | "bio_other_ASC"
-  | "bio_other_DESC"
+  | "bio_summary_ASC"
+  | "bio_summary_DESC"
   | "vote_type_ASC"
   | "vote_type_DESC";
 
-export type TopicOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "category_ASC"
-  | "category_DESC";
+export type VoteType = "TOP" | "FAVORITE" | "COMPROMISE" | "VETO" | "UNKNOWNS";
+
+export type Gender = "MALE" | "FEMALE";
 
 export type UserVoteOrderByInput =
   | "id_ASC"
@@ -548,101 +652,242 @@ export type UserVoteOrderByInput =
   | "latest_ASC"
   | "latest_DESC";
 
-export type PollOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "date_ASC"
-  | "date_DESC"
-  | "candidateId_ASC"
-  | "candidateId_DESC"
-  | "poll_type_ASC"
-  | "poll_type_DESC"
-  | "error_margin_ASC"
-  | "error_margin_DESC"
-  | "link_to_poll_ASC"
-  | "link_to_poll_DESC";
+export type QualificationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export type Gender = "MALE" | "FEMALE";
+export interface UserVoteWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  userId?: Maybe<String>;
+  userId_not?: Maybe<String>;
+  userId_in?: Maybe<String[] | String>;
+  userId_not_in?: Maybe<String[] | String>;
+  userId_lt?: Maybe<String>;
+  userId_lte?: Maybe<String>;
+  userId_gt?: Maybe<String>;
+  userId_gte?: Maybe<String>;
+  userId_contains?: Maybe<String>;
+  userId_not_contains?: Maybe<String>;
+  userId_starts_with?: Maybe<String>;
+  userId_not_starts_with?: Maybe<String>;
+  userId_ends_with?: Maybe<String>;
+  userId_not_ends_with?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  vote_type_not?: Maybe<VoteType>;
+  vote_type_in?: Maybe<VoteType[] | VoteType>;
+  vote_type_not_in?: Maybe<VoteType[] | VoteType>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+  OR?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+  NOT?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
+}
 
-export type CategoryType = "HEALTH";
+export interface QualificationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<QualificationWhereInput>;
+  AND?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
+  >;
+}
 
-export type LikeType = "LIKE" | "DISLIKE" | "UNSPECIFIED";
+export type CandidateWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export type VoteType = "TOP" | "FAVORITE" | "COMPROMISE" | "VETO" | "UNKNOWNS";
+export interface TopicWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  category?: Maybe<CategoryType>;
+  category_not?: Maybe<CategoryType>;
+  category_in?: Maybe<CategoryType[] | CategoryType>;
+  category_not_in?: Maybe<CategoryType[] | CategoryType>;
+  AND?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+  OR?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+  NOT?: Maybe<TopicWhereInput[] | TopicWhereInput>;
+}
 
-export type CandidatePositionOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "positionId_ASC"
-  | "positionId_DESC"
-  | "candidateId_ASC"
-  | "candidateId_DESC"
-  | "time_ASC"
-  | "time_DESC"
-  | "link_ASC"
-  | "link_DESC"
-  | "rank_ASC"
-  | "rank_DESC"
-  | "latest_ASC"
-  | "latest_DESC";
+export interface CandidatePositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  positionId?: Maybe<String>;
+  positionId_not?: Maybe<String>;
+  positionId_in?: Maybe<String[] | String>;
+  positionId_not_in?: Maybe<String[] | String>;
+  positionId_lt?: Maybe<String>;
+  positionId_lte?: Maybe<String>;
+  positionId_gt?: Maybe<String>;
+  positionId_gte?: Maybe<String>;
+  positionId_contains?: Maybe<String>;
+  positionId_not_contains?: Maybe<String>;
+  positionId_starts_with?: Maybe<String>;
+  positionId_not_starts_with?: Maybe<String>;
+  positionId_ends_with?: Maybe<String>;
+  positionId_not_ends_with?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  rank?: Maybe<Int>;
+  rank_not?: Maybe<Int>;
+  rank_in?: Maybe<Int[] | Int>;
+  rank_not_in?: Maybe<Int[] | Int>;
+  rank_lt?: Maybe<Int>;
+  rank_lte?: Maybe<Int>;
+  rank_gt?: Maybe<Int>;
+  rank_gte?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+  latest_not?: Maybe<Boolean>;
+  AND?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+  OR?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+  NOT?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
+}
 
-export type PollType = "PRIMARY" | "HEADTOHEAD";
+export interface TopicSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TopicWhereInput>;
+  AND?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+  OR?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+  NOT?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
+}
 
-export type PositionOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "summary_ASC"
-  | "summary_DESC"
-  | "detail_ASC"
-  | "detail_DESC";
+export interface UserVoteUpdateInput {
+  candidateId?: Maybe<String>;
+  userId?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  latest?: Maybe<Boolean>;
+}
 
-export type QualificationOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "summary_ASC"
-  | "summary_DESC"
-  | "detail_ASC"
-  | "detail_DESC"
-  | "years_ASC"
-  | "years_DESC"
-  | "rank_ASC"
-  | "rank_DESC"
-  | "candidateId_ASC"
-  | "candidateId_DESC";
+export interface QualificationUpdateInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  years?: Maybe<Int>;
+  rank?: Maybe<Int>;
+  candidateId?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+}
 
-export type UserPositionLikeOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "like_ASC"
-  | "like_DESC"
-  | "time_ASC"
-  | "time_DESC"
-  | "latest_ASC"
-  | "latest_DESC";
-
-export type UserQualificationLikeOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "qualificationId_ASC"
-  | "qualificationId_DESC"
-  | "like_ASC"
-  | "like_DESC"
-  | "time_ASC"
-  | "time_DESC"
-  | "latest_ASC"
-  | "latest_DESC";
-
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export type PollWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface QualificationCreateInput {
   id?: Maybe<ID_Input>;
@@ -652,16 +897,153 @@ export interface QualificationCreateInput {
   years: Int;
   rank?: Maybe<Int>;
   candidateId?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
 }
 
-export type CandidateWhereUniqueInput = AtLeastOne<{
+export interface CandidateSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CandidateWhereInput>;
+  AND?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
+  >;
+}
+
+export interface PositionUpdateManyMutationInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+}
+
+export type CandidatePositionWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface QualificationUpsertWithWhereUniqueNestedInput {
-  where: QualificationWhereUniqueInput;
-  update: QualificationUpdateDataInput;
-  create: QualificationCreateInput;
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
+export interface UserQualificationLikeCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  qualificationId: String;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PositionUpdateInput {
+  name?: Maybe<String>;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+}
+
+export type PositionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  gender_not?: Maybe<Gender>;
+  gender_in?: Maybe<Gender[] | Gender>;
+  gender_not_in?: Maybe<Gender[] | Gender>;
+  role?: Maybe<Int>;
+  role_not?: Maybe<Int>;
+  role_in?: Maybe<Int[] | Int>;
+  role_not_in?: Maybe<Int[] | Int>;
+  role_lt?: Maybe<Int>;
+  role_lte?: Maybe<Int>;
+  role_gt?: Maybe<Int>;
+  role_gte?: Maybe<Int>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface CandidatePositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CandidatePositionWhereInput>;
+  AND?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | CandidatePositionSubscriptionWhereInput[]
+    | CandidatePositionSubscriptionWhereInput
+  >;
 }
 
 export interface CandidateWhereInput {
@@ -785,26 +1167,20 @@ export interface CandidateWhereInput {
   prevote_score_lte?: Maybe<Float>;
   prevote_score_gt?: Maybe<Float>;
   prevote_score_gte?: Maybe<Float>;
-  bio_qualifications_every?: Maybe<QualificationWhereInput>;
-  bio_qualifications_some?: Maybe<QualificationWhereInput>;
-  bio_qualifications_none?: Maybe<QualificationWhereInput>;
-  bio_policy_position_every?: Maybe<PositionWhereInput>;
-  bio_policy_position_some?: Maybe<PositionWhereInput>;
-  bio_policy_position_none?: Maybe<PositionWhereInput>;
-  bio_other?: Maybe<String>;
-  bio_other_not?: Maybe<String>;
-  bio_other_in?: Maybe<String[] | String>;
-  bio_other_not_in?: Maybe<String[] | String>;
-  bio_other_lt?: Maybe<String>;
-  bio_other_lte?: Maybe<String>;
-  bio_other_gt?: Maybe<String>;
-  bio_other_gte?: Maybe<String>;
-  bio_other_contains?: Maybe<String>;
-  bio_other_not_contains?: Maybe<String>;
-  bio_other_starts_with?: Maybe<String>;
-  bio_other_not_starts_with?: Maybe<String>;
-  bio_other_ends_with?: Maybe<String>;
-  bio_other_not_ends_with?: Maybe<String>;
+  bio_summary?: Maybe<String>;
+  bio_summary_not?: Maybe<String>;
+  bio_summary_in?: Maybe<String[] | String>;
+  bio_summary_not_in?: Maybe<String[] | String>;
+  bio_summary_lt?: Maybe<String>;
+  bio_summary_lte?: Maybe<String>;
+  bio_summary_gt?: Maybe<String>;
+  bio_summary_gte?: Maybe<String>;
+  bio_summary_contains?: Maybe<String>;
+  bio_summary_not_contains?: Maybe<String>;
+  bio_summary_starts_with?: Maybe<String>;
+  bio_summary_not_starts_with?: Maybe<String>;
+  bio_summary_ends_with?: Maybe<String>;
+  bio_summary_not_ends_with?: Maybe<String>;
   vote_type?: Maybe<VoteType>;
   vote_type_not?: Maybe<VoteType>;
   vote_type_in?: Maybe<VoteType[] | VoteType>;
@@ -814,18 +1190,62 @@ export interface CandidateWhereInput {
   NOT?: Maybe<CandidateWhereInput[] | CandidateWhereInput>;
 }
 
-export interface TopicUpdateInput {
-  name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
+export interface PollSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PollWhereInput>;
+  AND?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
+  OR?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
+  NOT?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
 }
 
-export interface TopicUpdateOneInput {
-  create?: Maybe<TopicCreateInput>;
-  update?: Maybe<TopicUpdateDataInput>;
-  upsert?: Maybe<TopicUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<TopicWhereUniqueInput>;
+export interface PositionCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  summary?: Maybe<String>;
+  detail?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: Maybe<String>;
+  name?: Maybe<String>;
+  password?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  role?: Maybe<Int>;
+}
+
+export interface PollUpdateManyMutationInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+}
+
+export interface UserVoteSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserVoteWhereInput>;
+  AND?: Maybe<
+    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
+  >;
+  OR?: Maybe<UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput>;
+  NOT?: Maybe<
+    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
+  >;
+}
+
+export interface PollUpdateInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
 }
 
 export interface QualificationWhereInput {
@@ -915,101 +1335,37 @@ export interface QualificationWhereInput {
   candidateId_not_starts_with?: Maybe<String>;
   candidateId_ends_with?: Maybe<String>;
   candidateId_not_ends_with?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+  like_type_not?: Maybe<LikeType>;
+  like_type_in?: Maybe<LikeType[] | LikeType>;
+  like_type_not_in?: Maybe<LikeType[] | LikeType>;
   AND?: Maybe<QualificationWhereInput[] | QualificationWhereInput>;
   OR?: Maybe<QualificationWhereInput[] | QualificationWhereInput>;
   NOT?: Maybe<QualificationWhereInput[] | QualificationWhereInput>;
 }
 
-export interface QualificationScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+export type UserPositionLikeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TopicUpdateManyMutationInput {
   name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  summary?: Maybe<String>;
-  summary_not?: Maybe<String>;
-  summary_in?: Maybe<String[] | String>;
-  summary_not_in?: Maybe<String[] | String>;
-  summary_lt?: Maybe<String>;
-  summary_lte?: Maybe<String>;
-  summary_gt?: Maybe<String>;
-  summary_gte?: Maybe<String>;
-  summary_contains?: Maybe<String>;
-  summary_not_contains?: Maybe<String>;
-  summary_starts_with?: Maybe<String>;
-  summary_not_starts_with?: Maybe<String>;
-  summary_ends_with?: Maybe<String>;
-  summary_not_ends_with?: Maybe<String>;
-  detail?: Maybe<String>;
-  detail_not?: Maybe<String>;
-  detail_in?: Maybe<String[] | String>;
-  detail_not_in?: Maybe<String[] | String>;
-  detail_lt?: Maybe<String>;
-  detail_lte?: Maybe<String>;
-  detail_gt?: Maybe<String>;
-  detail_gte?: Maybe<String>;
-  detail_contains?: Maybe<String>;
-  detail_not_contains?: Maybe<String>;
-  detail_starts_with?: Maybe<String>;
-  detail_not_starts_with?: Maybe<String>;
-  detail_ends_with?: Maybe<String>;
-  detail_not_ends_with?: Maybe<String>;
-  years?: Maybe<Int>;
-  years_not?: Maybe<Int>;
-  years_in?: Maybe<Int[] | Int>;
-  years_not_in?: Maybe<Int[] | Int>;
-  years_lt?: Maybe<Int>;
-  years_lte?: Maybe<Int>;
-  years_gt?: Maybe<Int>;
-  years_gte?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  AND?: Maybe<QualificationScalarWhereInput[] | QualificationScalarWhereInput>;
-  OR?: Maybe<QualificationScalarWhereInput[] | QualificationScalarWhereInput>;
-  NOT?: Maybe<QualificationScalarWhereInput[] | QualificationScalarWhereInput>;
+  category?: Maybe<CategoryType>;
+}
+
+export interface PollCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  candidateId: String;
+  poll_type?: Maybe<PollType>;
+  error_margin?: Maybe<String>;
+  link_to_poll?: Maybe<String>;
+}
+
+export interface TopicCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  category?: Maybe<CategoryType>;
 }
 
 export interface UserPositionLikeWhereInput {
@@ -1041,7 +1397,34 @@ export interface UserPositionLikeWhereInput {
   userId_not_starts_with?: Maybe<String>;
   userId_ends_with?: Maybe<String>;
   userId_not_ends_with?: Maybe<String>;
-  candidate_position?: Maybe<CandidatePositionWhereInput>;
+  candidateId?: Maybe<String>;
+  candidateId_not?: Maybe<String>;
+  candidateId_in?: Maybe<String[] | String>;
+  candidateId_not_in?: Maybe<String[] | String>;
+  candidateId_lt?: Maybe<String>;
+  candidateId_lte?: Maybe<String>;
+  candidateId_gt?: Maybe<String>;
+  candidateId_gte?: Maybe<String>;
+  candidateId_contains?: Maybe<String>;
+  candidateId_not_contains?: Maybe<String>;
+  candidateId_starts_with?: Maybe<String>;
+  candidateId_not_starts_with?: Maybe<String>;
+  candidateId_ends_with?: Maybe<String>;
+  candidateId_not_ends_with?: Maybe<String>;
+  positionId?: Maybe<String>;
+  positionId_not?: Maybe<String>;
+  positionId_in?: Maybe<String[] | String>;
+  positionId_not_in?: Maybe<String[] | String>;
+  positionId_lt?: Maybe<String>;
+  positionId_lte?: Maybe<String>;
+  positionId_gt?: Maybe<String>;
+  positionId_gte?: Maybe<String>;
+  positionId_contains?: Maybe<String>;
+  positionId_not_contains?: Maybe<String>;
+  positionId_starts_with?: Maybe<String>;
+  positionId_not_starts_with?: Maybe<String>;
+  positionId_ends_with?: Maybe<String>;
+  positionId_not_ends_with?: Maybe<String>;
   like?: Maybe<LikeType>;
   like_not?: Maybe<LikeType>;
   like_in?: Maybe<LikeType[] | LikeType>;
@@ -1061,26 +1444,6 @@ export interface UserPositionLikeWhereInput {
   NOT?: Maybe<UserPositionLikeWhereInput[] | UserPositionLikeWhereInput>;
 }
 
-export interface UserQualificationLikeSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserQualificationLikeWhereInput>;
-  AND?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | UserQualificationLikeSubscriptionWhereInput[]
-    | UserQualificationLikeSubscriptionWhereInput
-  >;
-}
-
 export interface QualificationUpdateManyMutationInput {
   name?: Maybe<String>;
   summary?: Maybe<String>;
@@ -1088,188 +1451,34 @@ export interface QualificationUpdateManyMutationInput {
   years?: Maybe<Int>;
   rank?: Maybe<Int>;
   candidateId?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
 }
 
-export interface UserPositionLikeSubscriptionWhereInput {
+export interface UserSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserPositionLikeWhereInput>;
-  AND?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | UserPositionLikeSubscriptionWhereInput[]
-    | UserPositionLikeSubscriptionWhereInput
-  >;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
-export interface QualificationUpdateInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export interface CandidatePositionWhereInput {
+export interface UserVoteCreateInput {
   id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  positionId?: Maybe<String>;
-  positionId_not?: Maybe<String>;
-  positionId_in?: Maybe<String[] | String>;
-  positionId_not_in?: Maybe<String[] | String>;
-  positionId_lt?: Maybe<String>;
-  positionId_lte?: Maybe<String>;
-  positionId_gt?: Maybe<String>;
-  positionId_gte?: Maybe<String>;
-  positionId_contains?: Maybe<String>;
-  positionId_not_contains?: Maybe<String>;
-  positionId_starts_with?: Maybe<String>;
-  positionId_not_starts_with?: Maybe<String>;
-  positionId_ends_with?: Maybe<String>;
-  positionId_not_ends_with?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  link?: Maybe<String>;
-  link_not?: Maybe<String>;
-  link_in?: Maybe<String[] | String>;
-  link_not_in?: Maybe<String[] | String>;
-  link_lt?: Maybe<String>;
-  link_lte?: Maybe<String>;
-  link_gt?: Maybe<String>;
-  link_gte?: Maybe<String>;
-  link_contains?: Maybe<String>;
-  link_not_contains?: Maybe<String>;
-  link_starts_with?: Maybe<String>;
-  link_not_starts_with?: Maybe<String>;
-  link_ends_with?: Maybe<String>;
-  link_not_ends_with?: Maybe<String>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
+  candidateId: String;
+  userId: String;
+  vote_type?: Maybe<VoteType>;
   latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
-  OR?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
-  NOT?: Maybe<CandidatePositionWhereInput[] | CandidatePositionWhereInput>;
 }
 
-export interface PositionUpdateManyMutationInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-}
-
-export interface QualificationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<QualificationWhereInput>;
-  AND?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    QualificationSubscriptionWhereInput[] | QualificationSubscriptionWhereInput
-  >;
-}
-
-export interface PositionUpdateInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicUpdateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface PollSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PollWhereInput>;
-  AND?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-  OR?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-  NOT?: Maybe<PollSubscriptionWhereInput[] | PollSubscriptionWhereInput>;
-}
-
-export type UserQualificationLikeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface CandidatePositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CandidatePositionWhereInput>;
-  AND?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | CandidatePositionSubscriptionWhereInput[]
-    | CandidatePositionSubscriptionWhereInput
-  >;
-}
-
-export interface PollUpdateManyMutationInput {
-  userId?: Maybe<String>;
+export interface CandidatePositionUpdateManyMutationInput {
+  positionId?: Maybe<String>;
   candidateId?: Maybe<String>;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
 }
 
 export interface PollWhereInput {
@@ -1360,6 +1569,139 @@ export interface PollWhereInput {
   NOT?: Maybe<PollWhereInput[] | PollWhereInput>;
 }
 
+export interface CandidatePositionUpdateInput {
+  positionId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface UserPositionLikeUpdateManyMutationInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  positionId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface CandidatePositionCreateInput {
+  id?: Maybe<ID_Input>;
+  positionId: String;
+  candidateId: String;
+  link?: Maybe<String>;
+  rank?: Maybe<Int>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface PositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  summary?: Maybe<String>;
+  summary_not?: Maybe<String>;
+  summary_in?: Maybe<String[] | String>;
+  summary_not_in?: Maybe<String[] | String>;
+  summary_lt?: Maybe<String>;
+  summary_lte?: Maybe<String>;
+  summary_gt?: Maybe<String>;
+  summary_gte?: Maybe<String>;
+  summary_contains?: Maybe<String>;
+  summary_not_contains?: Maybe<String>;
+  summary_starts_with?: Maybe<String>;
+  summary_not_starts_with?: Maybe<String>;
+  summary_ends_with?: Maybe<String>;
+  summary_not_ends_with?: Maybe<String>;
+  detail?: Maybe<String>;
+  detail_not?: Maybe<String>;
+  detail_in?: Maybe<String[] | String>;
+  detail_not_in?: Maybe<String[] | String>;
+  detail_lt?: Maybe<String>;
+  detail_lte?: Maybe<String>;
+  detail_gt?: Maybe<String>;
+  detail_gte?: Maybe<String>;
+  detail_contains?: Maybe<String>;
+  detail_not_contains?: Maybe<String>;
+  detail_starts_with?: Maybe<String>;
+  detail_not_starts_with?: Maybe<String>;
+  detail_ends_with?: Maybe<String>;
+  detail_not_ends_with?: Maybe<String>;
+  like_type?: Maybe<LikeType>;
+  like_type_not?: Maybe<LikeType>;
+  like_type_in?: Maybe<LikeType[] | LikeType>;
+  like_type_not_in?: Maybe<LikeType[] | LikeType>;
+  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+}
+
+export type UserQualificationLikeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface UserUpdateInput {
+  email?: Maybe<String>;
+  name?: Maybe<String>;
+  password?: Maybe<String>;
+  gender?: Maybe<Gender>;
+  role?: Maybe<Int>;
+}
+
+export interface CandidateUpdateManyMutationInput {
+  name?: Maybe<String>;
+  photo?: Maybe<String>;
+  party?: Maybe<String>;
+  state?: Maybe<String>;
+  current_office?: Maybe<String>;
+  age?: Maybe<Int>;
+  gender?: Maybe<Gender>;
+  latest_poll?: Maybe<Float>;
+  latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  bio_summary?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+}
+
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PositionWhereInput>;
+  AND?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+}
+
 export interface UserQualificationLikeWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -1428,551 +1770,33 @@ export interface UserQualificationLikeWhereInput {
   >;
 }
 
-export interface UserVoteUpdateManyMutationInput {
-  candidateId?: Maybe<String>;
-  userId?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
+export type TopicWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export interface PollUpdateInput {
-  userId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
-}
-
-export interface UserVoteCreateInput {
-  id?: Maybe<ID_Input>;
-  candidateId: String;
-  userId: String;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PollCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  candidateId: String;
-  poll_type?: Maybe<PollType>;
-  error_margin?: Maybe<String>;
-  link_to_poll?: Maybe<String>;
+export interface UserPositionLikeSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserPositionLikeWhereInput>;
+  AND?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | UserPositionLikeSubscriptionWhereInput[]
+    | UserPositionLikeSubscriptionWhereInput
+  >;
 }
 
 export interface UserQualificationLikeUpdateManyMutationInput {
   userId?: Maybe<String>;
   qualificationId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidatePositionUpdateManyMutationInput {
-  positionId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface UserQualificationLikeCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  qualificationId: String;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidatePositionUpdateInput {
-  positionId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface UserPositionLikeUpdateManyMutationInput {
-  userId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export type UserVoteWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface CandidatePositionUpdateDataInput {
-  positionId?: Maybe<String>;
-  candidateId?: Maybe<String>;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidatePositionCreateInput {
-  id?: Maybe<ID_Input>;
-  positionId: String;
-  candidateId: String;
-  link?: Maybe<String>;
-  rank?: Maybe<Int>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  summary?: Maybe<String>;
-  summary_not?: Maybe<String>;
-  summary_in?: Maybe<String[] | String>;
-  summary_not_in?: Maybe<String[] | String>;
-  summary_lt?: Maybe<String>;
-  summary_lte?: Maybe<String>;
-  summary_gt?: Maybe<String>;
-  summary_gte?: Maybe<String>;
-  summary_contains?: Maybe<String>;
-  summary_not_contains?: Maybe<String>;
-  summary_starts_with?: Maybe<String>;
-  summary_not_starts_with?: Maybe<String>;
-  summary_ends_with?: Maybe<String>;
-  summary_not_ends_with?: Maybe<String>;
-  topic?: Maybe<TopicWhereInput>;
-  detail?: Maybe<String>;
-  detail_not?: Maybe<String>;
-  detail_in?: Maybe<String[] | String>;
-  detail_not_in?: Maybe<String[] | String>;
-  detail_lt?: Maybe<String>;
-  detail_lte?: Maybe<String>;
-  detail_gt?: Maybe<String>;
-  detail_gte?: Maybe<String>;
-  detail_contains?: Maybe<String>;
-  detail_not_contains?: Maybe<String>;
-  detail_starts_with?: Maybe<String>;
-  detail_not_starts_with?: Maybe<String>;
-  detail_ends_with?: Maybe<String>;
-  detail_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
-}
-
-export interface UserVoteWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  candidateId?: Maybe<String>;
-  candidateId_not?: Maybe<String>;
-  candidateId_in?: Maybe<String[] | String>;
-  candidateId_not_in?: Maybe<String[] | String>;
-  candidateId_lt?: Maybe<String>;
-  candidateId_lte?: Maybe<String>;
-  candidateId_gt?: Maybe<String>;
-  candidateId_gte?: Maybe<String>;
-  candidateId_contains?: Maybe<String>;
-  candidateId_not_contains?: Maybe<String>;
-  candidateId_starts_with?: Maybe<String>;
-  candidateId_not_starts_with?: Maybe<String>;
-  candidateId_ends_with?: Maybe<String>;
-  candidateId_not_ends_with?: Maybe<String>;
-  userId?: Maybe<String>;
-  userId_not?: Maybe<String>;
-  userId_in?: Maybe<String[] | String>;
-  userId_not_in?: Maybe<String[] | String>;
-  userId_lt?: Maybe<String>;
-  userId_lte?: Maybe<String>;
-  userId_gt?: Maybe<String>;
-  userId_gte?: Maybe<String>;
-  userId_contains?: Maybe<String>;
-  userId_not_contains?: Maybe<String>;
-  userId_starts_with?: Maybe<String>;
-  userId_not_starts_with?: Maybe<String>;
-  userId_ends_with?: Maybe<String>;
-  userId_not_ends_with?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  vote_type_not?: Maybe<VoteType>;
-  vote_type_in?: Maybe<VoteType[] | VoteType>;
-  vote_type_not_in?: Maybe<VoteType[] | VoteType>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  latest?: Maybe<Boolean>;
-  latest_not?: Maybe<Boolean>;
-  AND?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-  OR?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-  NOT?: Maybe<UserVoteWhereInput[] | UserVoteWhereInput>;
-}
-
-export interface UserPositionLikeUpdateInput {
-  userId?: Maybe<String>;
-  candidate_position?: Maybe<CandidatePositionUpdateOneRequiredInput>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface CandidateUpdateManyMutationInput {
-  name?: Maybe<String>;
-  photo?: Maybe<String>;
-  party?: Maybe<String>;
-  state?: Maybe<String>;
-  current_office?: Maybe<String>;
-  age?: Maybe<Int>;
-  gender?: Maybe<Gender>;
-  latest_poll?: Maybe<Float>;
-  latest_odds?: Maybe<Float>;
-  prevote_score?: Maybe<Float>;
-  bio_other?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
-
-export interface PositionUpdateManyDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-}
-
-export interface UserWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  gender_not?: Maybe<Gender>;
-  gender_in?: Maybe<Gender[] | Gender>;
-  gender_not_in?: Maybe<Gender[] | Gender>;
-  role?: Maybe<Int>;
-  role_not?: Maybe<Int>;
-  role_in?: Maybe<Int[] | Int>;
-  role_not_in?: Maybe<Int[] | Int>;
-  role_lt?: Maybe<Int>;
-  role_lte?: Maybe<Int>;
-  role_gt?: Maybe<Int>;
-  role_gte?: Maybe<Int>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
-}
-
-export interface PositionUpdateManyWithWhereNestedInput {
-  where: PositionScalarWhereInput;
-  data: PositionUpdateManyDataInput;
-}
-
-export interface UserUpdateInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  role?: Maybe<Int>;
-}
-
-export interface PositionScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  summary?: Maybe<String>;
-  summary_not?: Maybe<String>;
-  summary_in?: Maybe<String[] | String>;
-  summary_not_in?: Maybe<String[] | String>;
-  summary_lt?: Maybe<String>;
-  summary_lte?: Maybe<String>;
-  summary_gt?: Maybe<String>;
-  summary_gte?: Maybe<String>;
-  summary_contains?: Maybe<String>;
-  summary_not_contains?: Maybe<String>;
-  summary_starts_with?: Maybe<String>;
-  summary_not_starts_with?: Maybe<String>;
-  summary_ends_with?: Maybe<String>;
-  summary_not_ends_with?: Maybe<String>;
-  detail?: Maybe<String>;
-  detail_not?: Maybe<String>;
-  detail_in?: Maybe<String[] | String>;
-  detail_not_in?: Maybe<String[] | String>;
-  detail_lt?: Maybe<String>;
-  detail_lte?: Maybe<String>;
-  detail_gt?: Maybe<String>;
-  detail_gte?: Maybe<String>;
-  detail_contains?: Maybe<String>;
-  detail_not_contains?: Maybe<String>;
-  detail_starts_with?: Maybe<String>;
-  detail_not_starts_with?: Maybe<String>;
-  detail_ends_with?: Maybe<String>;
-  detail_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-  OR?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-  NOT?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-}
-
-export interface TopicUpdateManyMutationInput {
-  name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
-}
-
-export interface UserVoteSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserVoteWhereInput>;
-  AND?: Maybe<
-    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
-  >;
-  OR?: Maybe<UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput>;
-  NOT?: Maybe<
-    UserVoteSubscriptionWhereInput[] | UserVoteSubscriptionWhereInput
-  >;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-}
-
-export interface CandidateCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  photo?: Maybe<String>;
-  party: String;
-  state: String;
-  current_office: String;
-  age: Int;
-  gender?: Maybe<Gender>;
-  latest_poll?: Maybe<Float>;
-  latest_odds?: Maybe<Float>;
-  prevote_score?: Maybe<Float>;
-  bio_qualifications?: Maybe<QualificationCreateManyInput>;
-  bio_policy_position?: Maybe<PositionCreateManyInput>;
-  bio_other?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-}
-
-export interface PositionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PositionWhereInput>;
-  AND?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
-  NOT?: Maybe<
-    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
-  >;
-}
-
-export interface QualificationCreateManyInput {
-  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
-  connect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-}
-
-export interface CandidateSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CandidateWhereInput>;
-  AND?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    CandidateSubscriptionWhereInput[] | CandidateSubscriptionWhereInput
-  >;
-}
-
-export interface PositionUpsertWithWhereUniqueNestedInput {
-  where: PositionWhereUniqueInput;
-  update: PositionUpdateDataInput;
-  create: PositionCreateInput;
-}
-
-export interface UserVoteUpdateInput {
-  candidateId?: Maybe<String>;
-  userId?: Maybe<String>;
-  vote_type?: Maybe<VoteType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionCreateManyInput {
-  create?: Maybe<PositionCreateInput[] | PositionCreateInput>;
-  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-}
-
-export interface UserQualificationLikeUpdateInput {
-  userId?: Maybe<String>;
-  qualificationId?: Maybe<String>;
-  like?: Maybe<LikeType>;
-  latest?: Maybe<Boolean>;
-}
-
-export interface PositionCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicCreateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface CandidatePositionUpsertNestedInput {
-  update: CandidatePositionUpdateDataInput;
-  create: CandidatePositionCreateInput;
-}
-
-export interface TopicCreateOneInput {
-  create?: Maybe<TopicCreateInput>;
-  connect?: Maybe<TopicWhereUniqueInput>;
-}
-
-export interface CandidatePositionUpdateOneRequiredInput {
-  create?: Maybe<CandidatePositionCreateInput>;
-  update?: Maybe<CandidatePositionUpdateDataInput>;
-  upsert?: Maybe<CandidatePositionUpsertNestedInput>;
-  connect?: Maybe<CandidatePositionWhereUniqueInput>;
-}
-
-export interface TopicCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  category?: Maybe<CategoryType>;
-}
-
-export interface UserPositionLikeCreateInput {
-  id?: Maybe<ID_Input>;
-  userId: String;
-  candidate_position: CandidatePositionCreateOneInput;
   like?: Maybe<LikeType>;
   latest?: Maybe<Boolean>;
 }
@@ -1988,10 +1812,16 @@ export interface CandidateUpdateInput {
   latest_poll?: Maybe<Float>;
   latest_odds?: Maybe<Float>;
   prevote_score?: Maybe<Float>;
-  bio_qualifications?: Maybe<QualificationUpdateManyInput>;
-  bio_policy_position?: Maybe<PositionUpdateManyInput>;
-  bio_other?: Maybe<String>;
+  bio_summary?: Maybe<String>;
   vote_type?: Maybe<VoteType>;
+}
+
+export interface UserPositionLikeUpdateInput {
+  userId?: Maybe<String>;
+  candidateId?: Maybe<String>;
+  positionId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
 }
 
 export interface UserCreateInput {
@@ -2003,194 +1833,111 @@ export interface UserCreateInput {
   role?: Maybe<Int>;
 }
 
-export interface QualificationUpdateManyInput {
-  create?: Maybe<QualificationCreateInput[] | QualificationCreateInput>;
-  update?: Maybe<
-    | QualificationUpdateWithWhereUniqueNestedInput[]
-    | QualificationUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | QualificationUpsertWithWhereUniqueNestedInput[]
-    | QualificationUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  connect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  set?: Maybe<QualificationWhereUniqueInput[] | QualificationWhereUniqueInput>;
-  disconnect?: Maybe<
-    QualificationWhereUniqueInput[] | QualificationWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    QualificationScalarWhereInput[] | QualificationScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | QualificationUpdateManyWithWhereNestedInput[]
-    | QualificationUpdateManyWithWhereNestedInput
-  >;
-}
-
-export type CandidatePositionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface QualificationUpdateWithWhereUniqueNestedInput {
-  where: QualificationWhereUniqueInput;
-  data: QualificationUpdateDataInput;
-}
-
-export type PollWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface QualificationUpdateDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
-
-export type PositionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface TopicUpsertNestedInput {
-  update: TopicUpdateDataInput;
-  create: TopicCreateInput;
-}
-
-export type TopicWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface TopicUpdateDataInput {
-  name?: Maybe<String>;
-  category?: Maybe<CategoryType>;
-}
-
-export interface UserUpdateManyMutationInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
-  gender?: Maybe<Gender>;
-  role?: Maybe<Int>;
-}
-
-export interface QualificationUpdateManyWithWhereNestedInput {
-  where: QualificationScalarWhereInput;
-  data: QualificationUpdateManyDataInput;
-}
-
-export interface TopicSubscriptionWhereInput {
+export interface UserQualificationLikeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TopicWhereInput>;
-  AND?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-  OR?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-  NOT?: Maybe<TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput>;
-}
-
-export interface PositionUpdateDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  topic?: Maybe<TopicUpdateOneInput>;
-  detail?: Maybe<String>;
-}
-
-export interface PositionUpdateWithWhereUniqueNestedInput {
-  where: PositionWhereUniqueInput;
-  data: PositionUpdateDataInput;
-}
-
-export interface PositionUpdateManyInput {
-  create?: Maybe<PositionCreateInput[] | PositionCreateInput>;
-  update?: Maybe<
-    | PositionUpdateWithWhereUniqueNestedInput[]
-    | PositionUpdateWithWhereUniqueNestedInput
+  node?: Maybe<UserQualificationLikeWhereInput>;
+  AND?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
   >;
-  upsert?: Maybe<
-    | PositionUpsertWithWhereUniqueNestedInput[]
-    | PositionUpsertWithWhereUniqueNestedInput
+  OR?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
   >;
-  delete?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-  set?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-  disconnect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
-  deleteMany?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
-  updateMany?: Maybe<
-    | PositionUpdateManyWithWhereNestedInput[]
-    | PositionUpdateManyWithWhereNestedInput
+  NOT?: Maybe<
+    | UserQualificationLikeSubscriptionWhereInput[]
+    | UserQualificationLikeSubscriptionWhereInput
   >;
 }
 
-export interface QualificationUpdateManyDataInput {
-  name?: Maybe<String>;
-  summary?: Maybe<String>;
-  detail?: Maybe<String>;
-  years?: Maybe<Int>;
-  rank?: Maybe<Int>;
-  candidateId?: Maybe<String>;
-}
+export type UserVoteWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export interface TopicWhereInput {
+export interface CandidateCreateInput {
   id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  name: String;
+  photo?: Maybe<String>;
+  party: String;
+  state: String;
+  current_office: String;
+  age: Int;
+  gender?: Maybe<Gender>;
+  latest_poll?: Maybe<Float>;
+  latest_odds?: Maybe<Float>;
+  prevote_score?: Maybe<Float>;
+  bio_summary?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+}
+
+export interface TopicUpdateInput {
   name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
   category?: Maybe<CategoryType>;
-  category_not?: Maybe<CategoryType>;
-  category_in?: Maybe<CategoryType[] | CategoryType>;
-  category_not_in?: Maybe<CategoryType[] | CategoryType>;
-  AND?: Maybe<TopicWhereInput[] | TopicWhereInput>;
-  OR?: Maybe<TopicWhereInput[] | TopicWhereInput>;
-  NOT?: Maybe<TopicWhereInput[] | TopicWhereInput>;
 }
 
-export type UserPositionLikeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface CandidatePositionCreateOneInput {
-  create?: Maybe<CandidatePositionCreateInput>;
-  connect?: Maybe<CandidatePositionWhereUniqueInput>;
+export interface UserPositionLikeCreateInput {
+  id?: Maybe<ID_Input>;
+  userId: String;
+  candidateId: String;
+  positionId: String;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
 }
 
-export type QualificationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface UserQualificationLikeUpdateInput {
+  userId?: Maybe<String>;
+  qualificationId?: Maybe<String>;
+  like?: Maybe<LikeType>;
+  latest?: Maybe<Boolean>;
+}
+
+export interface UserVoteUpdateManyMutationInput {
+  candidateId?: Maybe<String>;
+  userId?: Maybe<String>;
+  vote_type?: Maybe<VoteType>;
+  latest?: Maybe<Boolean>;
+}
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface UserQualificationLikeEdge {
+  node: UserQualificationLike;
+  cursor: String;
+}
+
+export interface UserQualificationLikeEdgePromise
+  extends Promise<UserQualificationLikeEdge>,
+    Fragmentable {
+  node: <T = UserQualificationLikePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserQualificationLikeEdgeSubscription
+  extends Promise<AsyncIterator<UserQualificationLikeEdge>>,
+    Fragmentable {
+  node: <T = UserQualificationLikeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateCandidatePosition {
+  count: Int;
+}
+
+export interface AggregateCandidatePositionPromise
+  extends Promise<AggregateCandidatePosition>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCandidatePositionSubscription
+  extends Promise<AsyncIterator<AggregateCandidatePosition>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserVotePreviousValues {
@@ -2224,223 +1971,23 @@ export interface UserVotePreviousValuesSubscription
   latest: () => Promise<AsyncIterator<Boolean>>;
 }
 
-export interface AggregatePoll {
-  count: Int;
-}
-
-export interface AggregatePollPromise
-  extends Promise<AggregatePoll>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePollSubscription
-  extends Promise<AsyncIterator<AggregatePoll>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PositionEdge {
-  node: Position;
+export interface CandidatePositionEdge {
+  node: CandidatePosition;
   cursor: String;
 }
 
-export interface PositionEdgePromise
-  extends Promise<PositionEdge>,
+export interface CandidatePositionEdgePromise
+  extends Promise<CandidatePositionEdge>,
     Fragmentable {
-  node: <T = PositionPromise>() => T;
+  node: <T = CandidatePositionPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface PositionEdgeSubscription
-  extends Promise<AsyncIterator<PositionEdge>>,
+export interface CandidatePositionEdgeSubscription
+  extends Promise<AsyncIterator<CandidatePositionEdge>>,
     Fragmentable {
-  node: <T = PositionSubscription>() => T;
+  node: <T = CandidatePositionSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserPositionLikePreviousValues {
-  id: ID_Output;
-  userId: String;
-  like?: LikeType;
-  time?: DateTimeOutput;
-  latest?: Boolean;
-}
-
-export interface UserPositionLikePreviousValuesPromise
-  extends Promise<UserPositionLikePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<String>;
-  like: () => Promise<LikeType>;
-  time: () => Promise<DateTimeOutput>;
-  latest: () => Promise<Boolean>;
-}
-
-export interface UserPositionLikePreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPositionLikePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<String>>;
-  like: () => Promise<AsyncIterator<LikeType>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  latest: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface PositionConnection {
-  pageInfo: PageInfo;
-  edges: PositionEdge[];
-}
-
-export interface PositionConnectionPromise
-  extends Promise<PositionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PositionEdge>>() => T;
-  aggregate: <T = AggregatePositionPromise>() => T;
-}
-
-export interface PositionConnectionSubscription
-  extends Promise<AsyncIterator<PositionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PositionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePositionSubscription>() => T;
-}
-
-export interface PollEdge {
-  node: Poll;
-  cursor: String;
-}
-
-export interface PollEdgePromise extends Promise<PollEdge>, Fragmentable {
-  node: <T = PollPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PollEdgeSubscription
-  extends Promise<AsyncIterator<PollEdge>>,
-    Fragmentable {
-  node: <T = PollSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface CandidateConnection {
-  pageInfo: PageInfo;
-  edges: CandidateEdge[];
-}
-
-export interface CandidateConnectionPromise
-  extends Promise<CandidateConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CandidateEdge>>() => T;
-  aggregate: <T = AggregateCandidatePromise>() => T;
-}
-
-export interface CandidateConnectionSubscription
-  extends Promise<AsyncIterator<CandidateConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CandidateEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCandidateSubscription>() => T;
-}
-
-export interface UserVoteConnection {
-  pageInfo: PageInfo;
-  edges: UserVoteEdge[];
-}
-
-export interface UserVoteConnectionPromise
-  extends Promise<UserVoteConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserVoteEdge>>() => T;
-  aggregate: <T = AggregateUserVotePromise>() => T;
-}
-
-export interface UserVoteConnectionSubscription
-  extends Promise<AsyncIterator<UserVoteConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserVoteEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserVoteSubscription>() => T;
-}
-
-export interface AggregateUserVote {
-  count: Int;
-}
-
-export interface AggregateUserVotePromise
-  extends Promise<AggregateUserVote>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserVoteSubscription
-  extends Promise<AsyncIterator<AggregateUserVote>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface PollConnection {
-  pageInfo: PageInfo;
-  edges: PollEdge[];
-}
-
-export interface PollConnectionPromise
-  extends Promise<PollConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PollEdge>>() => T;
-  aggregate: <T = AggregatePollPromise>() => T;
-}
-
-export interface PollConnectionSubscription
-  extends Promise<AsyncIterator<PollConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PollEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePollSubscription>() => T;
 }
 
 export interface UserVote {
@@ -2483,215 +2030,145 @@ export interface UserVoteNullablePromise
   latest: () => Promise<Boolean>;
 }
 
-export interface Position {
-  id: ID_Output;
-  name: String;
-  summary?: String;
-  detail?: String;
+export interface CandidatePositionConnection {
+  pageInfo: PageInfo;
+  edges: CandidatePositionEdge[];
 }
 
-export interface PositionPromise extends Promise<Position>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  summary: () => Promise<String>;
-  topic: <T = TopicPromise>() => T;
-  detail: () => Promise<String>;
-}
-
-export interface PositionSubscription
-  extends Promise<AsyncIterator<Position>>,
+export interface CandidatePositionConnectionPromise
+  extends Promise<CandidatePositionConnection>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  summary: () => Promise<AsyncIterator<String>>;
-  topic: <T = TopicSubscription>() => T;
-  detail: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CandidatePositionEdge>>() => T;
+  aggregate: <T = AggregateCandidatePositionPromise>() => T;
 }
 
-export interface PositionNullablePromise
-  extends Promise<Position | null>,
+export interface CandidatePositionConnectionSubscription
+  extends Promise<AsyncIterator<CandidatePositionConnection>>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  summary: () => Promise<String>;
-  topic: <T = TopicPromise>() => T;
-  detail: () => Promise<String>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CandidatePositionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCandidatePositionSubscription>() => T;
 }
 
-export interface UserQualificationLikeEdge {
-  node: UserQualificationLike;
+export interface UserVoteEdge {
+  node: UserVote;
   cursor: String;
 }
 
-export interface UserQualificationLikeEdgePromise
-  extends Promise<UserQualificationLikeEdge>,
+export interface UserVoteEdgePromise
+  extends Promise<UserVoteEdge>,
     Fragmentable {
-  node: <T = UserQualificationLikePromise>() => T;
+  node: <T = UserVotePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserQualificationLikeEdgeSubscription
-  extends Promise<AsyncIterator<UserQualificationLikeEdge>>,
+export interface UserVoteEdgeSubscription
+  extends Promise<AsyncIterator<UserVoteEdge>>,
     Fragmentable {
-  node: <T = UserQualificationLikeSubscription>() => T;
+  node: <T = UserVoteSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface Candidate {
-  id: ID_Output;
-  name: String;
-  photo?: String;
-  party: String;
-  state: String;
-  current_office: String;
-  age: Int;
-  gender?: Gender;
-  latest_poll?: Float;
-  latest_odds?: Float;
-  prevote_score?: Float;
-  bio_other?: String;
-  vote_type?: VoteType;
+export interface AggregateUserQualificationLike {
+  count: Int;
 }
 
-export interface CandidatePromise extends Promise<Candidate>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  photo: () => Promise<String>;
-  party: () => Promise<String>;
-  state: () => Promise<String>;
-  current_office: () => Promise<String>;
-  age: () => Promise<Int>;
-  gender: () => Promise<Gender>;
-  latest_poll: () => Promise<Float>;
-  latest_odds: () => Promise<Float>;
-  prevote_score: () => Promise<Float>;
-  bio_qualifications: <T = FragmentableArray<Qualification>>(args?: {
-    where?: QualificationWhereInput;
-    orderBy?: QualificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_policy_position: <T = FragmentableArray<Position>>(args?: {
-    where?: PositionWhereInput;
-    orderBy?: PositionOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_other: () => Promise<String>;
-  vote_type: () => Promise<VoteType>;
-}
-
-export interface CandidateSubscription
-  extends Promise<AsyncIterator<Candidate>>,
+export interface AggregateUserQualificationLikePromise
+  extends Promise<AggregateUserQualificationLike>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  photo: () => Promise<AsyncIterator<String>>;
-  party: () => Promise<AsyncIterator<String>>;
-  state: () => Promise<AsyncIterator<String>>;
-  current_office: () => Promise<AsyncIterator<String>>;
-  age: () => Promise<AsyncIterator<Int>>;
-  gender: () => Promise<AsyncIterator<Gender>>;
-  latest_poll: () => Promise<AsyncIterator<Float>>;
-  latest_odds: () => Promise<AsyncIterator<Float>>;
-  prevote_score: () => Promise<AsyncIterator<Float>>;
-  bio_qualifications: <
-    T = Promise<AsyncIterator<QualificationSubscription>>
-  >(args?: {
-    where?: QualificationWhereInput;
-    orderBy?: QualificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_policy_position: <
-    T = Promise<AsyncIterator<PositionSubscription>>
-  >(args?: {
-    where?: PositionWhereInput;
-    orderBy?: PositionOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_other: () => Promise<AsyncIterator<String>>;
-  vote_type: () => Promise<AsyncIterator<VoteType>>;
+  count: () => Promise<Int>;
 }
 
-export interface CandidateNullablePromise
-  extends Promise<Candidate | null>,
+export interface AggregateUserQualificationLikeSubscription
+  extends Promise<AsyncIterator<AggregateUserQualificationLike>>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  photo: () => Promise<String>;
-  party: () => Promise<String>;
-  state: () => Promise<String>;
-  current_office: () => Promise<String>;
-  age: () => Promise<Int>;
-  gender: () => Promise<Gender>;
-  latest_poll: () => Promise<Float>;
-  latest_odds: () => Promise<Float>;
-  prevote_score: () => Promise<Float>;
-  bio_qualifications: <T = FragmentableArray<Qualification>>(args?: {
-    where?: QualificationWhereInput;
-    orderBy?: QualificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_policy_position: <T = FragmentableArray<Position>>(args?: {
-    where?: PositionWhereInput;
-    orderBy?: PositionOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  bio_other: () => Promise<String>;
-  vote_type: () => Promise<VoteType>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserQualificationLikePreviousValues {
+export interface UserQualificationLikeConnection {
+  pageInfo: PageInfo;
+  edges: UserQualificationLikeEdge[];
+}
+
+export interface UserQualificationLikeConnectionPromise
+  extends Promise<UserQualificationLikeConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserQualificationLikeEdge>>() => T;
+  aggregate: <T = AggregateUserQualificationLikePromise>() => T;
+}
+
+export interface UserQualificationLikeConnectionSubscription
+  extends Promise<AsyncIterator<UserQualificationLikeConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<UserQualificationLikeEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateUserQualificationLikeSubscription>() => T;
+}
+
+export interface CandidatePosition {
   id: ID_Output;
-  userId: String;
-  qualificationId: String;
-  like: LikeType;
+  positionId: String;
+  candidateId: String;
   time?: DateTimeOutput;
+  link?: String;
+  rank?: Int;
   latest?: Boolean;
 }
 
-export interface UserQualificationLikePreviousValuesPromise
-  extends Promise<UserQualificationLikePreviousValues>,
+export interface CandidatePositionPromise
+  extends Promise<CandidatePosition>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<String>;
-  qualificationId: () => Promise<String>;
-  like: () => Promise<LikeType>;
+  positionId: () => Promise<String>;
+  candidateId: () => Promise<String>;
   time: () => Promise<DateTimeOutput>;
+  link: () => Promise<String>;
+  rank: () => Promise<Int>;
   latest: () => Promise<Boolean>;
 }
 
-export interface UserQualificationLikePreviousValuesSubscription
-  extends Promise<AsyncIterator<UserQualificationLikePreviousValues>>,
+export interface CandidatePositionSubscription
+  extends Promise<AsyncIterator<CandidatePosition>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<String>>;
-  qualificationId: () => Promise<AsyncIterator<String>>;
-  like: () => Promise<AsyncIterator<LikeType>>;
+  positionId: () => Promise<AsyncIterator<String>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
   time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  link: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
   latest: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface CandidatePositionNullablePromise
+  extends Promise<CandidatePosition | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  positionId: () => Promise<String>;
+  candidateId: () => Promise<String>;
+  time: () => Promise<DateTimeOutput>;
+  link: () => Promise<String>;
+  rank: () => Promise<Int>;
+  latest: () => Promise<Boolean>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
 }
 
 export interface CandidateSubscriptionPayload {
@@ -2747,7 +2224,7 @@ export interface CandidatePreviousValues {
   latest_poll?: Float;
   latest_odds?: Float;
   prevote_score?: Float;
-  bio_other?: String;
+  bio_summary?: String;
   vote_type?: VoteType;
 }
 
@@ -2765,7 +2242,7 @@ export interface CandidatePreviousValuesPromise
   latest_poll: () => Promise<Float>;
   latest_odds: () => Promise<Float>;
   prevote_score: () => Promise<Float>;
-  bio_other: () => Promise<String>;
+  bio_summary: () => Promise<String>;
   vote_type: () => Promise<VoteType>;
 }
 
@@ -2783,7 +2260,7 @@ export interface CandidatePreviousValuesSubscription
   latest_poll: () => Promise<AsyncIterator<Float>>;
   latest_odds: () => Promise<AsyncIterator<Float>>;
   prevote_score: () => Promise<AsyncIterator<Float>>;
-  bio_other: () => Promise<AsyncIterator<String>>;
+  bio_summary: () => Promise<AsyncIterator<String>>;
   vote_type: () => Promise<AsyncIterator<VoteType>>;
 }
 
@@ -2806,6 +2283,514 @@ export interface UserPositionLikeConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<UserPositionLikeEdgeSubscription>>>() => T;
   aggregate: <T = AggregateUserPositionLikeSubscription>() => T;
+}
+
+export interface AggregateCandidate {
+  count: Int;
+}
+
+export interface AggregateCandidatePromise
+  extends Promise<AggregateCandidate>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCandidateSubscription
+  extends Promise<AsyncIterator<AggregateCandidate>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CandidatePositionSubscriptionPayload {
+  mutation: MutationType;
+  node: CandidatePosition;
+  updatedFields: String[];
+  previousValues: CandidatePositionPreviousValues;
+}
+
+export interface CandidatePositionSubscriptionPayloadPromise
+  extends Promise<CandidatePositionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CandidatePositionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CandidatePositionPreviousValuesPromise>() => T;
+}
+
+export interface CandidatePositionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CandidatePositionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CandidatePositionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CandidatePositionPreviousValuesSubscription>() => T;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface CandidatePositionPreviousValues {
+  id: ID_Output;
+  positionId: String;
+  candidateId: String;
+  time?: DateTimeOutput;
+  link?: String;
+  rank?: Int;
+  latest?: Boolean;
+}
+
+export interface CandidatePositionPreviousValuesPromise
+  extends Promise<CandidatePositionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  positionId: () => Promise<String>;
+  candidateId: () => Promise<String>;
+  time: () => Promise<DateTimeOutput>;
+  link: () => Promise<String>;
+  rank: () => Promise<Int>;
+  latest: () => Promise<Boolean>;
+}
+
+export interface CandidatePositionPreviousValuesSubscription
+  extends Promise<AsyncIterator<CandidatePositionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  positionId: () => Promise<AsyncIterator<String>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  link: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  latest: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface AggregateTopic {
+  count: Int;
+}
+
+export interface AggregateTopicPromise
+  extends Promise<AggregateTopic>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTopicSubscription
+  extends Promise<AsyncIterator<AggregateTopic>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CandidateEdge {
+  node: Candidate;
+  cursor: String;
+}
+
+export interface CandidateEdgePromise
+  extends Promise<CandidateEdge>,
+    Fragmentable {
+  node: <T = CandidatePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CandidateEdgeSubscription
+  extends Promise<AsyncIterator<CandidateEdge>>,
+    Fragmentable {
+  node: <T = CandidateSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TopicConnection {
+  pageInfo: PageInfo;
+  edges: TopicEdge[];
+}
+
+export interface TopicConnectionPromise
+  extends Promise<TopicConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TopicEdge>>() => T;
+  aggregate: <T = AggregateTopicPromise>() => T;
+}
+
+export interface TopicConnectionSubscription
+  extends Promise<AsyncIterator<TopicConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTopicSubscription>() => T;
+}
+
+export interface PollSubscriptionPayload {
+  mutation: MutationType;
+  node: Poll;
+  updatedFields: String[];
+  previousValues: PollPreviousValues;
+}
+
+export interface PollSubscriptionPayloadPromise
+  extends Promise<PollSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PollPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PollPreviousValuesPromise>() => T;
+}
+
+export interface PollSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PollSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PollSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PollPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateQualification {
+  count: Int;
+}
+
+export interface AggregateQualificationPromise
+  extends Promise<AggregateQualification>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateQualificationSubscription
+  extends Promise<AsyncIterator<AggregateQualification>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PollPreviousValues {
+  id: ID_Output;
+  userId: String;
+  date?: DateTimeOutput;
+  candidateId: String;
+  poll_type: PollType;
+  error_margin?: String;
+  link_to_poll?: String;
+}
+
+export interface PollPreviousValuesPromise
+  extends Promise<PollPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<String>;
+  date: () => Promise<DateTimeOutput>;
+  candidateId: () => Promise<String>;
+  poll_type: () => Promise<PollType>;
+  error_margin: () => Promise<String>;
+  link_to_poll: () => Promise<String>;
+}
+
+export interface PollPreviousValuesSubscription
+  extends Promise<AsyncIterator<PollPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<String>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
+  poll_type: () => Promise<AsyncIterator<PollType>>;
+  error_margin: () => Promise<AsyncIterator<String>>;
+  link_to_poll: () => Promise<AsyncIterator<String>>;
+}
+
+export interface QualificationConnection {
+  pageInfo: PageInfo;
+  edges: QualificationEdge[];
+}
+
+export interface QualificationConnectionPromise
+  extends Promise<QualificationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<QualificationEdge>>() => T;
+  aggregate: <T = AggregateQualificationPromise>() => T;
+}
+
+export interface QualificationConnectionSubscription
+  extends Promise<AsyncIterator<QualificationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<QualificationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateQualificationSubscription>() => T;
+}
+
+export interface Topic {
+  id: ID_Output;
+  name: String;
+  category: CategoryType;
+}
+
+export interface TopicPromise extends Promise<Topic>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  category: () => Promise<CategoryType>;
+}
+
+export interface TopicSubscription
+  extends Promise<AsyncIterator<Topic>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  category: () => Promise<AsyncIterator<CategoryType>>;
+}
+
+export interface TopicNullablePromise
+  extends Promise<Topic | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  category: () => Promise<CategoryType>;
+}
+
+export interface UserPositionLikePreviousValues {
+  id: ID_Output;
+  userId: String;
+  candidateId: String;
+  positionId: String;
+  like?: LikeType;
+  time?: DateTimeOutput;
+  latest?: Boolean;
+}
+
+export interface UserPositionLikePreviousValuesPromise
+  extends Promise<UserPositionLikePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<String>;
+  candidateId: () => Promise<String>;
+  positionId: () => Promise<String>;
+  like: () => Promise<LikeType>;
+  time: () => Promise<DateTimeOutput>;
+  latest: () => Promise<Boolean>;
+}
+
+export interface UserPositionLikePreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPositionLikePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<String>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
+  positionId: () => Promise<AsyncIterator<String>>;
+  like: () => Promise<AsyncIterator<LikeType>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  latest: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface QualificationEdge {
+  node: Qualification;
+  cursor: String;
+}
+
+export interface QualificationEdgePromise
+  extends Promise<QualificationEdge>,
+    Fragmentable {
+  node: <T = QualificationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface QualificationEdgeSubscription
+  extends Promise<AsyncIterator<QualificationEdge>>,
+    Fragmentable {
+  node: <T = QualificationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePosition {
+  count: Int;
+}
+
+export interface AggregatePositionPromise
+  extends Promise<AggregatePosition>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePositionSubscription
+  extends Promise<AsyncIterator<AggregatePosition>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Qualification {
+  id: ID_Output;
+  name: String;
+  summary?: String;
+  detail?: String;
+  years: Int;
+  rank?: Int;
+  candidateId?: String;
+  like_type?: LikeType;
+}
+
+export interface QualificationPromise
+  extends Promise<Qualification>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  summary: () => Promise<String>;
+  detail: () => Promise<String>;
+  years: () => Promise<Int>;
+  rank: () => Promise<Int>;
+  candidateId: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
+}
+
+export interface QualificationSubscription
+  extends Promise<AsyncIterator<Qualification>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  summary: () => Promise<AsyncIterator<String>>;
+  detail: () => Promise<AsyncIterator<String>>;
+  years: () => Promise<AsyncIterator<Int>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
+  like_type: () => Promise<AsyncIterator<LikeType>>;
+}
+
+export interface QualificationNullablePromise
+  extends Promise<Qualification | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  summary: () => Promise<String>;
+  detail: () => Promise<String>;
+  years: () => Promise<Int>;
+  rank: () => Promise<Int>;
+  candidateId: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
+}
+
+export interface Position {
+  id: ID_Output;
+  name: String;
+  summary?: String;
+  detail?: String;
+  like_type?: LikeType;
+}
+
+export interface PositionPromise extends Promise<Position>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  summary: () => Promise<String>;
+  detail: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
+}
+
+export interface PositionSubscription
+  extends Promise<AsyncIterator<Position>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  summary: () => Promise<AsyncIterator<String>>;
+  detail: () => Promise<AsyncIterator<String>>;
+  like_type: () => Promise<AsyncIterator<LikeType>>;
+}
+
+export interface PositionNullablePromise
+  extends Promise<Position | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  summary: () => Promise<String>;
+  detail: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
+}
+
+export interface PositionEdge {
+  node: Position;
+  cursor: String;
+}
+
+export interface PositionEdgePromise
+  extends Promise<PositionEdge>,
+    Fragmentable {
+  node: <T = PositionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PositionEdgeSubscription
+  extends Promise<AsyncIterator<PositionEdge>>,
+    Fragmentable {
+  node: <T = PositionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PollEdge {
+  node: Poll;
+  cursor: String;
+}
+
+export interface PollEdgePromise extends Promise<PollEdge>, Fragmentable {
+  node: <T = PollPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PollEdgeSubscription
+  extends Promise<AsyncIterator<PollEdge>>,
+    Fragmentable {
+  node: <T = PollSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PositionSubscriptionPayload {
+  mutation: MutationType;
+  node: Position;
+  updatedFields: String[];
+  previousValues: PositionPreviousValues;
+}
+
+export interface PositionSubscriptionPayloadPromise
+  extends Promise<PositionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PositionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PositionPreviousValuesPromise>() => T;
+}
+
+export interface PositionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PositionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PositionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PositionPreviousValuesSubscription>() => T;
 }
 
 export interface Poll {
@@ -2852,390 +2837,12 @@ export interface PollNullablePromise
   link_to_poll: () => Promise<String>;
 }
 
-export interface UserPositionLike {
-  id: ID_Output;
-  userId: String;
-  like?: LikeType;
-  time?: DateTimeOutput;
-  latest?: Boolean;
-}
-
-export interface UserPositionLikePromise
-  extends Promise<UserPositionLike>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<String>;
-  candidate_position: <T = CandidatePositionPromise>() => T;
-  like: () => Promise<LikeType>;
-  time: () => Promise<DateTimeOutput>;
-  latest: () => Promise<Boolean>;
-}
-
-export interface UserPositionLikeSubscription
-  extends Promise<AsyncIterator<UserPositionLike>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<String>>;
-  candidate_position: <T = CandidatePositionSubscription>() => T;
-  like: () => Promise<AsyncIterator<LikeType>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  latest: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface UserPositionLikeNullablePromise
-  extends Promise<UserPositionLike | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<String>;
-  candidate_position: <T = CandidatePositionPromise>() => T;
-  like: () => Promise<LikeType>;
-  time: () => Promise<DateTimeOutput>;
-  latest: () => Promise<Boolean>;
-}
-
-export interface CandidatePositionSubscriptionPayload {
-  mutation: MutationType;
-  node: CandidatePosition;
-  updatedFields: String[];
-  previousValues: CandidatePositionPreviousValues;
-}
-
-export interface CandidatePositionSubscriptionPayloadPromise
-  extends Promise<CandidatePositionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CandidatePositionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CandidatePositionPreviousValuesPromise>() => T;
-}
-
-export interface CandidatePositionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CandidatePositionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CandidatePositionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CandidatePositionPreviousValuesSubscription>() => T;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface CandidatePositionPreviousValues {
-  id: ID_Output;
-  positionId: String;
-  candidateId: String;
-  time?: DateTimeOutput;
-  link?: String;
-  rank?: Int;
-  latest?: Boolean;
-}
-
-export interface CandidatePositionPreviousValuesPromise
-  extends Promise<CandidatePositionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  positionId: () => Promise<String>;
-  candidateId: () => Promise<String>;
-  time: () => Promise<DateTimeOutput>;
-  link: () => Promise<String>;
-  rank: () => Promise<Int>;
-  latest: () => Promise<Boolean>;
-}
-
-export interface CandidatePositionPreviousValuesSubscription
-  extends Promise<AsyncIterator<CandidatePositionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  positionId: () => Promise<AsyncIterator<String>>;
-  candidateId: () => Promise<AsyncIterator<String>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  link: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  latest: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface Qualification {
-  id: ID_Output;
-  name: String;
-  summary?: String;
-  detail?: String;
-  years: Int;
-  rank?: Int;
-  candidateId?: String;
-}
-
-export interface QualificationPromise
-  extends Promise<Qualification>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  summary: () => Promise<String>;
-  detail: () => Promise<String>;
-  years: () => Promise<Int>;
-  rank: () => Promise<Int>;
-  candidateId: () => Promise<String>;
-}
-
-export interface QualificationSubscription
-  extends Promise<AsyncIterator<Qualification>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  summary: () => Promise<AsyncIterator<String>>;
-  detail: () => Promise<AsyncIterator<String>>;
-  years: () => Promise<AsyncIterator<Int>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  candidateId: () => Promise<AsyncIterator<String>>;
-}
-
-export interface QualificationNullablePromise
-  extends Promise<Qualification | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  summary: () => Promise<String>;
-  detail: () => Promise<String>;
-  years: () => Promise<Int>;
-  rank: () => Promise<Int>;
-  candidateId: () => Promise<String>;
-}
-
-export interface AggregateCandidatePosition {
-  count: Int;
-}
-
-export interface AggregateCandidatePositionPromise
-  extends Promise<AggregateCandidatePosition>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCandidatePositionSubscription
-  extends Promise<AsyncIterator<AggregateCandidatePosition>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateTopic {
-  count: Int;
-}
-
-export interface AggregateTopicPromise
-  extends Promise<AggregateTopic>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTopicSubscription
-  extends Promise<AsyncIterator<AggregateTopic>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PollSubscriptionPayload {
-  mutation: MutationType;
-  node: Poll;
-  updatedFields: String[];
-  previousValues: PollPreviousValues;
-}
-
-export interface PollSubscriptionPayloadPromise
-  extends Promise<PollSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PollPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PollPreviousValuesPromise>() => T;
-}
-
-export interface PollSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PollSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PollSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PollPreviousValuesSubscription>() => T;
-}
-
-export interface TopicConnection {
-  pageInfo: PageInfo;
-  edges: TopicEdge[];
-}
-
-export interface TopicConnectionPromise
-  extends Promise<TopicConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TopicEdge>>() => T;
-  aggregate: <T = AggregateTopicPromise>() => T;
-}
-
-export interface TopicConnectionSubscription
-  extends Promise<AsyncIterator<TopicConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTopicSubscription>() => T;
-}
-
-export interface PollPreviousValues {
-  id: ID_Output;
-  userId: String;
-  date?: DateTimeOutput;
-  candidateId: String;
-  poll_type: PollType;
-  error_margin?: String;
-  link_to_poll?: String;
-}
-
-export interface PollPreviousValuesPromise
-  extends Promise<PollPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<String>;
-  date: () => Promise<DateTimeOutput>;
-  candidateId: () => Promise<String>;
-  poll_type: () => Promise<PollType>;
-  error_margin: () => Promise<String>;
-  link_to_poll: () => Promise<String>;
-}
-
-export interface PollPreviousValuesSubscription
-  extends Promise<AsyncIterator<PollPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<String>>;
-  date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  candidateId: () => Promise<AsyncIterator<String>>;
-  poll_type: () => Promise<AsyncIterator<PollType>>;
-  error_margin: () => Promise<AsyncIterator<String>>;
-  link_to_poll: () => Promise<AsyncIterator<String>>;
-}
-
-export interface QualificationEdge {
-  node: Qualification;
-  cursor: String;
-}
-
-export interface QualificationEdgePromise
-  extends Promise<QualificationEdge>,
-    Fragmentable {
-  node: <T = QualificationPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface QualificationEdgeSubscription
-  extends Promise<AsyncIterator<QualificationEdge>>,
-    Fragmentable {
-  node: <T = QualificationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface CandidatePositionEdge {
-  node: CandidatePosition;
-  cursor: String;
-}
-
-export interface CandidatePositionEdgePromise
-  extends Promise<CandidatePositionEdge>,
-    Fragmentable {
-  node: <T = CandidatePositionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface CandidatePositionEdgeSubscription
-  extends Promise<AsyncIterator<CandidatePositionEdge>>,
-    Fragmentable {
-  node: <T = CandidatePositionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePosition {
-  count: Int;
-}
-
-export interface AggregatePositionPromise
-  extends Promise<AggregatePosition>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePositionSubscription
-  extends Promise<AsyncIterator<AggregatePosition>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PositionSubscriptionPayload {
-  mutation: MutationType;
-  node: Position;
-  updatedFields: String[];
-  previousValues: PositionPreviousValues;
-}
-
-export interface PositionSubscriptionPayloadPromise
-  extends Promise<PositionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PositionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PositionPreviousValuesPromise>() => T;
-}
-
-export interface PositionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PositionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PositionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PositionPreviousValuesSubscription>() => T;
-}
-
-export interface UserVoteSubscriptionPayload {
-  mutation: MutationType;
-  node: UserVote;
-  updatedFields: String[];
-  previousValues: UserVotePreviousValues;
-}
-
-export interface UserVoteSubscriptionPayloadPromise
-  extends Promise<UserVoteSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserVotePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserVotePreviousValuesPromise>() => T;
-}
-
-export interface UserVoteSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserVoteSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserVoteSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserVotePreviousValuesSubscription>() => T;
-}
-
 export interface PositionPreviousValues {
   id: ID_Output;
   name: String;
   summary?: String;
   detail?: String;
+  like_type?: LikeType;
 }
 
 export interface PositionPreviousValuesPromise
@@ -3245,6 +2852,7 @@ export interface PositionPreviousValuesPromise
   name: () => Promise<String>;
   summary: () => Promise<String>;
   detail: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
 }
 
 export interface PositionPreviousValuesSubscription
@@ -3254,43 +2862,46 @@ export interface PositionPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
   summary: () => Promise<AsyncIterator<String>>;
   detail: () => Promise<AsyncIterator<String>>;
+  like_type: () => Promise<AsyncIterator<LikeType>>;
 }
 
-export interface AggregateUserQualificationLike {
+export interface AggregateUserVote {
   count: Int;
 }
 
-export interface AggregateUserQualificationLikePromise
-  extends Promise<AggregateUserQualificationLike>,
+export interface AggregateUserVotePromise
+  extends Promise<AggregateUserVote>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserQualificationLikeSubscription
-  extends Promise<AsyncIterator<AggregateUserQualificationLike>>,
+export interface AggregateUserVoteSubscription
+  extends Promise<AsyncIterator<AggregateUserVote>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface CandidatePositionConnection {
-  pageInfo: PageInfo;
-  edges: CandidatePositionEdge[];
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface CandidatePositionConnectionPromise
-  extends Promise<CandidatePositionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CandidatePositionEdge>>() => T;
-  aggregate: <T = AggregateCandidatePositionPromise>() => T;
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface CandidatePositionConnectionSubscription
-  extends Promise<AsyncIterator<CandidatePositionConnection>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CandidatePositionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCandidatePositionSubscription>() => T;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserQualificationLike {
@@ -3360,29 +2971,23 @@ export interface QualificationSubscriptionPayloadSubscription
   previousValues: <T = QualificationPreviousValuesSubscription>() => T;
 }
 
-export interface UserQualificationLikeSubscriptionPayload {
-  mutation: MutationType;
-  node: UserQualificationLike;
-  updatedFields: String[];
-  previousValues: UserQualificationLikePreviousValues;
+export interface UserPositionLikeEdge {
+  node: UserPositionLike;
+  cursor: String;
 }
 
-export interface UserQualificationLikeSubscriptionPayloadPromise
-  extends Promise<UserQualificationLikeSubscriptionPayload>,
+export interface UserPositionLikeEdgePromise
+  extends Promise<UserPositionLikeEdge>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserQualificationLikePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserQualificationLikePreviousValuesPromise>() => T;
+  node: <T = UserPositionLikePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface UserQualificationLikeSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserQualificationLikeSubscriptionPayload>>,
+export interface UserPositionLikeEdgeSubscription
+  extends Promise<AsyncIterator<UserPositionLikeEdge>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserQualificationLikeSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserQualificationLikePreviousValuesSubscription>() => T;
+  node: <T = UserPositionLikeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface QualificationPreviousValues {
@@ -3393,6 +2998,7 @@ export interface QualificationPreviousValues {
   years: Int;
   rank?: Int;
   candidateId?: String;
+  like_type?: LikeType;
 }
 
 export interface QualificationPreviousValuesPromise
@@ -3405,6 +3011,7 @@ export interface QualificationPreviousValuesPromise
   years: () => Promise<Int>;
   rank: () => Promise<Int>;
   candidateId: () => Promise<String>;
+  like_type: () => Promise<LikeType>;
 }
 
 export interface QualificationPreviousValuesSubscription
@@ -3417,55 +3024,45 @@ export interface QualificationPreviousValuesSubscription
   years: () => Promise<AsyncIterator<Int>>;
   rank: () => Promise<AsyncIterator<Int>>;
   candidateId: () => Promise<AsyncIterator<String>>;
+  like_type: () => Promise<AsyncIterator<LikeType>>;
 }
 
-export interface UserConnection {
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CandidateConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: CandidateEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface CandidateConnectionPromise
+  extends Promise<CandidateConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<CandidateEdge>>() => T;
+  aggregate: <T = AggregateCandidatePromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface CandidateConnectionSubscription
+  extends Promise<AsyncIterator<CandidateConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface Topic {
-  id: ID_Output;
-  name: String;
-  category: CategoryType;
-}
-
-export interface TopicPromise extends Promise<Topic>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  category: () => Promise<CategoryType>;
-}
-
-export interface TopicSubscription
-  extends Promise<AsyncIterator<Topic>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  category: () => Promise<AsyncIterator<CategoryType>>;
-}
-
-export interface TopicNullablePromise
-  extends Promise<Topic | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  category: () => Promise<CategoryType>;
+  edges: <T = Promise<AsyncIterator<CandidateEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCandidateSubscription>() => T;
 }
 
 export interface TopicEdge {
@@ -3510,25 +3107,20 @@ export interface TopicSubscriptionPayloadSubscription
   previousValues: <T = TopicPreviousValuesSubscription>() => T;
 }
 
-export interface QualificationConnection {
-  pageInfo: PageInfo;
-  edges: QualificationEdge[];
+export interface AggregatePoll {
+  count: Int;
 }
 
-export interface QualificationConnectionPromise
-  extends Promise<QualificationConnection>,
+export interface AggregatePollPromise
+  extends Promise<AggregatePoll>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<QualificationEdge>>() => T;
-  aggregate: <T = AggregateQualificationPromise>() => T;
+  count: () => Promise<Int>;
 }
 
-export interface QualificationConnectionSubscription
-  extends Promise<AsyncIterator<QualificationConnection>>,
+export interface AggregatePollSubscription
+  extends Promise<AsyncIterator<AggregatePoll>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<QualificationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateQualificationSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface TopicPreviousValues {
@@ -3553,58 +3145,124 @@ export interface TopicPreviousValuesSubscription
   category: () => Promise<AsyncIterator<CategoryType>>;
 }
 
-export interface CandidateEdge {
-  node: Candidate;
-  cursor: String;
+export interface UserVoteConnection {
+  pageInfo: PageInfo;
+  edges: UserVoteEdge[];
 }
 
-export interface CandidateEdgePromise
-  extends Promise<CandidateEdge>,
+export interface UserVoteConnectionPromise
+  extends Promise<UserVoteConnection>,
     Fragmentable {
-  node: <T = CandidatePromise>() => T;
-  cursor: () => Promise<String>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserVoteEdge>>() => T;
+  aggregate: <T = AggregateUserVotePromise>() => T;
 }
 
-export interface CandidateEdgeSubscription
-  extends Promise<AsyncIterator<CandidateEdge>>,
+export interface UserVoteConnectionSubscription
+  extends Promise<AsyncIterator<UserVoteConnection>>,
     Fragmentable {
-  node: <T = CandidateSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserVoteEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserVoteSubscription>() => T;
 }
 
-export interface AggregateCandidate {
-  count: Int;
+export interface UserQualificationLikePreviousValues {
+  id: ID_Output;
+  userId: String;
+  qualificationId: String;
+  like: LikeType;
+  time?: DateTimeOutput;
+  latest?: Boolean;
 }
 
-export interface AggregateCandidatePromise
-  extends Promise<AggregateCandidate>,
+export interface UserQualificationLikePreviousValuesPromise
+  extends Promise<UserQualificationLikePreviousValues>,
     Fragmentable {
-  count: () => Promise<Int>;
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<String>;
+  qualificationId: () => Promise<String>;
+  like: () => Promise<LikeType>;
+  time: () => Promise<DateTimeOutput>;
+  latest: () => Promise<Boolean>;
 }
 
-export interface AggregateCandidateSubscription
-  extends Promise<AsyncIterator<AggregateCandidate>>,
+export interface UserQualificationLikePreviousValuesSubscription
+  extends Promise<AsyncIterator<UserQualificationLikePreviousValues>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<String>>;
+  qualificationId: () => Promise<AsyncIterator<String>>;
+  like: () => Promise<AsyncIterator<LikeType>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  latest: () => Promise<AsyncIterator<Boolean>>;
 }
 
-export interface UserPositionLikeEdge {
-  node: UserPositionLike;
-  cursor: String;
+export interface Candidate {
+  id: ID_Output;
+  name: String;
+  photo?: String;
+  party: String;
+  state: String;
+  current_office: String;
+  age: Int;
+  gender?: Gender;
+  latest_poll?: Float;
+  latest_odds?: Float;
+  prevote_score?: Float;
+  bio_summary?: String;
+  vote_type?: VoteType;
 }
 
-export interface UserPositionLikeEdgePromise
-  extends Promise<UserPositionLikeEdge>,
+export interface CandidatePromise extends Promise<Candidate>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  photo: () => Promise<String>;
+  party: () => Promise<String>;
+  state: () => Promise<String>;
+  current_office: () => Promise<String>;
+  age: () => Promise<Int>;
+  gender: () => Promise<Gender>;
+  latest_poll: () => Promise<Float>;
+  latest_odds: () => Promise<Float>;
+  prevote_score: () => Promise<Float>;
+  bio_summary: () => Promise<String>;
+  vote_type: () => Promise<VoteType>;
+}
+
+export interface CandidateSubscription
+  extends Promise<AsyncIterator<Candidate>>,
     Fragmentable {
-  node: <T = UserPositionLikePromise>() => T;
-  cursor: () => Promise<String>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  photo: () => Promise<AsyncIterator<String>>;
+  party: () => Promise<AsyncIterator<String>>;
+  state: () => Promise<AsyncIterator<String>>;
+  current_office: () => Promise<AsyncIterator<String>>;
+  age: () => Promise<AsyncIterator<Int>>;
+  gender: () => Promise<AsyncIterator<Gender>>;
+  latest_poll: () => Promise<AsyncIterator<Float>>;
+  latest_odds: () => Promise<AsyncIterator<Float>>;
+  prevote_score: () => Promise<AsyncIterator<Float>>;
+  bio_summary: () => Promise<AsyncIterator<String>>;
+  vote_type: () => Promise<AsyncIterator<VoteType>>;
 }
 
-export interface UserPositionLikeEdgeSubscription
-  extends Promise<AsyncIterator<UserPositionLikeEdge>>,
+export interface CandidateNullablePromise
+  extends Promise<Candidate | null>,
     Fragmentable {
-  node: <T = UserPositionLikeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  photo: () => Promise<String>;
+  party: () => Promise<String>;
+  state: () => Promise<String>;
+  current_office: () => Promise<String>;
+  age: () => Promise<Int>;
+  gender: () => Promise<Gender>;
+  latest_poll: () => Promise<Float>;
+  latest_odds: () => Promise<Float>;
+  prevote_score: () => Promise<Float>;
+  bio_summary: () => Promise<String>;
+  vote_type: () => Promise<VoteType>;
 }
 
 export interface User {
@@ -3672,50 +3330,29 @@ export interface UserPositionLikeSubscriptionPayloadSubscription
   previousValues: <T = UserPositionLikePreviousValuesSubscription>() => T;
 }
 
-export interface CandidatePosition {
-  id: ID_Output;
-  positionId: String;
-  candidateId: String;
-  time?: DateTimeOutput;
-  link?: String;
-  rank?: Int;
-  latest?: Boolean;
+export interface UserQualificationLikeSubscriptionPayload {
+  mutation: MutationType;
+  node: UserQualificationLike;
+  updatedFields: String[];
+  previousValues: UserQualificationLikePreviousValues;
 }
 
-export interface CandidatePositionPromise
-  extends Promise<CandidatePosition>,
+export interface UserQualificationLikeSubscriptionPayloadPromise
+  extends Promise<UserQualificationLikeSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  positionId: () => Promise<String>;
-  candidateId: () => Promise<String>;
-  time: () => Promise<DateTimeOutput>;
-  link: () => Promise<String>;
-  rank: () => Promise<Int>;
-  latest: () => Promise<Boolean>;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserQualificationLikePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserQualificationLikePreviousValuesPromise>() => T;
 }
 
-export interface CandidatePositionSubscription
-  extends Promise<AsyncIterator<CandidatePosition>>,
+export interface UserQualificationLikeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserQualificationLikeSubscriptionPayload>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  positionId: () => Promise<AsyncIterator<String>>;
-  candidateId: () => Promise<AsyncIterator<String>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  link: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  latest: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface CandidatePositionNullablePromise
-  extends Promise<CandidatePosition | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  positionId: () => Promise<String>;
-  candidateId: () => Promise<String>;
-  time: () => Promise<DateTimeOutput>;
-  link: () => Promise<String>;
-  rank: () => Promise<Int>;
-  latest: () => Promise<Boolean>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserQualificationLikeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserQualificationLikePreviousValuesSubscription>() => T;
 }
 
 export interface UserPreviousValues {
@@ -3774,107 +3411,123 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateQualification {
-  count: Int;
-}
-
-export interface AggregateQualificationPromise
-  extends Promise<AggregateQualification>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateQualificationSubscription
-  extends Promise<AsyncIterator<AggregateQualification>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface UserQualificationLikeConnection {
+export interface PositionConnection {
   pageInfo: PageInfo;
-  edges: UserQualificationLikeEdge[];
+  edges: PositionEdge[];
 }
 
-export interface UserQualificationLikeConnectionPromise
-  extends Promise<UserQualificationLikeConnection>,
+export interface PositionConnectionPromise
+  extends Promise<PositionConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserQualificationLikeEdge>>() => T;
-  aggregate: <T = AggregateUserQualificationLikePromise>() => T;
+  edges: <T = FragmentableArray<PositionEdge>>() => T;
+  aggregate: <T = AggregatePositionPromise>() => T;
 }
 
-export interface UserQualificationLikeConnectionSubscription
-  extends Promise<AsyncIterator<UserQualificationLikeConnection>>,
+export interface PositionConnectionSubscription
+  extends Promise<AsyncIterator<PositionConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<UserQualificationLikeEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregateUserQualificationLikeSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PositionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePositionSubscription>() => T;
 }
 
-export interface UserVoteEdge {
+export interface UserPositionLike {
+  id: ID_Output;
+  userId: String;
+  candidateId: String;
+  positionId: String;
+  like?: LikeType;
+  time?: DateTimeOutput;
+  latest?: Boolean;
+}
+
+export interface UserPositionLikePromise
+  extends Promise<UserPositionLike>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<String>;
+  candidateId: () => Promise<String>;
+  positionId: () => Promise<String>;
+  like: () => Promise<LikeType>;
+  time: () => Promise<DateTimeOutput>;
+  latest: () => Promise<Boolean>;
+}
+
+export interface UserPositionLikeSubscription
+  extends Promise<AsyncIterator<UserPositionLike>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<String>>;
+  candidateId: () => Promise<AsyncIterator<String>>;
+  positionId: () => Promise<AsyncIterator<String>>;
+  like: () => Promise<AsyncIterator<LikeType>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  latest: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface UserPositionLikeNullablePromise
+  extends Promise<UserPositionLike | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<String>;
+  candidateId: () => Promise<String>;
+  positionId: () => Promise<String>;
+  like: () => Promise<LikeType>;
+  time: () => Promise<DateTimeOutput>;
+  latest: () => Promise<Boolean>;
+}
+
+export interface UserVoteSubscriptionPayload {
+  mutation: MutationType;
   node: UserVote;
-  cursor: String;
+  updatedFields: String[];
+  previousValues: UserVotePreviousValues;
 }
 
-export interface UserVoteEdgePromise
-  extends Promise<UserVoteEdge>,
+export interface UserVoteSubscriptionPayloadPromise
+  extends Promise<UserVoteSubscriptionPayload>,
     Fragmentable {
+  mutation: () => Promise<MutationType>;
   node: <T = UserVotePromise>() => T;
-  cursor: () => Promise<String>;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserVotePreviousValuesPromise>() => T;
 }
 
-export interface UserVoteEdgeSubscription
-  extends Promise<AsyncIterator<UserVoteEdge>>,
+export interface UserVoteSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserVoteSubscriptionPayload>>,
     Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = UserVoteSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserVotePreviousValuesSubscription>() => T;
+}
+
+export interface PollConnection {
+  pageInfo: PageInfo;
+  edges: PollEdge[];
+}
+
+export interface PollConnectionPromise
+  extends Promise<PollConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PollEdge>>() => T;
+  aggregate: <T = AggregatePollPromise>() => T;
+}
+
+export interface PollConnectionSubscription
+  extends Promise<AsyncIterator<PollConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PollEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePollSubscription>() => T;
 }
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
-
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
-
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
-
-export type Long = string;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
-
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
-*/
-export type Float = number;
 
 /*
 DateTime scalar input type, allowing Date
@@ -3885,6 +3538,29 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
+
+export type Long = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
 
 /**
  * Model Metadata

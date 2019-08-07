@@ -8,12 +8,7 @@ const rules = {
   }),
   isAdminUser: rule()((parent, args, context) => {
     return checkAdminUser(context)
-  }),
-  // isPostOwner: rule()(async (parent, { id }, context) => {
-  //   const userId = getUserId(context)
-  //   const author = await context.prisma.post({ id }).author()
-  //   return userId === author.id
-  // }),
+  })
 }
 
 export const permissions = shield({
@@ -26,19 +21,21 @@ export const permissions = shield({
     positionsWithLikes: rules.isAdminUser
   },
   Mutation: {
+    createCandidate: rules.isAdminUser,
     createPosition: rules.isAdminUser,
-    createQualification: rules.isAuthenticatedUser,
-    createTopic: rules.isAuthenticatedUser,
-    createCandidatePosition: rules.isAuthenticatedUser,
+    createQualification: rules.isAdminUser,
+    createCandidatePosition: rules.isAdminUser,
+
     deleteCandidate: rules.isAdminUser,
     deletePosition: rules.isAdminUser,
-    deleteCandidatePosition: rules.isAuthenticatedUser,
-    deleteTopic: rules.isAuthenticatedUser,
-    deleteQualification: rules.isAuthenticatedUser,
-    updateCandidatePosition: rules.isAuthenticatedUser,
-    updateTopic: rules.isAuthenticatedUser,
+    deleteCandidatePosition: rules.isAdminUser,
+    deleteQualification: rules.isAdminUser,
+
+    updateCandidate: rules.isAdminUser,
+    updateCandidatePosition: rules.isAdminUser,
     updatePosition: rules.isAdminUser,
-    updateQualification: rules.isAuthenticatedUser,
+    updateQualification: rules.isAdminUser,
+
     createUserVote: rules.isAuthenticatedUser,
     createUserPositionLike: rules.isAuthenticatedUser,
     createUserQualificationLike: rules.isAuthenticatedUser,
