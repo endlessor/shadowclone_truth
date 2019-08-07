@@ -526,6 +526,11 @@ export interface NexusGenRootTypes {
     summary?: string | null; // String
     years: number; // Int!
   }
+  QualificationWithLike: { // root type
+    dislikes?: number | null; // Int
+    likes?: number | null; // Int
+    qualification?: NexusGenRootTypes['Qualification'] | null; // Qualification
+  }
   Query: {};
   User: { // root type
     email: string; // String!
@@ -699,6 +704,11 @@ export interface NexusGenFieldTypes {
     summary: string | null; // String
     years: number; // Int!
   }
+  QualificationWithLike: { // field return type
+    dislikes: number | null; // Int
+    likes: number | null; // Int
+    qualification: NexusGenRootTypes['Qualification'] | null; // Qualification
+  }
   Query: { // field return type
     candidatePositions: NexusGenRootTypes['Position'][] | null; // [Position!]
     candidateQualifications: NexusGenRootTypes['Qualification'][] | null; // [Qualification!]
@@ -708,6 +718,7 @@ export interface NexusGenFieldTypes {
     polls: NexusGenRootTypes['Poll'][]; // [Poll!]!
     positions: NexusGenRootTypes['Position'][]; // [Position!]!
     positionsWithLikes: NexusGenRootTypes['PositionWithLike'][] | null; // [PositionWithLike!]
+    qualificationsWithLikes: NexusGenRootTypes['QualificationWithLike'][] | null; // [QualificationWithLike!]
     userPositionLikes: NexusGenRootTypes['UserPositionLike'][]; // [UserPositionLike!]!
     userQualificationLikes: NexusGenRootTypes['UserQualificationLike'][]; // [UserQualificationLike!]!
     users: NexusGenRootTypes['User'][]; // [User!]!
@@ -897,7 +908,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "Query" | "User" | "UserPositionLike" | "UserProfile" | "UserQualificationLike" | "UserVote";
+export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "QualificationWithLike" | "Query" | "User" | "UserPositionLike" | "UserProfile" | "UserQualificationLike" | "UserVote";
 
 export type NexusGenInputNames = "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionUpdateInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationUpdateInput" | "QualificationWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
 
