@@ -21,18 +21,18 @@ export interface NexusPrismaTypes {
       UserEdge: UserEdgeObject
       AggregateUser: AggregateUserObject
       Candidate: CandidateObject
-      Qualification: QualificationObject
-      Position: PositionObject
-      Topic: TopicObject
       CandidateConnection: CandidateConnectionObject
       CandidateEdge: CandidateEdgeObject
       AggregateCandidate: AggregateCandidateObject
+      Qualification: QualificationObject
       QualificationConnection: QualificationConnectionObject
       QualificationEdge: QualificationEdgeObject
       AggregateQualification: AggregateQualificationObject
+      Topic: TopicObject
       TopicConnection: TopicConnectionObject
       TopicEdge: TopicEdgeObject
       AggregateTopic: AggregateTopicObject
+      Position: PositionObject
       PositionConnection: PositionConnectionObject
       PositionEdge: PositionEdgeObject
       AggregatePosition: AggregatePositionObject
@@ -88,18 +88,18 @@ export interface NexusPrismaTypes {
       UserEdge: UserEdgeFieldDetails
       AggregateUser: AggregateUserFieldDetails
       Candidate: CandidateFieldDetails
-      Qualification: QualificationFieldDetails
-      Position: PositionFieldDetails
-      Topic: TopicFieldDetails
       CandidateConnection: CandidateConnectionFieldDetails
       CandidateEdge: CandidateEdgeFieldDetails
       AggregateCandidate: AggregateCandidateFieldDetails
+      Qualification: QualificationFieldDetails
       QualificationConnection: QualificationConnectionFieldDetails
       QualificationEdge: QualificationEdgeFieldDetails
       AggregateQualification: AggregateQualificationFieldDetails
+      Topic: TopicFieldDetails
       TopicConnection: TopicConnectionFieldDetails
       TopicEdge: TopicEdgeFieldDetails
       AggregateTopic: AggregateTopicFieldDetails
+      Position: PositionFieldDetails
       PositionConnection: PositionConnectionFieldDetails
       PositionEdge: PositionEdgeFieldDetails
       AggregatePosition: AggregatePositionFieldDetails
@@ -153,13 +153,13 @@ export interface NexusPrismaTypes {
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
       UserWhereInput: UserWhereInputInputObject
       CandidateWhereUniqueInput: CandidateWhereUniqueInputInputObject
-      QualificationWhereInput: QualificationWhereInputInputObject
-      PositionWhereInput: PositionWhereInputInputObject
-      TopicWhereInput: TopicWhereInputInputObject
       CandidateWhereInput: CandidateWhereInputInputObject
       QualificationWhereUniqueInput: QualificationWhereUniqueInputInputObject
+      QualificationWhereInput: QualificationWhereInputInputObject
       TopicWhereUniqueInput: TopicWhereUniqueInputInputObject
+      TopicWhereInput: TopicWhereInputInputObject
       PositionWhereUniqueInput: PositionWhereUniqueInputInputObject
+      PositionWhereInput: PositionWhereInputInputObject
       CandidatePositionWhereUniqueInput: CandidatePositionWhereUniqueInputInputObject
       CandidatePositionWhereInput: CandidatePositionWhereInputInputObject
       UserVoteWhereUniqueInput: UserVoteWhereUniqueInputInputObject
@@ -174,35 +174,15 @@ export interface NexusPrismaTypes {
       UserUpdateInput: UserUpdateInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
       CandidateCreateInput: CandidateCreateInputInputObject
-      QualificationCreateManyInput: QualificationCreateManyInputInputObject
-      QualificationCreateInput: QualificationCreateInputInputObject
-      PositionCreateManyInput: PositionCreateManyInputInputObject
-      PositionCreateInput: PositionCreateInputInputObject
-      TopicCreateOneInput: TopicCreateOneInputInputObject
-      TopicCreateInput: TopicCreateInputInputObject
       CandidateUpdateInput: CandidateUpdateInputInputObject
-      QualificationUpdateManyInput: QualificationUpdateManyInputInputObject
-      QualificationUpdateWithWhereUniqueNestedInput: QualificationUpdateWithWhereUniqueNestedInputInputObject
-      QualificationUpdateDataInput: QualificationUpdateDataInputInputObject
-      QualificationUpsertWithWhereUniqueNestedInput: QualificationUpsertWithWhereUniqueNestedInputInputObject
-      QualificationScalarWhereInput: QualificationScalarWhereInputInputObject
-      QualificationUpdateManyWithWhereNestedInput: QualificationUpdateManyWithWhereNestedInputInputObject
-      QualificationUpdateManyDataInput: QualificationUpdateManyDataInputInputObject
-      PositionUpdateManyInput: PositionUpdateManyInputInputObject
-      PositionUpdateWithWhereUniqueNestedInput: PositionUpdateWithWhereUniqueNestedInputInputObject
-      PositionUpdateDataInput: PositionUpdateDataInputInputObject
-      TopicUpdateOneInput: TopicUpdateOneInputInputObject
-      TopicUpdateDataInput: TopicUpdateDataInputInputObject
-      TopicUpsertNestedInput: TopicUpsertNestedInputInputObject
-      PositionUpsertWithWhereUniqueNestedInput: PositionUpsertWithWhereUniqueNestedInputInputObject
-      PositionScalarWhereInput: PositionScalarWhereInputInputObject
-      PositionUpdateManyWithWhereNestedInput: PositionUpdateManyWithWhereNestedInputInputObject
-      PositionUpdateManyDataInput: PositionUpdateManyDataInputInputObject
       CandidateUpdateManyMutationInput: CandidateUpdateManyMutationInputInputObject
+      QualificationCreateInput: QualificationCreateInputInputObject
       QualificationUpdateInput: QualificationUpdateInputInputObject
       QualificationUpdateManyMutationInput: QualificationUpdateManyMutationInputInputObject
+      TopicCreateInput: TopicCreateInputInputObject
       TopicUpdateInput: TopicUpdateInputInputObject
       TopicUpdateManyMutationInput: TopicUpdateManyMutationInputInputObject
+      PositionCreateInput: PositionCreateInputInputObject
       PositionUpdateInput: PositionUpdateInputInputObject
       PositionUpdateManyMutationInput: PositionUpdateManyMutationInputInputObject
       CandidatePositionCreateInput: CandidatePositionCreateInputInputObject
@@ -215,11 +195,7 @@ export interface NexusPrismaTypes {
       UserQualificationLikeUpdateInput: UserQualificationLikeUpdateInputInputObject
       UserQualificationLikeUpdateManyMutationInput: UserQualificationLikeUpdateManyMutationInputInputObject
       UserPositionLikeCreateInput: UserPositionLikeCreateInputInputObject
-      CandidatePositionCreateOneInput: CandidatePositionCreateOneInputInputObject
       UserPositionLikeUpdateInput: UserPositionLikeUpdateInputInputObject
-      CandidatePositionUpdateOneRequiredInput: CandidatePositionUpdateOneRequiredInputInputObject
-      CandidatePositionUpdateDataInput: CandidatePositionUpdateDataInputInputObject
-      CandidatePositionUpsertNestedInput: CandidatePositionUpsertNestedInputInputObject
       UserPositionLikeUpdateManyMutationInput: UserPositionLikeUpdateManyMutationInputInputObject
       PollCreateInput: PollCreateInputInputObject
       PollUpdateInput: PollUpdateInputInputObject
@@ -239,15 +215,15 @@ export interface NexusPrismaTypes {
   enumTypes: {
     Gender: GenderValues,
     UserOrderByInput: UserOrderByInputValues,
-    QualificationOrderByInput: QualificationOrderByInputValues,
-    CategoryType: CategoryTypeValues,
-    PositionOrderByInput: PositionOrderByInputValues,
     VoteType: VoteTypeValues,
     CandidateOrderByInput: CandidateOrderByInputValues,
+    LikeType: LikeTypeValues,
+    QualificationOrderByInput: QualificationOrderByInputValues,
+    CategoryType: CategoryTypeValues,
     TopicOrderByInput: TopicOrderByInputValues,
+    PositionOrderByInput: PositionOrderByInputValues,
     CandidatePositionOrderByInput: CandidatePositionOrderByInputValues,
     UserVoteOrderByInput: UserVoteOrderByInputValues,
-    LikeType: LikeTypeValues,
     UserQualificationLikeOrderByInput: UserQualificationLikeOrderByInputValues,
     UserPositionLikeOrderByInput: UserPositionLikeOrderByInputValues,
     PollType: PollTypeValues,
@@ -1175,9 +1151,7 @@ type CandidateObject =
   | { name: 'latest_poll', args?: [] | false, alias?: string  } 
   | { name: 'latest_odds', args?: [] | false, alias?: string  } 
   | { name: 'prevote_score', args?: [] | false, alias?: string  } 
-  | { name: 'bio_qualifications', args?: CandidateBio_qualificationsArgs[] | false, alias?: string  } 
-  | { name: 'bio_policy_position', args?: CandidateBio_policy_positionArgs[] | false, alias?: string  } 
-  | { name: 'bio_other', args?: [] | false, alias?: string  } 
+  | { name: 'bio_summary', args?: [] | false, alias?: string  } 
   | { name: 'vote_type', args?: [] | false, alias?: string  } 
 
 type CandidateFields =
@@ -1192,28 +1166,11 @@ type CandidateFields =
   | 'latest_poll'
   | 'latest_odds'
   | 'prevote_score'
-  | 'bio_qualifications'
-  | 'bio_policy_position'
-  | 'bio_other'
+  | 'bio_summary'
   | 'vote_type'
 
 
-type CandidateBio_qualificationsArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type CandidateBio_policy_positionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
+
   
 
 export interface CandidateFieldDetails {
@@ -1310,33 +1267,7 @@ export interface CandidateFieldDetails {
     nullable: true
     resolve: undefined
   }
-  bio_qualifications: {
-    type: 'Qualification'
-    args: Record<CandidateBio_qualificationsArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Candidate">,
-      args: { where?: QualificationWhereInput | null, orderBy?: prisma.QualificationOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Qualification[]> | prisma.Qualification[]
-  }
-  bio_policy_position: {
-    type: 'Position'
-    args: Record<CandidateBio_policy_positionArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Candidate">,
-      args: { where?: PositionWhereInput | null, orderBy?: prisma.PositionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Position[]> | prisma.Position[]
-  }
-  bio_other: {
+  bio_summary: {
     type: 'String'
     args: {}
     description: string
@@ -1356,211 +1287,6 @@ export interface CandidateFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.VoteType | null> | prisma.VoteType | null
-  }
-}
-  
-
-// Types for Qualification
-
-type QualificationObject =
-  | QualificationFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'summary', args?: [] | false, alias?: string  } 
-  | { name: 'detail', args?: [] | false, alias?: string  } 
-  | { name: 'years', args?: [] | false, alias?: string  } 
-  | { name: 'rank', args?: [] | false, alias?: string  } 
-  | { name: 'candidateId', args?: [] | false, alias?: string  } 
-
-type QualificationFields =
-  | 'id'
-  | 'name'
-  | 'summary'
-  | 'detail'
-  | 'years'
-  | 'rank'
-  | 'candidateId'
-
-
-
-  
-
-export interface QualificationFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  summary: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  detail: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  years: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  rank: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  candidateId: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-  
-
-// Types for Position
-
-type PositionObject =
-  | PositionFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'summary', args?: [] | false, alias?: string  } 
-  | { name: 'topic', args?: [] | false, alias?: string  } 
-  | { name: 'detail', args?: [] | false, alias?: string  } 
-
-type PositionFields =
-  | 'id'
-  | 'name'
-  | 'summary'
-  | 'topic'
-  | 'detail'
-
-
-
-  
-
-export interface PositionFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  summary: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  topic: {
-    type: 'Topic'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Position">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Topic | null> | prisma.Topic | null
-  }
-  detail: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-  
-
-// Types for Topic
-
-type TopicObject =
-  | TopicFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'category', args?: [] | false, alias?: string  } 
-
-type TopicFields =
-  | 'id'
-  | 'name'
-  | 'category'
-
-
-
-  
-
-export interface TopicFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  category: {
-    type: 'CategoryType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Topic">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.CategoryType> | prisma.CategoryType
   }
 }
   
@@ -1690,6 +1416,106 @@ export interface AggregateCandidateFieldDetails {
 }
   
 
+// Types for Qualification
+
+type QualificationObject =
+  | QualificationFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'summary', args?: [] | false, alias?: string  } 
+  | { name: 'detail', args?: [] | false, alias?: string  } 
+  | { name: 'years', args?: [] | false, alias?: string  } 
+  | { name: 'rank', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'like_type', args?: [] | false, alias?: string  } 
+
+type QualificationFields =
+  | 'id'
+  | 'name'
+  | 'summary'
+  | 'detail'
+  | 'years'
+  | 'rank'
+  | 'candidateId'
+  | 'like_type'
+
+
+
+  
+
+export interface QualificationFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  summary: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  detail: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  years: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  rank: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  like_type: {
+    type: 'LikeType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Qualification">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
+  }
+}
+  
+
 // Types for QualificationConnection
 
 type QualificationConnectionObject =
@@ -1815,6 +1641,56 @@ export interface AggregateQualificationFieldDetails {
 }
   
 
+// Types for Topic
+
+type TopicObject =
+  | TopicFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'category', args?: [] | false, alias?: string  } 
+
+type TopicFields =
+  | 'id'
+  | 'name'
+  | 'category'
+
+
+
+  
+
+export interface TopicFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  category: {
+    type: 'CategoryType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Topic">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CategoryType> | prisma.CategoryType
+  }
+}
+  
+
 // Types for TopicConnection
 
 type TopicConnectionObject =
@@ -1936,6 +1812,76 @@ export interface AggregateTopicFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
+  }
+}
+  
+
+// Types for Position
+
+type PositionObject =
+  | PositionFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'summary', args?: [] | false, alias?: string  } 
+  | { name: 'detail', args?: [] | false, alias?: string  } 
+  | { name: 'like_type', args?: [] | false, alias?: string  } 
+
+type PositionFields =
+  | 'id'
+  | 'name'
+  | 'summary'
+  | 'detail'
+  | 'like_type'
+
+
+
+  
+
+export interface PositionFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  summary: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  detail: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  like_type: {
+    type: 'LikeType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Position">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
   }
 }
   
@@ -2691,7 +2637,8 @@ type UserPositionLikeObject =
   | UserPositionLikeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'userId', args?: [] | false, alias?: string  } 
-  | { name: 'candidate_position', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'positionId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
@@ -2699,7 +2646,8 @@ type UserPositionLikeObject =
 type UserPositionLikeFields =
   | 'id'
   | 'userId'
-  | 'candidate_position'
+  | 'candidateId'
+  | 'positionId'
   | 'like'
   | 'time'
   | 'latest'
@@ -2725,18 +2673,21 @@ export interface UserPositionLikeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  candidate_position: {
-    type: 'CandidatePosition'
+  candidateId: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"UserPositionLike">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.CandidatePosition> | prisma.CandidatePosition
+    resolve: undefined
+  }
+  positionId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
   like: {
     type: 'LikeType'
@@ -4628,7 +4579,7 @@ type CandidatePreviousValuesObject =
   | { name: 'latest_poll', args?: [] | false, alias?: string  } 
   | { name: 'latest_odds', args?: [] | false, alias?: string  } 
   | { name: 'prevote_score', args?: [] | false, alias?: string  } 
-  | { name: 'bio_other', args?: [] | false, alias?: string  } 
+  | { name: 'bio_summary', args?: [] | false, alias?: string  } 
   | { name: 'vote_type', args?: [] | false, alias?: string  } 
 
 type CandidatePreviousValuesFields =
@@ -4643,7 +4594,7 @@ type CandidatePreviousValuesFields =
   | 'latest_poll'
   | 'latest_odds'
   | 'prevote_score'
-  | 'bio_other'
+  | 'bio_summary'
   | 'vote_type'
 
 
@@ -4744,7 +4695,7 @@ export interface CandidatePreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
-  bio_other: {
+  bio_summary: {
     type: 'String'
     args: {}
     description: string
@@ -4849,6 +4800,7 @@ type QualificationPreviousValuesObject =
   | { name: 'years', args?: [] | false, alias?: string  } 
   | { name: 'rank', args?: [] | false, alias?: string  } 
   | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'like_type', args?: [] | false, alias?: string  } 
 
 type QualificationPreviousValuesFields =
   | 'id'
@@ -4858,6 +4810,7 @@ type QualificationPreviousValuesFields =
   | 'years'
   | 'rank'
   | 'candidateId'
+  | 'like_type'
 
 
 
@@ -4919,6 +4872,19 @@ export interface QualificationPreviousValuesFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  like_type: {
+    type: 'LikeType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"QualificationPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
   }
 }
   
@@ -5121,12 +5087,14 @@ type PositionPreviousValuesObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'summary', args?: [] | false, alias?: string  } 
   | { name: 'detail', args?: [] | false, alias?: string  } 
+  | { name: 'like_type', args?: [] | false, alias?: string  } 
 
 type PositionPreviousValuesFields =
   | 'id'
   | 'name'
   | 'summary'
   | 'detail'
+  | 'like_type'
 
 
 
@@ -5164,6 +5132,19 @@ export interface PositionPreviousValuesFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  like_type: {
+    type: 'LikeType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PositionPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LikeType | null> | prisma.LikeType | null
   }
 }
   
@@ -5699,6 +5680,8 @@ type UserPositionLikePreviousValuesObject =
   | UserPositionLikePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'userId', args?: [] | false, alias?: string  } 
+  | { name: 'candidateId', args?: [] | false, alias?: string  } 
+  | { name: 'positionId', args?: [] | false, alias?: string  } 
   | { name: 'like', args?: [] | false, alias?: string  } 
   | { name: 'time', args?: [] | false, alias?: string  } 
   | { name: 'latest', args?: [] | false, alias?: string  } 
@@ -5706,6 +5689,8 @@ type UserPositionLikePreviousValuesObject =
 type UserPositionLikePreviousValuesFields =
   | 'id'
   | 'userId'
+  | 'candidateId'
+  | 'positionId'
   | 'like'
   | 'time'
   | 'latest'
@@ -5724,6 +5709,22 @@ export interface UserPositionLikePreviousValuesFieldDetails {
     resolve: undefined
   }
   userId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  candidateId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  positionId: {
     type: 'String'
     args: {}
     description: string
@@ -6087,389 +6088,6 @@ export type CandidateWhereUniqueInputInputObject =
   | Extract<keyof CandidateWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface QualificationWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  summary?: string | null
-  summary_not?: string | null
-  summary_in?: string[]
-  summary_not_in?: string[]
-  summary_lt?: string | null
-  summary_lte?: string | null
-  summary_gt?: string | null
-  summary_gte?: string | null
-  summary_contains?: string | null
-  summary_not_contains?: string | null
-  summary_starts_with?: string | null
-  summary_not_starts_with?: string | null
-  summary_ends_with?: string | null
-  summary_not_ends_with?: string | null
-  detail?: string | null
-  detail_not?: string | null
-  detail_in?: string[]
-  detail_not_in?: string[]
-  detail_lt?: string | null
-  detail_lte?: string | null
-  detail_gt?: string | null
-  detail_gte?: string | null
-  detail_contains?: string | null
-  detail_not_contains?: string | null
-  detail_starts_with?: string | null
-  detail_not_starts_with?: string | null
-  detail_ends_with?: string | null
-  detail_not_ends_with?: string | null
-  years?: number | null
-  years_not?: number | null
-  years_in?: number[]
-  years_not_in?: number[]
-  years_lt?: number | null
-  years_lte?: number | null
-  years_gt?: number | null
-  years_gte?: number | null
-  rank?: number | null
-  rank_not?: number | null
-  rank_in?: number[]
-  rank_not_in?: number[]
-  rank_lt?: number | null
-  rank_lte?: number | null
-  rank_gt?: number | null
-  rank_gte?: number | null
-  candidateId?: string | null
-  candidateId_not?: string | null
-  candidateId_in?: string[]
-  candidateId_not_in?: string[]
-  candidateId_lt?: string | null
-  candidateId_lte?: string | null
-  candidateId_gt?: string | null
-  candidateId_gte?: string | null
-  candidateId_contains?: string | null
-  candidateId_not_contains?: string | null
-  candidateId_starts_with?: string | null
-  candidateId_not_starts_with?: string | null
-  candidateId_ends_with?: string | null
-  candidateId_not_ends_with?: string | null
-  AND?: QualificationWhereInput[]
-  OR?: QualificationWhereInput[]
-  NOT?: QualificationWhereInput[]
-}
-export type QualificationWhereInputInputObject =
-  | Extract<keyof QualificationWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'summary_not', alias?: string  } 
-  | { name: 'summary_in', alias?: string  } 
-  | { name: 'summary_not_in', alias?: string  } 
-  | { name: 'summary_lt', alias?: string  } 
-  | { name: 'summary_lte', alias?: string  } 
-  | { name: 'summary_gt', alias?: string  } 
-  | { name: 'summary_gte', alias?: string  } 
-  | { name: 'summary_contains', alias?: string  } 
-  | { name: 'summary_not_contains', alias?: string  } 
-  | { name: 'summary_starts_with', alias?: string  } 
-  | { name: 'summary_not_starts_with', alias?: string  } 
-  | { name: 'summary_ends_with', alias?: string  } 
-  | { name: 'summary_not_ends_with', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'detail_not', alias?: string  } 
-  | { name: 'detail_in', alias?: string  } 
-  | { name: 'detail_not_in', alias?: string  } 
-  | { name: 'detail_lt', alias?: string  } 
-  | { name: 'detail_lte', alias?: string  } 
-  | { name: 'detail_gt', alias?: string  } 
-  | { name: 'detail_gte', alias?: string  } 
-  | { name: 'detail_contains', alias?: string  } 
-  | { name: 'detail_not_contains', alias?: string  } 
-  | { name: 'detail_starts_with', alias?: string  } 
-  | { name: 'detail_not_starts_with', alias?: string  } 
-  | { name: 'detail_ends_with', alias?: string  } 
-  | { name: 'detail_not_ends_with', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'years_not', alias?: string  } 
-  | { name: 'years_in', alias?: string  } 
-  | { name: 'years_not_in', alias?: string  } 
-  | { name: 'years_lt', alias?: string  } 
-  | { name: 'years_lte', alias?: string  } 
-  | { name: 'years_gt', alias?: string  } 
-  | { name: 'years_gte', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'rank_not', alias?: string  } 
-  | { name: 'rank_in', alias?: string  } 
-  | { name: 'rank_not_in', alias?: string  } 
-  | { name: 'rank_lt', alias?: string  } 
-  | { name: 'rank_lte', alias?: string  } 
-  | { name: 'rank_gt', alias?: string  } 
-  | { name: 'rank_gte', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  | { name: 'candidateId_not', alias?: string  } 
-  | { name: 'candidateId_in', alias?: string  } 
-  | { name: 'candidateId_not_in', alias?: string  } 
-  | { name: 'candidateId_lt', alias?: string  } 
-  | { name: 'candidateId_lte', alias?: string  } 
-  | { name: 'candidateId_gt', alias?: string  } 
-  | { name: 'candidateId_gte', alias?: string  } 
-  | { name: 'candidateId_contains', alias?: string  } 
-  | { name: 'candidateId_not_contains', alias?: string  } 
-  | { name: 'candidateId_starts_with', alias?: string  } 
-  | { name: 'candidateId_not_starts_with', alias?: string  } 
-  | { name: 'candidateId_ends_with', alias?: string  } 
-  | { name: 'candidateId_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface PositionWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  summary?: string | null
-  summary_not?: string | null
-  summary_in?: string[]
-  summary_not_in?: string[]
-  summary_lt?: string | null
-  summary_lte?: string | null
-  summary_gt?: string | null
-  summary_gte?: string | null
-  summary_contains?: string | null
-  summary_not_contains?: string | null
-  summary_starts_with?: string | null
-  summary_not_starts_with?: string | null
-  summary_ends_with?: string | null
-  summary_not_ends_with?: string | null
-  topic?: TopicWhereInput | null
-  detail?: string | null
-  detail_not?: string | null
-  detail_in?: string[]
-  detail_not_in?: string[]
-  detail_lt?: string | null
-  detail_lte?: string | null
-  detail_gt?: string | null
-  detail_gte?: string | null
-  detail_contains?: string | null
-  detail_not_contains?: string | null
-  detail_starts_with?: string | null
-  detail_not_starts_with?: string | null
-  detail_ends_with?: string | null
-  detail_not_ends_with?: string | null
-  AND?: PositionWhereInput[]
-  OR?: PositionWhereInput[]
-  NOT?: PositionWhereInput[]
-}
-export type PositionWhereInputInputObject =
-  | Extract<keyof PositionWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'summary_not', alias?: string  } 
-  | { name: 'summary_in', alias?: string  } 
-  | { name: 'summary_not_in', alias?: string  } 
-  | { name: 'summary_lt', alias?: string  } 
-  | { name: 'summary_lte', alias?: string  } 
-  | { name: 'summary_gt', alias?: string  } 
-  | { name: 'summary_gte', alias?: string  } 
-  | { name: 'summary_contains', alias?: string  } 
-  | { name: 'summary_not_contains', alias?: string  } 
-  | { name: 'summary_starts_with', alias?: string  } 
-  | { name: 'summary_not_starts_with', alias?: string  } 
-  | { name: 'summary_ends_with', alias?: string  } 
-  | { name: 'summary_not_ends_with', alias?: string  } 
-  | { name: 'topic', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'detail_not', alias?: string  } 
-  | { name: 'detail_in', alias?: string  } 
-  | { name: 'detail_not_in', alias?: string  } 
-  | { name: 'detail_lt', alias?: string  } 
-  | { name: 'detail_lte', alias?: string  } 
-  | { name: 'detail_gt', alias?: string  } 
-  | { name: 'detail_gte', alias?: string  } 
-  | { name: 'detail_contains', alias?: string  } 
-  | { name: 'detail_not_contains', alias?: string  } 
-  | { name: 'detail_starts_with', alias?: string  } 
-  | { name: 'detail_not_starts_with', alias?: string  } 
-  | { name: 'detail_ends_with', alias?: string  } 
-  | { name: 'detail_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface TopicWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  category?: prisma.CategoryType | null
-  category_not?: prisma.CategoryType | null
-  category_in?: prisma.CategoryType[]
-  category_not_in?: prisma.CategoryType[]
-  AND?: TopicWhereInput[]
-  OR?: TopicWhereInput[]
-  NOT?: TopicWhereInput[]
-}
-export type TopicWhereInputInputObject =
-  | Extract<keyof TopicWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'category', alias?: string  } 
-  | { name: 'category_not', alias?: string  } 
-  | { name: 'category_in', alias?: string  } 
-  | { name: 'category_not_in', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface CandidateWhereInput {
   id?: string | null
   id_not?: string | null
@@ -6591,26 +6209,20 @@ export interface CandidateWhereInput {
   prevote_score_lte?: number | null
   prevote_score_gt?: number | null
   prevote_score_gte?: number | null
-  bio_qualifications_every?: QualificationWhereInput | null
-  bio_qualifications_some?: QualificationWhereInput | null
-  bio_qualifications_none?: QualificationWhereInput | null
-  bio_policy_position_every?: PositionWhereInput | null
-  bio_policy_position_some?: PositionWhereInput | null
-  bio_policy_position_none?: PositionWhereInput | null
-  bio_other?: string | null
-  bio_other_not?: string | null
-  bio_other_in?: string[]
-  bio_other_not_in?: string[]
-  bio_other_lt?: string | null
-  bio_other_lte?: string | null
-  bio_other_gt?: string | null
-  bio_other_gte?: string | null
-  bio_other_contains?: string | null
-  bio_other_not_contains?: string | null
-  bio_other_starts_with?: string | null
-  bio_other_not_starts_with?: string | null
-  bio_other_ends_with?: string | null
-  bio_other_not_ends_with?: string | null
+  bio_summary?: string | null
+  bio_summary_not?: string | null
+  bio_summary_in?: string[]
+  bio_summary_not_in?: string[]
+  bio_summary_lt?: string | null
+  bio_summary_lte?: string | null
+  bio_summary_gt?: string | null
+  bio_summary_gte?: string | null
+  bio_summary_contains?: string | null
+  bio_summary_not_contains?: string | null
+  bio_summary_starts_with?: string | null
+  bio_summary_not_starts_with?: string | null
+  bio_summary_ends_with?: string | null
+  bio_summary_not_ends_with?: string | null
   vote_type?: prisma.VoteType | null
   vote_type_not?: prisma.VoteType | null
   vote_type_in?: prisma.VoteType[]
@@ -6741,26 +6353,20 @@ export type CandidateWhereInputInputObject =
   | { name: 'prevote_score_lte', alias?: string  } 
   | { name: 'prevote_score_gt', alias?: string  } 
   | { name: 'prevote_score_gte', alias?: string  } 
-  | { name: 'bio_qualifications_every', alias?: string  } 
-  | { name: 'bio_qualifications_some', alias?: string  } 
-  | { name: 'bio_qualifications_none', alias?: string  } 
-  | { name: 'bio_policy_position_every', alias?: string  } 
-  | { name: 'bio_policy_position_some', alias?: string  } 
-  | { name: 'bio_policy_position_none', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
-  | { name: 'bio_other_not', alias?: string  } 
-  | { name: 'bio_other_in', alias?: string  } 
-  | { name: 'bio_other_not_in', alias?: string  } 
-  | { name: 'bio_other_lt', alias?: string  } 
-  | { name: 'bio_other_lte', alias?: string  } 
-  | { name: 'bio_other_gt', alias?: string  } 
-  | { name: 'bio_other_gte', alias?: string  } 
-  | { name: 'bio_other_contains', alias?: string  } 
-  | { name: 'bio_other_not_contains', alias?: string  } 
-  | { name: 'bio_other_starts_with', alias?: string  } 
-  | { name: 'bio_other_not_starts_with', alias?: string  } 
-  | { name: 'bio_other_ends_with', alias?: string  } 
-  | { name: 'bio_other_not_ends_with', alias?: string  } 
+  | { name: 'bio_summary', alias?: string  } 
+  | { name: 'bio_summary_not', alias?: string  } 
+  | { name: 'bio_summary_in', alias?: string  } 
+  | { name: 'bio_summary_not_in', alias?: string  } 
+  | { name: 'bio_summary_lt', alias?: string  } 
+  | { name: 'bio_summary_lte', alias?: string  } 
+  | { name: 'bio_summary_gt', alias?: string  } 
+  | { name: 'bio_summary_gte', alias?: string  } 
+  | { name: 'bio_summary_contains', alias?: string  } 
+  | { name: 'bio_summary_not_contains', alias?: string  } 
+  | { name: 'bio_summary_starts_with', alias?: string  } 
+  | { name: 'bio_summary_not_starts_with', alias?: string  } 
+  | { name: 'bio_summary_ends_with', alias?: string  } 
+  | { name: 'bio_summary_not_ends_with', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
   | { name: 'vote_type_not', alias?: string  } 
   | { name: 'vote_type_in', alias?: string  } 
@@ -6776,6 +6382,197 @@ export type QualificationWhereUniqueInputInputObject =
   | Extract<keyof QualificationWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
+export interface QualificationWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  summary?: string | null
+  summary_not?: string | null
+  summary_in?: string[]
+  summary_not_in?: string[]
+  summary_lt?: string | null
+  summary_lte?: string | null
+  summary_gt?: string | null
+  summary_gte?: string | null
+  summary_contains?: string | null
+  summary_not_contains?: string | null
+  summary_starts_with?: string | null
+  summary_not_starts_with?: string | null
+  summary_ends_with?: string | null
+  summary_not_ends_with?: string | null
+  detail?: string | null
+  detail_not?: string | null
+  detail_in?: string[]
+  detail_not_in?: string[]
+  detail_lt?: string | null
+  detail_lte?: string | null
+  detail_gt?: string | null
+  detail_gte?: string | null
+  detail_contains?: string | null
+  detail_not_contains?: string | null
+  detail_starts_with?: string | null
+  detail_not_starts_with?: string | null
+  detail_ends_with?: string | null
+  detail_not_ends_with?: string | null
+  years?: number | null
+  years_not?: number | null
+  years_in?: number[]
+  years_not_in?: number[]
+  years_lt?: number | null
+  years_lte?: number | null
+  years_gt?: number | null
+  years_gte?: number | null
+  rank?: number | null
+  rank_not?: number | null
+  rank_in?: number[]
+  rank_not_in?: number[]
+  rank_lt?: number | null
+  rank_lte?: number | null
+  rank_gt?: number | null
+  rank_gte?: number | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
+  like_type?: prisma.LikeType | null
+  like_type_not?: prisma.LikeType | null
+  like_type_in?: prisma.LikeType[]
+  like_type_not_in?: prisma.LikeType[]
+  AND?: QualificationWhereInput[]
+  OR?: QualificationWhereInput[]
+  NOT?: QualificationWhereInput[]
+}
+export type QualificationWhereInputInputObject =
+  | Extract<keyof QualificationWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'summary', alias?: string  } 
+  | { name: 'summary_not', alias?: string  } 
+  | { name: 'summary_in', alias?: string  } 
+  | { name: 'summary_not_in', alias?: string  } 
+  | { name: 'summary_lt', alias?: string  } 
+  | { name: 'summary_lte', alias?: string  } 
+  | { name: 'summary_gt', alias?: string  } 
+  | { name: 'summary_gte', alias?: string  } 
+  | { name: 'summary_contains', alias?: string  } 
+  | { name: 'summary_not_contains', alias?: string  } 
+  | { name: 'summary_starts_with', alias?: string  } 
+  | { name: 'summary_not_starts_with', alias?: string  } 
+  | { name: 'summary_ends_with', alias?: string  } 
+  | { name: 'summary_not_ends_with', alias?: string  } 
+  | { name: 'detail', alias?: string  } 
+  | { name: 'detail_not', alias?: string  } 
+  | { name: 'detail_in', alias?: string  } 
+  | { name: 'detail_not_in', alias?: string  } 
+  | { name: 'detail_lt', alias?: string  } 
+  | { name: 'detail_lte', alias?: string  } 
+  | { name: 'detail_gt', alias?: string  } 
+  | { name: 'detail_gte', alias?: string  } 
+  | { name: 'detail_contains', alias?: string  } 
+  | { name: 'detail_not_contains', alias?: string  } 
+  | { name: 'detail_starts_with', alias?: string  } 
+  | { name: 'detail_not_starts_with', alias?: string  } 
+  | { name: 'detail_ends_with', alias?: string  } 
+  | { name: 'detail_not_ends_with', alias?: string  } 
+  | { name: 'years', alias?: string  } 
+  | { name: 'years_not', alias?: string  } 
+  | { name: 'years_in', alias?: string  } 
+  | { name: 'years_not_in', alias?: string  } 
+  | { name: 'years_lt', alias?: string  } 
+  | { name: 'years_lte', alias?: string  } 
+  | { name: 'years_gt', alias?: string  } 
+  | { name: 'years_gte', alias?: string  } 
+  | { name: 'rank', alias?: string  } 
+  | { name: 'rank_not', alias?: string  } 
+  | { name: 'rank_in', alias?: string  } 
+  | { name: 'rank_not_in', alias?: string  } 
+  | { name: 'rank_lt', alias?: string  } 
+  | { name: 'rank_lte', alias?: string  } 
+  | { name: 'rank_gt', alias?: string  } 
+  | { name: 'rank_gte', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
+  | { name: 'like_type_not', alias?: string  } 
+  | { name: 'like_type_in', alias?: string  } 
+  | { name: 'like_type_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface TopicWhereUniqueInput {
   id?: string | null
 }
@@ -6783,12 +6580,218 @@ export type TopicWhereUniqueInputInputObject =
   | Extract<keyof TopicWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
+export interface TopicWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  category?: prisma.CategoryType | null
+  category_not?: prisma.CategoryType | null
+  category_in?: prisma.CategoryType[]
+  category_not_in?: prisma.CategoryType[]
+  AND?: TopicWhereInput[]
+  OR?: TopicWhereInput[]
+  NOT?: TopicWhereInput[]
+}
+export type TopicWhereInputInputObject =
+  | Extract<keyof TopicWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'category', alias?: string  } 
+  | { name: 'category_not', alias?: string  } 
+  | { name: 'category_in', alias?: string  } 
+  | { name: 'category_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface PositionWhereUniqueInput {
   id?: string | null
 }
 export type PositionWhereUniqueInputInputObject =
   | Extract<keyof PositionWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  
+export interface PositionWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  summary?: string | null
+  summary_not?: string | null
+  summary_in?: string[]
+  summary_not_in?: string[]
+  summary_lt?: string | null
+  summary_lte?: string | null
+  summary_gt?: string | null
+  summary_gte?: string | null
+  summary_contains?: string | null
+  summary_not_contains?: string | null
+  summary_starts_with?: string | null
+  summary_not_starts_with?: string | null
+  summary_ends_with?: string | null
+  summary_not_ends_with?: string | null
+  detail?: string | null
+  detail_not?: string | null
+  detail_in?: string[]
+  detail_not_in?: string[]
+  detail_lt?: string | null
+  detail_lte?: string | null
+  detail_gt?: string | null
+  detail_gte?: string | null
+  detail_contains?: string | null
+  detail_not_contains?: string | null
+  detail_starts_with?: string | null
+  detail_not_starts_with?: string | null
+  detail_ends_with?: string | null
+  detail_not_ends_with?: string | null
+  like_type?: prisma.LikeType | null
+  like_type_not?: prisma.LikeType | null
+  like_type_in?: prisma.LikeType[]
+  like_type_not_in?: prisma.LikeType[]
+  AND?: PositionWhereInput[]
+  OR?: PositionWhereInput[]
+  NOT?: PositionWhereInput[]
+}
+export type PositionWhereInputInputObject =
+  | Extract<keyof PositionWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'summary', alias?: string  } 
+  | { name: 'summary_not', alias?: string  } 
+  | { name: 'summary_in', alias?: string  } 
+  | { name: 'summary_not_in', alias?: string  } 
+  | { name: 'summary_lt', alias?: string  } 
+  | { name: 'summary_lte', alias?: string  } 
+  | { name: 'summary_gt', alias?: string  } 
+  | { name: 'summary_gte', alias?: string  } 
+  | { name: 'summary_contains', alias?: string  } 
+  | { name: 'summary_not_contains', alias?: string  } 
+  | { name: 'summary_starts_with', alias?: string  } 
+  | { name: 'summary_not_starts_with', alias?: string  } 
+  | { name: 'summary_ends_with', alias?: string  } 
+  | { name: 'summary_not_ends_with', alias?: string  } 
+  | { name: 'detail', alias?: string  } 
+  | { name: 'detail_not', alias?: string  } 
+  | { name: 'detail_in', alias?: string  } 
+  | { name: 'detail_not_in', alias?: string  } 
+  | { name: 'detail_lt', alias?: string  } 
+  | { name: 'detail_lte', alias?: string  } 
+  | { name: 'detail_gt', alias?: string  } 
+  | { name: 'detail_gte', alias?: string  } 
+  | { name: 'detail_contains', alias?: string  } 
+  | { name: 'detail_not_contains', alias?: string  } 
+  | { name: 'detail_starts_with', alias?: string  } 
+  | { name: 'detail_not_starts_with', alias?: string  } 
+  | { name: 'detail_ends_with', alias?: string  } 
+  | { name: 'detail_not_ends_with', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
+  | { name: 'like_type_not', alias?: string  } 
+  | { name: 'like_type_in', alias?: string  } 
+  | { name: 'like_type_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
   
 export interface CandidatePositionWhereUniqueInput {
   id?: string | null
@@ -7252,7 +7255,34 @@ export interface UserPositionLikeWhereInput {
   userId_not_starts_with?: string | null
   userId_ends_with?: string | null
   userId_not_ends_with?: string | null
-  candidate_position?: CandidatePositionWhereInput | null
+  candidateId?: string | null
+  candidateId_not?: string | null
+  candidateId_in?: string[]
+  candidateId_not_in?: string[]
+  candidateId_lt?: string | null
+  candidateId_lte?: string | null
+  candidateId_gt?: string | null
+  candidateId_gte?: string | null
+  candidateId_contains?: string | null
+  candidateId_not_contains?: string | null
+  candidateId_starts_with?: string | null
+  candidateId_not_starts_with?: string | null
+  candidateId_ends_with?: string | null
+  candidateId_not_ends_with?: string | null
+  positionId?: string | null
+  positionId_not?: string | null
+  positionId_in?: string[]
+  positionId_not_in?: string[]
+  positionId_lt?: string | null
+  positionId_lte?: string | null
+  positionId_gt?: string | null
+  positionId_gte?: string | null
+  positionId_contains?: string | null
+  positionId_not_contains?: string | null
+  positionId_starts_with?: string | null
+  positionId_not_starts_with?: string | null
+  positionId_ends_with?: string | null
+  positionId_not_ends_with?: string | null
   like?: prisma.LikeType | null
   like_not?: prisma.LikeType | null
   like_in?: prisma.LikeType[]
@@ -7301,7 +7331,34 @@ export type UserPositionLikeWhereInputInputObject =
   | { name: 'userId_not_starts_with', alias?: string  } 
   | { name: 'userId_ends_with', alias?: string  } 
   | { name: 'userId_not_ends_with', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'candidateId_not', alias?: string  } 
+  | { name: 'candidateId_in', alias?: string  } 
+  | { name: 'candidateId_not_in', alias?: string  } 
+  | { name: 'candidateId_lt', alias?: string  } 
+  | { name: 'candidateId_lte', alias?: string  } 
+  | { name: 'candidateId_gt', alias?: string  } 
+  | { name: 'candidateId_gte', alias?: string  } 
+  | { name: 'candidateId_contains', alias?: string  } 
+  | { name: 'candidateId_not_contains', alias?: string  } 
+  | { name: 'candidateId_starts_with', alias?: string  } 
+  | { name: 'candidateId_not_starts_with', alias?: string  } 
+  | { name: 'candidateId_ends_with', alias?: string  } 
+  | { name: 'candidateId_not_ends_with', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
+  | { name: 'positionId_not', alias?: string  } 
+  | { name: 'positionId_in', alias?: string  } 
+  | { name: 'positionId_not_in', alias?: string  } 
+  | { name: 'positionId_lt', alias?: string  } 
+  | { name: 'positionId_lte', alias?: string  } 
+  | { name: 'positionId_gt', alias?: string  } 
+  | { name: 'positionId_gte', alias?: string  } 
+  | { name: 'positionId_contains', alias?: string  } 
+  | { name: 'positionId_not_contains', alias?: string  } 
+  | { name: 'positionId_starts_with', alias?: string  } 
+  | { name: 'positionId_not_starts_with', alias?: string  } 
+  | { name: 'positionId_ends_with', alias?: string  } 
+  | { name: 'positionId_not_ends_with', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'like_not', alias?: string  } 
   | { name: 'like_in', alias?: string  } 
@@ -7561,9 +7618,7 @@ export interface CandidateCreateInput {
   latest_poll?: number | null
   latest_odds?: number | null
   prevote_score?: number | null
-  bio_qualifications?: QualificationCreateManyInput | null
-  bio_policy_position?: PositionCreateManyInput | null
-  bio_other?: string | null
+  bio_summary?: string | null
   vote_type?: prisma.VoteType | null
 }
 export type CandidateCreateInputInputObject =
@@ -7579,82 +7634,8 @@ export type CandidateCreateInputInputObject =
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
   | { name: 'prevote_score', alias?: string  } 
-  | { name: 'bio_qualifications', alias?: string  } 
-  | { name: 'bio_policy_position', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
+  | { name: 'bio_summary', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
-  
-export interface QualificationCreateManyInput {
-  create?: QualificationCreateInput[]
-  connect?: QualificationWhereUniqueInput[]
-}
-export type QualificationCreateManyInputInputObject =
-  | Extract<keyof QualificationCreateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface QualificationCreateInput {
-  id?: string | null
-  name?: string
-  summary?: string | null
-  detail?: string | null
-  years?: number
-  rank?: number | null
-  candidateId?: string | null
-}
-export type QualificationCreateInputInputObject =
-  | Extract<keyof QualificationCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  
-export interface PositionCreateManyInput {
-  create?: PositionCreateInput[]
-  connect?: PositionWhereUniqueInput[]
-}
-export type PositionCreateManyInputInputObject =
-  | Extract<keyof PositionCreateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface PositionCreateInput {
-  id?: string | null
-  name?: string
-  summary?: string | null
-  topic?: TopicCreateOneInput | null
-  detail?: string | null
-}
-export type PositionCreateInputInputObject =
-  | Extract<keyof PositionCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'topic', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  
-export interface TopicCreateOneInput {
-  create?: TopicCreateInput | null
-  connect?: TopicWhereUniqueInput | null
-}
-export type TopicCreateOneInputInputObject =
-  | Extract<keyof TopicCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface TopicCreateInput {
-  id?: string | null
-  name?: string
-  category?: prisma.CategoryType | null
-}
-export type TopicCreateInputInputObject =
-  | Extract<keyof TopicCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'category', alias?: string  } 
   
 export interface CandidateUpdateInput {
   name?: string | null
@@ -7667,9 +7648,7 @@ export interface CandidateUpdateInput {
   latest_poll?: number | null
   latest_odds?: number | null
   prevote_score?: number | null
-  bio_qualifications?: QualificationUpdateManyInput | null
-  bio_policy_position?: PositionUpdateManyInput | null
-  bio_other?: string | null
+  bio_summary?: string | null
   vote_type?: prisma.VoteType | null
 }
 export type CandidateUpdateInputInputObject =
@@ -7684,513 +7663,8 @@ export type CandidateUpdateInputInputObject =
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
   | { name: 'prevote_score', alias?: string  } 
-  | { name: 'bio_qualifications', alias?: string  } 
-  | { name: 'bio_policy_position', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
+  | { name: 'bio_summary', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
-  
-export interface QualificationUpdateManyInput {
-  create?: QualificationCreateInput[]
-  update?: QualificationUpdateWithWhereUniqueNestedInput[]
-  upsert?: QualificationUpsertWithWhereUniqueNestedInput[]
-  delete?: QualificationWhereUniqueInput[]
-  connect?: QualificationWhereUniqueInput[]
-  set?: QualificationWhereUniqueInput[]
-  disconnect?: QualificationWhereUniqueInput[]
-  deleteMany?: QualificationScalarWhereInput[]
-  updateMany?: QualificationUpdateManyWithWhereNestedInput[]
-}
-export type QualificationUpdateManyInputInputObject =
-  | Extract<keyof QualificationUpdateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface QualificationUpdateWithWhereUniqueNestedInput {
-  where?: QualificationWhereUniqueInput
-  data?: QualificationUpdateDataInput
-}
-export type QualificationUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof QualificationUpdateWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface QualificationUpdateDataInput {
-  name?: string | null
-  summary?: string | null
-  detail?: string | null
-  years?: number | null
-  rank?: number | null
-  candidateId?: string | null
-}
-export type QualificationUpdateDataInputInputObject =
-  | Extract<keyof QualificationUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  
-export interface QualificationUpsertWithWhereUniqueNestedInput {
-  where?: QualificationWhereUniqueInput
-  update?: QualificationUpdateDataInput
-  create?: QualificationCreateInput
-}
-export type QualificationUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof QualificationUpsertWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface QualificationScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  summary?: string | null
-  summary_not?: string | null
-  summary_in?: string[]
-  summary_not_in?: string[]
-  summary_lt?: string | null
-  summary_lte?: string | null
-  summary_gt?: string | null
-  summary_gte?: string | null
-  summary_contains?: string | null
-  summary_not_contains?: string | null
-  summary_starts_with?: string | null
-  summary_not_starts_with?: string | null
-  summary_ends_with?: string | null
-  summary_not_ends_with?: string | null
-  detail?: string | null
-  detail_not?: string | null
-  detail_in?: string[]
-  detail_not_in?: string[]
-  detail_lt?: string | null
-  detail_lte?: string | null
-  detail_gt?: string | null
-  detail_gte?: string | null
-  detail_contains?: string | null
-  detail_not_contains?: string | null
-  detail_starts_with?: string | null
-  detail_not_starts_with?: string | null
-  detail_ends_with?: string | null
-  detail_not_ends_with?: string | null
-  years?: number | null
-  years_not?: number | null
-  years_in?: number[]
-  years_not_in?: number[]
-  years_lt?: number | null
-  years_lte?: number | null
-  years_gt?: number | null
-  years_gte?: number | null
-  rank?: number | null
-  rank_not?: number | null
-  rank_in?: number[]
-  rank_not_in?: number[]
-  rank_lt?: number | null
-  rank_lte?: number | null
-  rank_gt?: number | null
-  rank_gte?: number | null
-  candidateId?: string | null
-  candidateId_not?: string | null
-  candidateId_in?: string[]
-  candidateId_not_in?: string[]
-  candidateId_lt?: string | null
-  candidateId_lte?: string | null
-  candidateId_gt?: string | null
-  candidateId_gte?: string | null
-  candidateId_contains?: string | null
-  candidateId_not_contains?: string | null
-  candidateId_starts_with?: string | null
-  candidateId_not_starts_with?: string | null
-  candidateId_ends_with?: string | null
-  candidateId_not_ends_with?: string | null
-  AND?: QualificationScalarWhereInput[]
-  OR?: QualificationScalarWhereInput[]
-  NOT?: QualificationScalarWhereInput[]
-}
-export type QualificationScalarWhereInputInputObject =
-  | Extract<keyof QualificationScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'summary_not', alias?: string  } 
-  | { name: 'summary_in', alias?: string  } 
-  | { name: 'summary_not_in', alias?: string  } 
-  | { name: 'summary_lt', alias?: string  } 
-  | { name: 'summary_lte', alias?: string  } 
-  | { name: 'summary_gt', alias?: string  } 
-  | { name: 'summary_gte', alias?: string  } 
-  | { name: 'summary_contains', alias?: string  } 
-  | { name: 'summary_not_contains', alias?: string  } 
-  | { name: 'summary_starts_with', alias?: string  } 
-  | { name: 'summary_not_starts_with', alias?: string  } 
-  | { name: 'summary_ends_with', alias?: string  } 
-  | { name: 'summary_not_ends_with', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'detail_not', alias?: string  } 
-  | { name: 'detail_in', alias?: string  } 
-  | { name: 'detail_not_in', alias?: string  } 
-  | { name: 'detail_lt', alias?: string  } 
-  | { name: 'detail_lte', alias?: string  } 
-  | { name: 'detail_gt', alias?: string  } 
-  | { name: 'detail_gte', alias?: string  } 
-  | { name: 'detail_contains', alias?: string  } 
-  | { name: 'detail_not_contains', alias?: string  } 
-  | { name: 'detail_starts_with', alias?: string  } 
-  | { name: 'detail_not_starts_with', alias?: string  } 
-  | { name: 'detail_ends_with', alias?: string  } 
-  | { name: 'detail_not_ends_with', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'years_not', alias?: string  } 
-  | { name: 'years_in', alias?: string  } 
-  | { name: 'years_not_in', alias?: string  } 
-  | { name: 'years_lt', alias?: string  } 
-  | { name: 'years_lte', alias?: string  } 
-  | { name: 'years_gt', alias?: string  } 
-  | { name: 'years_gte', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'rank_not', alias?: string  } 
-  | { name: 'rank_in', alias?: string  } 
-  | { name: 'rank_not_in', alias?: string  } 
-  | { name: 'rank_lt', alias?: string  } 
-  | { name: 'rank_lte', alias?: string  } 
-  | { name: 'rank_gt', alias?: string  } 
-  | { name: 'rank_gte', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  | { name: 'candidateId_not', alias?: string  } 
-  | { name: 'candidateId_in', alias?: string  } 
-  | { name: 'candidateId_not_in', alias?: string  } 
-  | { name: 'candidateId_lt', alias?: string  } 
-  | { name: 'candidateId_lte', alias?: string  } 
-  | { name: 'candidateId_gt', alias?: string  } 
-  | { name: 'candidateId_gte', alias?: string  } 
-  | { name: 'candidateId_contains', alias?: string  } 
-  | { name: 'candidateId_not_contains', alias?: string  } 
-  | { name: 'candidateId_starts_with', alias?: string  } 
-  | { name: 'candidateId_not_starts_with', alias?: string  } 
-  | { name: 'candidateId_ends_with', alias?: string  } 
-  | { name: 'candidateId_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface QualificationUpdateManyWithWhereNestedInput {
-  where?: QualificationScalarWhereInput
-  data?: QualificationUpdateManyDataInput
-}
-export type QualificationUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof QualificationUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface QualificationUpdateManyDataInput {
-  name?: string | null
-  summary?: string | null
-  detail?: string | null
-  years?: number | null
-  rank?: number | null
-  candidateId?: string | null
-}
-export type QualificationUpdateManyDataInputInputObject =
-  | Extract<keyof QualificationUpdateManyDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'years', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  
-export interface PositionUpdateManyInput {
-  create?: PositionCreateInput[]
-  update?: PositionUpdateWithWhereUniqueNestedInput[]
-  upsert?: PositionUpsertWithWhereUniqueNestedInput[]
-  delete?: PositionWhereUniqueInput[]
-  connect?: PositionWhereUniqueInput[]
-  set?: PositionWhereUniqueInput[]
-  disconnect?: PositionWhereUniqueInput[]
-  deleteMany?: PositionScalarWhereInput[]
-  updateMany?: PositionUpdateManyWithWhereNestedInput[]
-}
-export type PositionUpdateManyInputInputObject =
-  | Extract<keyof PositionUpdateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface PositionUpdateWithWhereUniqueNestedInput {
-  where?: PositionWhereUniqueInput
-  data?: PositionUpdateDataInput
-}
-export type PositionUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof PositionUpdateWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface PositionUpdateDataInput {
-  name?: string | null
-  summary?: string | null
-  topic?: TopicUpdateOneInput | null
-  detail?: string | null
-}
-export type PositionUpdateDataInputInputObject =
-  | Extract<keyof PositionUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'topic', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  
-export interface TopicUpdateOneInput {
-  create?: TopicCreateInput | null
-  update?: TopicUpdateDataInput | null
-  upsert?: TopicUpsertNestedInput | null
-  delete?: boolean | null
-  disconnect?: boolean | null
-  connect?: TopicWhereUniqueInput | null
-}
-export type TopicUpdateOneInputInputObject =
-  | Extract<keyof TopicUpdateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface TopicUpdateDataInput {
-  name?: string | null
-  category?: prisma.CategoryType | null
-}
-export type TopicUpdateDataInputInputObject =
-  | Extract<keyof TopicUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'category', alias?: string  } 
-  
-export interface TopicUpsertNestedInput {
-  update?: TopicUpdateDataInput
-  create?: TopicCreateInput
-}
-export type TopicUpsertNestedInputInputObject =
-  | Extract<keyof TopicUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface PositionUpsertWithWhereUniqueNestedInput {
-  where?: PositionWhereUniqueInput
-  update?: PositionUpdateDataInput
-  create?: PositionCreateInput
-}
-export type PositionUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof PositionUpsertWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface PositionScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  summary?: string | null
-  summary_not?: string | null
-  summary_in?: string[]
-  summary_not_in?: string[]
-  summary_lt?: string | null
-  summary_lte?: string | null
-  summary_gt?: string | null
-  summary_gte?: string | null
-  summary_contains?: string | null
-  summary_not_contains?: string | null
-  summary_starts_with?: string | null
-  summary_not_starts_with?: string | null
-  summary_ends_with?: string | null
-  summary_not_ends_with?: string | null
-  detail?: string | null
-  detail_not?: string | null
-  detail_in?: string[]
-  detail_not_in?: string[]
-  detail_lt?: string | null
-  detail_lte?: string | null
-  detail_gt?: string | null
-  detail_gte?: string | null
-  detail_contains?: string | null
-  detail_not_contains?: string | null
-  detail_starts_with?: string | null
-  detail_not_starts_with?: string | null
-  detail_ends_with?: string | null
-  detail_not_ends_with?: string | null
-  AND?: PositionScalarWhereInput[]
-  OR?: PositionScalarWhereInput[]
-  NOT?: PositionScalarWhereInput[]
-}
-export type PositionScalarWhereInputInputObject =
-  | Extract<keyof PositionScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'summary_not', alias?: string  } 
-  | { name: 'summary_in', alias?: string  } 
-  | { name: 'summary_not_in', alias?: string  } 
-  | { name: 'summary_lt', alias?: string  } 
-  | { name: 'summary_lte', alias?: string  } 
-  | { name: 'summary_gt', alias?: string  } 
-  | { name: 'summary_gte', alias?: string  } 
-  | { name: 'summary_contains', alias?: string  } 
-  | { name: 'summary_not_contains', alias?: string  } 
-  | { name: 'summary_starts_with', alias?: string  } 
-  | { name: 'summary_not_starts_with', alias?: string  } 
-  | { name: 'summary_ends_with', alias?: string  } 
-  | { name: 'summary_not_ends_with', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
-  | { name: 'detail_not', alias?: string  } 
-  | { name: 'detail_in', alias?: string  } 
-  | { name: 'detail_not_in', alias?: string  } 
-  | { name: 'detail_lt', alias?: string  } 
-  | { name: 'detail_lte', alias?: string  } 
-  | { name: 'detail_gt', alias?: string  } 
-  | { name: 'detail_gte', alias?: string  } 
-  | { name: 'detail_contains', alias?: string  } 
-  | { name: 'detail_not_contains', alias?: string  } 
-  | { name: 'detail_starts_with', alias?: string  } 
-  | { name: 'detail_not_starts_with', alias?: string  } 
-  | { name: 'detail_ends_with', alias?: string  } 
-  | { name: 'detail_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface PositionUpdateManyWithWhereNestedInput {
-  where?: PositionScalarWhereInput
-  data?: PositionUpdateManyDataInput
-}
-export type PositionUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof PositionUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface PositionUpdateManyDataInput {
-  name?: string | null
-  summary?: string | null
-  detail?: string | null
-}
-export type PositionUpdateManyDataInputInputObject =
-  | Extract<keyof PositionUpdateManyDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'summary', alias?: string  } 
-  | { name: 'detail', alias?: string  } 
   
 export interface CandidateUpdateManyMutationInput {
   name?: string | null
@@ -8203,7 +7677,7 @@ export interface CandidateUpdateManyMutationInput {
   latest_poll?: number | null
   latest_odds?: number | null
   prevote_score?: number | null
-  bio_other?: string | null
+  bio_summary?: string | null
   vote_type?: prisma.VoteType | null
 }
 export type CandidateUpdateManyMutationInputInputObject =
@@ -8218,8 +7692,29 @@ export type CandidateUpdateManyMutationInputInputObject =
   | { name: 'latest_poll', alias?: string  } 
   | { name: 'latest_odds', alias?: string  } 
   | { name: 'prevote_score', alias?: string  } 
-  | { name: 'bio_other', alias?: string  } 
+  | { name: 'bio_summary', alias?: string  } 
   | { name: 'vote_type', alias?: string  } 
+  
+export interface QualificationCreateInput {
+  id?: string | null
+  name?: string
+  summary?: string | null
+  detail?: string | null
+  years?: number
+  rank?: number | null
+  candidateId?: string | null
+  like_type?: prisma.LikeType | null
+}
+export type QualificationCreateInputInputObject =
+  | Extract<keyof QualificationCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'summary', alias?: string  } 
+  | { name: 'detail', alias?: string  } 
+  | { name: 'years', alias?: string  } 
+  | { name: 'rank', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
   
 export interface QualificationUpdateInput {
   name?: string | null
@@ -8228,6 +7723,7 @@ export interface QualificationUpdateInput {
   years?: number | null
   rank?: number | null
   candidateId?: string | null
+  like_type?: prisma.LikeType | null
 }
 export type QualificationUpdateInputInputObject =
   | Extract<keyof QualificationUpdateInput, string>
@@ -8237,6 +7733,7 @@ export type QualificationUpdateInputInputObject =
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
   | { name: 'candidateId', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
   
 export interface QualificationUpdateManyMutationInput {
   name?: string | null
@@ -8245,6 +7742,7 @@ export interface QualificationUpdateManyMutationInput {
   years?: number | null
   rank?: number | null
   candidateId?: string | null
+  like_type?: prisma.LikeType | null
 }
 export type QualificationUpdateManyMutationInputInputObject =
   | Extract<keyof QualificationUpdateManyMutationInput, string>
@@ -8254,6 +7752,18 @@ export type QualificationUpdateManyMutationInputInputObject =
   | { name: 'years', alias?: string  } 
   | { name: 'rank', alias?: string  } 
   | { name: 'candidateId', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
+  
+export interface TopicCreateInput {
+  id?: string | null
+  name?: string
+  category?: prisma.CategoryType | null
+}
+export type TopicCreateInputInputObject =
+  | Extract<keyof TopicCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'category', alias?: string  } 
   
 export interface TopicUpdateInput {
   name?: string | null
@@ -8273,29 +7783,46 @@ export type TopicUpdateManyMutationInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'category', alias?: string  } 
   
+export interface PositionCreateInput {
+  id?: string | null
+  name?: string
+  summary?: string | null
+  detail?: string | null
+  like_type?: prisma.LikeType | null
+}
+export type PositionCreateInputInputObject =
+  | Extract<keyof PositionCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'summary', alias?: string  } 
+  | { name: 'detail', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
+  
 export interface PositionUpdateInput {
   name?: string | null
   summary?: string | null
-  topic?: TopicUpdateOneInput | null
   detail?: string | null
+  like_type?: prisma.LikeType | null
 }
 export type PositionUpdateInputInputObject =
   | Extract<keyof PositionUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
-  | { name: 'topic', alias?: string  } 
   | { name: 'detail', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
   
 export interface PositionUpdateManyMutationInput {
   name?: string | null
   summary?: string | null
   detail?: string | null
+  like_type?: prisma.LikeType | null
 }
 export type PositionUpdateManyMutationInputInputObject =
   | Extract<keyof PositionUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
   | { name: 'detail', alias?: string  } 
+  | { name: 'like_type', alias?: string  } 
   
 export interface CandidatePositionCreateInput {
   id?: string | null
@@ -8447,7 +7974,8 @@ export type UserQualificationLikeUpdateManyMutationInputInputObject =
 export interface UserPositionLikeCreateInput {
   id?: string | null
   userId?: string
-  candidate_position?: CandidatePositionCreateOneInput
+  candidateId?: string
+  positionId?: string
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8456,23 +7984,16 @@ export type UserPositionLikeCreateInputInputObject =
   | Extract<keyof UserPositionLikeCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'userId', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface CandidatePositionCreateOneInput {
-  create?: CandidatePositionCreateInput | null
-  connect?: CandidatePositionWhereUniqueInput | null
-}
-export type CandidatePositionCreateOneInputInputObject =
-  | Extract<keyof CandidatePositionCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
 export interface UserPositionLikeUpdateInput {
   userId?: string | null
-  candidate_position?: CandidatePositionUpdateOneRequiredInput | null
+  candidateId?: string | null
+  positionId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8480,52 +8001,16 @@ export interface UserPositionLikeUpdateInput {
 export type UserPositionLikeUpdateInputInputObject =
   | Extract<keyof UserPositionLikeUpdateInput, string>
   | { name: 'userId', alias?: string  } 
-  | { name: 'candidate_position', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
   
-export interface CandidatePositionUpdateOneRequiredInput {
-  create?: CandidatePositionCreateInput | null
-  update?: CandidatePositionUpdateDataInput | null
-  upsert?: CandidatePositionUpsertNestedInput | null
-  connect?: CandidatePositionWhereUniqueInput | null
-}
-export type CandidatePositionUpdateOneRequiredInputInputObject =
-  | Extract<keyof CandidatePositionUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface CandidatePositionUpdateDataInput {
-  positionId?: string | null
-  candidateId?: string | null
-  time?: string | null
-  link?: string | null
-  rank?: number | null
-  latest?: boolean | null
-}
-export type CandidatePositionUpdateDataInputInputObject =
-  | Extract<keyof CandidatePositionUpdateDataInput, string>
-  | { name: 'positionId', alias?: string  } 
-  | { name: 'candidateId', alias?: string  } 
-  | { name: 'time', alias?: string  } 
-  | { name: 'link', alias?: string  } 
-  | { name: 'rank', alias?: string  } 
-  | { name: 'latest', alias?: string  } 
-  
-export interface CandidatePositionUpsertNestedInput {
-  update?: CandidatePositionUpdateDataInput
-  create?: CandidatePositionCreateInput
-}
-export type CandidatePositionUpsertNestedInputInputObject =
-  | Extract<keyof CandidatePositionUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
 export interface UserPositionLikeUpdateManyMutationInput {
   userId?: string | null
+  candidateId?: string | null
+  positionId?: string | null
   like?: prisma.LikeType | null
   time?: string | null
   latest?: boolean | null
@@ -8533,6 +8018,8 @@ export interface UserPositionLikeUpdateManyMutationInput {
 export type UserPositionLikeUpdateManyMutationInputInputObject =
   | Extract<keyof UserPositionLikeUpdateManyMutationInput, string>
   | { name: 'userId', alias?: string  } 
+  | { name: 'candidateId', alias?: string  } 
+  | { name: 'positionId', alias?: string  } 
   | { name: 'like', alias?: string  } 
   | { name: 'time', alias?: string  } 
   | { name: 'latest', alias?: string  } 
@@ -8823,43 +8310,6 @@ export type UserOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type QualificationOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-  | 'summary_ASC'
-  | 'summary_DESC'
-  | 'detail_ASC'
-  | 'detail_DESC'
-  | 'years_ASC'
-  | 'years_DESC'
-  | 'rank_ASC'
-  | 'rank_DESC'
-  | 'candidateId_ASC'
-  | 'candidateId_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  
-export type CategoryTypeValues =
-  | 'HEALTH'
-  
-export type PositionOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-  | 'summary_ASC'
-  | 'summary_DESC'
-  | 'detail_ASC'
-  | 'detail_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  
 export type VoteTypeValues =
   | 'TOP'
   | 'FAVORITE'
@@ -8890,14 +8340,44 @@ export type CandidateOrderByInputValues =
   | 'latest_odds_DESC'
   | 'prevote_score_ASC'
   | 'prevote_score_DESC'
-  | 'bio_other_ASC'
-  | 'bio_other_DESC'
+  | 'bio_summary_ASC'
+  | 'bio_summary_DESC'
   | 'vote_type_ASC'
   | 'vote_type_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  
+export type LikeTypeValues =
+  | 'LIKE'
+  | 'DISLIKE'
+  | 'UNSPECIFIED'
+  
+export type QualificationOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'summary_ASC'
+  | 'summary_DESC'
+  | 'detail_ASC'
+  | 'detail_DESC'
+  | 'years_ASC'
+  | 'years_DESC'
+  | 'rank_ASC'
+  | 'rank_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
+  | 'like_type_ASC'
+  | 'like_type_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type CategoryTypeValues =
+  | 'HEALTH'
   
 export type TopicOrderByInputValues =
   | 'id_ASC'
@@ -8906,6 +8386,22 @@ export type TopicOrderByInputValues =
   | 'name_DESC'
   | 'category_ASC'
   | 'category_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type PositionOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'summary_ASC'
+  | 'summary_DESC'
+  | 'detail_ASC'
+  | 'detail_DESC'
+  | 'like_type_ASC'
+  | 'like_type_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -8949,11 +8445,6 @@ export type UserVoteOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type LikeTypeValues =
-  | 'LIKE'
-  | 'DISLIKE'
-  | 'UNSPECIFIED'
-  
 export type UserQualificationLikeOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8977,6 +8468,10 @@ export type UserPositionLikeOrderByInputValues =
   | 'id_DESC'
   | 'userId_ASC'
   | 'userId_DESC'
+  | 'candidateId_ASC'
+  | 'candidateId_DESC'
+  | 'positionId_ASC'
+  | 'positionId_DESC'
   | 'like_ASC'
   | 'like_DESC'
   | 'time_ASC'

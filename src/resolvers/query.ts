@@ -1,21 +1,7 @@
 import { prismaObjectType } from 'nexus-prisma'
 import { getUserId } from '../utils'
-import { VoteType, LikeType } from '../../generated/prisma-client';
-
-const posLikeFragment = `
-  fragment userPositionLike on UserPositionLike {
-    id
-    userId
-    like
-    time
-    latest
-    candidate_position {
-      id
-      candidateId
-      positionId
-    }
-  }
-`
+import { VoteType, LikeType, Candidate } from '../../generated/prisma-client';
+import { stringArg, idArg, intArg } from 'nexus/dist';
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -23,12 +9,9 @@ const Query = prismaObjectType({
     t.prismaFields([
       'users',
       'positions',
-      'qualifications',
       'userPositionLikes',
       'userQualificationLikes',
       'polls',
-      'topics',
-      'candidatePositions'
     ]),
 
     // get candidates in the order of voteTypes
@@ -37,17 +20,16 @@ const Query = prismaObjectType({
       nullable: true,
       resolve: async (parent, args, ctx) => {
         const userId = getUserId(ctx)
-        const candidates = await ctx.prisma.candidates({ orderBy: "latest_poll_DESC"})
+        const candidates = await ctx.prisma.candidates({ orderBy: "latest_poll_DESC" })
         if (!userId) return candidates
-        const myVotes = await ctx.prisma.userVotes({ orderBy: "id_ASC"})
-        let nonVotedCandidates = []
+        const myVotes = await ctx.prisma.userVotes({ where: { userId: userId }})
 
+        // reorder by vote type
+        let nonVotedCandidates = []
         const filterByVotes = (voteType: VoteType) => {
           let filteredCandidates = []
           for(let i = candidates.length - 1; i >= 0; i--) {
-            let result = myVotes.filter(vote => {
-              return candidates[i].id === vote.candidateId && userId === vote.userId
-            })
+            let result = myVotes.filter(vote => candidates[i].id === vote.candidateId)
             if (result.length === 0) {
               nonVotedCandidates.unshift(candidates[i])
               candidates.splice(i, 1)
@@ -84,6 +66,58 @@ const Query = prismaObjectType({
       },
     })
 
+    t.list.field('candidatePositions', {
+      type: 'Position',
+      args: {
+        candidateId: idArg({required: true})
+      },
+      resolve: async (parent, args, ctx) => {
+        const candPoses = await ctx.prisma.candidatePositions({
+          where: { candidateId: args.candidateId }
+        })
+        const userId = getUserId(ctx)
+        const posLikes = await ctx.prisma.userPositionLikes({ 
+          where: { userId: userId, candidateId: args.candidateId }
+        })
+        const positions = await ctx.prisma.positions({ orderBy: 'id_ASC' })
+
+        const result = []
+        candPoses.forEach( candPos => {
+          const position = positions.filter(p => p.id === candPos.positionId)
+          if (position.length === 0) return
+          if (userId) {
+            const pls = posLikes.filter(pl => pl.positionId = position[0].id)
+            if (pls.length > 0) position[0].like_type = pls[0].like
+          }
+          result.push(position[0])
+        })
+        return result
+      },
+    })
+
+    t.list.field('candidateQualifications', {
+      type: 'Qualification',
+      args: {
+        candidateId: idArg({required: true})
+      },
+      resolve: async (parent, args, ctx) => {
+        const qualifications = await ctx.prisma.qualifications({
+          where: { candidateId: args.candidateId }
+        })
+        const userId = getUserId(ctx)
+        const qualLikes = await ctx.prisma.userQualificationLikes({
+          where: { userId: userId}
+        })
+        if (userId) {
+          qualifications.forEach( qualification => {
+            const result = qualLikes.filter(ql => ql.qualificationId === qualification.id)
+            if (result.length > 0) qualification.like_type = result[0].like
+          })
+        }
+        return qualifications
+      },
+    })
+
     t.list.field('userVotes', {
       type: 'UserVote',
       resolve: (parent, args, ctx) => {
@@ -99,7 +133,7 @@ const Query = prismaObjectType({
         const users = await ctx.prisma.users({ orderBy: 'id_ASC'})
         const getVotesCount = (voteType: VoteType) => {
           const votes = userVotes.filter(vote => vote.vote_type === voteType)
-          return votes ? votes.length : 0
+          return votes.length
         }
         const [ tops, favorites, compromises, vetos ] = [ 
           getVotesCount('TOP'),
@@ -130,7 +164,7 @@ const Query = prismaObjectType({
           const votes = userVotes.filter((vote) => {
             return vote.candidateId === id && vote.vote_type === voteType
           })
-          return votes ? votes.length : 0
+          return votes.length
         }
         return candidates.map(candidate => {
           return {
@@ -147,12 +181,11 @@ const Query = prismaObjectType({
     t.list.field('positionsWithLikes', {
       type: 'PositionWithLike',
       resolve: async (parent, args, ctx) => {
-        const posLikes = await ctx.prisma.userPositionLikes().$fragment(posLikeFragment) as Array<any>
+        const posLikes = await ctx.prisma.userPositionLikes({ orderBy: 'id_ASC'})
         const positions = await ctx.prisma.positions({ orderBy: 'id_ASC' })
         const likeCount = (id: String, likeType: LikeType) => {
           const likes = posLikes.filter(posLike => {
-            return posLike.candidate_position.positionId === id &&
-              posLike.like === likeType
+            return posLike.positionId === id && posLike.like === likeType
           })
           return likes.length
         }
