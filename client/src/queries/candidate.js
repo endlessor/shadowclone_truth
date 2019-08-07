@@ -13,17 +13,7 @@ export const CandidateQuery = gql`
       latest_poll
       latest_odds
       prevote_score
-      bio_other
-      bio_qualifications {
-        id
-        name
-        summary
-      }
-      bio_policy_position {
-        id
-        name
-        summary
-      }
+      bio_summary
       __typename
     }
   }
