@@ -5,6 +5,7 @@ import {
   CandidateWithVote, 
   CountAttribute, 
   PositionWithLike, 
+  QualificationWithLike,
   Upload, 
   UserProfile
 } from './types'
@@ -18,6 +19,7 @@ export const resolvers = {
   CandidateWithVote,
   CountAttribute,
   PositionWithLike,
+  QualificationWithLike,
   Upload,
   UserProfile
 }

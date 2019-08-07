@@ -387,6 +387,12 @@ input QualificationWhereUniqueInput {
   id: ID
 }
 
+type QualificationWithLike {
+  dislikes: Int
+  likes: Int
+  qualification: Qualification
+}
+
 type Query {
   candidatePositions(candidateId: ID!): [Position!]
   candidateQualifications(candidateId: ID!): [Qualification!]
@@ -396,6 +402,7 @@ type Query {
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!
   positionsWithLikes: [PositionWithLike!]
+  qualificationsWithLikes: [QualificationWithLike!]
   userPositionLikes(after: String, before: String, first: Int, last: Int, orderBy: UserPositionLikeOrderByInput, skip: Int, where: UserPositionLikeWhereInput): [UserPositionLike!]!
   userQualificationLikes(after: String, before: String, first: Int, last: Int, orderBy: UserQualificationLikeOrderByInput, skip: Int, where: UserQualificationLikeWhereInput): [UserQualificationLike!]!
   users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!

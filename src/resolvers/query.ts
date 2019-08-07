@@ -198,6 +198,27 @@ const Query = prismaObjectType({
         })
       }
     })
+
+    t.list.field('qualificationsWithLikes', {
+      type: 'QualificationWithLike',
+      resolve: async (parent, args, ctx) => {
+        const qualLikes = await ctx.prisma.userQualificationLikes({ orderBy: 'id_ASC'})
+        const qualifications = await ctx.prisma.qualifications({ orderBy: 'id_ASC' })
+        const likeCount = (id: String, likeType: LikeType) => {
+          const likes = qualLikes.filter(qualLike => {
+            return qualLike.qualificationId === id && qualLike.like === likeType
+          })
+          return likes.length
+        }
+        return qualifications.map(qualification => {
+          return {
+            qualification: qualification,
+            likes: likeCount(qualification.id, 'LIKE'),
+            dislikes: likeCount(qualification.id, 'DISLIKE')
+          }
+        })
+      }
+    })
   }
 })
 

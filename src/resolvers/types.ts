@@ -47,6 +47,15 @@ export const PositionWithLike = objectType({
   }
 })
 
+export const QualificationWithLike = objectType({
+  name: 'QualificationWithLike',
+  definition(t) {
+    t.field('qualification', { type: 'Qualification' })
+    t.int('likes')
+    t.int('dislikes')
+  }
+})
+
 export const UserProfile = objectType({
   name: 'UserProfile',
   definition(t) {
