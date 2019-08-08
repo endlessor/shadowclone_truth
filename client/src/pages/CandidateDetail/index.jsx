@@ -2,19 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 import { Avatar, TextItem, ProgressSpinner } from "../../components";
 
-import "./CandidateDetail.style.scss";
 import {
   CandidatePositionsQuery,
-  CandidateQualificationsQuery
+  CandidateQualificationsQuery,
+  CandidateDetailQuery
 } from "../../queries";
+
+import "./CandidateDetail.style.scss";
 
 function CandidateDetail({ match }) {
   return (
-    <Query query={candidateQuery} variables={{ id: match.params.id }}>
+    <Query query={CandidateDetailQuery} variables={{ id: match.params.id }}>
       {({ data: candidateData, loadingCandidate }) => {
         if (loadingCandidate) return <ProgressSpinner />;
         const { candidate } = candidateData;
@@ -107,21 +108,6 @@ function CandidateDetail({ match }) {
     </Query>
   );
 }
-
-const candidateQuery = gql`
-  query candidate($id: ID) {
-    candidate(id: $id) {
-      id
-      name
-      photo
-      age
-      latest_poll
-      latest_odds
-      prevote_score
-      bio_summary
-    }
-  }
-`;
 
 CandidateDetail.propTypes = {
   match: PropTypes.object.isRequired

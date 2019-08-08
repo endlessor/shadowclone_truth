@@ -26,7 +26,8 @@ const CandidateShape = PropTypes.shape({
   latest_poll: PropTypes.number,
   latest_odds: PropTypes.number,
   bio_qualifications: PropTypes.arrayOf(QualificationShape),
-  bio_policy_positions: PropTypes.arrayOf(PolicyPositionShape)
+  bio_policy_positions: PropTypes.arrayOf(PolicyPositionShape),
+  vote_type: PropTypes.string
 });
 
 export default CandidateShape;

@@ -36,15 +36,20 @@
     border-top: solid 1px $border-color;
     border-bottom: solid 1px $border-color;
     padding: 10px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
     &__avatar {
       margin-bottom: -40px;
     }
   }
 
+  &__rating {
+    margin: 0 10px;
+    margin-bottom: 0.5em;
+    border-bottom: dashed 1px $border-color;
+  }
   &__qualification {
     margin: 0 10px;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     border-bottom: dashed 1px $border-color;
     background-color: white;
   }

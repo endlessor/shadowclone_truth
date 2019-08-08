@@ -4,3 +4,4 @@ export { default as ResultListItem } from "./ResultListItem";
 export { default as TextItem } from "./TextItem";
 export { default as VoteReasonItem } from "./VoteReasonItem";
 export { default as ProgressSpinner } from "./ProgressSpinner";
+export { default as Rating } from "./Rating";
