@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
 
 import CandidateShape from "../../types/candidate";
@@ -13,12 +12,6 @@ import Rating from "../Rating";
 import "./CandidateListItem.style.scss";
 
 const CandidateListItem = ({ data, updateVote }) => {
-  const [collapsed, setCollapsed] = useState(true);
-
-  const onCollapse = () => {
-    setCollapsed(!collapsed);
-  };
-
   return (
     <Card className="candidate_card">
       <div className="p-grid candidate_card__content">
@@ -48,21 +41,12 @@ const CandidateListItem = ({ data, updateVote }) => {
               <Link to={`/candidate/${data.id}`}>more info</Link>
               <span className="pi pi-chevron-right" />
             </div>
-            <div className="p-col-3">
-              <i className="pi pi-chevron-down" onClick={onCollapse} />
-            </div>
           </div>
         </div>
+        <div className="p-col-12" style={{ borderTop: "dashed 1px gray" }}>
+          <Rating voteType={data.vote_type} updateVote={updateVote} />
+        </div>
       </div>
-      <Panel
-        toggleable
-        collapsed={collapsed}
-        onToggle={onCollapse}
-        collapseIcon=""
-        expandIcon=""
-      >
-        <Rating voteType={data.vote_type} updateVote={updateVote} />
-      </Panel>
     </Card>
   );
 };
