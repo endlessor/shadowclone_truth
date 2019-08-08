@@ -1,3 +1,7 @@
+@import "../../theme/colors";
+
+$border-size: 6px;
+
 .avatar {
   display: flex;
   flex-direction: column;
@@ -8,6 +12,22 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
+
+    &-top {
+      border: solid $border-size $brand-color-top;
+    }
+    &-favorite {
+      border: solid $border-size $brand-color-favorite;
+    }
+    &-compromise {
+      border: solid $border-size $brand-color-compromise;
+    }
+    &-veto {
+      border: solid $border-size $brand-color-veto;
+    }
+    &-tbd {
+      border: solid $border-size $brand-color-tbd;
+    }
   }
 
   &__label {
