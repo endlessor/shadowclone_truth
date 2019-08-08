@@ -14,6 +14,7 @@ export const CandidateQuery = gql`
       latest_odds
       prevote_score
       bio_summary
+      vote_type
       __typename
     }
   }
@@ -45,6 +46,29 @@ export const CandidatePositionsQuery = gql`
   }
 `;
 
+export const PositionQuery = gql`
+  query position($id: ID!) {
+    position(id: $id) {
+      id
+      name
+      summary
+      detail
+      like_type
+    }
+  }
+`;
+
+export const QualificationQuery = gql`
+  query qualification($id: ID!) {
+    qualification(id: $id) {
+      id
+      name
+      summary
+      detail
+      like_type
+    }
+  }
+`;
 export const UserVoteMutation = gql`
   mutation createUserVote($candidateId: ID!, $voteType: VoteType) {
     createUserVote(candidateId: $candidateId, voteType: $voteType) {
@@ -57,8 +81,16 @@ export const UserVoteMutation = gql`
 `;
 
 export const PositionLikeMutation = gql`
-  mutation createUserPositionLike($positionId: ID!, $like: LikeType) {
-    createUserPositionLike(candidate_positionId: $positionId, like: $like) {
+  mutation createUserPositionLike(
+    $candidateId: ID!
+    $positionId: ID!
+    $like: LikeType
+  ) {
+    createUserPositionLike(
+      candidateId: $candidateId
+      positionId: $positionId
+      like: $like
+    ) {
       id
       like
       time
@@ -103,6 +135,22 @@ export const UserVoteQuery = gql`
       vote_type
       time
       latest
+    }
+  }
+`;
+
+export const CandidateDetailQuery = gql`
+  query candidate($id: ID!) {
+    candidate(id: $id) {
+      id
+      name
+      photo
+      age
+      latest_poll
+      latest_odds
+      prevote_score
+      bio_summary
+      vote_type
     }
   }
 `;
