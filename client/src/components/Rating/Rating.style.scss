@@ -1,0 +1,41 @@
+@import "../../theme/colors";
+
+.rating {
+  &__top {
+    background-color: $brand-color-top;
+    color: black;
+
+    .rate-button-icon {
+      color: black;
+    }
+  }
+  &__favorite {
+    background-color: $brand-color-favorite;
+
+    .rate-button-icon {
+      color: black;
+    }
+  }
+  &__compromise {
+    background-color: $brand-color-compromise;
+
+    .rate-button-icon {
+      color: black;
+    }
+  }
+  &__veto {
+    background-color: $brand-color-veto;
+    color: white;
+
+    .rate-button-icon {
+      color: white;
+    }
+  }
+  &__unknowns {
+    background-color: $brand-color-tbd;
+
+    .rate-button-icon {
+      color: black;
+    }
+  }
+}
