@@ -4,7 +4,7 @@ import { DataView } from "primereact/dataview";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import { ResultListItem } from "../../components";
-import { ResultQuery, UserVoteQuery } from "../../queries";
+import { CandidateQuery } from "../../queries";
 
 import "./Result.style.scss";
 
@@ -32,36 +32,18 @@ function Results() {
           </p>
         </div>
       </div>
-      <Query query={ResultQuery} fetchPolicy="network-only">
-        {({ loading: loadingCandidates, error, data: { candidates } }) => (
-          <Query query={UserVoteQuery} fetchPolicy="network-only">
-            {({ loading: loadingVotes, error, data: { userVotes } }) => {
-              if (loadingCandidates || loadingVotes) return <ProgressSpinner />;
-              const candidatesWithVotes = candidates.map(candidate => {
-                const userVote = userVotes.find(
-                  vote => vote.candidateId === candidate.id
-                );
-                if (userVote) {
-                  return {
-                    ...candidate,
-                    vote_type: userVote.vote_type.toLowerCase()
-                  };
-                } else {
-                  return candidate;
-                }
-              });
-
-              return (
-                <DataView
-                  value={candidatesWithVotes}
-                  layout="list"
-                  itemTemplate={itemTemplate}
-                  rows={20}
-                />
-              );
-            }}
-          </Query>
-        )}
+      <Query query={CandidateQuery} fetchPolicy="network-only">
+        {({ loading, error, data: { candidates } }) => {
+          if (loading) return <ProgressSpinner />;
+          return (
+            <DataView
+              value={candidates}
+              layout="list"
+              itemTemplate={itemTemplate}
+              rows={20}
+            />
+          );
+        }}
       </Query>
     </div>
   );

@@ -5,7 +5,11 @@ import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
 import { CandidateListItem } from "../../components";
-import { CandidateQuery, UserVoteMutation } from "../../queries/candidate";
+import {
+  CandidateQuery,
+  UserVoteMutation,
+  CandidateDetailQuery
+} from "../../queries/candidate";
 
 import "./Prevote.style.scss";
 
@@ -18,21 +22,36 @@ function PreVote({ history }) {
     if (layout === "list") {
       return (
         <Mutation mutation={UserVoteMutation}>
-          {createUserVote => (
-            <CandidateListItem
-              data={candidate}
-              updateVote={e => {
-                if (e.value) {
-                  createUserVote({
-                    variables: {
-                      candidateId: candidate.id,
-                      voteType: e.target.name
+          {createUserVote => {
+            const handleVote = vote_type => {
+              const { id } = candidate;
+              createUserVote({
+                variables: {
+                  candidateId: id,
+                  voteType: vote_type
+                },
+                update: (cache, { data: { createUserVote } }) => {
+                  const { candidate } = cache.readQuery({
+                    query: CandidateDetailQuery,
+                    variables: { id }
+                  });
+                  cache.writeQuery({
+                    query: CandidateDetailQuery,
+                    variables: { id },
+                    data: {
+                      candidate: {
+                        ...candidate,
+                        vote_type: createUserVote.vote_type
+                      }
                     }
                   });
                 }
-              }}
-            />
-          )}
+              });
+            };
+            return (
+              <CandidateListItem data={candidate} updateVote={handleVote} />
+            );
+          }}
         </Mutation>
       );
     }
