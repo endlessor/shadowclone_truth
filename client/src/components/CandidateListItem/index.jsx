@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
-import { ToggleButton } from "primereact/togglebutton";
 
 import CandidateShape from "../../types/candidate";
 
-import "./CandidateListItem.style.scss";
 import TextItem from "../TextItem";
 import Avatar from "../Avatar";
+import Rating from "../Rating";
+
+import "./CandidateListItem.style.scss";
 
 const CandidateListItem = ({ data, updateVote }) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -22,7 +23,7 @@ const CandidateListItem = ({ data, updateVote }) => {
     <Card className="candidate_card">
       <div className="p-grid candidate_card__content">
         <Link className="p-col-fixed" to={`/candidate/${data.id}`}>
-          <Avatar url={data.photo} alt="avatar" />
+          <Avatar url={data.photo} alt="avatar" voteType={data.vote_type} />
         </Link>
         <div className="p-col">
           <div className="p-grid">
@@ -41,6 +42,9 @@ const CandidateListItem = ({ data, updateVote }) => {
               <TextItem label="VS" value={`${data.latest_odds || 0}%`} />
             </div>
             <div className="p-col-12">
+              <span>{data.bio_summary}</span>
+            </div>
+            <div className="p-col-12">
               <Link to={`/candidate/${data.id}`}>more info</Link>
               <span className="pi pi-chevron-right" />
             </div>
@@ -57,58 +61,7 @@ const CandidateListItem = ({ data, updateVote }) => {
         collapseIcon=""
         expandIcon=""
       >
-        <div className="p-grid">
-          <div className="p-col p-fluid">
-            <ToggleButton
-              onIcon={"pi pi-star-o"}
-              offIcon={"pi pi-star"}
-              onLabel="Top"
-              offLabel="Top"
-              name="TOP"
-              onChange={updateVote}
-            />
-          </div>
-          <div className="p-col p-fluid">
-            <ToggleButton
-              onIcon={"pi pi-thumbs-up"}
-              offIcon={"pi pi-thumbs-up"}
-              onLabel="Favorite"
-              offLabel="Favorite"
-              name="FAVORITE"
-              onChange={updateVote}
-            />
-          </div>
-          <div className="p-col p-fluid">
-            <ToggleButton
-              onIcon={"pi pi-star-o"}
-              offIcon={"pi pi-star"}
-              onLabel="Compromise"
-              offLabel="Compromise"
-              name="COMPROMISE"
-              onChange={updateVote}
-            />
-          </div>
-          <div className="p-col p-fluid">
-            <ToggleButton
-              onIcon={"pi pi-ban"}
-              offIcon={"pi pi-ban"}
-              onLabel="Veto"
-              offLabel="Veto"
-              name="VETO"
-              onChange={updateVote}
-            />
-          </div>
-          <div className="p-col p-fluid">
-            <ToggleButton
-              onIcon={"pi pi-question-circle"}
-              offIcon={"pi pi-question-circle"}
-              onLabel="TBD"
-              offLabel="TBD"
-              name="UNKNOWNS"
-              onChange={updateVote}
-            />
-          </div>
-        </div>
+        <Rating voteType={data.vote_type} updateVote={updateVote} />
       </Panel>
     </Card>
   );
