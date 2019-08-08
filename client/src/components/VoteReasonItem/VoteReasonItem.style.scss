@@ -10,22 +10,32 @@
     }
     .p-panel-content {
       border: none;
-      border-top: 1px dashed gray;
+      border-top: 1px dashed $gray;
     }
   }
   .p-button {
     background-color: transparent;
     border: none;
     border-radius: 50%;
+    &:enabled:hover {
+      border: solid 1px black;
+      background-color: $gray;
+    }
   }
   .p-button-icon-left {
-    color: #A2A1A1;
-    font-size: 2.4em;
+    color: #a2a1a1;
+    font-size: 1.8em;
   }
   .dislike {
+    border: none;
+    color: white;
     background-color: $dislike-color;
+    .p-button-icon-left {
+      color: white;
+    }
   }
   .like {
+    border: none;
     background-color: $like-color;
   }
 
