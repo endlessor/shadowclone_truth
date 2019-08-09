@@ -91,14 +91,16 @@ const Mutation = prismaObjectType({
         let userVote = await ctx.prisma.userVotes({
           where: { userId, candidateId }
         })
+        if (voteType === 'TOP') {
+          await ctx.prisma.deleteManyUserVotes({
+            userId: userId, vote_type: voteType
+          })
+        }
         if (userVote.length === 0) {
           return ctx.prisma.createUserVote({
             userId,
             candidateId,
             vote_type: voteType})
-        }
-        if (userVote[0].vote_type === voteType) {
-          return ctx.prisma.deleteUserVote({ id:userVote[0].id })
         }
         return ctx.prisma.updateUserVote({
           where: { id: userVote[0].id },
