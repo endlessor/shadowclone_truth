@@ -1,0 +1,12 @@
+.result-list-item {
+  padding: 0.5em 0;
+  h4 {
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+  &__values {
+    .p-col {
+      padding: 0.3em;
+    }
+  }
+}

@@ -38,6 +38,7 @@ export const AdminCandidatesQuery = gql`
         state
         current_office
         age
+        vote_type
       }
       tops
       favorites

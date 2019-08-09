@@ -1,5 +1,17 @@
 .result {
-  &--description {
-    font-size: 1.2em;
+  &__header {
+    border-bottom: solid 2px gray;
+    margin-bottom: 1em;
+    &--icon .pi {
+      font-size: 2em;
+    }
+    &--description {
+      font-size: 1.2em;
+      margin: 0;
+    }
+  }
+  .p-dataview .p-dataview-content {
+    border: none;
+    background-color: transparent;
   }
 }
