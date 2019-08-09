@@ -1,8 +1,8 @@
 import React from "react";
 import { Query } from "react-apollo";
-import { ProgressSpinner } from "primereact/progressspinner";
 import { Card } from "primereact/card";
 
+import { ProgressSpinner } from "../../../components";
 import { AdminTotalUsers, AdminTotalAttributes } from "../../../queries";
 import CandidateList from "./CandidateList";
 import PositionList from "./PositionList";

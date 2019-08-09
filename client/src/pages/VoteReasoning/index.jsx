@@ -57,7 +57,7 @@ function VoteReasoning({
   };
 
   const handleDone = () => {
-    history.push('/result');
+    history.push("/final");
   };
 
   const handleQualificationLike = (qualificationId, like) => {

@@ -1,3 +1,5 @@
+@import "../../theme/colors";
+
 .result {
   &__header {
     border-bottom: solid 2px gray;
@@ -9,6 +11,12 @@
       font-size: 1.2em;
       margin: 0;
     }
+  }
+
+  .p-button {
+    border: none;
+    background-color: $purple;
+    font-weight: bold;
   }
   .p-dataview .p-dataview-content {
     border: none;

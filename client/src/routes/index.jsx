@@ -7,7 +7,6 @@ import {
   withRouter
 } from "react-router-dom";
 import { Query, compose, withApollo } from "react-apollo";
-import { ProgressSpinner } from "primereact/progressspinner";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import AdminRoutes from "./admin";
@@ -18,6 +17,9 @@ import CandidateDetail from "../pages/CandidateDetail";
 import VoteReasoning from "../pages/VoteReasoning";
 import Results from "../pages/Results";
 import Intro from "../pages/Intro";
+import Final from "../pages/Final";
+
+import { ProgressSpinner } from "../components";
 import { AUTH_TOKEN, persistor } from "../config";
 import { MeQuery } from "../queries";
 
@@ -121,9 +123,10 @@ const Routes = props => {
                         path="/voter-reason/candidate/:id"
                         component={VoteReasoning}
                       />
-                      <PrivateRoute path="/result" component={Results} />
                       <PrivateRoute path="/admin" component={AdminRoutes} />
                       <PrivateRoute path="/prevote" component={PreVote} />
+                      <PrivateRoute path="/result" component={Results} />
+                      <PrivateRoute path="/final" component={Final} />
                       <PrivateRoute
                         path="/candidate/:id"
                         component={CandidateDetail}

@@ -13,7 +13,7 @@ import {
 
 import "./CandidateDetail.style.scss";
 
-function CandidateDetail({ match }) {
+function CandidateDetail({ match, history }) {
   return (
     <Query query={CandidateDetailQuery} variables={{ id: match.params.id }}>
       {({ data: candidateData, loadingCandidate }) => {
@@ -22,11 +22,11 @@ function CandidateDetail({ match }) {
         return (
           <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center page candidate-detail">
             <section className="p-grid candidate-detail__header">
-              <div className="p-col">
-                <Link to="/prevote">
+              <div className="p-col" onClick={() => history.goBack()}>
+                <p>
                   <span className="pi pi-chevron-left" />
                   Back to candidates
-                </Link>
+                </p>
               </div>
             </section>
             <section className="p-grid p-col-align-center candidate-detail__main">
