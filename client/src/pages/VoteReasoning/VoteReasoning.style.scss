@@ -2,6 +2,7 @@
 
 .vote-reason {
   background-color: white;
+  position: relative;
 
   h4 {
     font-size: 1.3em;
@@ -16,7 +17,10 @@
 
   &__header {
     padding: 0.5em;
-
+    background-color: white;
+    position: fixed;
+    top: 60px;
+    width: 100%;
     .pi {
       float: left;
       font-size: 2.5em;
@@ -27,15 +31,17 @@
       font-weight: bold;
       font-size: 1.4em;
       color: gray;
-      text-align: center;
     }
   }
 
   &__main {
+    position: fixed;
+    top: 130px;
+    width: 100%;
     background-color: #f2f2f2;
     border-top: solid 1px $border-color;
     border-bottom: solid 1px $border-color;
-    padding: 10px;
+    padding: 0.5em;
     margin-bottom: 15px;
     &__avatar {
       margin-bottom: -40px;
@@ -43,18 +49,30 @@
   }
 
   &__rating {
-    margin: 0 10px;
+    padding-top: 175px;
+    margin: 0 5px;
     margin-bottom: 0.5em;
     border-bottom: dashed 1px $border-color;
   }
   &__qualification {
-    margin: 0 10px;
+    margin: 0 5px;
     margin-bottom: 0.5em;
     border-bottom: dashed 1px $border-color;
     background-color: white;
   }
   &__position {
-    margin: 0 10px;
+    margin: 0 5px;
     background-color: white;
+  }
+  &__footer {
+    border-top: solid 2px gray;
+    .p-button {
+      border-color: $purple;
+      background-color: $purple;
+    }
+    .p-button-text {
+      font-size: 1em;
+      font-weight: bold;
+    }
   }
 }

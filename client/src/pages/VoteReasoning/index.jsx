@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { compose, graphql, Query, Mutation } from "react-apollo";
+import { compose, graphql, Query, withApollo } from "react-apollo";
+import { Button } from "primereact/button";
 
 import {
   VoteReasonItem,
@@ -17,21 +18,52 @@ import {
   CandidatePositionsQuery,
   PositionQuery,
   QualificationQuery,
-  UserVoteMutation
+  UserVoteMutation,
+  CandidateQuery
 } from "../../queries/candidate";
 
 import "./VoteReasoning.style.scss";
 
 function VoteReasoning({
   match,
+  history,
+  client,
   candidateVote,
   positionLike,
   qualificationLike
 }) {
+  const [candidateId, setCandidateId] = useState(match.params.id);
+  const [candidates, setCandidates] = useState([]);
+
+  useEffect(() => {
+    const { candidates } = client.readQuery({ query: CandidateQuery });
+    setCandidates(candidates);
+  }, [client]);
+
+  const curIndex = candidates.findIndex(
+    candidate => candidate.id === candidateId
+  );
+
+  const handlePrevVote = () => {
+    if (curIndex > 0) {
+      setCandidateId(candidates[curIndex - 1].id);
+    }
+  };
+
+  const handleNextVote = () => {
+    if (curIndex < candidates.length - 1) {
+      setCandidateId(candidates[curIndex + 1].id);
+    }
+  };
+
+  const handleDone = () => {
+    history.push('/result');
+  };
+
   const handleQualificationLike = (qualificationId, like) => {
     qualificationLike({
       variables: {
-        candidateId: match.params.id,
+        candidateId,
         qualificationId,
         like
       },
@@ -56,7 +88,7 @@ function VoteReasoning({
   const handlePositionLike = (positionId, like) => {
     positionLike({
       variables: {
-        candidateId: match.params.id,
+        candidateId,
         positionId,
         like
       },
@@ -80,7 +112,6 @@ function VoteReasoning({
   };
 
   const handleVote = vote_type => {
-    const candidateId = match.params.id;
     candidateVote({
       variables: {
         candidateId,
@@ -127,10 +158,8 @@ function VoteReasoning({
     />
   );
 
-  const candidateId = match.params.id;
-
   return (
-    <section className="p-col-12 p-sm-12 p-md-6 p-col-align-center page vote-reason">
+    <div className="p-col-12 p-sm-12 p-md-6 page vote-reason">
       <section className="p-grid vote-reason__header">
         <div className="p-col">
           <p className="vote-reason__header--description">
@@ -149,7 +178,7 @@ function VoteReasoning({
           const { candidate } = data;
           return (
             <React.Fragment>
-              <section className="p-grid p-col-align-center vote-reason__main">
+              <section className="p-grid vote-reason__main">
                 <div className="p-col-fixed">
                   <div className="vote-reason__main__avatar">
                     <Avatar url={candidate.photo} alt="avatar" />
@@ -235,7 +264,22 @@ function VoteReasoning({
           }}
         </Query>
       </section>
-    </section>
+      <div className="p-grid p-justify-center vote-reason__footer">
+        {curIndex > 0 && (
+          <div className="p-col-10 p-fluid">
+            <Button label="Rate Prev Candidate" onClick={handlePrevVote} />
+          </div>
+        )}
+        {curIndex < candidates.length - 1 && (
+          <div className="p-col-10 p-fluid">
+            <Button label="Rate Next Candidate" onClick={handleNextVote} />
+          </div>
+        )}
+        <div className="p-col-10 p-fluid">
+          <Button label="Done for now" onClick={handleDone} />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -247,6 +291,7 @@ VoteReasoning.propTypes = {
 };
 
 export default compose(
+  withApollo,
   graphql(UserVoteMutation, { name: "candidateVote" }),
   graphql(PositionLikeMutation, { name: "positionLike" }),
   graphql(QualificationLikeMutation, { name: "qualificationLike" })
