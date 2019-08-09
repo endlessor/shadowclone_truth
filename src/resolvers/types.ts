@@ -20,6 +20,7 @@ export const CandidateWithVote = objectType({
     t.int('favorites')
     t.int('compromises')
     t.int('vetos')
+    t.int('unknowns')
   }
 })
 
