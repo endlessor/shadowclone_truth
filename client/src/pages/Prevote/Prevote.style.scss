@@ -1,4 +1,13 @@
+@import "../../theme/colors";
+
 .prevote {
+  &__header {
+    .p-button {
+      border: none;
+      background-color: $purple;
+      font-weight: bold;
+    }
+  }
   .p-dataview .p-dataview-content {
     border: none;
     background-color: transparent;

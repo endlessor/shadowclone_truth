@@ -1,14 +1,14 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { DataView } from "primereact/dataview";
-import { ProgressSpinner } from "primereact/progressspinner";
+import { Button } from "primereact/button";
 
-import { ResultListItem } from "../../components";
+import { ResultListItem, ProgressSpinner } from "../../components";
 import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
 
 import "./Result.style.scss";
 
-function Results() {
+function Results({ history }) {
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
       return null;
@@ -30,6 +30,11 @@ function Results() {
             <br />
             Here's how you rated the candidates:
           </p>
+        </div>
+      </div>
+      <div className="p-grid p-dir-rev">
+        <div className="p-col-4 p-fluid">
+          <Button label="Next" onClick={() => history.push("./final")} />
         </div>
       </div>
       <Query query={VoteResultQuery} fetchPolicy="network-only">

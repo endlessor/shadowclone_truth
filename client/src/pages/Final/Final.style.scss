@@ -1,0 +1,25 @@
+.final {
+  background-color: white;
+
+  &__header {
+    h2 {
+      margin: 0.3em 0;
+    }
+    &--icon .pi {
+      font-size: 2em;
+    }
+    &--description {
+      background-color: #f2f2f2;
+      border-top: solid 1px gray;
+      border-bottom: solid 1px gray;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 10px 20px;
+      margin: 0;
+    }
+  }
+  .p-dataview .p-dataview-content {
+    border: none;
+    background-color: transparent;
+  }
+}

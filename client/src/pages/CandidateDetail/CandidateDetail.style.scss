@@ -18,10 +18,11 @@
     margin: 0;
   }
   &__header {
-    padding: .5em;
-    a {
+    padding: 0.5em;
+    p {
       font-size: 1.25em;
       color: gray;
+      margin: 0;
     }
     .pi {
       vertical-align: bottom;
