@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { compose, graphql, Query, Mutation } from "react-apollo";
+import { compose, graphql, Query } from "react-apollo";
 
 import {
   VoteReasonItem,
@@ -130,7 +130,7 @@ function VoteReasoning({
   const candidateId = match.params.id;
 
   return (
-    <section className="p-col-12 p-sm-12 p-md-6 p-col-align-center page vote-reason">
+    <section className="p-col-12 p-sm-12 p-md-6 page vote-reason">
       <section className="p-grid vote-reason__header">
         <div className="p-col">
           <p className="vote-reason__header--description">
@@ -149,7 +149,7 @@ function VoteReasoning({
           const { candidate } = data;
           return (
             <React.Fragment>
-              <section className="p-grid p-col-align-center vote-reason__main">
+              <section className="p-grid vote-reason__main">
                 <div className="p-col-fixed">
                   <div className="vote-reason__main__avatar">
                     <Avatar url={candidate.photo} alt="avatar" />
