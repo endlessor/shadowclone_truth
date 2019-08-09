@@ -31,7 +31,6 @@
       font-weight: bold;
       font-size: 1.4em;
       color: gray;
-      text-align: center;
     }
   }
 
@@ -64,5 +63,16 @@
   &__position {
     margin: 0 5px;
     background-color: white;
+  }
+  &__footer {
+    border-top: solid 2px gray;
+    .p-button {
+      border-color: $purple;
+      background-color: $purple;
+    }
+    .p-button-text {
+      font-size: 1em;
+      font-weight: bold;
+    }
   }
 }
