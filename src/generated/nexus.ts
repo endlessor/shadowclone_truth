@@ -481,6 +481,7 @@ export interface NexusGenRootTypes {
     compromises?: number | null; // Int
     favorites?: number | null; // Int
     tops?: number | null; // Int
+    unknowns?: number | null; // Int
     vetos?: number | null; // Int
   }
   CountAttribute: { // root type
@@ -640,6 +641,7 @@ export interface NexusGenFieldTypes {
     compromises: number | null; // Int
     favorites: number | null; // Int
     tops: number | null; // Int
+    unknowns: number | null; // Int
     vetos: number | null; // Int
   }
   CountAttribute: { // field return type

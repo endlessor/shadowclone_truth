@@ -62,6 +62,7 @@ type CandidateWithVote {
   compromises: Int
   favorites: Int
   tops: Int
+  unknowns: Int
   vetos: Int
 }
 
