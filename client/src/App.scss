@@ -65,10 +65,7 @@ body {
   .menu-button {
     display: none;
     color: #ffffff;
-    font-size: 24px;
-    position: absolute;
-    left: 0;
-    top: 0;
+    // font-size: 24px;
     width: 60px;
     height: 60px;
     line-height: 60px;
@@ -453,9 +450,7 @@ body {
 }
 
 #layout-content {
-  margin: 0 30px;
   padding-top: 70px;
-
   .content-section {
     display: block;
     padding: 30px;
@@ -815,8 +810,8 @@ body {
 
 @media screen and (max-width: 64em) {
   .layout-topbar {
-    text-align: center;
-
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     .menu-button {
       display: inline-block;
     }
@@ -831,9 +826,8 @@ body {
 
     .topbar-menu {
       background-color: #327187;
-      float: none;
-      width: 100%;
-      height: 40px;
+      float: right;
+      height: 60px;
       margin: 0;
       text-align: center;
 
