@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,7 +6,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import { Query } from "react-apollo";
+import { Query, compose, withApollo } from "react-apollo";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -18,7 +18,7 @@ import CandidateDetail from "../pages/CandidateDetail";
 import VoteReasoning from "../pages/VoteReasoning";
 import Results from "../pages/Results";
 import Intro from "../pages/Intro";
-import { AUTH_TOKEN } from "../config";
+import { AUTH_TOKEN, persistor } from "../config";
 import { MeQuery } from "../queries";
 
 import "./styles.scss";
@@ -72,50 +72,78 @@ const getPathDepth = location => {
 
 const Routes = props => {
   const [prevDepth] = useState(getPathDepth(props.location));
-
+  const logoutHandler = () => {
+    persistor.pause();
+    persistor.purge().then(() => {
+      localStorage.removeItem(AUTH_TOKEN);
+      persistor.resume();
+      props.client.resetStore();
+      props.history.push("/");
+    });
+  };
   return (
     <Route
       render={({ location }) => {
-        console.log(location)
-        console.log(getPathDepth(location), prevDepth)
         return (
-          <TransitionGroup>
-            <CSSTransition
-              key={location.pathname}
-              timeout={500}
-              classNames="pageSlider"
-              mountOnEnter={false}
-              unmountOnExit={true}
-            >
-              <div
-                className={
-                  getPathDepth(location) - prevDepth > 0 ? "left" : "right"
-                }
-              >
-                <Switch location={location}>
-                  <PrivateRoute path="/" exact={null} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/signup" component={Signup} />
-                  <Route path="/intro" component={Intro} />
-                  <PrivateRoute path="/voter-reason/candidate/:id" component={VoteReasoning} />
-                  <PrivateRoute path="/result" component={Results} />
-                  <PrivateRoute path="/admin" component={AdminRoutes} />
-                  <PrivateRoute path="/prevote" component={PreVote} />
-                  <PrivateRoute
-                    path="/candidate/:id"
-                    component={CandidateDetail}
-                  />
-                </Switch>
+          <div className="layout-wrapper">
+            <div className="layout-topbar">
+              <div className="logo">
+                <span>Truth</span>
               </div>
-            </CSSTransition>
-          </TransitionGroup>
+              {localStorage.getItem(AUTH_TOKEN) && (
+                <div className="topbar-menu">
+                  <div className="menu-button" onClick={logoutHandler}>
+                    Log out
+                  </div>
+                </div>
+              )}
+            </div>
+            <div id="layout-content">
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.pathname}
+                  timeout={500}
+                  classNames="pageSlider"
+                  mountOnEnter={false}
+                  unmountOnExit={true}
+                >
+                  <div
+                    className={
+                      getPathDepth(location) - prevDepth > 0 ? "left" : "right"
+                    }
+                  >
+                    <Switch location={location}>
+                      <PrivateRoute path="/" exact={null} />
+                      <Route path="/login" component={Login} />
+                      <Route path="/signup" component={Signup} />
+                      <Route path="/intro" component={Intro} />
+                      <PrivateRoute
+                        path="/voter-reason/candidate/:id"
+                        component={VoteReasoning}
+                      />
+                      <PrivateRoute path="/result" component={Results} />
+                      <PrivateRoute path="/admin" component={AdminRoutes} />
+                      <PrivateRoute path="/prevote" component={PreVote} />
+                      <PrivateRoute
+                        path="/candidate/:id"
+                        component={CandidateDetail}
+                      />
+                    </Switch>
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+            </div>
+          </div>
         );
       }}
     />
   );
 };
 
-const AnimationRoutes = withRouter(Routes);
+const AnimationRoutes = compose(
+  withApollo,
+  withRouter
+)(Routes);
 
 const MainRoute = () => {
   return (

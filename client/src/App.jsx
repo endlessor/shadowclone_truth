@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ApolloProvider } from "react-apollo";
-import { InMemoryCache, ApolloLink, Observable } from "apollo-boost";
+import { ApolloLink, Observable } from "apollo-boost";
 import { createUploadLink } from "apollo-upload-client";
 import { ApolloClient } from "apollo-client";
-import { persistCache } from "apollo-cache-persist";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import "primereact/resources/themes/nova-light/theme.css";
@@ -13,16 +12,12 @@ import "primeflex/primeflex.css";
 import "./App.scss";
 
 import MainRoute from "./routes";
-import { cacheResolvers, AUTH_TOKEN } from "./config";
+import { AUTH_TOKEN, persistor, apolloCache } from "./config";
 
 function App() {
   const [client, setClient] = useState(null);
   useEffect(() => {
-    const cache = new InMemoryCache({
-      cacheRedirects: cacheResolvers
-    });
-
-    persistCache({ cache, storage: localStorage }).then(() => {
+    persistor.restore().then(() => {
       const request = operation => {
         const token = localStorage.getItem(AUTH_TOKEN);
         if (token) {
@@ -58,7 +53,7 @@ function App() {
           requestLink,
           createUploadLink({ uri: process.env.REACT_APP_GRAPHQL_ENDPOINT })
         ]),
-        cache
+        cache: apolloCache
       });
 
       setClient(client);
