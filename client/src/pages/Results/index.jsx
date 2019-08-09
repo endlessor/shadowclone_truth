@@ -4,7 +4,7 @@ import { DataView } from "primereact/dataview";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import { ResultListItem } from "../../components";
-import { CandidateQuery } from "../../queries";
+import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
 
 import "./Result.style.scss";
 
@@ -20,24 +20,24 @@ function Results() {
   };
   return (
     <div className="p-col-12 p-sm-12 p-md-6 p-col-align-center result page">
-      <div className="p-grid p-align-center">
-        <div className="p-col-fixed">
+      <div className="p-grid p-align-center result__header">
+        <div className="p-col-fixed result__header--icon">
           <span className="pi pi-external-link" />
         </div>
         <div className="p-col">
-          <p className="result--description">
+          <p className="result__header--description">
             Thanks for pre-voting! That was easy...
             <br />
             Here's how you rated the candidates:
           </p>
         </div>
       </div>
-      <Query query={CandidateQuery} fetchPolicy="network-only">
-        {({ loading, error, data: { candidates } }) => {
+      <Query query={VoteResultQuery} fetchPolicy="network-only">
+        {({ loading, error, data: { candidatesWithVotes } }) => {
           if (loading) return <ProgressSpinner />;
           return (
             <DataView
-              value={candidates}
+              value={candidatesWithVotes}
               layout="list"
               itemTemplate={itemTemplate}
               rows={20}

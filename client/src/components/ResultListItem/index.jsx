@@ -1,32 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card } from "primereact/card";
 import Avatar from "../Avatar";
 import TextItem from "../TextItem";
+import { VOTE_TYPE } from "../../config";
+
+import './ResultListItem.style.scss';
 
 function ResultListItem({ data }) {
   return (
-    <Card>
-      <div className="p-grid p-align-center">
-        <Link className="p-col-4" to={`/voter-reason/candidate/${data.id}`}>
-          <Avatar url={data.photo} alt="avatar" label={data.vote_type} />
+    <div className="result-list-item">
+      <div className="p-grid">
+        <Link
+          className="p-col-4"
+          to={`/voter-reason/candidate/${data.candidate.id}`}
+        >
+          <Avatar
+            url={data.candidate.photo}
+            alt="avatar"
+            label={data.candidate.vote_type}
+          />
         </Link>
         <div className="p-col-8">
-          <h4>{data.name}</h4>
-          <div className="p-grid">
-            <div className="p-col-4">
-              <TextItem label="POLLS" value={`${data.latest_poll}%`} />
+          <h4>{data.candidate.name}</h4>
+          <div className="p-grid result-list-item__values">
+            <div className="p-col">
+              <TextItem label={VOTE_TYPE.top} value={`${data.tops}%`} />
             </div>
-            <div className="p-col-4">
-              <TextItem label="VS.TRUMP" value={`${data.latest_odds}%`} />
+            <div className="p-col">
+              <TextItem
+                label={VOTE_TYPE.favorite}
+                value={`${data.favorites}%`}
+              />
             </div>
-            <div className="p-col-4">
-              <TextItem label="PREVOTES" value={`${data.prevote_score}%`} />
+            <div className="p-col">
+              <TextItem
+                label={VOTE_TYPE.compromise}
+                value={`${data.compromises}%`}
+              />
+            </div>
+            <div className="p-col">
+              <TextItem label={VOTE_TYPE.veto} value={`${data.vetos}%`} />
+            </div>
+            <div className="p-col">
+              <TextItem label={"TBD"} value={`${data.tbd || 0}%`} />
             </div>
           </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
 

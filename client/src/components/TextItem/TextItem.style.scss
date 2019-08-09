@@ -1,11 +1,13 @@
 .textItem {
   &__label {
-    font-size: 0.8rem;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: -0.8px;
     color: gray;
     margin: 0;
   }
   &__value {
-    font-size: 1.4rem;
+    font-size: 1.2em;
     color: black;
   }
 }
