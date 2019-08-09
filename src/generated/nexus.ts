@@ -478,11 +478,11 @@ export interface NexusGenRootTypes {
   }
   CandidateWithVote: { // root type
     candidate?: NexusGenRootTypes['Candidate'] | null; // Candidate
-    compromises?: number | null; // Int
-    favorites?: number | null; // Int
-    tops?: number | null; // Int
-    unknowns?: number | null; // Int
-    vetos?: number | null; // Int
+    compromises?: number | null; // Float
+    favorites?: number | null; // Float
+    tops?: number | null; // Float
+    unknowns?: number | null; // Float
+    vetos?: number | null; // Float
   }
   CountAttribute: { // root type
     average_compromise?: number | null; // Float
@@ -638,11 +638,11 @@ export interface NexusGenFieldTypes {
   }
   CandidateWithVote: { // field return type
     candidate: NexusGenRootTypes['Candidate'] | null; // Candidate
-    compromises: number | null; // Int
-    favorites: number | null; // Int
-    tops: number | null; // Int
-    unknowns: number | null; // Int
-    vetos: number | null; // Int
+    compromises: number | null; // Float
+    favorites: number | null; // Float
+    tops: number | null; // Float
+    unknowns: number | null; // Float
+    vetos: number | null; // Float
   }
   CountAttribute: { // field return type
     average_compromise: number | null; // Float
@@ -716,6 +716,7 @@ export interface NexusGenFieldTypes {
     candidateQualifications: NexusGenRootTypes['Qualification'][] | null; // [Qualification!]
     candidates: NexusGenRootTypes['Candidate'][] | null; // [Candidate!]
     candidatesWithVotes: NexusGenRootTypes['CandidateWithVote'][] | null; // [CandidateWithVote!]
+    candidatesWithVotesPercent: NexusGenRootTypes['CandidateWithVote'][] | null; // [CandidateWithVote!]
     me: NexusGenRootTypes['UserProfile'] | null; // UserProfile
     polls: NexusGenRootTypes['Poll'][]; // [Poll!]!
     positions: NexusGenRootTypes['Position'][]; // [Position!]!

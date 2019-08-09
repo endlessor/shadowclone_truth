@@ -16,11 +16,11 @@ export const CandidateWithVote = objectType({
   name: 'CandidateWithVote',
   definition(t) {
     t.field('candidate', { type: 'Candidate'})
-    t.int('tops')
-    t.int('favorites')
-    t.int('compromises')
-    t.int('vetos')
-    t.int('unknowns')
+    t.float('tops')
+    t.float('favorites')
+    t.float('compromises')
+    t.float('vetos')
+    t.float('unknowns')
   }
 })
 

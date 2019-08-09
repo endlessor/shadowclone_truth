@@ -121,10 +121,10 @@ const Query = prismaObjectType({
           favoriteCount: favorites,
           compromiseCount: compromises,
           vetoCount: vetos,
-          average_top: Math.round(tops * 100 / users.length) / 100,
-          average_favorite: Math.round(favorites * 100 / users.length) / 100,
-          average_compromise: Math.round(compromises * 100 / users.length) / 100,
-          average_veto: Math.round(vetos * 100 / users.length) / 100
+          average_top: Math.round(tops * 1000 / users.length) / 10,
+          average_favorite: Math.round(favorites * 1000 / users.length) / 10,
+          average_compromise: Math.round(compromises * 1000 / users.length) / 10,
+          average_veto: Math.round(vetos * 1000 / users.length) / 10
         }
       },
     })
@@ -132,18 +132,15 @@ const Query = prismaObjectType({
     t.list.field('candidatesWithVotes', {
       type: 'CandidateWithVote',
       resolve: async (parent, args, ctx) => {
-        const userId = getUserId(ctx)
         const candidates = await ctx.prisma.candidates({ orderBy: 'id_ASC'})
         const userVotes = await ctx.prisma.userVotes({ orderBy: 'id_ASC'})
-        const myVotes = userVotes.filter(v => v.userId === userId)
-        const orderedCandidates = reorderCandidate(candidates, myVotes)
         const getVotesCount = (id: String, voteType: VoteType) => {
           const votes = userVotes.filter((vote) => {
             return vote.candidateId === id && vote.vote_type === voteType
           })
           return votes.length
         }
-        return orderedCandidates.map(candidate => {
+        return candidates.map(candidate => {
           return {
             candidate: candidate,
             tops: getVotesCount(candidate.id, 'TOP'),
@@ -151,6 +148,34 @@ const Query = prismaObjectType({
             compromises: getVotesCount(candidate.id, 'COMPROMISE'),
             vetos: getVotesCount(candidate.id, 'VETO'),
             unknowns: getVotesCount(candidate.id, 'UNKNOWNS')
+          }          
+        })
+      }
+    })
+
+    t.list.field('candidatesWithVotesPercent', {
+      type: 'CandidateWithVote',
+      resolve: async (parent, args, ctx) => {
+        const userId = getUserId(ctx)
+        const candidates = await ctx.prisma.candidates({ orderBy: 'id_ASC'})
+        const userVotes = await ctx.prisma.userVotes({ orderBy: 'id_ASC'})
+        const users = await ctx.prisma.users({ orderBy: 'id_ASC'})
+        const myVotes = userVotes.filter(v => v.userId === userId)
+        const orderedCandidates = reorderCandidate(candidates, myVotes)
+        const getVotesCountPercent = (id: String, voteType: VoteType) => {
+          const votes = userVotes.filter((vote) => {
+            return vote.candidateId === id && vote.vote_type === voteType
+          })
+          return Math.round(votes.length * 1000 / users.length) / 10
+        }
+        return orderedCandidates.map(candidate => {
+          return {
+            candidate: candidate,
+            tops: getVotesCountPercent(candidate.id, 'TOP'),
+            favorites: getVotesCountPercent(candidate.id, 'FAVORITE'),
+            compromises: getVotesCountPercent(candidate.id, 'COMPROMISE'),
+            vetos: getVotesCountPercent(candidate.id, 'VETO'),
+            unknowns: getVotesCountPercent(candidate.id, 'UNKNOWNS')
           }          
         })
       }

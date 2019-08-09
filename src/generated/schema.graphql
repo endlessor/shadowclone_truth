@@ -59,11 +59,11 @@ input CandidatePositionWhereUniqueInput {
 
 type CandidateWithVote {
   candidate: Candidate
-  compromises: Int
-  favorites: Int
-  tops: Int
-  unknowns: Int
-  vetos: Int
+  compromises: Float
+  favorites: Float
+  tops: Float
+  unknowns: Float
+  vetos: Float
 }
 
 type CountAttribute {
@@ -399,6 +399,7 @@ type Query {
   candidateQualifications(candidateId: ID!): [Qualification!]
   candidates: [Candidate!]
   candidatesWithVotes: [CandidateWithVote!]
+  candidatesWithVotesPercent: [CandidateWithVote!]
   me: UserProfile
   polls(after: String, before: String, first: Int, last: Int, orderBy: PollOrderByInput, skip: Int, where: PollWhereInput): [Poll!]!
   positions(after: String, before: String, first: Int, last: Int, orderBy: PositionOrderByInput, skip: Int, where: PositionWhereInput): [Position!]!

@@ -17,7 +17,8 @@ export const permissions = shield({
     users: rules.isAdminUser,
     userVotes: rules.isAuthenticatedUser,
     voteAttributes: rules.isAdminUser,
-    candidatesWithVotes: rules.isAuthenticatedUser,
+    candidatesWithVotes: rules.isAdminUser,
+    candidatesWithVotesPercent: rules.isAuthenticatedUser,
     positionsWithLikes: rules.isAdminUser,
     qualificationsWithLikes: rules.isAdminUser
   },
