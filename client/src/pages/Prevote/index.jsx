@@ -67,9 +67,6 @@ function PreVote({ history }) {
         <div className="p-col-8">
           <h1>Prevoting</h1>
         </div>
-        <div className="p-col-4 p-fluid">
-          <Button label="Next" onClick={handleNext} />
-        </div>
       </div>
       <Query query={CandidateQuery} fetchPolicy="network-only">
         {({ loading, error, data }) => {
@@ -85,6 +82,11 @@ function PreVote({ history }) {
           );
         }}
       </Query>
+      <div className="p-grid p-justify-center prevote__footer">
+        <div className="p-col-10 p-fluid">
+          <Button label="Next" onClick={handleNext} />
+        </div>
+      </div>
     </div>
   );
 }

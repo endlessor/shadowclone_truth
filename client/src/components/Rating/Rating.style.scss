@@ -1,6 +1,10 @@
 @import "../../theme/colors";
 
 .rating {
+  &--button {
+    padding-bottom: 0;
+  }
+
   &__top {
     background-color: $brand-color-top;
     color: black;
