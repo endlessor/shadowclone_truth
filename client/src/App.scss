@@ -63,7 +63,6 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 
   .menu-button {
-    display: none;
     color: #ffffff;
     // font-size: 24px;
     width: 60px;
@@ -96,6 +95,7 @@ body {
   }
 
   .topbar-menu {
+    background-color: #327187;
     list-style-type: none;
     float: right;
     margin: 0 60px 0 0;
