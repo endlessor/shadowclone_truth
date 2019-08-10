@@ -15,9 +15,9 @@ const CandidateListItem = ({ data, updateVote }) => {
   return (
     <Card className="candidate_card">
       <div className="p-grid candidate_card__content">
-        <Link className="p-col-fixed" to={`/candidate/${data.id}`}>
+        <div className="p-col-fixed">
           <Avatar url={data.photo} alt="avatar" voteType={data.vote_type} />
-        </Link>
+        </div>
         <div className="p-col">
           <div className="p-grid">
             <div className="p-col-12">
@@ -43,7 +43,10 @@ const CandidateListItem = ({ data, updateVote }) => {
             </div>
           </div>
         </div>
-        <div className="p-col-12" style={{ borderTop: "dashed 1px gray" }}>
+        <div
+          className="p-col-12"
+          style={{ borderTop: "dashed 1px gray", paddingBottom: 0 }}
+        >
           <Rating voteType={data.vote_type} updateVote={updateVote} />
         </div>
       </div>
