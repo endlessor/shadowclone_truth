@@ -4,7 +4,7 @@ import { Query, Mutation } from "react-apollo";
 import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
-import { CandidateListItem } from "../../components";
+import { CandidateListItem, ProgressSpinner } from "../../components";
 import {
   CandidateQuery,
   UserVoteMutation,
@@ -73,7 +73,7 @@ function PreVote({ history }) {
       </div>
       <Query query={CandidateQuery} fetchPolicy="network-only">
         {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
+          if (loading) return <ProgressSpinner />;
           if (error) return <p>Error : {error}</p>;
           return (
             <DataView

@@ -3,7 +3,6 @@ import { ApolloProvider } from "react-apollo";
 import { ApolloLink, Observable } from "apollo-boost";
 import { createUploadLink } from "apollo-upload-client";
 import { ApolloClient } from "apollo-client";
-import { ProgressSpinner } from "primereact/progressspinner";
 
 import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -13,6 +12,7 @@ import "./App.scss";
 
 import MainRoute from "./routes";
 import { AUTH_TOKEN, persistor, apolloCache } from "./config";
+import { ProgressSpinner } from "./components";
 
 function App() {
   const [client, setClient] = useState(null);
@@ -63,8 +63,10 @@ function App() {
   if (!client) return <ProgressSpinner />;
   return (
     <ApolloProvider client={client}>
-      <div className="main">
-        <MainRoute />
+      <div className="p-grid p-justify-center">
+        <div className="p-col-12 p-sm-12 p-md-6">
+          <MainRoute />
+        </div>
       </div>
     </ApolloProvider>
   );
