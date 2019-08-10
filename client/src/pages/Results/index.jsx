@@ -4,7 +4,7 @@ import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
 import { ResultListItem, ProgressSpinner } from "../../components";
-import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
+import { CandidateWithVotePercenet as VoteResultQuery } from "../../queries";
 
 import "./Result.style.scss";
 
@@ -38,11 +38,11 @@ function Results({ history }) {
         </div>
       </div>
       <Query query={VoteResultQuery} fetchPolicy="network-only">
-        {({ loading, error, data: { candidatesWithVotes } }) => {
+        {({ loading, error, data: { candidatesWithVotesPercent } }) => {
           if (loading) return <ProgressSpinner />;
           return (
             <DataView
-              value={candidatesWithVotes}
+              value={candidatesWithVotesPercent}
               layout="list"
               itemTemplate={itemTemplate}
               rows={20}

@@ -20,6 +20,28 @@ export const CandidateQuery = gql`
   }
 `;
 
+export const CandidateWithVotePercenet = gql`
+  {
+    candidatesWithVotesPercent {
+      candidate {
+        id
+        name
+        photo
+        party
+        state
+        current_office
+        age
+        vote_type
+      }
+      tops
+      favorites
+      compromises
+      vetos
+      unknowns
+    }
+  }
+`;
+
 export const CandidateQualificationsQuery = gql`
   query qualifications($candidateId: ID!) {
     candidateQualifications(candidateId: $candidateId) {
