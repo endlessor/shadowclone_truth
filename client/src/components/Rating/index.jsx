@@ -8,8 +8,8 @@ import "./Rating.style.scss";
 
 function Rating({ voteType, updateVote }) {
   return (
-    <div className="p-grid rating">
-      <div className="p-col-2 p-fluid rating--button">
+    <div className="p-grid p-justify-between rating">
+      <div className="p-col p-fluid rating--button">
         <RateButton
           icon="pi pi-star-o"
           label="Top"
@@ -37,7 +37,7 @@ function Rating({ voteType, updateVote }) {
           onClick={updateVote.bind(this, VOTE_TYPE.compromise)}
         />
       </div>
-      <div className="p-col-2 p-fluid rating--button">
+      <div className="p-col p-fluid rating--button">
         <RateButton
           icon="pi pi-ban"
           label="Veto"
@@ -45,7 +45,7 @@ function Rating({ voteType, updateVote }) {
           onClick={updateVote.bind(this, VOTE_TYPE.veto)}
         />
       </div>
-      <div className="p-col-2 p-fluid rating--button">
+      <div className="p-col p-fluid rating--button">
         <RateButton
           icon="pi pi-question-circle"
           label="TBD"

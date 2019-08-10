@@ -64,7 +64,7 @@ function PreVote({ history }) {
   return (
     <div className="p-col-12 p-sm-12 p-md-6 page prevote">
       <div className="p-grid p-justify-between p-align-center prevote__header">
-        <div className="p-col-8">
+        <div className="p-col-12">
           <h1>Prevoting</h1>
         </div>
       </div>
