@@ -10,8 +10,11 @@ const Query = prismaObjectType({
     t.prismaFields([
       'users',
       'positions',
+      'topics',
       'userPositionLikes',
       'userQualificationLikes',
+      'position',
+      'qualification',
       'polls',
     ]),
 
@@ -117,6 +120,7 @@ const Query = prismaObjectType({
         ]
         return {
           prevotes: userVotes.length,
+          users: users.length,
           topCount: tops,
           favoriteCount: favorites,
           compromiseCount: compromises,

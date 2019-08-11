@@ -44,6 +44,7 @@ type Position {
   id: ID! @id
   name: String!
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }

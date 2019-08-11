@@ -126,12 +126,14 @@ export interface NexusGenInputs {
     like_type?: NexusGenEnums['LikeType'] | null; // LikeType
     name: string; // String!
     summary?: string | null; // String
+    topicId?: string | null; // String
   }
   PositionUpdateInput: { // input type
     detail?: string | null; // String
     like_type?: NexusGenEnums['LikeType'] | null; // LikeType
     name?: string | null; // String
     summary?: string | null; // String
+    topicId?: string | null; // String
   }
   PositionWhereInput: { // input type
     AND?: NexusGenInputs['PositionWhereInput'][] | null; // [PositionWhereInput!]
@@ -197,6 +199,20 @@ export interface NexusGenInputs {
     summary_not_in?: string[] | null; // [String!]
     summary_not_starts_with?: string | null; // String
     summary_starts_with?: string | null; // String
+    topicId?: string | null; // String
+    topicId_contains?: string | null; // String
+    topicId_ends_with?: string | null; // String
+    topicId_gt?: string | null; // String
+    topicId_gte?: string | null; // String
+    topicId_in?: string[] | null; // [String!]
+    topicId_lt?: string | null; // String
+    topicId_lte?: string | null; // String
+    topicId_not?: string | null; // String
+    topicId_not_contains?: string | null; // String
+    topicId_not_ends_with?: string | null; // String
+    topicId_not_in?: string[] | null; // [String!]
+    topicId_not_starts_with?: string | null; // String
+    topicId_starts_with?: string | null; // String
   }
   PositionWhereUniqueInput: { // input type
     id?: string | null; // ID
@@ -221,6 +237,55 @@ export interface NexusGenInputs {
     years?: number | null; // Int
   }
   QualificationWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  TopicCreateInput: { // input type
+    category?: NexusGenEnums['CategoryType'] | null; // CategoryType
+    id?: string | null; // ID
+    name: string; // String!
+  }
+  TopicUpdateInput: { // input type
+    category?: NexusGenEnums['CategoryType'] | null; // CategoryType
+    name?: string | null; // String
+  }
+  TopicWhereInput: { // input type
+    AND?: NexusGenInputs['TopicWhereInput'][] | null; // [TopicWhereInput!]
+    category?: NexusGenEnums['CategoryType'] | null; // CategoryType
+    category_in?: NexusGenEnums['CategoryType'][] | null; // [CategoryType!]
+    category_not?: NexusGenEnums['CategoryType'] | null; // CategoryType
+    category_not_in?: NexusGenEnums['CategoryType'][] | null; // [CategoryType!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['TopicWhereInput'][] | null; // [TopicWhereInput!]
+    OR?: NexusGenInputs['TopicWhereInput'][] | null; // [TopicWhereInput!]
+  }
+  TopicWhereUniqueInput: { // input type
     id?: string | null; // ID
   }
   UserPositionLikeWhereInput: { // input type
@@ -435,11 +500,13 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  CategoryType: "HEALTH"
   Gender: "FEMALE" | "MALE"
   LikeType: "DISLIKE" | "LIKE" | "UNSPECIFIED"
   PollOrderByInput: "candidateId_ASC" | "candidateId_DESC" | "createdAt_ASC" | "createdAt_DESC" | "date_ASC" | "date_DESC" | "error_margin_ASC" | "error_margin_DESC" | "id_ASC" | "id_DESC" | "link_to_poll_ASC" | "link_to_poll_DESC" | "poll_type_ASC" | "poll_type_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
   PollType: "HEADTOHEAD" | "PRIMARY"
-  PositionOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "detail_ASC" | "detail_DESC" | "id_ASC" | "id_DESC" | "like_type_ASC" | "like_type_DESC" | "name_ASC" | "name_DESC" | "summary_ASC" | "summary_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  PositionOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "detail_ASC" | "detail_DESC" | "id_ASC" | "id_DESC" | "like_type_ASC" | "like_type_DESC" | "name_ASC" | "name_DESC" | "summary_ASC" | "summary_DESC" | "topicId_ASC" | "topicId_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  TopicOrderByInput: "category_ASC" | "category_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "gender_ASC" | "gender_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "password_ASC" | "password_DESC" | "role_ASC" | "role_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   UserPositionLikeOrderByInput: "candidateId_ASC" | "candidateId_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "latest_ASC" | "latest_DESC" | "like_ASC" | "like_DESC" | "positionId_ASC" | "positionId_DESC" | "time_ASC" | "time_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
   UserQualificationLikeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "latest_ASC" | "latest_DESC" | "like_ASC" | "like_DESC" | "qualificationId_ASC" | "qualificationId_DESC" | "time_ASC" | "time_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
@@ -493,6 +560,7 @@ export interface NexusGenRootTypes {
     favoriteCount?: number | null; // Int
     prevotes?: number | null; // Int
     topCount?: number | null; // Int
+    users?: number | null; // Int
     vetoCount?: number | null; // Int
   }
   Mutation: {};
@@ -511,6 +579,7 @@ export interface NexusGenRootTypes {
     like_type?: NexusGenEnums['LikeType'] | null; // LikeType
     name: string; // String!
     summary?: string | null; // String
+    topicId?: string | null; // String
   }
   PositionWithLike: { // root type
     dislikes?: number | null; // Int
@@ -533,6 +602,11 @@ export interface NexusGenRootTypes {
     qualification?: NexusGenRootTypes['Qualification'] | null; // Qualification
   }
   Query: {};
+  Topic: { // root type
+    category: NexusGenEnums['CategoryType']; // CategoryType!
+    id: string; // ID!
+    name: string; // String!
+  }
   User: { // root type
     email: string; // String!
     gender?: NexusGenEnums['Gender'] | null; // Gender
@@ -592,14 +666,20 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   QualificationCreateInput: NexusGenInputs['QualificationCreateInput'];
   QualificationUpdateInput: NexusGenInputs['QualificationUpdateInput'];
   QualificationWhereUniqueInput: NexusGenInputs['QualificationWhereUniqueInput'];
+  TopicCreateInput: NexusGenInputs['TopicCreateInput'];
+  TopicUpdateInput: NexusGenInputs['TopicUpdateInput'];
+  TopicWhereInput: NexusGenInputs['TopicWhereInput'];
+  TopicWhereUniqueInput: NexusGenInputs['TopicWhereUniqueInput'];
   UserPositionLikeWhereInput: NexusGenInputs['UserPositionLikeWhereInput'];
   UserQualificationLikeWhereInput: NexusGenInputs['UserQualificationLikeWhereInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
+  CategoryType: NexusGenEnums['CategoryType'];
   Gender: NexusGenEnums['Gender'];
   LikeType: NexusGenEnums['LikeType'];
   PollOrderByInput: NexusGenEnums['PollOrderByInput'];
   PollType: NexusGenEnums['PollType'];
   PositionOrderByInput: NexusGenEnums['PositionOrderByInput'];
+  TopicOrderByInput: NexusGenEnums['TopicOrderByInput'];
   UserOrderByInput: NexusGenEnums['UserOrderByInput'];
   UserPositionLikeOrderByInput: NexusGenEnums['UserPositionLikeOrderByInput'];
   UserQualificationLikeOrderByInput: NexusGenEnums['UserQualificationLikeOrderByInput'];
@@ -653,6 +733,7 @@ export interface NexusGenFieldTypes {
     favoriteCount: number | null; // Int
     prevotes: number | null; // Int
     topCount: number | null; // Int
+    users: number | null; // Int
     vetoCount: number | null; // Int
   }
   Mutation: { // field return type
@@ -661,6 +742,7 @@ export interface NexusGenFieldTypes {
     createPoll: NexusGenRootTypes['Poll'] | null; // Poll
     createPosition: NexusGenRootTypes['Position']; // Position!
     createQualification: NexusGenRootTypes['Qualification']; // Qualification!
+    createTopic: NexusGenRootTypes['Topic']; // Topic!
     createUserPositionLike: NexusGenRootTypes['UserPositionLike'] | null; // UserPositionLike
     createUserQualificationLike: NexusGenRootTypes['UserQualificationLike'] | null; // UserQualificationLike
     createUserVote: NexusGenRootTypes['UserVote'] | null; // UserVote
@@ -668,12 +750,14 @@ export interface NexusGenFieldTypes {
     deleteCandidatePosition: NexusGenRootTypes['CandidatePosition'] | null; // CandidatePosition
     deletePosition: NexusGenRootTypes['Position'] | null; // Position
     deleteQualification: NexusGenRootTypes['Qualification'] | null; // Qualification
+    deleteTopic: NexusGenRootTypes['Topic'] | null; // Topic
     login: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     signup: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     updateCandidate: NexusGenRootTypes['Candidate'] | null; // Candidate
     updateCandidatePosition: NexusGenRootTypes['CandidatePosition'] | null; // CandidatePosition
     updatePosition: NexusGenRootTypes['Position'] | null; // Position
     updateQualification: NexusGenRootTypes['Qualification'] | null; // Qualification
+    updateTopic: NexusGenRootTypes['Topic'] | null; // Topic
   }
   Poll: { // field return type
     candidateId: string; // String!
@@ -690,6 +774,7 @@ export interface NexusGenFieldTypes {
     like_type: NexusGenEnums['LikeType'] | null; // LikeType
     name: string; // String!
     summary: string | null; // String
+    topicId: string | null; // String
   }
   PositionWithLike: { // field return type
     dislikes: number | null; // Int
@@ -719,14 +804,22 @@ export interface NexusGenFieldTypes {
     candidatesWithVotesPercent: NexusGenRootTypes['CandidateWithVote'][] | null; // [CandidateWithVote!]
     me: NexusGenRootTypes['UserProfile'] | null; // UserProfile
     polls: NexusGenRootTypes['Poll'][]; // [Poll!]!
+    position: NexusGenRootTypes['Position'] | null; // Position
     positions: NexusGenRootTypes['Position'][]; // [Position!]!
     positionsWithLikes: NexusGenRootTypes['PositionWithLike'][] | null; // [PositionWithLike!]
+    qualification: NexusGenRootTypes['Qualification'] | null; // Qualification
     qualificationsWithLikes: NexusGenRootTypes['QualificationWithLike'][] | null; // [QualificationWithLike!]
+    topics: NexusGenRootTypes['Topic'][]; // [Topic!]!
     userPositionLikes: NexusGenRootTypes['UserPositionLike'][]; // [UserPositionLike!]!
     userQualificationLikes: NexusGenRootTypes['UserQualificationLike'][]; // [UserQualificationLike!]!
     users: NexusGenRootTypes['User'][]; // [User!]!
     userVotes: NexusGenRootTypes['UserVote'][] | null; // [UserVote!]
     voteAttributes: NexusGenRootTypes['CountAttribute'] | null; // CountAttribute
+  }
+  Topic: { // field return type
+    category: NexusGenEnums['CategoryType']; // CategoryType!
+    id: string; // ID!
+    name: string; // String!
   }
   User: { // field return type
     email: string; // String!
@@ -793,6 +886,9 @@ export interface NexusGenArgTypes {
     createQualification: { // args
       data: NexusGenInputs['QualificationCreateInput']; // QualificationCreateInput!
     }
+    createTopic: { // args
+      data: NexusGenInputs['TopicCreateInput']; // TopicCreateInput!
+    }
     createUserPositionLike: { // args
       candidateId: string; // ID!
       like?: NexusGenEnums['LikeType'] | null; // LikeType
@@ -813,10 +909,13 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['CandidatePositionWhereUniqueInput']; // CandidatePositionWhereUniqueInput!
     }
     deletePosition: { // args
-      where: NexusGenInputs['PositionWhereUniqueInput']; // PositionWhereUniqueInput!
+      id: string; // ID!
     }
     deleteQualification: { // args
-      where: NexusGenInputs['QualificationWhereUniqueInput']; // QualificationWhereUniqueInput!
+      id: string; // ID!
+    }
+    deleteTopic: { // args
+      where: NexusGenInputs['TopicWhereUniqueInput']; // TopicWhereUniqueInput!
     }
     login: { // args
       email?: string | null; // String
@@ -850,6 +949,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['QualificationUpdateInput']; // QualificationUpdateInput!
       where: NexusGenInputs['QualificationWhereUniqueInput']; // QualificationWhereUniqueInput!
     }
+    updateTopic: { // args
+      data: NexusGenInputs['TopicUpdateInput']; // TopicUpdateInput!
+      where: NexusGenInputs['TopicWhereUniqueInput']; // TopicWhereUniqueInput!
+    }
   }
   Query: {
     candidatePositions: { // args
@@ -867,6 +970,9 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       where?: NexusGenInputs['PollWhereInput'] | null; // PollWhereInput
     }
+    position: { // args
+      where: NexusGenInputs['PositionWhereUniqueInput']; // PositionWhereUniqueInput!
+    }
     positions: { // args
       after?: string | null; // String
       before?: string | null; // String
@@ -875,6 +981,18 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PositionOrderByInput'] | null; // PositionOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PositionWhereInput'] | null; // PositionWhereInput
+    }
+    qualification: { // args
+      where: NexusGenInputs['QualificationWhereUniqueInput']; // QualificationWhereUniqueInput!
+    }
+    topics: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TopicOrderByInput'] | null; // TopicOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TopicWhereInput'] | null; // TopicWhereInput
     }
     userPositionLikes: { // args
       after?: string | null; // String
@@ -911,11 +1029,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "QualificationWithLike" | "Query" | "User" | "UserPositionLike" | "UserProfile" | "UserQualificationLike" | "UserVote";
+export type NexusGenObjectNames = "AuthPayload" | "Candidate" | "CandidatePosition" | "CandidateWithVote" | "CountAttribute" | "Mutation" | "Poll" | "Position" | "PositionWithLike" | "Qualification" | "QualificationWithLike" | "Query" | "Topic" | "User" | "UserPositionLike" | "UserProfile" | "UserQualificationLike" | "UserVote";
 
-export type NexusGenInputNames = "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionUpdateInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationUpdateInput" | "QualificationWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
+export type NexusGenInputNames = "CandidatePositionCreateInput" | "CandidatePositionUpdateInput" | "CandidatePositionWhereUniqueInput" | "PollWhereInput" | "PositionCreateInput" | "PositionUpdateInput" | "PositionWhereInput" | "PositionWhereUniqueInput" | "QualificationCreateInput" | "QualificationUpdateInput" | "QualificationWhereUniqueInput" | "TopicCreateInput" | "TopicUpdateInput" | "TopicWhereInput" | "TopicWhereUniqueInput" | "UserPositionLikeWhereInput" | "UserQualificationLikeWhereInput" | "UserWhereInput";
 
-export type NexusGenEnumNames = "Gender" | "LikeType" | "PollOrderByInput" | "PollType" | "PositionOrderByInput" | "UserOrderByInput" | "UserPositionLikeOrderByInput" | "UserQualificationLikeOrderByInput" | "VoteType";
+export type NexusGenEnumNames = "CategoryType" | "Gender" | "LikeType" | "PollOrderByInput" | "PollType" | "PositionOrderByInput" | "TopicOrderByInput" | "UserOrderByInput" | "UserPositionLikeOrderByInput" | "UserQualificationLikeOrderByInput" | "VoteType";
 
 export type NexusGenInterfaceNames = never;
 

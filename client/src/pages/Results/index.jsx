@@ -4,7 +4,7 @@ import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
 import { ResultListItem, ProgressSpinner } from "../../components";
-import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
+// import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
 
 import "./Result.style.scss";
 
@@ -37,7 +37,7 @@ function Results({ history }) {
           <Button label="Next" onClick={() => history.push("./final")} />
         </div>
       </div>
-      <Query query={VoteResultQuery} fetchPolicy="network-only">
+      {/* <Query query={VoteResultQuery} fetchPolicy="network-only">
         {({ loading, error, data: { candidatesWithVotes } }) => {
           if (loading) return <ProgressSpinner />;
           return (
@@ -49,7 +49,7 @@ function Results({ history }) {
             />
           );
         }}
-      </Query>
+      </Query> */}
     </div>
   );
 }

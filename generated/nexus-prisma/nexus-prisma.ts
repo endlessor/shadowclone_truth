@@ -1823,6 +1823,7 @@ type PositionObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'summary', args?: [] | false, alias?: string  } 
+  | { name: 'topicId', args?: [] | false, alias?: string  } 
   | { name: 'detail', args?: [] | false, alias?: string  } 
   | { name: 'like_type', args?: [] | false, alias?: string  } 
 
@@ -1830,6 +1831,7 @@ type PositionFields =
   | 'id'
   | 'name'
   | 'summary'
+  | 'topicId'
   | 'detail'
   | 'like_type'
 
@@ -1855,6 +1857,14 @@ export interface PositionFieldDetails {
     resolve: undefined
   }
   summary: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  topicId: {
     type: 'String'
     args: {}
     description: string
@@ -5086,6 +5096,7 @@ type PositionPreviousValuesObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'summary', args?: [] | false, alias?: string  } 
+  | { name: 'topicId', args?: [] | false, alias?: string  } 
   | { name: 'detail', args?: [] | false, alias?: string  } 
   | { name: 'like_type', args?: [] | false, alias?: string  } 
 
@@ -5093,6 +5104,7 @@ type PositionPreviousValuesFields =
   | 'id'
   | 'name'
   | 'summary'
+  | 'topicId'
   | 'detail'
   | 'like_type'
 
@@ -5118,6 +5130,14 @@ export interface PositionPreviousValuesFieldDetails {
     resolve: undefined
   }
   summary: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  topicId: {
     type: 'String'
     args: {}
     description: string
@@ -6705,6 +6725,20 @@ export interface PositionWhereInput {
   summary_not_starts_with?: string | null
   summary_ends_with?: string | null
   summary_not_ends_with?: string | null
+  topicId?: string | null
+  topicId_not?: string | null
+  topicId_in?: string[]
+  topicId_not_in?: string[]
+  topicId_lt?: string | null
+  topicId_lte?: string | null
+  topicId_gt?: string | null
+  topicId_gte?: string | null
+  topicId_contains?: string | null
+  topicId_not_contains?: string | null
+  topicId_starts_with?: string | null
+  topicId_not_starts_with?: string | null
+  topicId_ends_with?: string | null
+  topicId_not_ends_with?: string | null
   detail?: string | null
   detail_not?: string | null
   detail_in?: string[]
@@ -6771,6 +6805,20 @@ export type PositionWhereInputInputObject =
   | { name: 'summary_not_starts_with', alias?: string  } 
   | { name: 'summary_ends_with', alias?: string  } 
   | { name: 'summary_not_ends_with', alias?: string  } 
+  | { name: 'topicId', alias?: string  } 
+  | { name: 'topicId_not', alias?: string  } 
+  | { name: 'topicId_in', alias?: string  } 
+  | { name: 'topicId_not_in', alias?: string  } 
+  | { name: 'topicId_lt', alias?: string  } 
+  | { name: 'topicId_lte', alias?: string  } 
+  | { name: 'topicId_gt', alias?: string  } 
+  | { name: 'topicId_gte', alias?: string  } 
+  | { name: 'topicId_contains', alias?: string  } 
+  | { name: 'topicId_not_contains', alias?: string  } 
+  | { name: 'topicId_starts_with', alias?: string  } 
+  | { name: 'topicId_not_starts_with', alias?: string  } 
+  | { name: 'topicId_ends_with', alias?: string  } 
+  | { name: 'topicId_not_ends_with', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'detail_not', alias?: string  } 
   | { name: 'detail_in', alias?: string  } 
@@ -7787,6 +7835,7 @@ export interface PositionCreateInput {
   id?: string | null
   name?: string
   summary?: string | null
+  topicId?: string | null
   detail?: string | null
   like_type?: prisma.LikeType | null
 }
@@ -7795,12 +7844,14 @@ export type PositionCreateInputInputObject =
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
+  | { name: 'topicId', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'like_type', alias?: string  } 
   
 export interface PositionUpdateInput {
   name?: string | null
   summary?: string | null
+  topicId?: string | null
   detail?: string | null
   like_type?: prisma.LikeType | null
 }
@@ -7808,12 +7859,14 @@ export type PositionUpdateInputInputObject =
   | Extract<keyof PositionUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
+  | { name: 'topicId', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'like_type', alias?: string  } 
   
 export interface PositionUpdateManyMutationInput {
   name?: string | null
   summary?: string | null
+  topicId?: string | null
   detail?: string | null
   like_type?: prisma.LikeType | null
 }
@@ -7821,6 +7874,7 @@ export type PositionUpdateManyMutationInputInputObject =
   | Extract<keyof PositionUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'summary', alias?: string  } 
+  | { name: 'topicId', alias?: string  } 
   | { name: 'detail', alias?: string  } 
   | { name: 'like_type', alias?: string  } 
   
@@ -8398,6 +8452,8 @@ export type PositionOrderByInputValues =
   | 'name_DESC'
   | 'summary_ASC'
   | 'summary_DESC'
+  | 'topicId_ASC'
+  | 'topicId_DESC'
   | 'detail_ASC'
   | 'detail_DESC'
   | 'like_type_ASC'

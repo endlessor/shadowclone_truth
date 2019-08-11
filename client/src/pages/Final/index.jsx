@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import { DataView } from "primereact/dataview";
 
 import { FinalListItem, ProgressSpinner } from "../../components";
-import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
+// import { AdminCandidatesQuery as VoteResultQuery } from "../../queries";
 
 import "./Final.style.scss";
 
@@ -46,7 +46,7 @@ function Final({ history }) {
           </span>
         </div>
       </div>
-      <Query query={VoteResultQuery} fetchPolicy="network-only">
+      {/* <Query query={VoteResultQuery} fetchPolicy="network-only">
         {({ loading, error, data: { candidatesWithVotes } }) => {
           if (loading) return <ProgressSpinner />;
           return (
@@ -58,7 +58,7 @@ function Final({ history }) {
             />
           );
         }}
-      </Query>
+      </Query> */}
     </div>
   );
 }

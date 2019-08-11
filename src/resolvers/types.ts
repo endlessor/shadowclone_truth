@@ -28,6 +28,7 @@ export const CountAttribute = objectType({
   name: 'CountAttribute',
   definition(t) {
     t.int('prevotes')
+    t.int('users')
     t.int('topCount')
     t.int('favoriteCount')
     t.int('compromiseCount')

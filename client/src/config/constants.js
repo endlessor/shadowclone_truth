@@ -7,3 +7,12 @@ export const VOTE_TYPE = {
   veto: "VETO",
   unknowns: "UNKNOWNS"
 };
+
+export const GENDER = [
+  {name: "male", value: "MALE"},
+  {name: "female", value: "FEMALE"}
+]
+
+export const CATEGORY_TYPE = [
+  {name: "health", value: "HEALTH"}
+]

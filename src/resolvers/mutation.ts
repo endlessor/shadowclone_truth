@@ -24,12 +24,13 @@ const Mutation = prismaObjectType({
       'createPosition',
       'createQualification',
       'createCandidatePosition',
-      'deletePosition',
+      'createTopic',
       'deleteCandidatePosition',
-      'deleteQualification',
+      'deleteTopic',
       'updateCandidatePosition',
       'updatePosition',
       'updateQualification',
+      'updateTopic'
     ])
 
     t.field('signup', {
@@ -293,7 +294,33 @@ const Mutation = prismaObjectType({
             if (err) console.log(err)
           })
         }
+        await ctx.prisma.deleteManyQualifications({ candidateId: args.id})
+        await ctx.prisma.deleteManyCandidatePositions({ candidateId: args.id })
+        await ctx.prisma.deleteManyUserVotes({ candidateId: args.id})
         return ctx.prisma.deleteCandidate({ id: args.id })
+      }
+    })
+
+    t.field('deletePosition', {
+      type: 'Position',
+      args: {
+        id: idArg({required: true}),
+      },
+      resolve: async (parent, args, ctx) => {
+        await ctx.prisma.deleteManyCandidatePositions({ positionId: args.id })
+        await ctx.prisma.deleteManyUserPositionLikes({ positionId: args.id })
+        return ctx.prisma.deletePosition({ id: args.id })
+      }
+    })
+
+    t.field('deleteQualification', {
+      type: 'Qualification',
+      args: {
+        id: idArg({required: true}),
+      },
+      resolve: async (parent, args, ctx) => {
+        await ctx.prisma.deleteManyUserQualificationLikes({ qualificationId: args.id })
+        return ctx.prisma.deleteQualification({ id: args.id })
       }
     })
   },
