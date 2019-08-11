@@ -4,7 +4,8 @@ import {
   positionFragment,
   topicFragment,
   userFragment,
-  qualificationFragment
+  qualificationFragment,
+  candidatePositionFragment
 } from "./fragments"
 
 export const AdminTotalUsers = gql`
@@ -241,4 +242,22 @@ export const UPDATE_TOPIC = gql`
     }
   }
   ${topicFragment}
+`;
+
+export const CREATE_CANDIDATE_POSITION = gql`
+  mutation createCandidatePosition($candidateId: ID!, $positionId: ID!) {
+    createCandidatePosition(candidateId: $candidateId, positionId: $positionId) {
+      ...position
+    }
+  }
+  ${positionFragment}
+`;
+
+export const DELETE_CANDIDATE_POSITION = gql`
+  mutation deleteCandidatePosition($candidateId: ID!, $positionId: ID!) {
+    deleteCandidatePosition(candidateId: $candidateId, positionId: $positionId) {
+      ...position
+    }
+  }
+  ${positionFragment}
 `;

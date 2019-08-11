@@ -38,6 +38,7 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
     if (loading) return <ProgressSpinner />
     return (
       <Button label="Delete" icon="pi pi-times"
+        className="p-button-secondary right-space-20"
         onClick={() => handleDeleteCandidate(deleteCandidate)} />
     )
   }
@@ -138,8 +139,8 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
           value={candidate.bio_summary}
         />
       </div>
-
-      <div className="ui-dialog-buttonpane p-clearfix">
+      <div className="p-col-5" />
+      <div className="p-col-7 align-right flex">
         <DeleteCandidate>
           <DeleteCandidateForm />
         </DeleteCandidate>

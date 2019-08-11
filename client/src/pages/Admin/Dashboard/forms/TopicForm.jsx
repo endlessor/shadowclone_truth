@@ -36,11 +36,6 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
     });
   };
 
-  const handleDeleteTopic = () => {
-    assignTopic('')
-    setTopic({ name: '', category: null })
-  }
-
   const handleUpdateTopic = (updateTopic) => {
     updateTopic({
       variables: {
@@ -91,15 +86,9 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
       <div className="p-col-4">
         <Checkbox inputId="cb1"
           onChange={(e) => addNewTopic(e.checked)} checked={isNewTopic} />
-        <label htmlFor="cb1" className="p-checkbox-label">New Topic</label>
+        <label htmlFor="cb1" className="p-checkbox-label">New</label>
       </div>
       <div className="p-col-8 align-right">
-        <Button
-          icon="pi pi-trash"
-          className="p-button-raised p-button-danger right-space-20"
-          tooltip="Delete Topic"
-          tooltipOptions={{ position: 'top' }}
-          onClick={handleDeleteTopic} />
         {topic.id && (
           <UpdateTopic>
             <UpdateTopicButton />

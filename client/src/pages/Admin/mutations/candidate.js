@@ -2,9 +2,12 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import {
   ADMIN_CANDIDATES,
+  CandidatePositionsQuery,
   CREATE_CANDIDATE,
   UPDATE_CANDIDATE,
-  DELETE_CANDIDATE
+  DELETE_CANDIDATE,
+  CREATE_CANDIDATE_POSITION,
+  DELETE_CANDIDATE_POSITION
 } from '../../../queries'
 
 export const CreateCandidate = ({ children }) => {
@@ -83,6 +86,60 @@ export const  DeleteCandidate = ({ children }) => {
         return React.Children.map(children, function (child) {
           return React.cloneElement(child, {
             deleteCandidate,
+            loading
+          })
+        })
+      }}
+    </Mutation>
+  )
+}
+
+export const CreateCandidatePosition = ({ children, candidateId }) => {
+  return (
+    <Mutation
+      update={(store, { data: { createCandidatePosition } }) => {
+        let query = { 
+          query: CandidatePositionsQuery, variables: { candidateId }
+        }
+        const data = store.readQuery(query)
+        data.candidatePositions.push(createCandidatePosition)
+        store.writeQuery({ ...query, data })
+      }}
+      mutation={CREATE_CANDIDATE_POSITION}
+    >
+      {(createCandidatePosition, { loading }) => {
+        return React.Children.map(children, function (child) {
+          return React.cloneElement(child, {
+            createCandidatePosition,
+            loading
+          })
+        })
+      }}
+    </Mutation>
+  )
+}
+
+export const DeleteCandidatePosition = ({ children, candidateId }) => {
+  return (
+    <Mutation
+      update={(store, { data: { deleteCandidatePosition } }) => {
+        let query = { 
+          query: CandidatePositionsQuery, variables: { candidateId }
+        }
+        const data = store.readQuery(query)
+        for (let i = 0; i < data.candidatePositions.length; i++) {
+          if (data.candidatePositions[i].id === deleteCandidatePosition.id) {
+            data.candidatePositions.splice(i, 1)
+          }
+        }
+        store.writeQuery({ ...query, data })
+      }}
+      mutation={DELETE_CANDIDATE_POSITION}
+    >
+      {(deleteCandidatePosition, { loading }) => {
+        return React.Children.map(children, function (child) {
+          return React.cloneElement(child, {
+            deleteCandidatePosition,
             loading
           })
         })

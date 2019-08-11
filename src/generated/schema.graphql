@@ -34,16 +34,6 @@ type CandidatePosition {
   time: DateTime
 }
 
-input CandidatePositionCreateInput {
-  candidateId: String!
-  id: ID
-  latest: Boolean
-  link: String
-  positionId: String!
-  rank: Int
-  time: DateTime
-}
-
 input CandidatePositionUpdateInput {
   candidateId: String
   latest: Boolean
@@ -98,7 +88,7 @@ enum LikeType {
 
 type Mutation {
   createCandidate(age: Int, bio_summary: String, current_office: String!, file: Upload, gender: Gender, name: String!, party: String!, state: String!): Candidate
-  createCandidatePosition(data: CandidatePositionCreateInput!): CandidatePosition!
+  createCandidatePosition(candidateId: ID!, positionId: ID!): Position
   createPoll(candidateId: ID!, pollType: PollType): Poll
   createPosition(data: PositionCreateInput!): Position!
   createQualification(data: QualificationCreateInput!): Qualification!
@@ -107,7 +97,7 @@ type Mutation {
   createUserQualificationLike(like: LikeType, qualificationId: ID!): UserQualificationLike
   createUserVote(candidateId: ID!, voteType: VoteType): UserVote
   deleteCandidate(id: ID!): Candidate
-  deleteCandidatePosition(where: CandidatePositionWhereUniqueInput!): CandidatePosition
+  deleteCandidatePosition(candidateId: ID!, positionId: ID!): Position
   deletePosition(id: ID!): Position
   deleteQualification(id: ID!): Qualification
   deleteTopic(where: TopicWhereUniqueInput!): Topic

@@ -2,6 +2,7 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import {
   POSITIONS,
+  ADMIN_POSITIONS,
   CREATE_POSITION,
   UPDATE_POSITION,
   DELETE_POSITION
@@ -14,6 +15,14 @@ export const CreatePosition = ({ children }) => {
         let query = { query: POSITIONS }
         const data = store.readQuery(query)
         data.positions.push(createPosition)
+        store.writeQuery({ ...query, data })
+        query = { query: ADMIN_POSITIONS }
+        data = store.readQuery(query)
+        data.positionsWithLikes.push({
+          position: createPosition,
+          likes: 0,
+          dislikes: 0
+        })
         store.writeQuery({ ...query, data })
       }}
       mutation={CREATE_POSITION}
@@ -66,6 +75,14 @@ export const  DeletePosition = ({ children }) => {
         for (let i = 0; i < data.positions.length; i++) {
           if (data.positions[i].id === deletePosition.id) {
             data.positions.splice(i, 1)
+          }
+        }
+        store.writeQuery({ ...query, data })
+        query = { query: ADMIN_POSITIONS }
+        data = store.readQuery(query)
+        for (let i = 0; i < data.positionsWithLikes.length; i++) {
+          if (data.positionsWithLikes[i].position.id === deletePosition.id) {
+            data.positionsWithLikes.splice(i, 1)
           }
         }
         store.writeQuery({ ...query, data })

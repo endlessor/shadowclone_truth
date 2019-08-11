@@ -1,19 +1,21 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 import {
-  QUALIFICATIONS,
+  CandidateQualificationsQuery,
   CREATE_QUALIFICATION,
   UPDATE_QUALIFICATION,
   DELETE_QUALIFICATION
 } from '../../../queries'
 
-export const CreateQualification = ({ children }) => {
+export const CreateQualification = ({ children, candidateId }) => {
   return (
     <Mutation
       update={(store, { data: { createQualification } }) => {
-        let query = { query: QUALIFICATIONS }
+        let query = { 
+          query: CandidateQualificationsQuery,  variables: { candidateId } 
+        }
         const data = store.readQuery(query)
-        data.qualifications.push(createQualification)
+        data.candidateQualifications.push(createQualification)
         store.writeQuery({ ...query, data })
       }}
       mutation={CREATE_QUALIFICATION}
@@ -30,15 +32,17 @@ export const CreateQualification = ({ children }) => {
   )
 }
 
-export const UpdateQualification = ({ children }) => {
+export const UpdateQualification = ({ children, candidateId }) => {
   return (
     <Mutation
       update={(store, { data: { updateQualification } }) => {
-        let query = { query: QUALIFICATIONS }
+        let query = { 
+          query: CandidateQualificationsQuery,  variables: { candidateId } 
+        }
         const data = store.readQuery(query)
-        for (let i = 0; i < data.qualifications.length; i++) {
-          if (data.qualifications[i].id === updateQualification.id) {
-            data.qualifications[i] = updateQualification
+        for (let i = 0; i < data.candidateQualifications.length; i++) {
+          if (data.candidateQualifications[i].id === updateQualification.id) {
+            data.candidateQualifications[i] = updateQualification
           }
         }
         store.writeQuery({ ...query, data })
@@ -57,15 +61,17 @@ export const UpdateQualification = ({ children }) => {
   )
 }
 
-export const  DeleteQualification = ({ children }) => {
+export const  DeleteQualification = ({ children, candidateId }) => {
   return (
     <Mutation
       update={(store, { data: { deleteQualification } }) => {
-        let query = { query: QUALIFICATIONS }
+        let query = { 
+          query: CandidateQualificationsQuery,  variables: { candidateId } 
+        }
         const data = store.readQuery(query)
-        for (let i = 0; i < data.qualifications.length; i++) {
-          if (data.qualifications[i].id === deleteQualification.id) {
-            data.qualifications.splice(i, 1)
+        for (let i = 0; i < data.candidateQualifications.length; i++) {
+          if (data.candidateQualifications[i].id === deleteQualification.id) {
+            data.candidateQualifications.splice(i, 1)
           }
         }
         store.writeQuery({ ...query, data })

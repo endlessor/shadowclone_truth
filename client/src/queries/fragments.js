@@ -58,3 +58,15 @@ export const userFragment = gql`
     role
   }
 `
+
+export const candidatePositionFragment = gql`
+  fragment candidatePosition on CandidatePosition {
+    id
+    positionId
+    candidateId
+    time
+    link
+    rank
+    latest
+  }
+`
