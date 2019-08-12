@@ -1,5 +1,5 @@
 import { prismaObjectType } from 'nexus-prisma'
-import { stringArg, idArg, intArg } from 'nexus/dist';
+import { stringArg, idArg, intArg, floatArg } from 'nexus/dist';
 import { hash, compare } from 'bcrypt'
 import { APP_SECRET, getUserId } from '../utils'
 import { sign } from 'jsonwebtoken'
@@ -203,6 +203,8 @@ const Mutation = prismaObjectType({
         gender: "Gender",
         current_office: stringArg({required: true}),
         bio_summary: stringArg(),
+        latest_poll: floatArg(),
+        latest_odds: floatArg(),
         file: 'Upload'
       },
       resolve: async (parent, args, ctx) => {
@@ -226,7 +228,9 @@ const Mutation = prismaObjectType({
           gender: args.gender,
           current_office: args.current_office,
           photo: uploadURL,
-          bio_summary: args.bio_summary
+          bio_summary: args.bio_summary,
+          latest_poll: args.latest_poll,
+          latest_odds: args.latest_odds
         })
         return candidate
       }
@@ -243,6 +247,8 @@ const Mutation = prismaObjectType({
         gender: "Gender",
         current_office: stringArg({required: true}),
         bio_summary: stringArg(),
+        latest_poll: floatArg(),
+        latest_odds: floatArg(),
         file: 'Upload'
       },
       resolve: async (parent, args, ctx) => {
@@ -268,7 +274,9 @@ const Mutation = prismaObjectType({
             gender: args.gender,
             current_office: args.current_office,
             photo: uploadURL,
-            bio_summary: args.bio_summary
+            bio_summary: args.bio_summary,
+            latest_poll: args.latest_poll,
+            latest_odds: args.latest_odds
           }
         })
         return candidate

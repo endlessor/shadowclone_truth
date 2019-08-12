@@ -18,6 +18,8 @@ export default function SaveCandidateForm({
           id: id,
           ...rest,
           age: parseInt(rest.age),
+          latest_poll: parseFloat(rest.latest_poll),
+          latest_odds: parseFloat(rest.latest_odds),
           file: photo
         }
       }).then(result => {
@@ -29,6 +31,8 @@ export default function SaveCandidateForm({
         variables: {
           ...rest,
           age: parseInt(rest.age),
+          latest_poll: parseFloat(rest.latest_poll),
+          latest_odds: parseFloat(rest.latest_odds),
           file: photo
         }
       }).then(result => {

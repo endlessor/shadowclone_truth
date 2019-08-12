@@ -863,6 +863,8 @@ export interface NexusGenArgTypes {
       current_office: string; // String!
       file?: any | null; // Upload
       gender?: NexusGenEnums['Gender'] | null; // Gender
+      latest_odds?: number | null; // Float
+      latest_poll?: number | null; // Float
       name: string; // String!
       party: string; // String!
       state: string; // String!
@@ -929,6 +931,8 @@ export interface NexusGenArgTypes {
       file?: any | null; // Upload
       gender?: NexusGenEnums['Gender'] | null; // Gender
       id: string; // ID!
+      latest_odds?: number | null; // Float
+      latest_poll?: number | null; // Float
       name: string; // String!
       party: string; // String!
       state: string; // String!
