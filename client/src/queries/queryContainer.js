@@ -14,8 +14,8 @@ const renderResult = (children, data, loading) => {
   )
 }
 
-export const QueryContainer = ({ children, query, variables }) => (
-  <Query query={query} variables={variables}>
+export const QueryContainer = ({ children, query, variables, fetchPolicy }) => (
+  <Query query={query} variables={variables} fetchPolicy={fetchPolicy}>
     {({ loading, error, data }) => {
       if (error) {
         return renderError(error, children)
