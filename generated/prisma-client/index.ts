@@ -508,7 +508,41 @@ export type CandidatePositionOrderByInput =
   | "latest_ASC"
   | "latest_DESC";
 
-export type CategoryType = "HEALTH";
+export type CategoryType =
+  | "ABORTION"
+  | "ACTIVISM"
+  | "AWARDS"
+  | "AWARDS_FOR_MILITARY_SERVICE"
+  | "BANKING"
+  | "BIOGRAPHICAL"
+  | "BIPARTISAMSHIP"
+  | "BUDGET"
+  | "CAMPAIGN"
+  | "CIVIL_RIGHTS"
+  | "CONSTITUENT_SERVICES"
+  | "CRIME"
+  | "DEFENSE"
+  | "DRUG_POLICY"
+  | "ECONOMIC_INEQUALITY"
+  | "ECONOMY"
+  | "EDUCATION"
+  | "ENVIRONMENT"
+  | "EXECUTIVE_LEADERSHIP"
+  | "FOREIGN_POLICY"
+  | "GAFFES"
+  | "GENDER"
+  | "GUN_RIGHTS_CONTROL"
+  | "HEALTH_CARE"
+  | "IMMIGRATION"
+  | "INFRASTRUCTURE"
+  | "INTELLECTUAL_ABILITY"
+  | "LEGISLATIVE"
+  | "MILITARY_SERVICE"
+  | "POLICING"
+  | "POLITICAL_STRATEGY"
+  | "SCANDAL"
+  | "TBD"
+  | "URBAN_DEVELOPMENT";
 
 export type UserQualificationLikeOrderByInput =
   | "id_ASC"

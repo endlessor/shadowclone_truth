@@ -57,7 +57,40 @@ type CandidateWithVote {
 }
 
 enum CategoryType {
-  HEALTH
+  ABORTION
+  ACTIVISM
+  AWARDS
+  AWARDS_FOR_MILITARY_SERVICE
+  BANKING
+  BIOGRAPHICAL
+  BIPARTISAMSHIP
+  BUDGET
+  CAMPAIGN
+  CIVIL_RIGHTS
+  CONSTITUENT_SERVICES
+  CRIME
+  DEFENSE
+  DRUG_POLICY
+  ECONOMIC_INEQUALITY
+  ECONOMY
+  EDUCATION
+  ENVIRONMENT
+  EXECUTIVE_LEADERSHIP
+  FOREIGN_POLICY
+  GAFFES
+  GENDER
+  GUN_RIGHTS_CONTROL
+  HEALTH_CARE
+  IMMIGRATION
+  INFRASTRUCTURE
+  INTELLECTUAL_ABILITY
+  LEGISLATIVE
+  MILITARY_SERVICE
+  POLICING
+  POLITICAL_STRATEGY
+  SCANDAL
+  TBD
+  URBAN_DEVELOPMENT
 }
 
 type CountAttribute {
@@ -89,7 +122,7 @@ enum LikeType {
 }
 
 type Mutation {
-  createCandidate(age: Int, bio_summary: String, current_office: String!, file: Upload, gender: Gender, name: String!, party: String!, state: String!): Candidate
+  createCandidate(age: Int, bio_summary: String, current_office: String!, file: Upload, gender: Gender, latest_odds: Float, latest_poll: Float, name: String!, party: String!, state: String!): Candidate
   createCandidatePosition(candidateId: ID!, positionId: ID!): Position
   createPoll(candidateId: ID!, pollType: PollType): Poll
   createPosition(data: PositionCreateInput!): Position!
@@ -105,7 +138,7 @@ type Mutation {
   deleteTopic(where: TopicWhereUniqueInput!): Topic
   login(email: String, password: String): AuthPayload
   signup(email: String!, name: String, password: String!): AuthPayload
-  updateCandidate(age: Int, bio_summary: String, current_office: String!, file: Upload, gender: Gender, id: ID!, name: String!, party: String!, state: String!): Candidate
+  updateCandidate(age: Int, bio_summary: String, current_office: String!, gender: Gender, id: ID!, latest_odds: Float, latest_poll: Float, name: String!, party: String!, state: String!): Candidate
   updateCandidatePosition(data: CandidatePositionUpdateInput!, where: CandidatePositionWhereUniqueInput!): CandidatePosition
   updatePosition(data: PositionUpdateInput!, where: PositionWhereUniqueInput!): Position
   updateQualification(data: QualificationUpdateInput!, where: QualificationWhereUniqueInput!): Qualification

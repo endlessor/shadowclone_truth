@@ -13,6 +13,7 @@ const CandidateQualificationList = ({ loading, data, toDetailQualification, cand
       detail: "",
       summary: "",
       years: 0,
+      rank: 1,
       candidateId: candidate.id
     });
   };
@@ -45,8 +46,9 @@ const CandidateQualificationList = ({ loading, data, toDetailQualification, cand
         >
           <Column field="name" header="Name" sortable />
           <Column field="summary" header="Summary" sortable />
-          <Column field="years" header="Years" sortable />
           <Column field="detail" header="Detail" sortable />
+          <Column field="years" header="Years" sortable />
+          <Column field="rank" header="Rank" sortable />
         </DataTable>
       </AccordionTab>
     </Accordion>

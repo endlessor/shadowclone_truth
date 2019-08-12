@@ -14,18 +14,18 @@ const Dashboard = () => {
   return (
     <div className="p-grid admin-page">
       <section className="p-col-12 admin-header">
-        <QueryContainer query={ADMIN_TOTAL_ATTRIBUTES}>
+        <QueryContainer query={ADMIN_TOTAL_ATTRIBUTES} fetchPolicy="network-only" >
           <AdminHeader />
         </QueryContainer>
       </section>
       <div className="p-col-12 admin-section">
         <section className="p-col-12 admin-content">
-          <QueryContainer query={ADMIN_CANDIDATES}>
+          <QueryContainer query={ADMIN_CANDIDATES} fetchPolicy="network-only">
             <CandidateList />
           </QueryContainer>
         </section>
         <section className="p-col-12 admin-content">
-          <QueryContainer query={ADMIN_POSITIONS}>
+          <QueryContainer query={ADMIN_POSITIONS} fetchPolicy="network-only">
             <PositionList />
           </QueryContainer>
         </section>

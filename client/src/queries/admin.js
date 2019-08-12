@@ -99,6 +99,8 @@ export const CREATE_CANDIDATE = gql`
     $gender: Gender
     $current_office: String!
     $bio_summary: String
+    $latest_poll: Float
+    $latest_odds: Float
     $file: Upload
   ) {
     createCandidate(
@@ -109,6 +111,8 @@ export const CREATE_CANDIDATE = gql`
       gender: $gender
       current_office: $current_office
       bio_summary: $bio_summary
+      latest_poll: $latest_poll
+      latest_odds: $latest_odds
       file: $file
     ) {
       ...candidate
@@ -127,7 +131,8 @@ export const UPDATE_CANDIDATE = gql`
     $gender: Gender
     $current_office: String!
     $bio_summary: String
-    $file: Upload
+    $latest_poll: Float
+    $latest_odds: Float
   ) {
     updateCandidate(
       id: $id
@@ -138,7 +143,8 @@ export const UPDATE_CANDIDATE = gql`
       gender: $gender
       current_office: $current_office
       bio_summary: $bio_summary
-      file: $file
+      latest_poll: $latest_poll
+      latest_odds: $latest_odds
     ) {
       ...candidate
     }

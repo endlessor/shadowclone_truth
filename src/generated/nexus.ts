@@ -491,7 +491,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  CategoryType: "HEALTH"
+  CategoryType: "ABORTION" | "ACTIVISM" | "AWARDS" | "AWARDS_FOR_MILITARY_SERVICE" | "BANKING" | "BIOGRAPHICAL" | "BIPARTISAMSHIP" | "BUDGET" | "CAMPAIGN" | "CIVIL_RIGHTS" | "CONSTITUENT_SERVICES" | "CRIME" | "DEFENSE" | "DRUG_POLICY" | "ECONOMIC_INEQUALITY" | "ECONOMY" | "EDUCATION" | "ENVIRONMENT" | "EXECUTIVE_LEADERSHIP" | "FOREIGN_POLICY" | "GAFFES" | "GENDER" | "GUN_RIGHTS_CONTROL" | "HEALTH_CARE" | "IMMIGRATION" | "INFRASTRUCTURE" | "INTELLECTUAL_ABILITY" | "LEGISLATIVE" | "MILITARY_SERVICE" | "POLICING" | "POLITICAL_STRATEGY" | "SCANDAL" | "TBD" | "URBAN_DEVELOPMENT"
   Gender: "FEMALE" | "MALE"
   LikeType: "DISLIKE" | "LIKE" | "UNSPECIFIED"
   PollOrderByInput: "candidateId_ASC" | "candidateId_DESC" | "createdAt_ASC" | "createdAt_DESC" | "date_ASC" | "date_DESC" | "error_margin_ASC" | "error_margin_DESC" | "id_ASC" | "id_DESC" | "link_to_poll_ASC" | "link_to_poll_DESC" | "poll_type_ASC" | "poll_type_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "userId_ASC" | "userId_DESC"
@@ -863,6 +863,8 @@ export interface NexusGenArgTypes {
       current_office: string; // String!
       file?: any | null; // Upload
       gender?: NexusGenEnums['Gender'] | null; // Gender
+      latest_odds?: number | null; // Float
+      latest_poll?: number | null; // Float
       name: string; // String!
       party: string; // String!
       state: string; // String!
@@ -926,9 +928,10 @@ export interface NexusGenArgTypes {
       age?: number | null; // Int
       bio_summary?: string | null; // String
       current_office: string; // String!
-      file?: any | null; // Upload
       gender?: NexusGenEnums['Gender'] | null; // Gender
       id: string; // ID!
+      latest_odds?: number | null; // Float
+      latest_poll?: number | null; // Float
       name: string; // String!
       party: string; // String!
       state: string; // String!

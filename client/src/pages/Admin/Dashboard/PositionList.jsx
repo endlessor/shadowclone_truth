@@ -43,6 +43,8 @@ const PositionList = ({ loading, data }) => {
         header={<h2 style={{ margin: 0 }}>Positions ({positionsWithLikes.length})</h2>}
         selectionMode="single"
         onRowSelect={onPositionSelect}
+        resizableColumns
+        reorderableColumns
         footer={
           <div className="p-clearfix">
             <Button
