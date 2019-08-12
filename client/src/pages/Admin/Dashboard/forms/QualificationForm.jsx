@@ -28,11 +28,11 @@ const QualificationForm = ({ qualification, toDetailCandidate, candidate }) => {
   }
 
   const handleAddQualification = (createQualification) => {
-    const { years, ...rest } = curQualification;
+    const { years, rank, ...rest } = curQualification;
     createQualification({
       variables: {
         data: {
-          ...rest, years: parseInt(years)
+          ...rest, years: parseInt(years), rank: parseInt(rank)
         }
       }
     }).then(res => toDetailCandidate())
@@ -40,10 +40,10 @@ const QualificationForm = ({ qualification, toDetailCandidate, candidate }) => {
   }
 
   const handleUpdateQualification = (updateQualification) => {
-    const { id, __typename, years, ...rest } = curQualification;
+    const { id, __typename, years, rank, ...rest } = curQualification;
     updateQualification({
       variables: {
-        data: { ...rest, years: parseInt(years) },
+        data: { ...rest, years: parseInt(years), rank: parseInt(rank) },
         where: { id }
       }
     }).then(res => toDetailCandidate())
@@ -115,6 +115,17 @@ const QualificationForm = ({ qualification, toDetailCandidate, candidate }) => {
             keyfilter="pint"
             onChange={e => updateProperty("years", e.target.value)}
             value={curQualification.years}
+          />
+        </div>
+        <div className="p-col-4" style={{ padding: ".75em" }}>
+          <label htmlFor="qrank">rank</label>
+        </div>
+        <div className="p-col-8" style={{ padding: ".5em" }}>
+          <InputText
+            id="qrank"
+            keyfilter="pint"
+            onChange={e => updateProperty("rank", e.target.value)}
+            value={curQualification.rank}
           />
         </div>
         <div className="p-col-4" style={{ padding: ".75em" }}>
