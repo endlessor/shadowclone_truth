@@ -130,6 +130,34 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
         </div>
 
         <div className="p-col-4" style={{ padding: ".75em" }}>
+          <label htmlFor="poll">Latest Poll</label>
+        </div>
+        <div className="p-col-8" style={{ padding: ".5em" }}>
+          <InputText
+            id="poll"
+            keyfilter="int"
+            onChange={e => {
+              updateProperty("latest_poll", e.target.value);
+            }}
+            value={candidate.latest_poll}
+          />
+        </div>
+
+        <div className="p-col-4" style={{ padding: ".75em" }}>
+          <label htmlFor="odds">Latest Odds</label>
+        </div>
+        <div className="p-col-8" style={{ padding: ".5em" }}>
+          <InputText
+            id="odds"
+            keyfilter="int"
+            onChange={e => {
+              updateProperty("latest_odds", e.target.value);
+            }}
+            value={candidate.latest_odds}
+          />
+        </div>
+
+        <div className="p-col-4" style={{ padding: ".75em" }}>
           <label htmlFor="age">Bio_summary</label>
         </div>
         <div className="p-col-8" style={{ padding: ".5em" }}>
