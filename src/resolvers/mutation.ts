@@ -249,21 +249,8 @@ const Mutation = prismaObjectType({
         bio_summary: stringArg(),
         latest_poll: floatArg(),
         latest_odds: floatArg(),
-        file: 'Upload'
       },
       resolve: async (parent, args, ctx) => {
-        let uploadURL = ''
-        if (args.file) {
-          const { createReadStream , filename } = await args.file
-          const stream = createReadStream()
-          const key = uuid() + '-' + filename
-          const response = await s3.upload({
-              Key: key,
-              ACL: 'public-read',
-              Body: stream 
-            }).promise()
-          uploadURL = response.Location
-        }
         const candidate = await ctx.prisma.updateCandidate({
           where: { id: args.id },
           data: {
@@ -273,7 +260,6 @@ const Mutation = prismaObjectType({
             age: args.age,
             gender: args.gender,
             current_office: args.current_office,
-            photo: uploadURL,
             bio_summary: args.bio_summary,
             latest_poll: args.latest_poll,
             latest_odds: args.latest_odds
