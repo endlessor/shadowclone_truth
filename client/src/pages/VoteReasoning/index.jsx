@@ -159,7 +159,7 @@ function VoteReasoning({
   );
 
   return (
-    <div className="p-col-12 p-sm-12 p-md-6 page vote-reason">
+    <div className="p-col-12 page vote-reason">
       <section className="p-grid vote-reason__header">
         <div className="p-col">
           <p className="vote-reason__header--description">

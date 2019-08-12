@@ -64,7 +64,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="p-grid p-justify-center">
-        <div className="p-col-12 p-sm-12 p-md-6">
+        <div className="p-col-12 p-sm-12 p-md-6" style={{ padding: 0 }}>
           <MainRoute />
         </div>
       </div>

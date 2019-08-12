@@ -18,9 +18,8 @@
   &__header {
     padding: 0.5em;
     background-color: white;
-    position: fixed;
+    position: sticky;
     top: 60px;
-    width: 100%;
     .pi {
       float: left;
       font-size: 2.5em;
@@ -31,13 +30,13 @@
       font-weight: bold;
       font-size: 1.4em;
       color: gray;
+      text-align: center;
     }
   }
 
   &__main {
-    position: fixed;
-    top: 130px;
-    width: 100%;
+    position: sticky;
+    top: 136px;
     background-color: #f2f2f2;
     border-top: solid 1px $border-color;
     border-bottom: solid 1px $border-color;
@@ -49,7 +48,6 @@
   }
 
   &__rating {
-    padding-top: 175px;
     margin: 0 5px;
     margin-bottom: 0.5em;
     border-bottom: dashed 1px $border-color;

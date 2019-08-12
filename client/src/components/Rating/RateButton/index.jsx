@@ -5,21 +5,23 @@ import "./RateButton.style.scss";
 
 const RateButton = ({ icon, label, onClick, className }) => {
   return (
-    <button
-      className={`p-grid p-component rate-button ${className}`}
-      onClick={onClick}
-    >
-      {icon && (
-        <div className="p-col-12">
-          <span className={`rate-button-icon ${icon}`} />
-        </div>
-      )}
-      {label && (
-        <div className="p-col-12">
-          <span className="rate-button-label">{label}</span>
-        </div>
-      )}
-    </button>
+    <div className="p-grid">
+      <button
+        className={`p-component rate-button ${className}`}
+        onClick={onClick}
+      >
+        {icon && (
+          <div className="p-col-12">
+            <span className={`rate-button-icon ${icon}`} />
+          </div>
+        )}
+        {label && (
+          <div className="p-col-12">
+            <span className="rate-button-label">{label}</span>
+          </div>
+        )}
+      </button>
+    </div>
   );
 };
 

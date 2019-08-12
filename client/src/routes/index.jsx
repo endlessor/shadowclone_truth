@@ -90,7 +90,7 @@ const Routes = props => {
           <div className="layout-wrapper">
             <div className="layout-topbar">
               <div className="logo">
-                <span>Truth</span>
+                <span>Indecision2020</span>
               </div>
               {localStorage.getItem(AUTH_TOKEN) && (
                 <div className="topbar-menu">

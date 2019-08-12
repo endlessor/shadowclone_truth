@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Query, Mutation } from "react-apollo";
 import { DataView } from "primereact/dataview";
@@ -10,10 +10,19 @@ import {
   UserVoteMutation,
   CandidateDetailQuery
 } from "../../queries/candidate";
+import { VOTE_TYPE } from "../../config";
 
 import "./Prevote.style.scss";
 
 function PreVote({ history }) {
+  const [topCandidateId, setTopCandidateId] = useState(null);
+  const onCompleteQueryFetch = data => {
+    const topCandidate = data.candidates.find(
+      ({ vote_type }) => vote_type === VOTE_TYPE.top
+    );
+    if (topCandidate) setTopCandidateId(topCandidate.id);
+  };
+
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
       return null;
@@ -45,6 +54,23 @@ function PreVote({ history }) {
                       }
                     }
                   });
+                  if (vote_type === VOTE_TYPE.top) {
+                    const { candidate: prevTopCandidate } = cache.readQuery({
+                      query: CandidateDetailQuery,
+                      variables: { id: topCandidateId }
+                    });
+                    cache.writeQuery({
+                      query: CandidateDetailQuery,
+                      variables: { topCandidateId },
+                      data: {
+                        candidate: {
+                          ...prevTopCandidate,
+                          vote_type: null
+                        }
+                      }
+                    });
+                    setTopCandidateId(id);
+                  }
                 }
               });
             };
@@ -68,7 +94,11 @@ function PreVote({ history }) {
           <h1>Prevoting</h1>
         </div>
       </div>
-      <Query query={CandidateQuery} fetchPolicy="network-only">
+      <Query
+        query={CandidateQuery}
+        fetchPolicy="network-only"
+        onCompleted={onCompleteQueryFetch}
+      >
         {({ loading, error, data }) => {
           if (loading) return <ProgressSpinner />;
           if (error) return <p>Error : {error}</p>;
