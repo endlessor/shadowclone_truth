@@ -80,6 +80,8 @@ const CandidateList = ({ data, loading }) => {
         loading={loading}
         value={candidatesWithVotes}
         header={<h2 style={{ margin: 0 }}>Candidates ({candidatesWithVotes.length})</h2>}
+        resizableColumns
+        reorderableColumns
         footer={
           <div className="p-clearfix">
             <Button
