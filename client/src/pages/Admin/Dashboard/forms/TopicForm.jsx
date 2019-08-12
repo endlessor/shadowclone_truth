@@ -28,6 +28,12 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
     if (checked) setTopic({ name: '', category: null })
   }
 
+  const getTopicName = (value) => {
+    const cats = CATEGORY_TYPE.filter(c => c.value === value)
+    if (cats.length > 0) return cats[0].name
+    return ""
+  }
+
   const updateProperty = (property, value) => {
     setTopic({
       ...topic,
@@ -135,7 +141,7 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
           options={CATEGORY_TYPE}
           onChange={e => updateProperty("category", e.target.value.value)}
           optionLabel="name"
-          value={{ name: "health", value: topic.category }}
+          value={{ name: getTopicName(topic.category), value: topic.category }}
           placeholder="Select a Category"
         />
       </div>

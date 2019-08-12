@@ -133,7 +133,6 @@ export const UPDATE_CANDIDATE = gql`
     $bio_summary: String
     $latest_poll: Float
     $latest_odds: Float
-    $file: Upload
   ) {
     updateCandidate(
       id: $id
@@ -146,7 +145,6 @@ export const UPDATE_CANDIDATE = gql`
       bio_summary: $bio_summary
       latest_poll: $latest_poll
       latest_odds: $latest_odds
-      file: $file
     ) {
       ...candidate
     }

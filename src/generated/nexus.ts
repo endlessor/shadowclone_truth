@@ -928,7 +928,6 @@ export interface NexusGenArgTypes {
       age?: number | null; // Int
       bio_summary?: string | null; // String
       current_office: string; // String!
-      file?: any | null; // Upload
       gender?: NexusGenEnums['Gender'] | null; // Gender
       id: string; // ID!
       latest_odds?: number | null; // Float

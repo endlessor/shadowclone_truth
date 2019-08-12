@@ -19,8 +19,7 @@ export default function SaveCandidateForm({
           ...rest,
           age: parseInt(rest.age),
           latest_poll: parseFloat(rest.latest_poll),
-          latest_odds: parseFloat(rest.latest_odds),
-          file: photo
+          latest_odds: parseFloat(rest.latest_odds)
         }
       }).then(result => {
         hideForm()

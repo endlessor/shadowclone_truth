@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { InputText } from "primereact/inputtext";
 import { FileUpload } from "primereact/fileupload";
+import { Dropdown } from 'primereact/dropdown';
 import { LoadingButton } from "../../../../components/Common/Buttons";
+import { GENDER } from "../../../../config"
 import SaveCandidateForm from "./SaveCandidateForm";
 import {
   CreateCandidate,
@@ -16,6 +18,7 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
     setCandidate(curCandidate)
   }, [curCandidate])
 
+  console.log('candidate-------', candidate)
   const updateProperty = (property, value) => {
     setCandidate({
       ...candidate,
@@ -31,6 +34,12 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
     deleteCandidate({ variables: { id: candidate.id } })
       .then(result => hideForm())
       .catch(err => createNotification('error', err.message))
+  }
+
+  const getGenderName = (value) => {
+    const gender = GENDER.filter(g => g.value === value)
+    if (gender.length > 0) return gender[0].name
+    return ""
   }
 
   const DeleteCandidateForm = ({ deleteCandidate, loading }) => (
@@ -60,21 +69,25 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
           />
         </div>
 
-        <div className="p-col-4" style={{ padding: ".75em" }}>
-          <label htmlFor="photo">Photo</label>
-        </div>
-        <div className="p-col-8" style={{ padding: ".5em" }}>
-          <FileUpload
-            id="photo"
-            name="file"
-            accept="image/*"
-            mode="basic"
-            onSelect={e => {
-              updateProperty("file", e.files[0]);
-            }}
-            value={candidate.photo}
-          />
-        </div>
+        {!candidate.id && (
+          <React.Fragment>
+            <div className="p-col-4" style={{ padding: ".75em" }}>
+              <label htmlFor="photo">Photo</label>
+            </div>
+            <div className="p-col-8" style={{ padding: ".5em" }}>
+              <FileUpload
+                id="photo"
+                name="file"
+                accept="image/*"
+                mode="basic"
+                onSelect={e => {
+                  updateProperty("file", e.files[0]);
+                }}
+                value={candidate.photo}
+              />
+            </div>            
+          </React.Fragment>
+        )}
 
         <div className="p-col-4" style={{ padding: ".75em" }}>
           <label htmlFor="party">Party</label>
@@ -126,6 +139,20 @@ const CandidateForm = ({ curCandidate, hideForm }) => {
               updateProperty("age", e.target.value);
             }}
             value={candidate.age}
+          />
+        </div>
+
+        <div className="p-col-4" style={{ padding: ".75em" }}>
+          <label htmlFor="gender">Gender</label>
+        </div>
+        <div className="p-col-8" style={{ padding: ".5em" }}>
+          <Dropdown
+            id="gender"
+            options={GENDER}
+            onChange={e => updateProperty("gender", e.target.value.value)}
+            optionLabel="name"
+            value={{ name: getGenderName(candidate.gender), value: candidate.gender }}
+            placeholder="Select a Gender"
           />
         </div>
 

@@ -8,6 +8,7 @@ export const candidateFragment = gql`
     party
     state
     age
+    gender
     current_office
     latest_poll
     latest_odds
