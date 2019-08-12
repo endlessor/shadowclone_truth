@@ -58,7 +58,7 @@ function Final({ history }) {
             />
           );
         }}
-      </Query>
+      </Query> */}
     </div>
   );
 }

@@ -1,23 +1,17 @@
 import { gql } from "apollo-boost";
+import {
+  candidateFragment,
+  positionFragment,
+  qualificationFragment
+} from "./fragments"
 
 export const CandidateQuery = gql`
   {
     candidates {
-      id
-      name
-      photo
-      party
-      state
-      age
-      current_office
-      latest_poll
-      latest_odds
-      prevote_score
-      bio_summary
-      vote_type
-      __typename
+      ...candidate
     }
   }
+  ${candidateFragment}
 `;
 
 export const CandidateWithVotePercenet = gql`
@@ -45,52 +39,38 @@ export const CandidateWithVotePercenet = gql`
 export const CandidateQualificationsQuery = gql`
   query qualifications($candidateId: ID!) {
     candidateQualifications(candidateId: $candidateId) {
-      id
-      name
-      summary
-      detail
-      years
-      rank
-      like_type
+      ...qualification
     }
   }
+  ${qualificationFragment}
 `;
 
 export const CandidatePositionsQuery = gql`
   query positions($candidateId: ID!) {
     candidatePositions(candidateId: $candidateId) {
-      id
-      name
-      summary
-      detail
-      like_type
+      ...position
     }
   }
+  ${positionFragment}
 `;
 
 export const PositionQuery = gql`
   query position($id: ID!) {
     position(id: $id) {
-      id
-      name
-      summary
-      detail
-      like_type
+      ...position
     }
   }
+  {position}
 `;
 
 export const QualificationQuery = gql`
   query qualification($id: ID!) {
     qualification(id: $id) {
-      id
-      name
-      summary
-      detail
-      like_type
+      ...qualification
     }
   }
 `;
+
 export const UserVoteMutation = gql`
   mutation createUserVote($candidateId: ID!, $voteType: VoteType) {
     createUserVote(candidateId: $candidateId, voteType: $voteType) {
@@ -164,15 +144,8 @@ export const UserVoteQuery = gql`
 export const CandidateDetailQuery = gql`
   query candidate($id: ID!) {
     candidate(id: $id) {
-      id
-      name
-      photo
-      age
-      latest_poll
-      latest_odds
-      prevote_score
-      bio_summary
-      vote_type
+      ...candidate
     }
   }
+  ${candidateFragment}
 `;

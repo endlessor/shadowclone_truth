@@ -565,6 +565,8 @@ export type PositionOrderByInput =
   | "name_DESC"
   | "summary_ASC"
   | "summary_DESC"
+  | "topicId_ASC"
+  | "topicId_DESC"
   | "detail_ASC"
   | "detail_DESC"
   | "like_type_ASC"
@@ -920,6 +922,7 @@ export interface CandidateSubscriptionWhereInput {
 export interface PositionUpdateManyMutationInput {
   name?: Maybe<String>;
   summary?: Maybe<String>;
+  topicId?: Maybe<String>;
   detail?: Maybe<String>;
   like_type?: Maybe<LikeType>;
 }
@@ -944,6 +947,7 @@ export interface UserQualificationLikeCreateInput {
 export interface PositionUpdateInput {
   name?: Maybe<String>;
   summary?: Maybe<String>;
+  topicId?: Maybe<String>;
   detail?: Maybe<String>;
   like_type?: Maybe<LikeType>;
 }
@@ -1205,6 +1209,7 @@ export interface PositionCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
   summary?: Maybe<String>;
+  topicId?: Maybe<String>;
   detail?: Maybe<String>;
   like_type?: Maybe<LikeType>;
 }
@@ -1637,6 +1642,20 @@ export interface PositionWhereInput {
   summary_not_starts_with?: Maybe<String>;
   summary_ends_with?: Maybe<String>;
   summary_not_ends_with?: Maybe<String>;
+  topicId?: Maybe<String>;
+  topicId_not?: Maybe<String>;
+  topicId_in?: Maybe<String[] | String>;
+  topicId_not_in?: Maybe<String[] | String>;
+  topicId_lt?: Maybe<String>;
+  topicId_lte?: Maybe<String>;
+  topicId_gt?: Maybe<String>;
+  topicId_gte?: Maybe<String>;
+  topicId_contains?: Maybe<String>;
+  topicId_not_contains?: Maybe<String>;
+  topicId_starts_with?: Maybe<String>;
+  topicId_not_starts_with?: Maybe<String>;
+  topicId_ends_with?: Maybe<String>;
+  topicId_not_ends_with?: Maybe<String>;
   detail?: Maybe<String>;
   detail_not?: Maybe<String>;
   detail_in?: Maybe<String[] | String>;
@@ -2700,6 +2719,7 @@ export interface Position {
   id: ID_Output;
   name: String;
   summary?: String;
+  topicId?: String;
   detail?: String;
   like_type?: LikeType;
 }
@@ -2708,6 +2728,7 @@ export interface PositionPromise extends Promise<Position>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   summary: () => Promise<String>;
+  topicId: () => Promise<String>;
   detail: () => Promise<String>;
   like_type: () => Promise<LikeType>;
 }
@@ -2718,6 +2739,7 @@ export interface PositionSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   summary: () => Promise<AsyncIterator<String>>;
+  topicId: () => Promise<AsyncIterator<String>>;
   detail: () => Promise<AsyncIterator<String>>;
   like_type: () => Promise<AsyncIterator<LikeType>>;
 }
@@ -2728,6 +2750,7 @@ export interface PositionNullablePromise
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   summary: () => Promise<String>;
+  topicId: () => Promise<String>;
   detail: () => Promise<String>;
   like_type: () => Promise<LikeType>;
 }
@@ -2841,6 +2864,7 @@ export interface PositionPreviousValues {
   id: ID_Output;
   name: String;
   summary?: String;
+  topicId?: String;
   detail?: String;
   like_type?: LikeType;
 }
@@ -2851,6 +2875,7 @@ export interface PositionPreviousValuesPromise
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   summary: () => Promise<String>;
+  topicId: () => Promise<String>;
   detail: () => Promise<String>;
   like_type: () => Promise<LikeType>;
 }
@@ -2861,6 +2886,7 @@ export interface PositionPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   summary: () => Promise<AsyncIterator<String>>;
+  topicId: () => Promise<AsyncIterator<String>>;
   detail: () => Promise<AsyncIterator<String>>;
   like_type: () => Promise<AsyncIterator<LikeType>>;
 }

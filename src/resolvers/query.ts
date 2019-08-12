@@ -10,8 +10,11 @@ const Query = prismaObjectType({
     t.prismaFields([
       'users',
       'positions',
+      'topics',
       'userPositionLikes',
       'userQualificationLikes',
+      'position',
+      'qualification',
       'polls',
     ]),
 
@@ -109,22 +112,26 @@ const Query = prismaObjectType({
           const votes = userVotes.filter(vote => vote.vote_type === voteType)
           return votes.length
         }
-        const [ tops, favorites, compromises, vetos ] = [ 
+        const [ tops, favorites, compromises, vetos, unknowns ] = [ 
           getVotesCount('TOP'),
           getVotesCount('FAVORITE'),
           getVotesCount('COMPROMISE'),
-          getVotesCount('VETO') 
+          getVotesCount('VETO'),
+          getVotesCount('UNKNOWNS')
         ]
         return {
           prevotes: userVotes.length,
+          users: users.length,
           topCount: tops,
           favoriteCount: favorites,
           compromiseCount: compromises,
           vetoCount: vetos,
+          unknownCount: unknowns,
           average_top: Math.round(tops * 1000 / users.length) / 10,
           average_favorite: Math.round(favorites * 1000 / users.length) / 10,
           average_compromise: Math.round(compromises * 1000 / users.length) / 10,
-          average_veto: Math.round(vetos * 1000 / users.length) / 10
+          average_veto: Math.round(vetos * 1000 / users.length) / 10,
+          average_unknown: Math.round(unknowns * 1000 / users.length) / 10
         }
       },
     })

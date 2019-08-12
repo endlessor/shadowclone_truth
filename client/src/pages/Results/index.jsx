@@ -49,7 +49,7 @@ function Results({ history }) {
             />
           );
         }}
-      </Query>
+      </Query> */}
     </div>
   );
 }

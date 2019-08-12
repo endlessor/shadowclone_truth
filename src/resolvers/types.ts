@@ -28,14 +28,17 @@ export const CountAttribute = objectType({
   name: 'CountAttribute',
   definition(t) {
     t.int('prevotes')
+    t.int('users')
     t.int('topCount')
     t.int('favoriteCount')
     t.int('compromiseCount')
     t.int('vetoCount')
+    t.int('unknownCount')
     t.float('average_top')
     t.float('average_favorite')
     t.float('average_compromise')
     t.float('average_veto')
+    t.float('average_unknown')
   }
 })
 
