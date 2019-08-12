@@ -43,8 +43,8 @@ const CandidatePositionList = ({ loading, data, toDetailPosition }) => {
           reorderableColumns
         >
           <Column field="name" header="Name" />
-          <Column field="detail" header="Detail" />
           <Column field="summary" header="Summary" />
+          <Column field="detail" header="Detail" />
         </DataTable>
       </AccordionTab>
     </Accordion>
