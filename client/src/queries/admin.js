@@ -5,7 +5,6 @@ import {
   topicFragment,
   userFragment,
   qualificationFragment,
-  candidatePositionFragment
 } from "./fragments"
 
 export const AdminTotalUsers = gql`
@@ -26,10 +25,12 @@ export const ADMIN_TOTAL_ATTRIBUTES = gql`
       favoriteCount
       compromiseCount
       vetoCount
+      unknownCount
       average_top
       average_favorite
       average_compromise
       average_veto
+      average_unknown
     }
   }
 `;

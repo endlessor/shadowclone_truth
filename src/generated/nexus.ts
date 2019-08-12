@@ -546,11 +546,13 @@ export interface NexusGenRootTypes {
     average_compromise?: number | null; // Float
     average_favorite?: number | null; // Float
     average_top?: number | null; // Float
+    average_unknown?: number | null; // Float
     average_veto?: number | null; // Float
     compromiseCount?: number | null; // Int
     favoriteCount?: number | null; // Int
     prevotes?: number | null; // Int
     topCount?: number | null; // Int
+    unknownCount?: number | null; // Int
     users?: number | null; // Int
     vetoCount?: number | null; // Int
   }
@@ -718,11 +720,13 @@ export interface NexusGenFieldTypes {
     average_compromise: number | null; // Float
     average_favorite: number | null; // Float
     average_top: number | null; // Float
+    average_unknown: number | null; // Float
     average_veto: number | null; // Float
     compromiseCount: number | null; // Int
     favoriteCount: number | null; // Int
     prevotes: number | null; // Int
     topCount: number | null; // Int
+    unknownCount: number | null; // Int
     users: number | null; // Int
     vetoCount: number | null; // Int
   }

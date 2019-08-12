@@ -13,7 +13,7 @@ export const CreatePosition = ({ children }) => {
     <Mutation
       update={(store, { data: { createPosition } }) => {
         let query = { query: POSITIONS }
-        const data = store.readQuery(query)
+        let data = store.readQuery(query)
         data.positions.push(createPosition)
         store.writeQuery({ ...query, data })
         query = { query: ADMIN_POSITIONS }
@@ -71,7 +71,7 @@ export const  DeletePosition = ({ children }) => {
     <Mutation
       update={(store, { data: { deletePosition } }) => {
         let query = { query: POSITIONS }
-        const data = store.readQuery(query)
+        let data = store.readQuery(query)
         for (let i = 0; i < data.positions.length; i++) {
           if (data.positions[i].id === deletePosition.id) {
             data.positions.splice(i, 1)

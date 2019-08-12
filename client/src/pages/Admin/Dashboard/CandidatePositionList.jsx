@@ -2,6 +2,7 @@ import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
+import { Accordion, AccordionTab } from 'primereact/accordion';
 
 const CandidatePositionList = ({ loading, data, toDetailPosition }) => {
   const positions = data.candidatePositions || []
@@ -20,22 +21,33 @@ const CandidatePositionList = ({ loading, data, toDetailPosition }) => {
   };
 
   return (
-    <React.Fragment>
-      <DataTable
-        lazy
-        responsive
-        loading={loading}
-        value={positions}
-        header={<h2 style={{ margin: 0 }}>Positions</h2>}
-        selectionMode="single"
-        onRowSelect={onPositionSelect}
-      >
-        <Column field="name" header="Position" sortable />
-        <Column field="detail" header="Detail" sortable />
-        <Column field="summary" header="Summary" sortable />
-      </DataTable>
-      <Button onClick={addNewPosition} label="Add Position" />
-    </React.Fragment>
+    <Accordion>
+      <AccordionTab header={`Positions (${positions.length})`}>
+        <DataTable
+          responsive
+          loading={loading}
+          value={positions}
+          footer={
+            <div className="p-clearfix">
+              <Button
+                style={{ float: "right" }}
+                label="Add"
+                icon="pi pi-plus"
+                onClick={addNewPosition}
+              />
+            </div>
+          }
+          selectionMode="single"
+          onRowSelect={onPositionSelect}
+          resizableColumns
+          reorderableColumns
+        >
+          <Column field="name" header="Name" />
+          <Column field="detail" header="Detail" />
+          <Column field="summary" header="Summary" />
+        </DataTable>
+      </AccordionTab>
+    </Accordion>
   );
 }
 

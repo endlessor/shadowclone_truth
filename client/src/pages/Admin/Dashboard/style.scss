@@ -3,9 +3,77 @@
 }
 
 .align-right {
-  text-align: right;  
+  display: flex;
+  justify-content: flex-end;
 }
 
 .right-space-20 {
   margin-right: 20px !important;
+}
+
+.admin-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .implementation {
+    width: 60%;
+    background-color: inherit !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .implementation {
+      width: 100%;
+    }
+  }
+}
+
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-content {
+  width: 90%;
+  margin: 20px 0;
+}
+
+.p-dialog-content {
+  position: relative;
+  height: 80vh;
+  max-width: 800px;
+  width: 90vw;
+  overflow: auto;
+
+  .p-tabview-panels {
+    border: 0 !important;
+  }
+} 
+
+.p-accordion {
+  margin: 20px 0 !important;
+}
+
+.cand-form {
+  margin-bottom: 30px;
+}
+
+.bottom-btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.btn-back {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
 }

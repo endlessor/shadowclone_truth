@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button } from "primereact/button";
 import { createNotification } from '../../../../config/notification'
-import ProgressSpinner from "../../../../components/ProgressSpinner"
+import { LoadingButton } from "../../../../components/Common/Buttons";
 
-export default function SaveCandidateForm ({
+export default function SaveCandidateForm({
   createCandidate,
   updateCandidate,
   loading,
@@ -14,7 +13,8 @@ export default function SaveCandidateForm ({
   const photo = new Blob([file]);
   const handleSaveCandidate = () => {
     if (typeof updateCandidate !== typeof undefined) {
-      updateCandidate({ variables: {
+      updateCandidate({
+        variables: {
           id: id,
           ...rest,
           age: parseInt(rest.age),
@@ -22,30 +22,30 @@ export default function SaveCandidateForm ({
         }
       }).then(result => {
         hideForm()
-        createNotification(
-          'success',
-          `Candidate "${candidate.title}" has been updated successfully`
-        )
       })
-      .catch(err => createNotification('error', err.message))
+        .catch(err => createNotification('error', err.message))
     } else {
-      createCandidate({ variables: {
-        ...rest,
-        age: parseInt(rest.age),
-        file: photo
-      }}).then(result => {
+      createCandidate({
+        variables: {
+          ...rest,
+          age: parseInt(rest.age),
+          file: photo
+        }
+      }).then(result => {
         hideForm()
-        createNotification(
-          'success',
-          `Candidate "${candidate.title}" has been created successfully`
-        )
       })
-      .catch(err => createNotification('error', err.message))
+        .catch(err => createNotification('error', err.message))
     }
   }
 
-  if (loading) return <ProgressSpinner />
   return (
-    <Button label="Save" icon="pi pi-check" onClick={handleSaveCandidate} />
+    <LoadingButton
+      width="100px"
+      bcolor="#34A835"
+      loading={loading}
+      label="Save"
+      icon="pi pi-save"
+      onClick={handleSaveCandidate}
+    />
   )
 }

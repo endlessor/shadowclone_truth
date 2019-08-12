@@ -2,8 +2,7 @@ import { gql } from "apollo-boost";
 import {
   candidateFragment,
   positionFragment,
-  qualificationFragment,
-  topicFragment,
+  qualificationFragment
 } from "./fragments"
 
 export const CandidateQuery = gql`

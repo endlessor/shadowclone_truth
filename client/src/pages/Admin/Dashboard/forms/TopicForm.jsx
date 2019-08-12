@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
-import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
-import ProgressSpinner from '../../../../components/ProgressSpinner';
 import { CATEGORY_TYPE } from "../../../../config"
 import { UpdateTopic, CreateTopic } from '../../mutations';
 import { createNotification } from '../../../../config/notification'
+import { LoadingButton } from "../../../../components/Common/Buttons";
 
 const TopicForm = ({ data, loading, topicId, assignTopic }) => {
   const [topic, setTopic] = useState({})
@@ -14,16 +13,16 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
   const topics = data.topics || []
 
   useEffect(() => {
-    if (topicId) {
-      setTopic(topics.filter(t => t.id === topicId)[0])
-    }
-  }, [topics])
+    const result = topics.filter(t => t.id === topicId)
+    if (result.length > 0) setTopic(result[0])
+    else setTopic({})
+  }, [topicId, loading, topics])
 
   const onChangeTopic = (selectedTopic) => {
     setTopic(selectedTopic)
     assignTopic(selectedTopic.id)
   }
-  
+
   const addNewTopic = (checked) => {
     setIsNewTopic(checked)
     if (checked) setTopic({ name: '', category: null })
@@ -57,29 +56,25 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
       .catch(err => createNotification('error', err.message))
   }
 
-  const UpdateTopicButton = ({ updateTopic, loading }) => {
-    if (loading) return <ProgressSpinner />
-    return (
-      <Button
-        icon="pi pi-save"
-        className="p-button-raised p-button-primary"
-        tooltip="Save Topic"
-        tooltipOptions={{ position: 'top' }}
-        onClick={() => handleUpdateTopic(updateTopic)} />
-    )
-  }
+  const UpdateTopicButton = ({ updateTopic, loading }) => (
+    <LoadingButton
+      label="Save Topic"
+      icon="pi pi-save"
+      loading={loading}
+      width="130px"
+      onClick={() => handleUpdateTopic(updateTopic)}
+    />
+  )
 
-  const CreateTopicButton = ({ createTopic, loading }) => {
-    if (loading) return <ProgressSpinner />
-    return (
-      <Button
-        icon="pi pi-save"
-        className="p-button-raised p-button-primary"
-        tooltip="Save Topic"
-        tooltipOptions={{ position: 'top' }}
-        onClick={() => handleCreateTopic(createTopic)} />
-    )
-  }
+  const CreateTopicButton = ({ createTopic, loading }) => (
+    <LoadingButton
+      label="Create Topic"
+      icon="pi pi-save"
+      loading={loading}
+      width="130px"
+      onClick={() => handleCreateTopic(createTopic)}
+    />
+  )
 
   return (
     <div className="p-grid p-fluid">
@@ -88,24 +83,25 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
           onChange={(e) => addNewTopic(e.checked)} checked={isNewTopic} />
         <label htmlFor="cb1" className="p-checkbox-label">New</label>
       </div>
-      <div className="p-col-8 align-right">
-        {topic.id && (
-          <UpdateTopic>
-            <UpdateTopicButton />
-          </UpdateTopic>
-        )}
-        {!topic.id && (
-          <CreateTopic>
-            <CreateTopicButton />
-          </CreateTopic>
-        )}
+      <div className="p-col-8">
+        <div className="align-right">
+          {topic.id && (
+            <UpdateTopic>
+              <UpdateTopicButton />
+            </UpdateTopic>
+          )}
+          {!topic.id && (
+            <CreateTopic>
+              <CreateTopicButton />
+            </CreateTopic>
+          )}
+        </div>
       </div>
       {!isNewTopic && (
         <React.Fragment>
           <div className="p-col-4" style={{ padding: ".75em" }}>
             <label htmlFor="topicList">select topic</label>
           </div>
-          {loading && <ProgressSpinner />}
           {!loading && (
             <div className="p-col-8" style={{ padding: ".5em" }}>
               <Dropdown
@@ -139,7 +135,7 @@ const TopicForm = ({ data, loading, topicId, assignTopic }) => {
           options={CATEGORY_TYPE}
           onChange={e => updateProperty("category", e.target.value.value)}
           optionLabel="name"
-          value={{name: "health", value: topic.category}}
+          value={{ name: "health", value: topic.category }}
           placeholder="Select a Category"
         />
       </div>

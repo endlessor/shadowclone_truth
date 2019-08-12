@@ -1,73 +1,46 @@
 import React from "react";
-import { Card } from "primereact/card";
+import { Chart } from 'primereact/chart';
 import ProgressSpinner from "../../../components/ProgressSpinner"
 
 const AdminHeader = ({ loading, data }) => {
-  if (loading) return <ProgressSpinner />;
-  const voteAttributes = data.voteAttributes;
-
-  if (!voteAttributes) return null;
+  const voteAttributes = data.voteAttributes || {};
+  const lineStylesData = {
+    labels: [
+      '',
+      `Top Picks (${voteAttributes.topCount})`,
+      `Favorites (${voteAttributes.favoriteCount})`,
+      `Compromises (${voteAttributes.compromiseCount})`,
+      `Vetos (${voteAttributes.vetoCount})`,
+      `Unknowns (${voteAttributes.unknownCount})`,
+      ''
+    ],
+    datasets: [
+      {
+        label: `Total Prevote Analysis (Prevotes: ${voteAttributes.prevotes}, users: ${voteAttributes.users})`,
+        data: [
+          0,
+          voteAttributes.average_top,
+          voteAttributes.average_favorite,
+          voteAttributes.average_compromise,
+          voteAttributes.average_veto,
+          voteAttributes.average_unknown,
+          0
+        ],
+        fill: false,
+        backgroundColor: '#66BB6A',
+        borderColor: '#66BB6A'
+      }
+    ]
+  };
   return (
-    <div className="p-grid">
-      <div className="p-md-3 p-col-6">
-        <Card
-          title="Prevotes"
-          subTitle={voteAttributes.prevotes.toString()}
-        />
-      </div>
-      <div className="p-md-3 p-col-6">
-        <Card title="Users" subTitle={voteAttributes.users.toString()} />
-      </div>
-      <div className="p-md-3 p-col-6">
-        <Card
-          title="Top Picks"
-          subTitle={voteAttributes.topCount.toString()}
-        />
-      </div>
-      <div className="p-md-3 p-col-6">
-        <Card
-          title="Favorites"
-          subTitle={voteAttributes.favoriteCount.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Compromises"
-          subTitle={voteAttributes.compromiseCount.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Vetos"
-          subTitle={voteAttributes.vetoCount.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Average Top Picks"
-          subTitle={voteAttributes.average_top.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Average Favorites"
-          subTitle={voteAttributes.average_favorite.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Average Compromises"
-          subTitle={voteAttributes.average_compromise.toString()}
-        />
-      </div>
-      <div className="p-md-2 p-col-6">
-        <Card
-          title="Average Vetos"
-          subTitle={voteAttributes.average_veto.toString()}
-        />
+    <div className="admin-chart">
+      <h1>Truce Administration</h1>
+      <div className="content-section implementation">
+        {loading && <ProgressSpinner />}
+        {!loading && <Chart type="line" data={lineStylesData} />}
       </div>
     </div>
-  );
+  )
 }
 
 export default AdminHeader

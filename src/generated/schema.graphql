@@ -64,11 +64,13 @@ type CountAttribute {
   average_compromise: Float
   average_favorite: Float
   average_top: Float
+  average_unknown: Float
   average_veto: Float
   compromiseCount: Int
   favoriteCount: Int
   prevotes: Int
   topCount: Int
+  unknownCount: Int
   users: Int
   vetoCount: Int
 }
