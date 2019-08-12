@@ -12,7 +12,7 @@ import "./style.scss"
 
 const Dashboard = () => {
   return (
-    <div className="p-grid">
+    <div className="p-grid admin-page">
       <section className="p-col-12 admin-header">
         <QueryContainer query={ADMIN_TOTAL_ATTRIBUTES}>
           <AdminHeader />

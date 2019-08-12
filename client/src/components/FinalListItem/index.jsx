@@ -46,7 +46,7 @@ function FinalListItem({ data, onInfo, onRate }) {
               <TextItem label={VOTE_TYPE.veto} value={`${data.vetos}%`} />
             </div>
             <div className="p-col">
-              <TextItem label={"TBD"} value={`${data.tbd || 0}%`} />
+              <TextItem label={"TBD"} value={`${data.unknowns || 0}%`} />
             </div>
           </div>
           <div className="p-grid p-justify-between">

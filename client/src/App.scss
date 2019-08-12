@@ -36,7 +36,6 @@
 }
 
 body {
-  margin: 0px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -63,7 +62,6 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 
   .menu-button {
-    display: none;
     color: #ffffff;
     // font-size: 24px;
     width: 60px;
@@ -96,6 +94,7 @@ body {
   }
 
   .topbar-menu {
+    background-color: #327187;
     list-style-type: none;
     float: right;
     margin: 0 60px 0 0;
@@ -275,182 +274,8 @@ body {
   }
 }
 
-#layout-sidebar {
-  position: fixed;
-  left: 0;
-  top: 60px;
-  height: 100%;
-  background-color: #ffffff;
-  width: 300px;
-  overflow: auto;
-  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
-  .layout-menu {
-    > button {
-      width: 100%;
-      height: 48px;
-      display: block;
-      padding: 0px 24px;
-      color: #333333;
-      background-color: transparent;
-      cursor: pointer;
-      user-select: none;
-      text-align: left;
-      margin: 0;
-      border: none;
-      border-top: solid 1px #e3e9ea;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #eeeeee;
-      }
-
-      &:focus {
-        z-index: 1;
-        outline: 0 none;
-        transition: box-shadow 0.3s;
-        box-shadow: inset 0 0 0 0.2em #00c4e8;
-      }
-
-      span {
-        font-size: 16px;
-        vertical-align: middle;
-        margin-left: 8px;
-        position: relative;
-        top: -2px;
-      }
-
-      img {
-        width: 20px;
-        vertical-align: middle;
-
-        &.layout-menu-icon-active {
-          display: none;
-        }
-
-        &.layout-menu-icon-inactive {
-          display: inline;
-        }
-      }
-
-      &.active-menuitem {
-        background-color: #ffffff;
-        color: #03c4e8;
-
-        img {
-          &.layout-menu-icon-active {
-            display: inline;
-          }
-          &.layout-menu-icon-inactive {
-            display: none;
-          }
-        }
-      }
-    }
-
-    > .layout-submenu {
-      width: auto;
-      overflow: hidden;
-      display: none;
-      background-color: #ffffff;
-
-      > div {
-        overflow: hidden;
-        padding: 20px 15px;
-      }
-
-      &.layout-submenu-enter {
-        max-height: 0;
-        display: block;
-      }
-
-      &.layout-submenu-enter-active {
-        max-height: 500px;
-        transition: max-height cubic-bezier(0.86, 0, 0.07, 1) 0.4s;
-      }
-
-      &.layout-submenu-enter-done {
-        display: block;
-      }
-
-      &.layout-submenu-exit {
-        max-height: 500px;
-        display: block;
-      }
-
-      &.layout-submenu-exit-active {
-        max-height: 0;
-        display: block;
-        transition: max-height cubic-bezier(0.86, 0, 0.07, 1) 0.4s;
-      }
-
-      a {
-        width: 50%;
-        float: left;
-        padding: 6px;
-        cursor: pointer;
-        border-radius: 4px;
-        -webkit-border-radius: 4px;
-        font-size: 14px;
-        color: #494c52;
-
-        &:hover {
-          background-color: #eeeeee;
-        }
-
-        &:focus {
-          z-index: 1;
-          outline: 0 none;
-          transition: box-shadow 0.3s;
-          box-shadow: inset 0 0 0 0.2em #00c4e8;
-        }
-
-        .menuitem-badge {
-          background: #00b09b; /* fallback for old browsers */
-          background: -webkit-linear-gradient(
-            to bottom,
-            #96c93d,
-            #00b09b
-          ); /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(
-            to bottom,
-            #96c93d,
-            #00b09b
-          ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-          padding: 2px 4px;
-          vertical-align: middle;
-          border-radius: 3px;
-          color: #ffffff;
-          font-weight: bold;
-          font-size: 11px;
-          position: relative;
-          top: -1px;
-        }
-      }
-    }
-  }
-
-  .nano {
-    > .nano-content {
-      .layout-menu {
-        padding-bottom: 120px;
-      }
-    }
-
-    > .nano-pane {
-      background-color: transparent;
-
-      .nano-slider {
-        background-color: #aaaaaa;
-      }
-    }
-  }
-}
-
 #layout-content {
-  padding-top: 70px;
+  padding-top: 50px;
   .content-section {
     display: block;
     padding: 30px;
@@ -858,20 +683,9 @@ body {
     }
   }
 
-  #layout-sidebar {
-    top: 60px;
-    left: -300px;
-    @include transition(left 0.2s);
-    z-index: 999;
-
-    &.active {
-      left: 0;
-    }
-  }
-
   #layout-content {
     margin-left: 0;
-    padding-top: 60px;
+    padding-top: 50px;
 
     .content-section {
       &.submenu ul li {

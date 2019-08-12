@@ -1,3 +1,9 @@
+.admin-page {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -17,13 +23,15 @@
   justify-content: center;
   align-items: center;
   .implementation {
-    width: 60%;
+    width: 40%;
+    min-width: 600px;
     background-color: inherit !important;
   }
 
   @media only screen and (max-width: 768px) {
     .implementation {
       width: 100%;
+      min-width: 320px;
     }
   }
 }
@@ -36,8 +44,14 @@
 }
 
 .admin-content {
-  width: 90%;
+  width: 80%;
   margin: 20px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .admin-content {
+    width: 95%;
+  }
 }
 
 .p-dialog-content {

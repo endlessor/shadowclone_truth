@@ -34,56 +34,58 @@ function Login({ location }) {
   }
 
   return (
-    <div className="p-sm-12 p-md-4">
-      <Card title="Login">
-        <Mutation
-          mutation={LoginMutation}
-          variables={authInfo}
-          onCompleted={loginSuccess}
-        >
-          {mutation => (
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                mutation();
-              }}
-            >
-              <div className="p-grid p-justify-center">
-                <div className="p-col-8 p-fluid">
-                  <span className="p-float-label">
-                    <InputText
-                      id="email"
-                      name="email"
-                      value={authInfo.email}
-                      onChange={handleInputChange}
+    <div className="p-grid p-justify-center">
+      <div className="p-col-12 p-md-8">
+        <Card title="Login">
+          <Mutation
+            mutation={LoginMutation}
+            variables={authInfo}
+            onCompleted={loginSuccess}
+          >
+            {mutation => (
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  mutation();
+                }}
+              >
+                <div className="p-grid p-justify-center">
+                  <div className="p-col-8 p-fluid">
+                    <span className="p-float-label">
+                      <InputText
+                        id="email"
+                        name="email"
+                        value={authInfo.email}
+                        onChange={handleInputChange}
+                      />
+                      <label htmlFor="email">Email</label>
+                    </span>
+                  </div>
+                  <div className="p-col-8 p-fluid">
+                    <span className="p-float-label">
+                      <Password
+                        id="password"
+                        name="password"
+                        feedback={false}
+                        value={authInfo.password}
+                        onChange={handleInputChange}
+                      />
+                      <label htmlFor="password">Password</label>
+                    </span>
+                  </div>
+                  <div className="p-grid p-col-8 p-justify-end">
+                    <Button
+                      className="p-button-raised"
+                      label="Login"
+                      type="submit"
                     />
-                    <label htmlFor="email">Email</label>
-                  </span>
+                  </div>
                 </div>
-                <div className="p-col-8 p-fluid">
-                  <span className="p-float-label">
-                    <Password
-                      id="password"
-                      name="password"
-                      feedback={false}
-                      value={authInfo.password}
-                      onChange={handleInputChange}
-                    />
-                    <label htmlFor="password">Password</label>
-                  </span>
-                </div>
-                <div className="p-grid p-col-8 p-justify-end">
-                  <Button
-                    className="p-button-raised"
-                    label="Login"
-                    type="submit"
-                  />
-                </div>
-              </div>
-            </form>
-          )}
-        </Mutation>
-      </Card>
+              </form>
+            )}
+          </Mutation>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,12 @@
       border-top: 1px dashed gray;
     }
   }
+  .p-card {
+    &-body {
+      padding: 0.5em;
+      padding-bottom: 0;
+    }
+  }
   .pi {
     vertical-align: bottom;
   }

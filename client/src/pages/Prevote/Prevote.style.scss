@@ -2,6 +2,11 @@
 
 .prevote {
   &__header {
+    h1 {
+      margin: 0.2em 0;
+    }
+  }
+  &__footer {
     .p-button {
       border: none;
       background-color: $purple;
@@ -10,6 +15,7 @@
   }
   .p-dataview .p-dataview-content {
     border: none;
+    padding: 0;
     background-color: transparent;
   }
   .p-panel .p-panel-content {
