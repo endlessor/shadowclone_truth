@@ -18,25 +18,28 @@ export const permissions = shield({
     userVotes: rules.isAuthenticatedUser,
     voteAttributes: rules.isAdminUser,
     candidatesWithVotes: rules.isAdminUser,
+    candidatesWithVotesPercent: rules.isAuthenticatedUser,
     positionsWithLikes: rules.isAdminUser,
-    qualificationsWithLikes: rules.isAdminUser
+    qualificationsWithLikes: rules.isAdminUser,
+    positions: rules.isAdminUser
   },
   Mutation: {
-    createCandidate: rules.isAdminUser,
     createPosition: rules.isAdminUser,
     createQualification: rules.isAdminUser,
     createCandidatePosition: rules.isAdminUser,
-
+    createTopic: rules.isAdminUser,
+    
     deleteCandidate: rules.isAdminUser,
     deletePosition: rules.isAdminUser,
     deleteCandidatePosition: rules.isAdminUser,
     deleteQualification: rules.isAdminUser,
+    deleteTopic: rules.isAdminUser,
 
-    updateCandidate: rules.isAdminUser,
     updateCandidatePosition: rules.isAdminUser,
     updatePosition: rules.isAdminUser,
     updateQualification: rules.isAdminUser,
-
+    updateTopic: rules.isAdminUser,
+    
     createUserVote: rules.isAuthenticatedUser,
     createUserPositionLike: rules.isAuthenticatedUser,
     createUserQualificationLike: rules.isAuthenticatedUser,

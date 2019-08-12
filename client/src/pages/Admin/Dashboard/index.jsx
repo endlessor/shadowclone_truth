@@ -1,94 +1,35 @@
 import React from "react";
-import { Query } from "react-apollo";
-import { Card } from "primereact/card";
-
-import { ProgressSpinner } from "../../../components";
-import { AdminTotalUsers, AdminTotalAttributes } from "../../../queries";
+import {
+  QueryContainer,
+  ADMIN_TOTAL_ATTRIBUTES,
+  ADMIN_CANDIDATES,
+  ADMIN_POSITIONS,
+} from '../../../queries'
 import CandidateList from "./CandidateList";
 import PositionList from "./PositionList";
+import AdminHeader from "./AdminHeader";
+import "./style.scss"
 
-const Dashboard = props => {
+const Dashboard = () => {
   return (
-    <div className="p-grid">
-      <section className="p-col-12">
-        <Query query={AdminTotalUsers} fetchPolicy="network-only">
-          {({ loading: loadingUsers, data: { users } }) => (
-            <Query query={AdminTotalAttributes} fetchPolicy="network-only">
-              {({ loading: loadingAttributes, data: { voteAttributes } }) => {
-                if (loadingUsers || loadingAttributes)
-                  return <ProgressSpinner />;
-                return (
-                  <div className="p-grid">
-                    <div className="p-md-3 p-col-6">
-                      <Card
-                        title="Prevotes"
-                        subTitle={voteAttributes.prevotes.toString()}
-                      />
-                    </div>
-                    <div className="p-md-3 p-col-6">
-                      <Card title="Users" subTitle={users.length.toString()} />
-                    </div>
-                    <div className="p-md-3 p-col-6">
-                      <Card
-                        title="Top Picks"
-                        subTitle={voteAttributes.topCount.toString()}
-                      />
-                    </div>
-                    <div className="p-md-3 p-col-6">
-                      <Card
-                        title="Favorites"
-                        subTitle={voteAttributes.favoriteCount.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Compromises"
-                        subTitle={voteAttributes.compromiseCount.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Vetos"
-                        subTitle={voteAttributes.vetoCount.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Average Top Picks"
-                        subTitle={voteAttributes.average_top.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Average Favorites"
-                        subTitle={voteAttributes.average_favorite.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Average Compromises"
-                        subTitle={voteAttributes.average_compromise.toString()}
-                      />
-                    </div>
-                    <div className="p-md-2 p-col-6">
-                      <Card
-                        title="Average Vetos"
-                        subTitle={voteAttributes.average_veto.toString()}
-                      />
-                    </div>
-                  </div>
-                );
-              }}
-            </Query>
-          )}
-        </Query>
+    <div className="p-grid admin-page">
+      <section className="p-col-12 admin-header">
+        <QueryContainer query={ADMIN_TOTAL_ATTRIBUTES}>
+          <AdminHeader />
+        </QueryContainer>
       </section>
-      <section className="p-col-12">
-        <CandidateList />
-      </section>
-      <section className="p-col-12">
-        <PositionList />
-      </section>
+      <div className="p-col-12 admin-section">
+        <section className="p-col-12 admin-content">
+          <QueryContainer query={ADMIN_CANDIDATES}>
+            <CandidateList />
+          </QueryContainer>
+        </section>
+        <section className="p-col-12 admin-content">
+          <QueryContainer query={ADMIN_POSITIONS}>
+            <PositionList />
+          </QueryContainer>
+        </section>
+      </div>
     </div>
   );
 };

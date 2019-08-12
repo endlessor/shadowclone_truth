@@ -16,10 +16,11 @@ export const CandidateWithVote = objectType({
   name: 'CandidateWithVote',
   definition(t) {
     t.field('candidate', { type: 'Candidate'})
-    t.int('tops')
-    t.int('favorites')
-    t.int('compromises')
-    t.int('vetos')
+    t.float('tops')
+    t.float('favorites')
+    t.float('compromises')
+    t.float('vetos')
+    t.float('unknowns')
   }
 })
 
@@ -27,14 +28,17 @@ export const CountAttribute = objectType({
   name: 'CountAttribute',
   definition(t) {
     t.int('prevotes')
+    t.int('users')
     t.int('topCount')
     t.int('favoriteCount')
     t.int('compromiseCount')
     t.int('vetoCount')
+    t.int('unknownCount')
     t.float('average_top')
     t.float('average_favorite')
     t.float('average_compromise')
     t.float('average_veto')
+    t.float('average_unknown')
   }
 })
 

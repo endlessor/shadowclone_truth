@@ -1,0 +1,22 @@
+@import "../../theme/colors";
+
+.truth-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 3px;
+  color: white;
+  background-color: $blue;
+  padding: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  
+  i, span {
+    margin: 0 5px;
+  }
+}
+
+.truth-btn:hover, .truth-btn:focus {
+  opacity: 0.9;
+  cursor: pointer;
+}

@@ -796,6 +796,7 @@ type Position {
   id: ID!
   name: String!
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }
@@ -810,6 +811,7 @@ input PositionCreateInput {
   id: ID
   name: String!
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }
@@ -826,6 +828,8 @@ enum PositionOrderByInput {
   name_DESC
   summary_ASC
   summary_DESC
+  topicId_ASC
+  topicId_DESC
   detail_ASC
   detail_DESC
   like_type_ASC
@@ -836,6 +840,7 @@ type PositionPreviousValues {
   id: ID!
   name: String!
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }
@@ -861,6 +866,7 @@ input PositionSubscriptionWhereInput {
 input PositionUpdateInput {
   name: String
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }
@@ -868,6 +874,7 @@ input PositionUpdateInput {
 input PositionUpdateManyMutationInput {
   name: String
   summary: String
+  topicId: String
   detail: String
   like_type: LikeType
 }
@@ -915,6 +922,20 @@ input PositionWhereInput {
   summary_not_starts_with: String
   summary_ends_with: String
   summary_not_ends_with: String
+  topicId: String
+  topicId_not: String
+  topicId_in: [String!]
+  topicId_not_in: [String!]
+  topicId_lt: String
+  topicId_lte: String
+  topicId_gt: String
+  topicId_gte: String
+  topicId_contains: String
+  topicId_not_contains: String
+  topicId_starts_with: String
+  topicId_not_starts_with: String
+  topicId_ends_with: String
+  topicId_not_ends_with: String
   detail: String
   detail_not: String
   detail_in: [String!]

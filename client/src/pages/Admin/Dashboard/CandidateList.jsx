@@ -1,102 +1,89 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { graphql, compose } from "react-apollo";
+import React, { useState } from 'react'
 import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
-import { FileUpload } from "primereact/fileupload";
-
+import { TabView, TabPanel } from 'primereact/tabview';
+import CandidateForm from "./forms/CandidateForm";
+import PositionForm from "./forms/CandidatePositionForm";
+import CandidatePostionList from "./CandidatePositionList"
+import CandidateQualificationList from './CandidateQualificationList';
+import QualificationForm from "./forms/QualificationForm"
 import {
-  AdminCandidatesQuery,
-  AdminAddCandidate,
-  AdminDeleteCandidate,
-  AdminUpdateCandidate
-} from "../../../queries";
+  QueryContainer,
+  CandidatePositionsQuery,
+  POSITIONS,
+  CandidateQualificationsQuery
+} from '../../../queries'
 
-function CandidateList(props) {
-  const [newCandidate, setNewCandidate] = useState(false);
+const CandidateList = ({ data, loading }) => {
   const [displayDialog, setDisplayDialog] = useState(false);
-  const [candidate, setCandidate] = useState(null);
+  const [candidate, setCandidate] = useState({});
+  const [position, setPosition] = useState({})
+  const [qualification, setQualification] = useState({})
+  const [tabIdx, setTabIdx] = useState(0)
+  const [seePosition, setSeePosition] = useState(true)
+  const [sortOrder, setSortOrder] = useState(1)
+  const [sortField, setSortField] = useState("tops")
+  const candidatesWithVotes = data.candidatesWithVotes || []
 
-  const saveCandidate = () => {
-    const { addCandidate, updateCandidate } = props;
-    const { id, __typename, file, ...rest } = candidate;
-    if (newCandidate) {
-      const photo = new Blob([file]);
-      addCandidate({
-        variables: {
-          ...rest,
-          age: parseInt(rest.age),
-          file: photo
-        }
-      }).then(() => setDisplayDialog(false));
-    } else {
-      updateCandidate({
-        variables: {
-          data: { ...rest, age: parseInt(rest.age) },
-          where: {
-            id
-          }
-        }
-      }).then(() => setDisplayDialog(false));
-    }
-  };
+  const showDialog = () => {
+    setTabIdx(0);
+    setDisplayDialog(true);
+  }
 
-  const deleteCandidate = () => {
-    const { deleteCandidate } = props;
-    deleteCandidate({
-      variables: {
-        where: {
-          id: candidate.id
-        }
-      }
-    }).then(() => setDisplayDialog(false));
-  };
-
-  const updateProperty = (property, value) => {
-    setCandidate({
-      ...candidate,
-      [property]: value
-    });
-  };
+  const onSort = (e) => {
+    setSortField(e.sortField)
+    setSortOrder(e.sortOrder)
+  }
 
   const addNewCandidate = () => {
-    setNewCandidate(true);
     setCandidate({
       name: "",
       party: "",
       state: "",
       current_office: "",
-      age: 0
+      age: 0,
+      bio_summary: ""
     });
-    setDisplayDialog(true);
+    showDialog();
   };
 
   const onCandidateSelect = e => {
-    setNewCandidate(false);
     setCandidate(Object.assign({}, e.data.candidate));
-    setDisplayDialog(true);
+    showDialog();
   };
 
-  const {
-    candidates: { loading, candidatesWithVotes }
-  } = props;
+  const toDetailPosition = (position) => {
+    setPosition(position)
+    setSeePosition(true)
+    setTabIdx(1)
+  }
+
+  const toDetailQualification = (qualification) => {
+    setQualification(qualification)
+    setSeePosition(false)
+    setTabIdx(1)
+  }
+
+  const toDetailCandidate = () => {
+    setPosition({})
+    setTabIdx(0)
+  }
+
   return (
     <React.Fragment>
       <DataTable
-        lazy
         rows={10}
         paginator
         responsive
         loading={loading}
         value={candidatesWithVotes}
-        header={<h2 style={{ margin: 0 }}>Candidates</h2>}
+        header={<h2 style={{ margin: 0 }}>Candidates ({candidatesWithVotes.length})</h2>}
         footer={
           <div className="p-clearfix">
             <Button
-              style={{ float: "left" }}
+              style={{ float: "right" }}
               label="Add"
               icon="pi pi-plus"
               onClick={addNewCandidate}
@@ -105,6 +92,9 @@ function CandidateList(props) {
         }
         selectionMode="single"
         onRowSelect={onCandidateSelect}
+        sortField={sortField}
+        sortOrder={sortOrder}
+        onSort={(e) => onSort(e)}
       >
         <Column field="candidate.name" header="Name" sortable />
         <Column field="tops" header="Top Picks" sortable />
@@ -118,138 +108,49 @@ function CandidateList(props) {
         width="300px"
         header="Candidate Details"
         modal={true}
+        onHide={() => setDisplayDialog(false)}
         footer={
           <div className="ui-dialog-buttonpane p-clearfix">
             <Button
-              label="Delete"
+              label="Close"
               icon="pi pi-times"
-              onClick={deleteCandidate}
+              onClick={() => setDisplayDialog(false)}
             />
-            <Button label="Save" icon="pi pi-check" onClick={saveCandidate} />
           </div>
         }
-        onHide={() => setDisplayDialog(false)}
       >
-        {candidate && (
-          <div className="p-grid p-fluid">
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <InputText
-                id="name"
-                onChange={e => {
-                  updateProperty("name", e.target.value);
-                }}
-                value={candidate.name}
+        <TabView activeIndex={tabIdx} onTabChange={(e) => setTabIdx(e.index)}>
+          <TabPanel headerStyle={{ display: "none" }}>
+            <CandidateForm curCandidate={candidate} hideForm={() => setDisplayDialog(false)} />
+            {candidate.id && (
+              <React.Fragment>
+                <QueryContainer query={CandidatePositionsQuery} variables={{ candidateId: candidate.id }}>
+                  <CandidatePostionList toDetailPosition={toDetailPosition} />
+                </QueryContainer>
+                <QueryContainer query={CandidateQualificationsQuery} variables={{ candidateId: candidate.id }}>
+                  <CandidateQualificationList toDetailQualification={toDetailQualification} candidate={candidate} />
+                </QueryContainer>
+              </React.Fragment>
+            )}
+          </TabPanel>
+          <TabPanel headerStyle={{ display: "none" }}>
+            {seePosition && (
+              <QueryContainer query={POSITIONS}>
+                <PositionForm position={position} toDetailCandidate={toDetailCandidate} candidate={candidate} />
+              </QueryContainer>
+            )}
+            {!seePosition && (
+              <QualificationForm
+                qualification={qualification}
+                toDetailCandidate={toDetailCandidate}
+                candidate={candidate}
               />
-            </div>
-
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="photo">Photo</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <FileUpload
-                id="photo"
-                name="file"
-                accept="image/*"
-                mode="basic"
-                onSelect={e => {
-                  updateProperty("file", e.files[0]);
-                }}
-                value={candidate.photo}
-              />
-            </div>
-
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="party">Party</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <InputText
-                id="party"
-                onChange={e => {
-                  updateProperty("party", e.target.value);
-                }}
-                value={candidate.party}
-              />
-            </div>
-
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="state">State</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <InputText
-                id="state"
-                onChange={e => {
-                  updateProperty("state", e.target.value);
-                }}
-                value={candidate.state}
-              />
-            </div>
-
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="current_office">Current Office</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <InputText
-                id="current_office"
-                onChange={e => {
-                  updateProperty("current_office", e.target.value);
-                }}
-                value={candidate.current_office}
-              />
-            </div>
-
-            <div className="p-col-4" style={{ padding: ".75em" }}>
-              <label htmlFor="age">Age</label>
-            </div>
-            <div className="p-col-8" style={{ padding: ".5em" }}>
-              <InputText
-                id="age"
-                onChange={e => {
-                  updateProperty("age", e.target.value);
-                }}
-                value={candidate.age}
-              />
-            </div>
-          </div>
-        )}
+            )}
+          </TabPanel>
+        </TabView>
       </Dialog>
     </React.Fragment>
   );
 }
 
-CandidateList.propTypes = {};
-
-export default compose(
-  graphql(AdminCandidatesQuery, {
-    name: "candidates",
-    options: { fetchPolicy: "network-only" }
-  }),
-  graphql(AdminAddCandidate, {
-    name: "addCandidate",
-    options: { refetchQueries: [{ query: AdminCandidatesQuery }] }
-  }),
-  graphql(AdminUpdateCandidate, {
-    name: "updateCandidate",
-    options: { refetchQueries: [{ query: AdminCandidatesQuery }] }
-  }),
-  graphql(AdminDeleteCandidate, {
-    name: "deleteCandidate",
-    options: {
-      update: (proxy, { data: { deleteCandidate } }) => {
-        const { candidatesWithVotes } = proxy.readQuery({
-          query: AdminCandidatesQuery
-        });
-        proxy.writeQuery({
-          query: AdminCandidatesQuery,
-          data: {
-            candidatesWithVotes: candidatesWithVotes.filter(
-              ({ candidate }) => candidate.id !== deleteCandidate.id
-            )
-          }
-        });
-      }
-    }
-  })
-)(CandidateList);
+export default CandidateList
