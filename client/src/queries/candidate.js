@@ -3,7 +3,7 @@ import {
   candidateFragment,
   positionFragment,
   qualificationFragment
-} from "./fragments"
+} from "./fragments";
 
 export const CandidateQuery = gql`
   {
@@ -18,14 +18,7 @@ export const CandidateWithVotePercenet = gql`
   {
     candidatesWithVotesPercent {
       candidate {
-        id
-        name
-        photo
-        party
-        state
-        current_office
-        age
-        vote_type
+        ...candidate
       }
       tops
       favorites
@@ -34,6 +27,7 @@ export const CandidateWithVotePercenet = gql`
       unknowns
     }
   }
+  ${candidateFragment}
 `;
 
 export const CandidateQualificationsQuery = gql`
@@ -60,7 +54,7 @@ export const PositionQuery = gql`
       ...position
     }
   }
-  {position}
+  ${positionFragment}
 `;
 
 export const QualificationQuery = gql`
@@ -69,6 +63,7 @@ export const QualificationQuery = gql`
       ...qualification
     }
   }
+  ${qualificationFragment}
 `;
 
 export const UserVoteMutation = gql`
