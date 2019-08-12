@@ -13,6 +13,7 @@ const CandidateQualificationList = ({ loading, data, toDetailQualification, cand
       detail: "",
       summary: "",
       years: 0,
+      rank: 1,
       candidateId: candidate.id
     });
   };
