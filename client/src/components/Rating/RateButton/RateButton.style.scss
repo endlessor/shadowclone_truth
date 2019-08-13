@@ -7,8 +7,8 @@
   width: 100%;
   cursor: pointer;
 
-  &:hover {
-    background-color: $gray;
+  &:enabled:hover {
+    background-color: $hover-color;
     .pi {
       color: black;
     }

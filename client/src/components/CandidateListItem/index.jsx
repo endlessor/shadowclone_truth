@@ -45,7 +45,7 @@ const CandidateListItem = ({ data, updateVote }) => {
         </div>
         <div
           className="p-col-12"
-          style={{ borderTop: "dashed 1px gray", paddingBottom: 0 }}
+          style={{ borderTop: "solid 1px #857789", paddingBottom: 0 }}
         >
           <Rating voteType={data.vote_type} updateVote={updateVote} />
         </div>

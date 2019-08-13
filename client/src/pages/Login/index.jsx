@@ -37,7 +37,7 @@ function Login({ location }) {
 
   return (
     <div className="p-grid p-justify-center p-align-center login">
-      <div className="p-col-12 p-md-8">
+      <div className="p-col-10 p-md-8">
         <Card title="Login">
           <Mutation
             mutation={LoginMutation}
