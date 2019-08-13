@@ -1,7 +1,6 @@
 .final {
-  background-color: white;
-
   &__header {
+    margin-bottom: 0.5em;
     h2 {
       margin: 0.3em 0;
     }
@@ -21,5 +20,6 @@
   .p-dataview .p-dataview-content {
     border: none;
     background-color: transparent;
+    padding: 0;
   }
 }

@@ -32,11 +32,6 @@ function Results({ history }) {
           </p>
         </div>
       </div>
-      <div className="p-grid p-dir-rev">
-        <div className="p-col-4 p-fluid">
-          <Button label="Next" onClick={() => history.push("./final")} />
-        </div>
-      </div>
       <Query query={VoteResultQuery} fetchPolicy="network-only">
         {({ loading, error, data: { candidatesWithVotesPercent } }) => {
           if (loading) return <ProgressSpinner />;
@@ -50,6 +45,22 @@ function Results({ history }) {
           );
         }}
       </Query>
+      <div className="p-grid p-justify-between result__footer">
+        <div className="p-col-3 p-fluid">
+          <Button
+            label="Back"
+            icon="pi pi-caret-left"
+            onClick={() => history.goBack()}
+          />
+        </div>
+        <div className="p-col-3 p-fluid">
+          <Button
+            label="Next"
+            icon="pi pi-caret-right"
+            onClick={() => history.push("./final")}
+          />
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,22 +9,31 @@
   &__top {
     &:enabled:hover {
       background-color: $brand-color-top;
+      color: white;
+      .rate-button-icon {
+        color: white;
+      }
     }
     background-color: $brand-color-top;
-    color: black;
+    color: white;
 
     .rate-button-icon {
-      color: black;
+      color: white;
     }
   }
   &__favorite {
     &:enabled:hover {
       background-color: $brand-color-favorite;
+      color: white;
+      .rate-button-icon {
+        color: white;
+      }
     }
     background-color: $brand-color-favorite;
+    color: white;
 
     .rate-button-icon {
-      color: black;
+      color: white;
     }
   }
   &__compromise {
@@ -40,6 +49,10 @@
   &__veto {
     &:enabled:hover {
       background-color: $brand-color-veto;
+      color: white;
+      .rate-button-icon {
+        color: white;
+      }
     }
     background-color: $brand-color-veto;
     color: white;

@@ -112,9 +112,16 @@ function PreVote({ history }) {
           );
         }}
       </Query>
-      <div className="p-grid p-justify-center prevote__footer">
-        <div className="p-col-10 p-fluid">
-          <Button label="Next" onClick={handleNext} />
+      <div className="p-grid p-justify-between prevote__footer">
+        <div className="p-col-3 p-fluid">
+          <Button
+            label="Back"
+            icon="pi pi-caret-left"
+            onClick={() => history.goBack()}
+          />
+        </div>
+        <div className="p-col-3 p-fluid">
+          <Button label="Next" icon="pi pi-caret-right" onClick={handleNext} />
         </div>
       </div>
     </div>
@@ -123,7 +130,8 @@ function PreVote({ history }) {
 
 PreVote.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired
   })
 };
 export default PreVote;
