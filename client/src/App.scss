@@ -49,8 +49,11 @@ body {
   font-size: 14px;
 
   .p-button {
+    &:hover {
+      background-color: $hover-color;
+    }
     &:enabled:hover {
-      background-color: $purple;
+      background-color: $hover-color;
     }
     background-color: $purple;
     border: none;

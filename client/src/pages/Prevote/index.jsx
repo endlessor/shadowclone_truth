@@ -94,24 +94,26 @@ function PreVote({ history }) {
           <h1>Prevoting</h1>
         </div>
       </div>
-      <Query
-        query={CandidateQuery}
-        fetchPolicy="network-only"
-        onCompleted={onCompleteQueryFetch}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <ProgressSpinner />;
-          if (error) return <p>Error : {error}</p>;
-          return (
-            <DataView
-              value={data.candidates}
-              layout="list"
-              itemTemplate={itemTemplate}
-              rows={20}
-            />
-          );
-        }}
-      </Query>
+      <div className="p-grid p-justify-center">
+        <Query
+          query={CandidateQuery}
+          fetchPolicy="network-only"
+          onCompleted={onCompleteQueryFetch}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <ProgressSpinner />;
+            if (error) return <p>Error : {error}</p>;
+            return (
+              <DataView
+                value={data.candidates}
+                layout="list"
+                itemTemplate={itemTemplate}
+                rows={20}
+              />
+            );
+          }}
+        </Query>
+      </div>
       <div className="p-grid p-justify-between prevote__footer">
         <div className="p-col-3 p-fluid">
           <Button
