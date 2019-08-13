@@ -5,9 +5,11 @@ import { Redirect } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
+import { Card } from "primereact/card";
 import { LoginMutation } from "../../queries/auth";
 import { AUTH_TOKEN } from "../../config";
-import { Card } from "primereact/card";
+
+import "./Login.style.scss";
 
 function Login({ location }) {
   const [authInfo, setAuthInfo] = useState({ email: "", password: "" });
@@ -34,7 +36,7 @@ function Login({ location }) {
   }
 
   return (
-    <div className="p-grid p-justify-center">
+    <div className="p-grid p-justify-center p-align-center login">
       <div className="p-col-12 p-md-8">
         <Card title="Login">
           <Mutation
