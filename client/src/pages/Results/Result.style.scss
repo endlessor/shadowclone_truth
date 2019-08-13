@@ -13,6 +13,14 @@
     }
   }
 
+  &__footer {
+    margin-top: 1em;
+    .p-button {
+      border: none;
+      background-color: $purple;
+      font-weight: bold;
+    }
+  }
   .p-button {
     border: none;
     background-color: $purple;

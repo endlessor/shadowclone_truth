@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button } from "primereact/button";
+import { Card } from "primereact/card";
 
 import Avatar from "../Avatar";
 import TextItem from "../TextItem";
@@ -12,7 +13,7 @@ import "./FinalListItem.style.scss";
 
 function FinalListItem({ data, onInfo, onRate }) {
   return (
-    <div className="result-list-item">
+    <Card className="final-list-item">
       <div className="p-grid">
         <Link
           className="p-col-fixed"
@@ -67,7 +68,7 @@ function FinalListItem({ data, onInfo, onRate }) {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 

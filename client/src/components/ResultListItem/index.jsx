@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card } from "primereact/card";
 import Avatar from "../Avatar";
 import TextItem from "../TextItem";
 import { VOTE_TYPE } from "../../config";
@@ -8,7 +9,7 @@ import "./ResultListItem.style.scss";
 
 function ResultListItem({ data }) {
   return (
-    <div className="result-list-item">
+    <Card className="result-list-item">
       <div className="p-grid">
         <Link
           className="p-col-fixed"
@@ -47,7 +48,7 @@ function ResultListItem({ data }) {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
