@@ -1,7 +1,7 @@
 @import "../../theme/colors";
 
 .vote-reason-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1em;
   text-align: center;
 
   .p-panel {
@@ -18,7 +18,6 @@
     border: none;
     border-radius: 50%;
     &:enabled:hover {
-      border: solid 1px black;
       background-color: $gray;
     }
   }
@@ -33,10 +32,28 @@
     .p-button-icon-left {
       color: white;
     }
+    &:enabled:hover {
+      color: white;
+      background-color: $dislike-color;
+      .p-button-icon-left {
+        color: white;
+      }
+    }
   }
   .like {
     border: none;
+    color: white;
     background-color: $like-color;
+    .p-button-icon-left {
+      color: white;
+    }
+    &:enabled:hover {
+      color: white;
+      background-color: $like-color;
+      .p-button-icon-left {
+        color: white;
+      }
+    }
   }
 
   &__summary {
