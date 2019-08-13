@@ -6,21 +6,21 @@ const AdminHeader = ({ loading, data }) => {
   const voteAttributes = data.voteAttributes || {};
   const lineStylesData = {
     labels: [
-      `Top Picks (${voteAttributes.topCount})`,
-      `Favorites (${voteAttributes.favoriteCount})`,
-      `Compromises (${voteAttributes.compromiseCount})`,
-      `Vetos (${voteAttributes.vetoCount})`,
-      `Unknowns (${voteAttributes.unknownCount})`
+      `Top Picks`,
+      `Favorites`,
+      `Compromises`,
+      `Vetos`,
+      `Unknowns`
     ],
     datasets: [
       {
         label: `Prevote Analysis (Prevotes: ${voteAttributes.prevotes}, users: ${voteAttributes.users})`,
         data: [
-          voteAttributes.average_top,
-          voteAttributes.average_favorite,
-          voteAttributes.average_compromise,
-          voteAttributes.average_veto,
-          voteAttributes.average_unknown
+          voteAttributes.topCount,
+          voteAttributes.favoriteCount,
+          voteAttributes.compromiseCount,
+          voteAttributes.vetoCount,
+          voteAttributes.unknownCount
         ],
         fill: false,
         backgroundColor: '#66BB6A',
