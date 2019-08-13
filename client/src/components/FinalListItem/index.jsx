@@ -27,7 +27,7 @@ function FinalListItem({ data, onInfo, onRate }) {
         </Link>
         <div className="p-col">
           <h4>{data.candidate.name}</h4>
-          <div className="p-grid result-list-item__values">
+          <div className="p-grid final-list-item__values">
             <div className="p-col">
               <TextItem label={VOTE_TYPE.top} value={`${data.tops}%`} />
             </div>
@@ -51,16 +51,16 @@ function FinalListItem({ data, onInfo, onRate }) {
             </div>
           </div>
           <div className="p-grid p-justify-between">
-            <div className="p-col-5 p-fluid">
+            <div className="p-col-5 p-fluid" style={{ paddingLeft: "0.3em" }}>
               <Button
                 label="Info & News"
                 className="p-button-secondary"
                 onClick={onInfo}
               />
             </div>
-            <div className="p-col-7 p-fluid">
+            <div className="p-col-6 p-fluid">
               <Button
-                label="Rate this candidate"
+                label="Rate candidate"
                 className="p-button-secondary"
                 onClick={onRate}
               />
