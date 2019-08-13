@@ -5,7 +5,7 @@ import "./VoteItem.style.scss";
 
 const VoteItem = ({ icon, label, description }) => {
   return (
-    <div className="p-grid vote-item">
+    <div className="p-grid p-align-center vote-item">
       <div className="p-col-fixed">
         <span className={`vote-item__icon ${icon}`} />
       </div>
