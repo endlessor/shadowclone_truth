@@ -2,8 +2,20 @@
 
 .prevote {
   &__header {
-    h1 {
-      margin: 0.2em 0;
+    border-bottom: solid 2px gray;
+    margin-bottom: 1em;
+    &--icon .pi {
+      font-size: 2em;
+    }
+    &--description {
+      font-size: 1.2em;
+      margin: 0;
+    }
+    .p-progressbar {
+      height: 8px;
+      .p-progressbar-value {
+        background-color: $purple;
+      }
     }
   }
   &__footer {
