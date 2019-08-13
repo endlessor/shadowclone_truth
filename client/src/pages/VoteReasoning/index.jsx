@@ -47,12 +47,16 @@ function VoteReasoning({
   const handlePrevVote = () => {
     if (curIndex > 0) {
       setCandidateId(candidates[curIndex - 1].id);
+    } else {
+      history.goBack();
     }
   };
 
   const handleNextVote = () => {
     if (curIndex < candidates.length - 1) {
       setCandidateId(candidates[curIndex + 1].id);
+    } else {
+      history.push("/final");
     }
   };
 
@@ -265,18 +269,22 @@ function VoteReasoning({
         </Query>
       </section>
       <div className="p-grid p-justify-center vote-reason__footer">
-        {curIndex > 0 && (
-          <div className="p-col-10 p-fluid">
-            <Button label="Rate Prev Candidate" onClick={handlePrevVote} />
-          </div>
-        )}
-        {curIndex < candidates.length - 1 && (
-          <div className="p-col-10 p-fluid">
-            <Button label="Rate Next Candidate" onClick={handleNextVote} />
-          </div>
-        )}
-        <div className="p-col-10 p-fluid">
-          <Button label="Done for now" onClick={handleDone} />
+        <div className="p-col p-fluid">
+          <Button
+            label="Prev"
+            icon="pi pi-caret-left"
+            onClick={handlePrevVote}
+          />
+        </div>
+        <div className="p-col p-fluid">
+          <Button label="Done" onClick={handleDone} />
+        </div>
+        <div className="p-col p-fluid">
+          <Button
+            label="Next"
+            icon="pi pi-caret-right"
+            onClick={handleNextVote}
+          />
         </div>
       </div>
     </div>

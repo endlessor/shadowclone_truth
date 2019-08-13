@@ -16,6 +16,7 @@
   }
 
   &__header {
+    z-index: 100;
     padding: 0.5em;
     background-color: white;
     position: sticky;
@@ -35,6 +36,7 @@
   }
 
   &__main {
+    z-index: 100;
     position: sticky;
     top: 136px;
     background-color: #f2f2f2;
