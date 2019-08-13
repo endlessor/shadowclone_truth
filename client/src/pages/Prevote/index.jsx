@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Query, Mutation } from "react-apollo";
 import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
+import { ProgressBar } from "primereact/progressbar";
 
 import { CandidateListItem, ProgressSpinner } from "../../components";
 import {
@@ -16,7 +17,17 @@ import "./Prevote.style.scss";
 
 function PreVote({ history }) {
   const [topCandidateId, setTopCandidateId] = useState(null);
+  const [progressValue, setProgressValue] = useState(0);
+
   const onCompleteQueryFetch = data => {
+    setProgressValue(
+      (data.candidates.filter(
+        ({ vote_type }) =>
+          vote_type !== null && vote_type !== VOTE_TYPE.unknowns
+      ).length /
+        data.candidates.length) *
+        100
+    );
     const topCandidate = data.candidates.find(
       ({ vote_type }) => vote_type === VOTE_TYPE.top
     );
@@ -96,9 +107,17 @@ function PreVote({ history }) {
 
   return (
     <div className="p-col-12 p-sm-12 p-md-6 page prevote">
-      <div className="p-grid p-justify-between p-align-center prevote__header">
-        <div className="p-col-12">
-          <h1>Prevoting</h1>
+      <div className="p-grid p-align-center prevote__header">
+        <div className="p-col-fixed prevote__header--icon">
+          <span className="pi pi-external-link" />
+        </div>
+        <div className="p-col">
+          <p className="prevote__header--description">
+            Prevoting: How would you rate each of these candidates?
+          </p>
+        </div>
+        <div style={{ width: "100%" }}>
+          <ProgressBar showValue={false} value={progressValue} />
         </div>
       </div>
       <div className="p-grid p-justify-center">
