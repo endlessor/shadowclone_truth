@@ -50,17 +50,19 @@ function FinalListItem({ data, onInfo, onRate }) {
               <TextItem label={"TBD"} value={`${data.unknowns || 0}%`} />
             </div>
           </div>
-          <div className="p-grid p-justify-left">
+          <div className="p-grid">
             <div className="p-col-5 p-fluid" style={{ paddingLeft: "0.3em" }}>
               <Button
                 label="Info & News"
+                icon="pi pi-info"
                 className="p-button-secondary"
                 onClick={onInfo}
               />
             </div>
-            <div className="p-col-5 p-fluid">
+            <div className="p-col-6 p-fluid">
               <Button
                 label="Rate Candidate"
+                icon="pi pi-star-o"
                 className="p-button-secondary"
                 onClick={onRate}
               />
