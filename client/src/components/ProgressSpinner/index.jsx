@@ -1,15 +1,8 @@
 import React from "react";
-import { ProgressSpinner as Spinner } from "primereact/progressspinner";
+import { PulseLoader } from "react-spinners";
 
 function ProgressSpinner() {
-  return (
-    <Spinner
-      style={{ width: "30px", height: "30px" }}
-      strokeWidth="4"
-      fill="#EEEEEE"
-      animationDuration=".5s"
-    />
-  );
+  return <PulseLoader sizeUnit="px" size={12} color={"#9B50B0"} />;
 }
 
 ProgressSpinner.propTypes = {};
