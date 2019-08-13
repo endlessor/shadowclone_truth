@@ -52,12 +52,12 @@
   &__rating {
     margin: 0 5px;
     margin-bottom: 0.5em;
-    border-bottom: dashed 1px $border-color;
+    border-bottom: solid 1px $border-color;
   }
   &__qualification {
     margin: 0 5px;
     margin-bottom: 0.5em;
-    border-bottom: dashed 1px $border-color;
+    border-bottom: solid 1px $border-color;
     background-color: white;
   }
   &__position {

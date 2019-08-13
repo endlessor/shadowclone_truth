@@ -54,7 +54,7 @@ function PreVote({ history }) {
                       }
                     }
                   });
-                  if (vote_type === VOTE_TYPE.top) {
+                  if (vote_type === VOTE_TYPE.top && topCandidateId !== id) {
                     const { candidate: prevTopCandidate } = cache.readQuery({
                       query: CandidateDetailQuery,
                       variables: { id: topCandidateId }

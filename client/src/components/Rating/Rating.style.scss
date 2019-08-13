@@ -6,6 +6,9 @@
   }
 
   &__top {
+    &:enabled:hover {
+      background-color: $brand-color-top;
+    }
     background-color: $brand-color-top;
     color: black;
 
@@ -14,6 +17,9 @@
     }
   }
   &__favorite {
+    &:enabled:hover {
+      background-color: $brand-color-favorite;
+    }
     background-color: $brand-color-favorite;
 
     .rate-button-icon {
@@ -21,6 +27,9 @@
     }
   }
   &__compromise {
+    &:enabled:hover {
+      background-color: $brand-color-compromise;
+    }
     background-color: $brand-color-compromise;
 
     .rate-button-icon {
@@ -28,6 +37,9 @@
     }
   }
   &__veto {
+    &:enabled:hover {
+      background-color: $brand-color-veto;
+    }
     background-color: $brand-color-veto;
     color: white;
 
@@ -36,6 +48,9 @@
     }
   }
   &__unknowns {
+    &:enabled:hover {
+      background-color: $brand-color-tbd;
+    }
     background-color: $brand-color-tbd;
 
     .rate-button-icon {
