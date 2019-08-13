@@ -33,7 +33,7 @@ const voteItems = [
 const Second = () => {
   return (
     <div>
-      <p>
+      <p style={{ marginTop: 0 }}>
         <span>Prevoting takes 5 minutes:</span> You simply rate each candidate
         in one of these tiers:
       </p>
