@@ -21,8 +21,8 @@ const First = () => {
       </p>
 
       <p>
-        Indecision 2020 records and aggregates these preferences as prevots in
-        order to help voters build coalitions and pick the vollectively optimal
+        Indecision 2020 records and aggregates these preferences as Pre-Votes in
+        order to help voters build coalitions and pick the collectively optimal
         candidate.
       </p>
     </div>

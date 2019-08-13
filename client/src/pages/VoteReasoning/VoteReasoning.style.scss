@@ -22,9 +22,8 @@
     position: sticky;
     top: 60px;
     .pi {
-      float: left;
       font-size: 2.5em;
-      vertical-align: bottom;
+      color: gray;
     }
     &--description {
       margin: 0;
@@ -38,7 +37,7 @@
   &__main {
     z-index: 100;
     position: sticky;
-    top: 136px;
+    top: 123px;
     background-color: #f2f2f2;
     border-top: solid 1px $border-color;
     border-bottom: solid 1px $border-color;
@@ -46,6 +45,9 @@
     margin-bottom: 15px;
     &__avatar {
       margin-bottom: -40px;
+    }
+    @media screen and (max-width: 32em) {
+      top: 136px;
     }
   }
 
