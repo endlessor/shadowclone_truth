@@ -18,7 +18,7 @@
     border: none;
     border-radius: 50%;
     &:enabled:hover {
-      background-color: $gray;
+      background-color: $hover-color;
     }
   }
   .p-button-icon-left {
