@@ -37,6 +37,8 @@
 
 body {
   height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #f6f6f6;
@@ -45,10 +47,15 @@ body {
   color: #333333;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
+
+  .p-button {
+    background-color: $purple;
+    border: none;
+  }
 }
 
 .layout-topbar {
-  background-color: #20272a;
+  background-color: #6c377a;
   display: block;
   padding: 0;
   height: 60px;
