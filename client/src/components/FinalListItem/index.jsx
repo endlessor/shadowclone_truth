@@ -50,7 +50,7 @@ function FinalListItem({ data, onInfo, onRate }) {
               <TextItem label={"TBD"} value={`${data.unknowns || 0}%`} />
             </div>
           </div>
-          <div className="p-grid p-justify-between">
+          <div className="p-grid p-justify-left">
             <div className="p-col-5 p-fluid" style={{ paddingLeft: "0.3em" }}>
               <Button
                 label="Info & News"
@@ -58,9 +58,9 @@ function FinalListItem({ data, onInfo, onRate }) {
                 onClick={onInfo}
               />
             </div>
-            <div className="p-col-6 p-fluid">
+            <div className="p-col-5 p-fluid">
               <Button
-                label="Rate candidate"
+                label="Rate Candidate"
                 className="p-button-secondary"
                 onClick={onRate}
               />
