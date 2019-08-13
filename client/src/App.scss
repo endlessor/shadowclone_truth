@@ -85,10 +85,6 @@ body {
     cursor: pointer;
     @include transition(background-color 0.2s);
 
-    &:hover {
-      background-color: #363c3f;
-    }
-
     i {
       line-height: inherit;
     }

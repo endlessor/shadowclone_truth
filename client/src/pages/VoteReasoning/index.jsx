@@ -71,6 +71,13 @@ function VoteReasoning({
         qualificationId,
         like
       },
+      optimisticResponse: {
+        __typename: "Mutation",
+        createUserQualificationLike: {
+          __typename: "Qualification",
+          like
+        }
+      },
       update: (cache, { data: { createUserQualificationLike } }) => {
         const { qualification } = cache.readQuery({
           query: QualificationQuery,
@@ -96,6 +103,13 @@ function VoteReasoning({
         positionId,
         like
       },
+      optimisticResponse: {
+        __typename: "Mutation",
+        createUserPositionLike: {
+          __typename: "Position",
+          like
+        }
+      },
       update: (cache, { data: { createUserPositionLike } }) => {
         const { position } = cache.readQuery({
           query: PositionQuery,
@@ -120,6 +134,13 @@ function VoteReasoning({
       variables: {
         candidateId,
         voteType: vote_type
+      },
+      optimisticResponse: {
+        __typename: "Mutation",
+        createUserVote: {
+          __typename: "Candidate",
+          vote_type
+        }
       },
       update: (cache, { data: { createUserVote } }) => {
         const { candidate } = cache.readQuery({
@@ -285,6 +306,7 @@ function VoteReasoning({
           <Button
             label="Next"
             icon="pi pi-caret-right"
+            iconPos="right"
             onClick={handleNextVote}
           />
         </div>

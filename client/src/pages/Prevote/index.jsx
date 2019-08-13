@@ -39,6 +39,13 @@ function PreVote({ history }) {
                   candidateId: id,
                   voteType: vote_type
                 },
+                optimisticResponse: {
+                  __typename: "Mutation",
+                  createUserVote: {
+                    __typename: "Candidate",
+                    vote_type
+                  }
+                },
                 update: (cache, { data: { createUserVote } }) => {
                   const { candidate } = cache.readQuery({
                     query: CandidateDetailQuery,
@@ -65,7 +72,7 @@ function PreVote({ history }) {
                       data: {
                         candidate: {
                           ...prevTopCandidate,
-                          vote_type: null
+                          vote_type: VOTE_TYPE.favorite
                         }
                       }
                     });
@@ -123,7 +130,12 @@ function PreVote({ history }) {
           />
         </div>
         <div className="p-col-3 p-fluid">
-          <Button label="Next" icon="pi pi-caret-right" onClick={handleNext} />
+          <Button
+            label="Next"
+            icon="pi pi-caret-right"
+            iconPos="right"
+            onClick={handleNext}
+          />
         </div>
       </div>
     </div>

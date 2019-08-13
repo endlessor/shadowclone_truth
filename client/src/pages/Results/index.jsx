@@ -1,14 +1,27 @@
 import React from "react";
-import { Query } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import { DataView } from "primereact/dataview";
 import { Button } from "primereact/button";
 
 import { ResultListItem, ProgressSpinner } from "../../components";
 import { CandidateWithVotePercenet as VoteResultQuery } from "../../queries";
+// import { VOTE_TYPE } from "../../config";
 
 import "./Result.style.scss";
 
-function Results({ history }) {
+function Results({ history, data }) {
+  const handleNext = () => {
+    // const topCandidate = data.candidatesWithVotesPercent.find(
+    //   ({ candidate }) => candidate.vote_type === VOTE_TYPE.top
+    // );
+
+    history.push(
+      `/voter-reason/candidate/${
+        data.candidatesWithVotesPercent[0].candidate.id
+      }`
+    );
+  };
+
   const itemTemplate = (candidate, layout) => {
     if (!candidate) {
       return null;
@@ -33,19 +46,16 @@ function Results({ history }) {
         </div>
       </div>
       <div className="p-grid p-justify-center">
-        <Query query={VoteResultQuery} fetchPolicy="network-only">
-          {({ loading, error, data: { candidatesWithVotesPercent } }) => {
-            if (loading) return <ProgressSpinner />;
-            return (
-              <DataView
-                value={candidatesWithVotesPercent}
-                layout="list"
-                itemTemplate={itemTemplate}
-                rows={20}
-              />
-            );
-          }}
-        </Query>
+        {data.loading ? (
+          <ProgressSpinner />
+        ) : (
+          <DataView
+            value={data.candidatesWithVotesPercent}
+            layout="list"
+            itemTemplate={itemTemplate}
+            rows={20}
+          />
+        )}
       </div>
       <div className="p-grid p-justify-between result__footer">
         <div className="p-col-3 p-fluid">
@@ -59,7 +69,8 @@ function Results({ history }) {
           <Button
             label="Next"
             icon="pi pi-caret-right"
-            onClick={() => history.push("./final")}
+            iconPos="right"
+            onClick={handleNext}
           />
         </div>
       </div>
@@ -69,4 +80,6 @@ function Results({ history }) {
 
 Results.propTypes = {};
 
-export default Results;
+export default compose(
+  graphql(VoteResultQuery, { options: { fetchPolicy: "network-only" } })
+)(Results);
