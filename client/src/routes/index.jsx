@@ -24,6 +24,7 @@ import { AUTH_TOKEN, persistor } from "../config";
 import { MeQuery } from "../queries";
 
 import "./styles.scss";
+import ScrollToTop from "./ScrollToTop";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = !!localStorage.getItem(AUTH_TOKEN);
@@ -71,7 +72,6 @@ const getPathDepth = location => {
   pathArr = pathArr.filter(n => n !== "");
   return pathArr.length;
 };
-
 const Routes = props => {
   const [prevDepth] = useState(getPathDepth(props.location));
   const logoutHandler = () => {
@@ -84,27 +84,27 @@ const Routes = props => {
     });
   };
   return (
-    <Route
-      render={({ location }) => {
-        return (
-          <div className="layout-wrapper">
-            <div className="layout-topbar">
-              <div className="logo">
-                <span>Indecision2020</span>
-              </div>
-              {localStorage.getItem(AUTH_TOKEN) && (
-                <div className="topbar-menu">
-                  <div className="menu-button" onClick={logoutHandler}>
-                    Log out
-                  </div>
-                </div>
-              )}
+    <div className="layout-wrapper">
+      <div className="layout-topbar">
+        <div className="logo">
+          <span>Indecision2020</span>
+        </div>
+        {localStorage.getItem(AUTH_TOKEN) && (
+          <div className="topbar-menu">
+            <div className="menu-button" onClick={logoutHandler}>
+              Log out
             </div>
-            <div id="layout-content">
+          </div>
+        )}
+      </div>
+      <div id="layout-content">
+        <Route
+          render={({ location }) => {
+            return (
               <TransitionGroup>
                 <CSSTransition
                   key={location.pathname}
-                  timeout={500}
+                  timeout={600}
                   classNames="pageSlider"
                   mountOnEnter={false}
                   unmountOnExit={true}
@@ -119,11 +119,11 @@ const Routes = props => {
                       <Route path="/login" component={Login} />
                       <Route path="/signup" component={Signup} />
                       <Route path="/intro" component={Intro} />
+                      <PrivateRoute path="/admin" component={AdminRoutes} />
                       <PrivateRoute
                         path="/voter-reason/candidate/:id"
                         component={VoteReasoning}
                       />
-                      <PrivateRoute path="/admin" component={AdminRoutes} />
                       <PrivateRoute path="/prevote" component={PreVote} />
                       <PrivateRoute path="/result" component={Results} />
                       <PrivateRoute path="/final" component={Final} />
@@ -135,11 +135,11 @@ const Routes = props => {
                   </div>
                 </CSSTransition>
               </TransitionGroup>
-            </div>
-          </div>
-        );
-      }}
-    />
+            );
+          }}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -151,7 +151,9 @@ const AnimationRoutes = compose(
 const MainRoute = () => {
   return (
     <Router>
-      <AnimationRoutes />
+      <ScrollToTop>
+        <AnimationRoutes />
+      </ScrollToTop>
     </Router>
   );
 };

@@ -1,26 +1,28 @@
-.pageSlider-exit > .page {
-  z-index: 1;
-}
-.pageSlider-enter > .page {
-  z-index: 10;
-}
 .pageSlider-enter.left > .page {
   transform: translate3d(100%, 0, 0);
+  z-index: 10;
 }
-
-.pageSlider-enter.right > .page {
-  transform: translate3d(-100%, 0, 0);
-}
-
-.pageSlider-enter.pageSlider-enter-active > .page {
+.pageSlider-enter.pageSlider-enter-active.left > .page {
   transform: translate3d(0, 0, 0);
   transition: all 600ms;
 }
+.pageSlider-exit.left > .page {
+  z-index: 1;
+}
+.pageSlider-enter.right > .page {
+  z-index: 10;
+  transform: translate3d(-100%, 0, 0);
+}
+.pageSlider-enter.pageSlider-enter-active.right > .page {
+  transform: translate3d(0, 0, 0);
+  transition: all 600ms;
+}
+.pageSlider-exit.right > .page {
+  z-index: 1;
+}
 
 .page {
-  // position: absolute;
-  width: 100%;
-  // background-color: white;
+  position: absolute;
+  background-color: white;
   min-height: calc(100vh - 60px);
-  // box-shadow: 0px 7px 22px -1px #000000;
 }

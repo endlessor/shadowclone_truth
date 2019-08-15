@@ -72,22 +72,27 @@ function PreVote({ history }) {
                       }
                     }
                   });
-                  if (vote_type === VOTE_TYPE.top && topCandidateId !== id) {
-                    const { candidate: prevTopCandidate } = cache.readQuery({
-                      query: CandidateDetailQuery,
-                      variables: { id: topCandidateId }
-                    });
-                    cache.writeQuery({
-                      query: CandidateDetailQuery,
-                      variables: { topCandidateId },
-                      data: {
-                        candidate: {
-                          ...prevTopCandidate,
-                          vote_type: VOTE_TYPE.favorite
+                  if (topCandidateId) {
+                    if (vote_type === VOTE_TYPE.top && topCandidateId !== id) {
+                      const { candidate: prevTopCandidate } = cache.readQuery({
+                        query: CandidateDetailQuery,
+                        variables: { id: topCandidateId }
+                      });
+                      cache.writeQuery({
+                        query: CandidateDetailQuery,
+                        variables: { topCandidateId },
+                        data: {
+                          candidate: {
+                            ...prevTopCandidate,
+                            vote_type: VOTE_TYPE.favorite
+                          }
                         }
-                      }
-                    });
-                    setTopCandidateId(id);
+                      });
+                      setTopCandidateId(id);
+                    }
+                    if (topCandidateId === id && vote_type !== VOTE_TYPE.top) {
+                      setTopCandidateId(null);
+                    }
                   }
                 }
               });
