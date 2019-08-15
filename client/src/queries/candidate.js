@@ -123,19 +123,6 @@ export const ResultQuery = gql`
   }
 `;
 
-export const UserVoteQuery = gql`
-  {
-    userVotes {
-      id
-      candidateId
-      userId
-      vote_type
-      time
-      latest
-    }
-  }
-`;
-
 export const CandidateDetailQuery = gql`
   query candidate($id: ID!) {
     candidate(id: $id) {

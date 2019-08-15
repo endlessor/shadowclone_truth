@@ -15,8 +15,9 @@ export const candidateFragment = gql`
     prevote_score
     bio_summary
     vote_type
+    __typename
   }
-`
+`;
 
 export const positionFragment = gql`
   fragment position on Position {
@@ -27,7 +28,7 @@ export const positionFragment = gql`
     detail
     like_type
   }
-`
+`;
 
 export const qualificationFragment = gql`
   fragment qualification on Qualification {
@@ -40,7 +41,7 @@ export const qualificationFragment = gql`
     candidateId
     like_type
   }
-`
+`;
 
 export const topicFragment = gql`
   fragment topic on Topic {
@@ -48,7 +49,7 @@ export const topicFragment = gql`
     name
     category
   }
-`
+`;
 
 export const userFragment = gql`
   fragment user on User {
@@ -58,7 +59,7 @@ export const userFragment = gql`
     gender
     role
   }
-`
+`;
 
 export const candidatePositionFragment = gql`
   fragment candidatePosition on CandidatePosition {
@@ -70,4 +71,4 @@ export const candidatePositionFragment = gql`
     rank
     latest
   }
-`
+`;
