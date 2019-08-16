@@ -111,7 +111,7 @@ const Routes = props => {
                 >
                   <div
                     className={
-                      getPathDepth(location) - prevDepth > 0 ? "left" : "right"
+                      prevDepth - getPathDepth(location) <= 0 ? "left" : "right"
                     }
                   >
                     <Switch location={location}>
