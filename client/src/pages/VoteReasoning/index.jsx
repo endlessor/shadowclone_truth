@@ -184,7 +184,7 @@ function VoteReasoning({
   );
 
   return (
-    <div className="p-col-12 page vote-reason">
+    <div className="p-col-12 p-sm-12 p-md-6 page vote-reason">
       <section className="p-grid p-align-center vote-reason__header">
         <div className="p-col-fixed">
           <span className="pi pi-question-circle" />
