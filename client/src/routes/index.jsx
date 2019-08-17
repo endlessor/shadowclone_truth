@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,9 +22,10 @@ import Final from "../pages/Final";
 import { ProgressSpinner } from "../components";
 import { AUTH_TOKEN, persistor } from "../config";
 import { MeQuery } from "../queries";
+import { usePrevious, getPathDepth } from "../utils";
 
-import "./styles.scss";
 import ScrollToTop from "./ScrollToTop";
+import "./styles.scss";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = !!localStorage.getItem(AUTH_TOKEN);
@@ -67,13 +68,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-const getPathDepth = location => {
-  let pathArr = (location || {}).pathname.split("/");
-  pathArr = pathArr.filter(n => n !== "");
-  return pathArr.length;
-};
 const Routes = props => {
-  const [prevDepth] = useState(getPathDepth(props.location));
   const logoutHandler = () => {
     persistor.pause();
     persistor.purge().then(() => {
@@ -83,6 +78,7 @@ const Routes = props => {
       props.history.push("/");
     });
   };
+  const prevDepth = usePrevious(getPathDepth(props.location));
   return (
     <div className="layout-wrapper">
       <div className="layout-topbar">
@@ -100,6 +96,8 @@ const Routes = props => {
       <div id="layout-content">
         <Route
           render={({ location }) => {
+            const cn =
+              getPathDepth(location) - prevDepth >= 0 ? "left" : "right";
             return (
               <TransitionGroup>
                 <CSSTransition
@@ -109,11 +107,7 @@ const Routes = props => {
                   mountOnEnter={false}
                   unmountOnExit={true}
                 >
-                  <div
-                    className={
-                      prevDepth - getPathDepth(location) <= 0 ? "left" : "right"
-                    }
-                  >
+                  <div className={cn}>
                     <Switch location={location}>
                       <PrivateRoute path="/" exact={null} />
                       <Route path="/login" component={Login} />
