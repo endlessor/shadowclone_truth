@@ -2,6 +2,9 @@
 
 .prevote {
   &__header {
+    position: sticky;
+    top: 60px;
+    background-color: white;
     border-bottom: solid 2px gray;
     margin-bottom: 1em;
     &--icon .pi {
