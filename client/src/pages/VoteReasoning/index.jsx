@@ -56,12 +56,12 @@ function VoteReasoning({
     if (curIndex < candidates.length - 1) {
       setCandidateId(candidates[curIndex + 1].id);
     } else {
-      history.push("/final");
+      history.push("/app/final");
     }
   };
 
   const handleDone = () => {
-    history.push("/final");
+    history.push("/app/final");
   };
 
   const handleQualificationLike = (qualificationId, like) => {

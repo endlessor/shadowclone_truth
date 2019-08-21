@@ -7,22 +7,14 @@ import {
   withRouter
 } from "react-router-dom";
 import { Query, compose, withApollo } from "react-apollo";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-
-import AdminRoutes from "./admin";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import PreVote from "../pages/Prevote";
-import CandidateDetail from "../pages/CandidateDetail";
-import VoteReasoning from "../pages/VoteReasoning";
-import Results from "../pages/Results";
-import Intro from "../pages/Intro";
-import Final from "../pages/Final";
+import AdminRoutes from "./admin";
+import UserRoutes from "./user";
 
 import { ProgressSpinner } from "../components";
 import { AUTH_TOKEN, persistor } from "../config";
 import { MeQuery } from "../queries";
-import { usePrevious, getPathDepth } from "../utils";
 
 import ScrollToTop from "./ScrollToTop";
 import "./styles.scss";
@@ -40,11 +32,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
               if (isAuthenticated) {
                 if (!data.me.isAdmin) {
                   if (props.location.pathname === "/admin")
-                    return <Redirect to="/prevote" />;
+                    return <Redirect to="/app/prevote" />;
                   return Component ? (
                     <Component {...props} />
                   ) : (
-                    <Redirect to="/prevote" />
+                    <Redirect to="/app/prevote" />
                   );
                 } else {
                   return props.location.pathname !== "/admin" ? (
@@ -78,7 +70,6 @@ const Routes = props => {
       props.history.push("/");
     });
   };
-  const prevDepth = usePrevious(getPathDepth(props.location));
   return (
     <div className="layout-wrapper">
       <div className="layout-topbar">
@@ -94,44 +85,13 @@ const Routes = props => {
         )}
       </div>
       <div id="layout-content">
-        <Route
-          render={({ location }) => {
-            const cn =
-              getPathDepth(location) - prevDepth >= 0 ? "left" : "right";
-            return (
-              <TransitionGroup>
-                <CSSTransition
-                  key={location.pathname}
-                  timeout={600}
-                  classNames="pageSlider"
-                  mountOnEnter={false}
-                  unmountOnExit={true}
-                >
-                  <div className={cn}>
-                    <Switch location={location}>
-                      <PrivateRoute path="/" exact={null} />
-                      <Route path="/login" component={Login} />
-                      <Route path="/signup" component={Signup} />
-                      <Route path="/intro" component={Intro} />
-                      <PrivateRoute path="/admin" component={AdminRoutes} />
-                      <PrivateRoute
-                        path="/voter-reason/candidate/:id"
-                        component={VoteReasoning}
-                      />
-                      <PrivateRoute path="/prevote" component={PreVote} />
-                      <PrivateRoute path="/result" component={Results} />
-                      <PrivateRoute path="/final" component={Final} />
-                      <PrivateRoute
-                        path="/candidate/:id"
-                        component={CandidateDetail}
-                      />
-                    </Switch>
-                  </div>
-                </CSSTransition>
-              </TransitionGroup>
-            );
-          }}
-        />
+        <Router>
+          <PrivateRoute path="/" exact={null} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <PrivateRoute path="/app" component={UserRoutes} />
+          <PrivateRoute path="/admin" component={AdminRoutes} />
+        </Router>
       </div>
     </div>
   );

@@ -107,7 +107,7 @@ function PreVote({ history }) {
   };
 
   const handleNext = () => {
-    history.push("/result");
+    history.push("/app/result");
   };
 
   return (
