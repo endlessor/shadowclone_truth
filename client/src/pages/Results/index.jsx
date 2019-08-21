@@ -16,7 +16,7 @@ function Results({ history, data }) {
     // );
 
     history.push(
-      `/voter-reason/candidate/${
+      `/app/voter-reason/candidate/${
         data.candidatesWithVotesPercent[0].candidate.id
       }`
     );
