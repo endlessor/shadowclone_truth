@@ -36,7 +36,7 @@ const UserRoutes = props => {
                     path={`${baseName}/voter-reason/candidate/:id`}
                     component={VoteReasoning}
                   />
-                  <Route path={`${baseName}/result`} component={Results} />
+                  <Route path={`${baseName}/vote/result`} component={Results} />
                   <Route path={`${baseName}/final`} component={Final} />
                   <Route
                     path={`${baseName}/candidate/:id`}
