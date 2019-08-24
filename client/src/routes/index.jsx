@@ -1,7 +1,6 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Redirect,
   withRouter
@@ -21,6 +20,11 @@ import "./styles.scss";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = !!localStorage.getItem(AUTH_TOKEN);
+  if (!isAuthenticated)
+    return (
+      <Redirect to={{ pathname: "/login", state: { from: rest.location } }} />
+    );
+
   return (
     <Query query={MeQuery}>
       {({ loading, error, data }) => {
@@ -29,27 +33,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           <Route
             {...rest}
             render={props => {
-              if (isAuthenticated) {
-                if (!data.me.isAdmin) {
-                  if (props.location.pathname === "/admin")
-                    return <Redirect to="/app/prevote" />;
-                  return Component ? (
-                    <Component {...props} />
-                  ) : (
-                    <Redirect to="/app/prevote" />
-                  );
-                } else {
-                  return props.location.pathname !== "/admin" ? (
-                    <Redirect to="/admin" />
-                  ) : (
-                    <Component {...props} />
-                  );
-                }
+              if (data.me.isAdmin) {
+                return props.location.pathname !== "/admin" ? (
+                  <Redirect to="/admin" />
+                ) : (
+                  <Component {...props} />
+                );
               } else {
-                return (
-                  <Redirect
-                    to={{ pathname: "/login", state: { from: props.location } }}
-                  />
+                if (props.location.pathname === "/admin")
+                  return <Redirect to="/app/prevote" />;
+                return Component ? (
+                  <Component {...props} />
+                ) : (
+                  <Redirect to="/app/prevote" />
                 );
               }
             }}
@@ -60,14 +56,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-const Routes = props => {
+const Routes = ({ client, history }) => {
   const logoutHandler = () => {
     persistor.pause();
     persistor.purge().then(() => {
       localStorage.removeItem(AUTH_TOKEN);
       persistor.resume();
-      props.client.resetStore();
-      props.history.push("/");
+      client.resetStore();
+      history.push("/");
     });
   };
   return (
@@ -85,13 +81,11 @@ const Routes = props => {
         )}
       </div>
       <div id="layout-content">
-        <Router>
-          <PrivateRoute path="/" exact={null} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <PrivateRoute path="/app" component={UserRoutes} />
-          <PrivateRoute path="/admin" component={AdminRoutes} />
-        </Router>
+        <PrivateRoute exact path="/" />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <PrivateRoute path="/app" component={UserRoutes} />
+        <PrivateRoute path="/admin" component={AdminRoutes} />
       </div>
     </div>
   );

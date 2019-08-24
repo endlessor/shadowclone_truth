@@ -31,7 +31,9 @@ function Login({ location }) {
   };
 
   if (redirectToReferer) {
-    const { from } = { from: { pathname: isAdmin ? "/admin" : "/app" } };
+    const { from } = {
+      from: { pathname: isAdmin ? "/admin" : "/app" }
+    };
     return <Redirect to={from} />;
   }
 
