@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import PreVote from "../pages/Prevote";
@@ -19,7 +19,6 @@ const UserRoutes = props => {
     <Route
       render={({ location }) => {
         const cn = getPathDepth(location) - prevDepth >= 0 ? "left" : "right";
-        console.log(cn);
         return (
           <TransitionGroup>
             <CSSTransition
@@ -31,6 +30,7 @@ const UserRoutes = props => {
             >
               <div className={cn}>
                 <Switch>
+                  <Route exact path={baseName} component={Intro} />
                   <Route path={`${baseName}/prevote`} component={PreVote} />
                   <Route
                     path={`${baseName}/voter-reason/candidate/:id`}
@@ -42,7 +42,6 @@ const UserRoutes = props => {
                     path={`${baseName}/candidate/:id`}
                     component={CandidateDetail}
                   />
-                  <Route exact path={baseName} component={Intro} />
                 </Switch>
               </div>
             </CSSTransition>
